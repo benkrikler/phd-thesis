@@ -1,0 +1,61 @@
+\documentclass[nofootinbib]{revtex4}
+%\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{feynmp}
+\usepackage{graphicx}
+%\usepackage{dblfloatfix}
+\usepackage{minted}
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{dcolumn}
+\usepackage[caption=false]{subfig}
+\usepackage{ragged2e}
+\usepackage{array}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{xfrac}
+\usepackage{xcolor}
+\usepackage{hyperref}
+%\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
+
+\hypersetup{%
+  colorlinks=false,% hyperlinks will be coloured
+  linkcolor=blue,% hyperlink text will be green
+  urlcolor=blue,% hyperlink text will be green
+  linkbordercolor=red% hyperlink border will be red
+}
+
+\makeatletter
+\Hy@AtBeginDocument{%
+  \def\@pdfborder{0 0 1}% Overrides border definition set with colorlinks=true
+  \def\@pdfborderstyle{/S/U/W 0}% Overrides border style set with colorlinks=true
+                                % Hyperlink border style will be underline of width 1pt
+}
+\makeatother
+
+\input{figs/feynman/fixFeynmpForPdf}
+\input{definitions}
+
+\renewcommand{\textfraction}{0.01}
+\renewcommand{\topfraction}{0.9} 
+\renewcommand{\bottomfraction}{0.9} 
+\renewcommand{\floatpagefraction}{0.85}
+
+\includeonly{front-matter}
+
+\begin{document}
+
+\include{front-matter}
+\include{theory}
+\include{detector}
+\include{software}
+\include{muon-beam}
+\include{pile-up}
+\include{alcap}
+\include{backgrounds}
+\include{signal-sensitivity}
+\include{back-matter}
+
+\bibliographystyle{bensbib}
+\bibliography{library/record}
+
+\end{document}
