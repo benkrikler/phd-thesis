@@ -1,3 +1,6 @@
 [submodule "library"]
 	path = library
 	url = git@gitlab.in2p3.fr:BenKrikler/library.git
+[submodule "figs/feynman"]
+	path = figs/feynman
+	url = git@github.com:benkrikler/MuEConvFeynamDiagrams.git
