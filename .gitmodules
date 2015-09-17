@@ -1,0 +1,3 @@
+[submodule "library"]
+	path = library
+	url = git@gitlab.in2p3.fr:BenKrikler/library.git

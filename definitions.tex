@@ -1,0 +1,68 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Values
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\senseSindrum}{\ensuremath{7\times10^{-13}}\xspace}
+\newcommand{\sensePI}{\ensuremath{3\times10^{-15}}\xspace}
+\newcommand{\sensePII}{\ensuremath{3\times10^{-17}}\xspace}
+\newcommand{\senseMuEEE}{\ensuremath{\times10^{-16}}\xspace}
+\newcommand{\muStopsPI}{\ensuremath{2\times10^{19}}\xspace}
+%\newcommand{\maxRatesPI}{\ensuremath{6\times10^{-6}}\xspace}
+\newcommand{\limitMEG}{\ensuremath{5.7\times10^{-13}}\xspace}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% decay expressions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mueconv}{\ensuremath{\mu$-$e\textrm{ conversion}}\xspace}
+\newcommand{\muec}{\ensuremath{\mu^{-}+N \rightarrow e^{-}+N}\xspace}
+\newcommand{\mue}{\ensuremath{\mu^{-}-e^{-}}\xspace}
+\newcommand{\mutoe}{\ensuremath{\mu^{-}$$-$$e^{-}}\xspace}
+\newcommand{\mueg}{\ensuremath{\mu\rightarrow e\gamma}\xspace}
+\newcommand{\muegamma}{\ensuremath{\mu^+\rightarrow e^+\gamma}\xspace}
+\newcommand{\muThreeE}{\ensuremath{\mu^+\rightarrow e^+e^-e^+}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Experiment names
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sindrumII}{\mbox{SINDRUM-II}\xspace}
+\newcommand{\phaseI}{\mbox{Phase-I}\xspace}
+\newcommand{\phaseII}{\mbox{Phase-II}\xspace}
+\newcommand{\alcap}{AlCap\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% short-cuts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand {\etal}{\mbox{et al.}\xspace} %et al. - no preceding comma
+\newcommand {\ie}{\mbox{i.e.}\xspace}     %i.e.
+\newcommand {\eg}{\mbox{e.g.}\xspace}     %e.g.
+\newcommand {\etc}{\mbox{etc.}\xspace}     %etc.
+\newcommand {\vs}{\mbox{\sl vs.}\xspace}      %vs.
+\newcommand {\mdash}{\ensuremath{\mathrm{-}}} % for use within formulas
+\newcommand {\CHECK}[1]{{\bf \emph{((CHECK: #1))} }\xspace}
+\newcommand {\code}[1]{\mintinline{c++}{#1}}
+\newcommand {\doxygenUrl}{http://www.hep.ph.ic.ac.uk/~bek07/comet/}
+\newcommand {\clfv}{cLFV\xspace}
+\newcommand {\degree}{\ensuremath{^\circ}\xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% structuring commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\Fig}[1]{Fig.~\ref{fig:#1}\xspace }
+\newcommand{\fig}[1]{Fig.~\ref{fig:#1}\xspace }
+\newcommand{\tab}[1]{Table~\ref{tab:#1}\xspace }
+\newcommand{\Tab}[1]{Table~\ref{tab:#1}\xspace }
+\newcommand{\Eq}[1]{Eq.~\ref{eq:#1}\xspace }
+\newcommand{\eq}[1]{Eq.~\ref{eq:#1}\xspace }
+\newcommand{\figlabel}[1]{\label{fig:#1}\xspace }
+\newcommand{\tablabel}[1]{\label{tab:#1}\xspace }
+\newcommand{\eqlabel}[1]{\label{eq:#1}\xspace }
+
+\newcommand{\heading}[1]{\section{#1}}
+\newcommand{\subheading}[1]{\subsection{#1}}
+\newcommand{\subsubheading}[1]{\subsubsection*{#1}}
+\newcommand{\subsubsubheading}[1]{\subsubsection*{\normalsize{#1}}\addcontentsline{toc}{subsubsection}{\emph{#1}}}
+% disable subsubsections in the TOC (Need this approach for revtex)
+\makeatletter
+\def\l@subsubsection#1#2{}
+\makeatother
+
