@@ -1,20 +1,22 @@
-\documentclass[nofootinbib]{revtex4}
+\includeonly{detector}
+
+\documentclass{thesis}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
 \usepackage{feynmp}
-\usepackage{graphicx}
-%\usepackage{dblfloatfix}
-\usepackage{minted}
+%\usepackage{graphicx}
+%%\usepackage{dblfloatfix}
+%\usepackage{minted}
 \usepackage{xspace}
-\usepackage{siunitx}
-\usepackage{dcolumn}
-\usepackage[caption=false]{subfig}
-\usepackage{ragged2e}
-\usepackage{array}
-%\usepackage{amsmath}
-%\usepackage{amssymb}
-\usepackage{xfrac}
-\usepackage{xcolor}
-\usepackage{hyperref}
+%\usepackage{siunitx}
+%\usepackage{dcolumn}
+%\usepackage[caption=false]{subfig}
+%\usepackage{ragged2e}
+%\usepackage{array}
+%%\usepackage{amsmath}
+%%\usepackage{amssymb}
+%\usepackage{xfrac}
+%\usepackage{xcolor}
+%\usepackage{hyperref}
 %\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
 
 \hypersetup{%
@@ -32,6 +34,17 @@
 }
 \makeatother
 
+\makeatletter
+\@ifpackageloaded{hyperref}{%
+\hypersetup{%
+pdftitle = {},
+pdfsubject = {PhD Thesis for Ben Krikler},
+pdfkeywords = {COMET, mu-e conversion, CLFV, physics},
+pdfauthor = {\textcopyright\ Ben Krikler},
+}
+}{}
+\makeatother
+
 \input{figs/feynman/fixFeynmpForPdf}
 \input{definitions}
 
@@ -40,11 +53,21 @@
 \renewcommand{\bottomfraction}{0.9} 
 \renewcommand{\floatpagefraction}{0.85}
 
-\includeonly{front-matter}
+%% Define the thesis title and author
+\title{Sensitivity Estimates and Backgrounds Studies for Phase-I and II of the \COMET Experiment}
+\author{Benjamin Edward Krikler}
 
 \begin{document}
 
-\include{front-matter}
+%% Define the un-numbered front matter (cover pages, rubrik and table of contents)
+\begin{frontmatter}
+  \include{frontmatter}
+\end{frontmatter}
+
+%% Start the content body of the thesis
+\begin{mainmatter}
+  %% Actually, more semantic chapter filenames are better, like "chap-bgtheory.tex"
+
 \include{theory}
 \include{detector}
 \include{software}
@@ -53,7 +76,22 @@
 \include{alcap}
 \include{backgrounds}
 \include{signal-sensitivity}
-\include{back-matter}
+
+  %% To ignore a specific chapter while working on another,
+  %% making the build faster, comment it out like this:
+  %\input{chap4}
+\end{mainmatter}
+
+%% Produce the appendices
+%\begin{appendices}
+%  \input{appendices}
+%\end{appendices}
+
+%% Produce the un-numbered back matter (e.g. colophon,
+%% bibliography, tables of figures etc., index...)
+\begin{backmatter}
+  \include{backmatter}
+\end{backmatter}
 
 \bibliographystyle{bensbib}
 \bibliography{library/record}
