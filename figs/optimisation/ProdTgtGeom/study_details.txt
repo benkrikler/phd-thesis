@@ -1,0 +1,17 @@
+Packages: heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__
+Externals: heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)
+ 'changes': ['AM IcedustControl/app/IcedustControl_SubmitToBatchDifferent',
+             ' M IcedustControl/modules/particleGuns.py',
+             ' M SimG4/geometry_macros/ProductionTarget-PhaseII.macro'],
+
+For each target lengths 3e5 POT (30 runs of 1e4)
+For each target radius 4.9e5 POT (49 runs of 1e4)
+
+Beam input effects the yield:
+ - For length scan shift beam input so plane is 1 cm before target front
+ - For radius scan beam was fixed at default location (~ 24 cm before front surface)
+ - Can expect proton beam to be tuneable to some degree, using dipoles and quads upstream
+
+Momentum histograms used 12.5 MeV/c bin widths due to poor statistics
+
+Normalisation factor = flux / 12.5 / POT * 1e3 => Flux per MeV/c per proton per mille
