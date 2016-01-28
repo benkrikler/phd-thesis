@@ -11,13 +11,13 @@ void tidy_plots(){
   config.y_axis_label_offset = 1.6;
   config.y_axis_label    = "Differential Yield ( #times 10^{-3} per MeV/c)";
   config.y_axis_decimal  = true;
-  config.legend_header   = "Target Half-Length (cm)";
   config.legend_text_size= 0.022;
   config.legend_x1  = 0.6 ; config.legend_y1  = 0.6;
   config.legend_x2  = 0.85; config.legend_y2  = 0.85;
   config.shift_plot_x  = 0.05;
 
   // Length, muons
+  config.legend_header   = "Target Half-Length (cm)";
   file=FixPlot(top_dir+"length_optimisation/mu-minus_momentum.root","THStack", config);
   SavePlot("Length_mu-minus_momentum","pdf");
   // Length, pions
@@ -25,6 +25,7 @@ void tidy_plots(){
   SavePlot("Length_pi-minus_momentum","pdf");
 
   // Radius, muons
+  config.legend_header   = "Target Radius (mm)";
   file=FixPlot(top_dir+"radius_optimisation/mu-minus_momentum.root","THStack", config);
   SavePlot("Radius_mu-minus_momentum","pdf");
   // Radius, pions
@@ -78,6 +79,16 @@ void tidy_plots(){
   file=FixPlot(top_dir+"radius_optimisation/pi-minus_integral_toZero.root","TMultiGraph", config);
   SavePlot("Radius_pi-minus_integral_toZero","pdf");
 
+  // Radius, muon
+  config.y_axis_range_high = 18;
+  file=FixPlot(top_dir+"radius_optimisation-TotalLength_32cm/mu-minus_integral_toZero.root","TMultiGraph", config);
+  SavePlot("OptimalLengthRadius_mu-minus_integral_toZero","pdf");
+  // Radius, pion
+  config.y_axis_range_high = 11;
+  file=FixPlot(top_dir+"radius_optimisation-TotalLength_32cm/pi-minus_integral_toZero.root","TMultiGraph", config);
+  SavePlot("OptimalLengthRadius_pi-minus_integral_toZero","pdf");
+
+
   //====================================================
   // SPECTRAL SHAPE CHANGES
   config.reset();
@@ -107,4 +118,22 @@ void tidy_plots(){
   file=FixPlot(top_dir+"radius_optimisation/pi-minus_integral_ratios.root","TMultiGraph", config);
   SavePlot("Radius_pi-minus_integral_ratios","pdf");
 
+
+  //====================================================
+  // Compare PhaseI and PhaseII
+  config.reset();
+  //config.y_axis_label    = "Fraction of Distribution Below a Given Momentum";
+  //config.y_axis_label_offset = 1.3;
+  //config.y_axis_decimal  = true;
+  //config.legend_header   = "Momentum (MeV/c)";
+  //config.legend_text_size= 0.025;
+  //config.legend_x1  = 0.11; config.legend_y1  = 0.8;
+  //config.legend_x2  = 0.89; config.legend_y2  = 0.89;
+  //config.y_axis_range_high = 1.18;
+  //config.legend_columns = 5;
+  config.x_axis_label    = "Momentum (MeV/c)";
+  config.stats_force_off = true;
+
+  file=FixPlot(top_dir+"MuonsAndPionsPerProton_Ph2vsPh1.root","TH1", config);
+  SavePlot("Compare_PhIandII_MuAndPi","pdf");
 }

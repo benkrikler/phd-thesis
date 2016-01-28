@@ -158,6 +158,8 @@ struct PlotConfig{
    double shift_plot_x;
    double shift_plot_y;
 
+   bool stats_force_off;
+
   private:
    std::vector<AnnotatedLine*> lines;
 
@@ -182,6 +184,7 @@ struct PlotConfig{
      legend_header="";
      x_axis_label="";
      y_axis_label="";
+     stats_force_off=false;
      ClearLines();
    }
    void AddLine(AnnotatedLine& line){
@@ -192,6 +195,9 @@ struct PlotConfig{
 };
 
 void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend)const{
+  if(stats_force_off){
+    gStyle->SetOptStat(0);
+  }
   if(axes){
     if(x_axis_range_high != x_axis_range_low)
       axes->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);

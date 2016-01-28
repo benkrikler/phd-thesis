@@ -48,73 +48,129 @@
 \end{easylist}
 
 \section{Production Target Optimisation}
-In the \ac{CDR}, the production target is given as being 16~cm in length and 4~mm in radius~\cite{CDR}.
-Since then, there have been changes to the magnetic field in this region, as well as the lengths and locations of solenoids, shielding and beam-pipe, and the proton beam.
-Previous studies have looked at comparing the Tungsten target proposed for Phase-II to other materials~\cite{thesis-AEdmonds}, and also drawn a comparison between MARS~\cite{MARS}, Geant4~\cite{Geant4} and the limited data available.  
-The goal in this study then is to optimise the production target with the up-to-date configurations.
+In the \phaseII \ac{CDR}, the production target is given as being 16~cm in
+length and 4~mm in radius~\cite{CDR}.  Since then, there have been changes to
+the magnetic field in this region, as well as the lengths and locations of
+solenoids, shielding and beam-pipe, and the proton beam.  Previous studies have
+looked at comparing the Tungsten target proposed for Phase-II to other
+materials~\cite{thesis-AEdmonds}, and also drawn a comparison between
+MARS~\cite{MARS}, Geant4~\cite{Geant4} and the limited data available.
 
-It must immediately be noted that at this point in time there is a reasonable uncertainty in the proton beam profile and position.
-In particular, whilst the proton beamline upstream has been well delivered, the effect of the magnetic field and necessary dipole and quadropole magnetics are still being studied by the proton beamline group.  
-The beam profile is given in the \phaseI \ac{TDR} as having a Gaussian profile and energy distribution, but no divergence or location is given.
-The effect of the proton beam distribution on the overall sensitivity shall therefore be considered later on.
+The goal in this study then is to optimise the production target with the
+up-to-date configurations.  This study aims to maximise the total muon and pion
+yield below 80~MeV at the entrance to the Torus1 bent solenoid, by varying the
+radius and length of the production target.
 
-\Tab{optimisation:ProdTgtSec:configuration} gives the key parameters for the beam input and other aspects of this simulation.
-The location and orientation of the target were held fixed, since the proton beamline is fixed with respect to the muon beam axis.  
-Once a realistic proton beam becomes available, these values would also benefit from optimisation, however.
-During the scan over length, the back face of the target was kept 8~cm away from the muon beam since the radiation shielding has previously been optimised, and since beyond this the magnetic field will no longer be able to capture the pions and muons produced.
-
-\begin{table}[t]
-\centering
-\begin{tabular}{ll}
-	\hline
-	\multicolumn{2}{l}{Proton Beam}\\
-	$Horizontal spread, \sigma_x$ & 5.8 mm \\
-	$Vertical spread, \sigma_y$ & 2.9 mm \\
-	$Mean energy, \mu_E$ & 8.01 GeV \\
-	$Energy spread,\sigma_E$ & 0.135 MeV \\
-	\hline
-	\multicolumn{2}{l}{Target}\\
-	Material & Tungsten  \\
-	Orientation & 10~\degree with respect to muon beam axis    \\
-	Location & Back face fixed 8~cm away from muon beam axis  \\
-	Length & 16~cm in CDR. Varied during study.  \\
-	Radius & 4~mm in CDR. Varied during study.  \\
-\end{tabular}
-\end{table}
-
-
-
-\begin{easylist}
+%\begin{easylist}
 %# Some studies in the past (Andy's thesis) have compared Tungsten with Graphite and optimised Phase-I target
 %# Geometry in CDR was 16~cm length and 4~mm radius
 %# Proton beam, capture solenoids and radiation shielding has changed since then, so re-optimisation of the production target was needed
-\end{easylist}
+%\end{easylist}
+
 \subsection{Configuration} 
 %\icedustDescription{one}{tow}
-\begin{easylist}
-# Configuration
-## Only using Geant4 in ICEDUST
-## ICEDUST description: 
-## \icedustDescription{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}
-# Production target:
-## Material: Tungsten
-## Back of target fixed 8~cm behind nominal centre (intersection of Proton beam axis and muon beam-line axis)
-# Proton beam configuration
-## Uncertainty over beam profile makes this exercise difficult
-## Treat incoming beam as a pencil beam which is not realistic, but reasonable for this study \CHECK{Is it? Need to quantify this}
-## Use proton beam parameters from TDR2014:
-### Double Gaussian with horizontal spread of 5.8 mm and vertical spread of 2.9 mm.
-### Energy distribution also Gaussian with mean kinetic energy 8.01 GeV and 0.135~MeV spread in sigma.
-### The beam was fed in 1~cm upstream of target front face, which is the largest cause for errors in this optimisation study.
-\end{easylist}
+%begin{easylist}
+% Configuration
+%## Only using Geant4 in ICEDUST
+%# ICEDUST description: 
+%## \icedustDescription{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}
+%# Production target:
+%## Material: Tungsten
+%## Back of target fixed 8~cm behind nominal centre (intersection of Proton beam axis and muon beam-line axis)
+% Proton beam configuration
+%## Uncertainty over beam profile makes this exercise difficult
+%# Treat incoming beam as a pencil beam which is not realistic, but reasonable for this study \CHECK{Is it? Need to quantify this}
+%# Use proton beam parameters from TDR2014:
+%## Double Gaussian with horizontal spread of 5.8 mm and vertical spread of 2.9 mm.
+%## Energy distribution also Gaussian with mean kinetic energy 8.01 GeV and 0.135~MeV spread in sigma.
+%## The beam was fed in 1~cm upstream of target front face, which is the largest cause for errors in this optimisation study.
+%end{easylist}
+
+\Tab{optimisation:ProdTgtSec:configuration} gives the key parameters for the
+beam input and other aspects of this simulation.  The location and orientation
+of the target were held fixed, since the proton beamline is fixed with respect
+to the muon beam axis.  Once a realistic proton beam becomes available, these
+values would also benefit from optimisation, however.  During the scan over
+length, the back face of the target was kept 8~cm away from the muon beam since
+the radiation shielding has previously been optimised, and since beyond this
+the magnetic field will no longer be able to capture the pions and muons
+produced.
+
+It must be noted that at this point in time there is a appreciable
+uncertainty in the proton beam profile and position.  In particular, whilst the
+proton beamline upstream has been well delivered, the effect of the magnetic
+field and necessary dipole and quadrupole magnetics are still being studied by
+the proton beam-line group.  The beam profile is given in the \phaseI \ac{TDR}
+as having a Gaussian profile and energy distribution, but no divergence or
+location is given.  The effect of the proton beam distribution on the overall
+sensitivity shall therefore be considered later on.
+
+Protons originated from a plane (distributed as a two dimensional Gaussian
+across this surface) but since there is therefore some scope to tune the proton
+beam's position, the input particle plane was moved to remain 1~cm away from
+the front surface of the target.  Since the aim is to maximise the muon and
+pion yield by varying only the length and radius, shifting the proton beam
+input plane in this way removes any variation of target acceptance due to
+divergences of the proton beam in the magnetic field.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lp{0.7\textwidth}}
+	\hline
+	\multicolumn{2}{l}{\bf Proton Beam}\\
+	Horizontal spread, $\sigma_x$ & 5.8 mm \\
+	Vertical spread, $\sigma_y$ & 2.9 mm \\
+	Mean energy, $\mu_E$ & 8.01 GeV \\
+	Energy spread, $\sigma_E$ & 0.135 MeV \\
+	\hline
+	\multicolumn{2}{l}{\bf Target}\\
+	Material & Tungsten  \\
+	Orientation & 10\degree between target's principal axis and the muon beam axis.    \\
+	Location & Back face fixed 8~cm away from muon beam axis.  \\
+	Length & 16~cm in CDR. Varied in steps of 4~cm from 4 to 32~cm.\\
+	Radius & 4~mm in CDR. Varied from 2 to 10~cm in steps of 2~cm and from 10 to 30~cm in steps of 4~cm.  \\
+	\hline
+	\multicolumn{2}{l}{\bf Software configuration}\\
+	Packages & \ttfamily{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}  \\
+	Externals & \ttfamily{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}  \\
+	Fieldmap & 160104 \CHECK{} \\
+	\hline
+	\multicolumn{2}{l}{\bf Sample Sizes}\\
+	Length scan &  3e5 \ac{POT} (30 runs of 1e4) \\
+	Radius scan & 4.9e5 \ac{POT} (49 runs of 1e4)  \\
+	Final scan &   \\
+\hline
+\end{tabular}
+\caption{Key parameters in the configuration of the Production Target optimisation.}
+\tablabel{optimisation:ProdTgtSec:configuration}
+\end{table}
 
 \subsection{Length Scan}
+Different length targets were simulated with 3e5 POT per length.
+Target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
+
+\Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths.
+Target length is given as half-length which is the Geant4 convention.  
+\Fig{optimisation:ProdTgtSec:Length:Integral} then shows these distributions integrated up to different momentum.
+From these plots it can be seen that for both muons and pions, the optimum target length occurs around a total length of 32~cm.
+
+Additionally it can be seen from
+\fig{optimisation:ProdTgtSec:Length:IntegralRatio} that the shape of the
+momentum distributions changes only weakly as a function of the target length.
+These plots were produced by normalising the integrated momentum contours of
+\fig{optimisation:ProdTgtSec:Length:Integral} to the total integral below
+400~MeV.  As a result, it is possible that the actual shape variation is even
+weaker than apparent here, since in the present sample size, the high momentum
+tail is not well sampled at small target lengths, such that a skew in the
+normalisation might occur.
+
 \begin{figure}[t]
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
 \caption{
 Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
+Target length is given as half-length which is the Geant4 convention.  
 }
 \label{optimisation:ProdTgtSec:Length:Momentum}
 \end{figure}
@@ -136,21 +192,15 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 }
 \end{figure}
 
-
-\begin{easylist}
-	# Figure of length scan momentum plots
-	# Figure of length scan integrals up to a momentum
-	# Figure of variation of shape vs length
-	# Conclusion
-\end{easylist}
-
 \subsection{Radius scan}
-\begin{easylist}
-	# Figure of radius scan momentum plots
-	# Figure of radius scan integrals up to a momentum
-	# Figure of variation of shape vs radius
-	# Conclusion
-\end{easylist}
+In parallel to the length optimisation scan, different radii targets were also simulated.
+Targets with radii of 2, 4, 6, 8, 10, 14, 18, 22, 26, and 30~mm were tested.
+The target length was held at the \ac{CDR} value of 16~cm in total.
+
+The results of these scans can be seen in \fig{optimisation:ProdTgtSec:Radius:Momentum} and \fig{optimisation:ProdTgtSec:Radius:Integral},
+where it can be seen that a maximum in both the muon and pion yields at the entrance to the Torus1 section is achieved at a radius of about 10~mm.
+As in the length scan, the shape variation of the momentum distributions is rather weak as a function of target radius.
+
 \begin{figure}[t]
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_momentum}}
@@ -178,8 +228,21 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 }
 \end{figure}
 
-\subsection{Optimised Phase-II}
+\subsection{Final Result}
+Since the length and radius scan were performed in parallel, a final cross check was performed where the optimal radius was confirmed at the optimised target length.
+The integrated spectrum is shown in \fig{optimisation:ProdTgtSec:Combined:Integral} where it can be seen that the optimum radius once the target length is increased to 32~cm is still 10~mm.
+
 \begin{easylist}
 	# Figure comparing Phase-II to Phase-I
 	# Conclusions
 \end{easylist}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}
+\caption{
+Comparison of the combined muon and pion yield at the entrance to Torus1 for \phaseI (blue) and \phaseII (red).
+}
+\figlabel{optimisation:ProdTgtSec:ComparePhI-II}
+\end{figure}
+
