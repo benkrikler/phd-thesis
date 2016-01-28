@@ -1,0 +1,185 @@
+\chapter{Phase-II Optimisation}
+\begin{easylist}
+# Before a substantial sensitivity estimate can be made, need a solidly optimised design
+# Aiming for \sensePII within a single year of running
+# Designs previously optimised \cite{CDR}, and these results are used as nominal design / starting point
+# Fresh optimisation using new software / simulation, updated fieldmaps, physics lists and geometry
+# Some aspects fixed already since \phaseI under construction: Experiment hall, Torus1, detector solenoid, fieldmap and coil parameters?
+# Key areas for optimising:
+## Production target dimensions
+## Torus1 dipole field strength
+## Torus2 dipole field strength
+## Electron spectrometer dipole field strength
+## collimator shapes and locations
+## stopping target and beam blocker position and form
+## DIO blockers on spectrometer
+\end{easylist}
+
+\section{Optimisation Strategy}
+\begin{easylist}
+# Take some aspects as fixed
+# Limit scope and approach:
+## Ideally, each aspect optimised in combination to maximise signal acceptance and reduce background
+## How decoupled are each section?
+## In practise such an optimisation is not easy to do, instead aim to produce a baseline optimisation so that all backgrounds / issues can be identified
+## This can then form basis for further optimisation, with perhaps a smarter more integrated approach
+# Method:
+## Production target optimisation
+### Maximise muon and pion yield between 0 and 80 MeV at entrance to muon beamline
+### Parameters to vary: target length, target radius
+## Muon beam optimisation
+### Maximise muon stopping rate in stopping target
+### Minimise pion stopping rate
+### vary dipole along TS2 and TS4
+### vary Collimators: TS2 and at TS3
+## Electron spectrometer optimisation
+### Optimise dipole to increase signal acceptance
+### Optimse DIO blockers so DIO rate per straw is less than 1 kHz
+### Vary solenoidal field to increase separation?
+## Stopping target / beam blocker optimisation
+### Maximise reflection of signal electrons from upstream by tuning target position
+## Detector optimisation
+\end{easylist}
+
+\section{Optimisation Goals}
+\begin{easylist}
+# Set sensitivity goal and optimise to reach this
+# Single event sensitivity only considers signal acceptance, but also need to understand backgrounds in terms of final confidence limit that can be set
+\end{easylist}
+
+\section{Production Target Optimisation}
+In the \ac{CDR}, the production target is given as being 16~cm in length and 4~mm in radius~\cite{CDR}.
+Since then, there have been changes to the magnetic field in this region, as well as the lengths and locations of solenoids, shielding and beam-pipe, and the proton beam.
+Previous studies have looked at comparing the Tungsten target proposed for Phase-II to other materials~\cite{thesis-AEdmonds}, and also drawn a comparison between MARS~\cite{MARS}, Geant4~\cite{Geant4} and the limited data available.  
+The goal in this study then is to optimise the production target with the up-to-date configurations.
+
+It must immediately be noted that at this point in time there is a reasonable uncertainty in the proton beam profile and position.
+In particular, whilst the proton beamline upstream has been well delivered, the effect of the magnetic field and necessary dipole and quadropole magnetics are still being studied by the proton beamline group.  
+The beam profile is given in the \phaseI \ac{TDR} as having a Gaussian profile and energy distribution, but no divergence or location is given.
+The effect of the proton beam distribution on the overall sensitivity shall therefore be considered later on.
+
+\Tab{optimisation:ProdTgtSec:configuration} gives the key parameters for the beam input and other aspects of this simulation.
+The location and orientation of the target were held fixed, since the proton beamline is fixed with respect to the muon beam axis.  
+Once a realistic proton beam becomes available, these values would also benefit from optimisation, however.
+During the scan over length, the back face of the target was kept 8~cm away from the muon beam since the radiation shielding has previously been optimised, and since beyond this the magnetic field will no longer be able to capture the pions and muons produced.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{ll}
+	\hline
+	\multicolumn{2}{l}{Proton Beam}\\
+	$Horizontal spread, \sigma_x$ & 5.8 mm \\
+	$Vertical spread, \sigma_y$ & 2.9 mm \\
+	$Mean energy, \mu_E$ & 8.01 GeV \\
+	$Energy spread,\sigma_E$ & 0.135 MeV \\
+	\hline
+	\multicolumn{2}{l}{Target}\\
+	Material & Tungsten  \\
+	Orientation & 10~\degree with respect to muon beam axis    \\
+	Location & Back face fixed 8~cm away from muon beam axis  \\
+	Length & 16~cm in CDR. Varied during study.  \\
+	Radius & 4~mm in CDR. Varied during study.  \\
+\end{tabular}
+\end{table}
+
+
+
+\begin{easylist}
+%# Some studies in the past (Andy's thesis) have compared Tungsten with Graphite and optimised Phase-I target
+%# Geometry in CDR was 16~cm length and 4~mm radius
+%# Proton beam, capture solenoids and radiation shielding has changed since then, so re-optimisation of the production target was needed
+\end{easylist}
+\subsection{Configuration} 
+%\icedustDescription{one}{tow}
+\begin{easylist}
+# Configuration
+## Only using Geant4 in ICEDUST
+## ICEDUST description: 
+## \icedustDescription{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}
+# Production target:
+## Material: Tungsten
+## Back of target fixed 8~cm behind nominal centre (intersection of Proton beam axis and muon beam-line axis)
+# Proton beam configuration
+## Uncertainty over beam profile makes this exercise difficult
+## Treat incoming beam as a pencil beam which is not realistic, but reasonable for this study \CHECK{Is it? Need to quantify this}
+## Use proton beam parameters from TDR2014:
+### Double Gaussian with horizontal spread of 5.8 mm and vertical spread of 2.9 mm.
+### Energy distribution also Gaussian with mean kinetic energy 8.01 GeV and 0.135~MeV spread in sigma.
+### The beam was fed in 1~cm upstream of target front face, which is the largest cause for errors in this optimisation study.
+\end{easylist}
+
+\subsection{Length Scan}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
+\caption{
+Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
+}
+\label{optimisation:ProdTgtSec:Length:Momentum}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_toZero}}
+\caption{\figlabel{optimisation:ProdTgtSec:Length:Integral}
+Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
+}
+\end{figure}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_ratios}}
+\caption{\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio}
+Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
+}
+\end{figure}
+
+
+\begin{easylist}
+	# Figure of length scan momentum plots
+	# Figure of length scan integrals up to a momentum
+	# Figure of variation of shape vs length
+	# Conclusion
+\end{easylist}
+
+\subsection{Radius scan}
+\begin{easylist}
+	# Figure of radius scan momentum plots
+	# Figure of radius scan integrals up to a momentum
+	# Figure of variation of shape vs radius
+	# Conclusion
+\end{easylist}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_momentum}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_momentum}}
+\caption{
+Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target radii.
+}
+\label{optimisation:ProdTgtSec:Radius:Momentum}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_toZero}}
+\caption{\figlabel{optimisation:ProdTgtSec:Radius:Integral}
+Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
+}
+\end{figure}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}}
+\caption{\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio}
+Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
+}
+\end{figure}
+
+\subsection{Optimised Phase-II}
+\begin{easylist}
+	# Figure comparing Phase-II to Phase-I
+	# Conclusions
+\end{easylist}

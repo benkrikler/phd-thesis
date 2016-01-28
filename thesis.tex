@@ -1,22 +1,28 @@
-\includeonly{detector}
+%\includeonly{optimis}
 
 \documentclass{thesis}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
 \usepackage{feynmp}
-%\usepackage{graphicx}
+\usepackage{graphicx}
 %%\usepackage{dblfloatfix}
 %\usepackage{minted}
 \usepackage{xspace}
 %\usepackage{siunitx}
 %\usepackage{dcolumn}
-%\usepackage[caption=false]{subfig}
 %\usepackage{ragged2e}
 %\usepackage{array}
+\usepackage[printonlyused]{acronym}
+\usepackage[strings]{underscore}
+\usepackage{babel}
+\usepackage{pbox}
+%\usepackage{pythontex}
 %%\usepackage{amsmath}
 %%\usepackage{amssymb}
 %\usepackage{xfrac}
 %\usepackage{xcolor}
-%\usepackage{hyperref}
+\usepackage[sharp]{easylist}
+\usepackage{hyperref}
+%\usepackage[caption=false]{subfig}
 %\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
 
 \hypersetup{%
@@ -46,7 +52,8 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \makeatother
 
 \input{figs/feynman/fixFeynmpForPdf}
-\input{definitions}
+\input{library/definitions}
+\input{figs/figures.tex}
 
 \renewcommand{\textfraction}{0.01}
 \renewcommand{\topfraction}{0.9} 
@@ -61,7 +68,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 
 %% Define the un-numbered front matter (cover pages, rubrik and table of contents)
 \begin{frontmatter}
-  \include{frontmatter}
+  \input{frontmatter}
 \end{frontmatter}
 
 %% Start the content body of the thesis
@@ -74,8 +81,9 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \include{muon-beam}
 \include{pile-up}
 \include{alcap}
-\include{backgrounds}
+\include{optimisation}
 \include{signal-sensitivity}
+\include{backgrounds}
 
   %% To ignore a specific chapter while working on another,
   %% making the build faster, comment it out like this:
@@ -90,7 +98,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 %% Produce the un-numbered back matter (e.g. colophon,
 %% bibliography, tables of figures etc., index...)
 \begin{backmatter}
-  \include{backmatter}
+  %\input{backmatter}
 \end{backmatter}
 
 \bibliographystyle{bensbib}
