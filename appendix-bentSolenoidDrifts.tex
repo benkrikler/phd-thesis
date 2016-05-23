@@ -1,0 +1,63 @@
+\chapter{Drifts in a Bent Solenoid}
+The Lorentz force:
+\begin{equation}
+\frac{d\vec{p}}{dt}=\frac{q}{m}\vec{p}\times\vec{B}
+\end{equation}
+
+\section{Uniform Solenoidal Field}
+B field is uniform and parallel to axis of solenoid.
+Define the Larmor frequency, $\omega$, and radius, $a$, as:
+\begin{align}
+a=&\frac{\gamma m \vec{v}\times\vec{B}}{qB^2} = \frac{p_\mathrm{T}}{qB} \\
+\omega=&\frac{qB}{m}
+\end{align}
+
+\section{Field in a Bent Solenoid}
+Producing a cylindrical solenoid  channel can be imagined as directly bending that of a normal uniform and linear one.
+By symmetry it can be seen that any gradient introduced to the magnetic field can only be radially, in the plane of the bending.
+Further, by considering Ampere's law with a current loop in the plane of bending formed by two radial straight lines (with length $|r-R|<L$, where $R$ and $L$ are the bending and aperture radii of the solenoid channel) and an arc,
+it can be seen that the variation in the field is given by:
+\begin{equation}
+\frac{\vec{\nabla B}}{B}=\frac{1}{r}\hat{r}
+\end{equation}
+%\CHECK{is this accurate?}
+\CHECK{Sketch or figure?}
+
+\section{Drift Calculation}
+There are two sources of drift in a bent solenoid: the gradient in the field, and the centrifugal force arising from the circular coordinate system needed to describe the field lines.
+The two can be treated separately in the sense that the motion of a particle moving through a field with straight field lines but with a transverse gradient given by $\nabla B/ B \propto 1/r$ would be described by an equation of motion equivalent to that from the first source of drift in the bent solenoid system. 
+Similarly, a system with a uniform field but field lines that follow circular paths would exhibit drift equivalent to the second component mentioned above.
+
+\subsection{Gradient Drift}
+``Grad-B'' drift is well described in text books, but in the interest of completeness a short derivation shall be given here.
+The drift arising due to the gradient in the field can be treated as a perturbation of the motion of the particle in a uniform solenoidal field.
+The total velocity $\vec{V}$, is given by:
+\begin{equation}
+\vec{V}=\vec{v}+\vec{v_g},
+\eqlabel{velocity-grad}
+\end{equation}
+where $\vec{v}$ is the unperturbed velocity of the particle in the transverse plane, and $\vec{v_g}$ is the velocity arising due to the gradient in the field.
+
+Treating the field as a Taylor expansion:
+\begin{equation}
+\vec{B}(\vec{r})=\vec{B_0}+\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}+\ldots
+\eqlabel{B-field-taylor}
+\end{equation}
+and substituting equations \eq{velocity-grad} and \eq{B-field-taylor} into the Lorentz force, gives:
+\begin{align}
+m\frac{d(\vec{v}+\vec{v_g})}{dt}=&q(\vec{v}+\vec{v_g})\times\left(\vec{B_0}+\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right) \\
+%=&q\vec{v}\times\vec{B_0} \\
+%&+q\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}+\vec{v_g}\times\vec{B_0}\right)
+\end{align}
+so that to first order, the perturbing velocity is given by:
+\begin{equation}
+\frac{d\vec{v_g}}{dt}=\frac{q}{m}\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}+\vec{v_g}\times\vec{B_0}\right)
+\end{equation}
+Since we are only interested in steady-state solutions where $dot{v_{g}}$ is close to zero, the above equation gives:
+\begin{equation}
+\vec{v_g}=\frac{q}{m}\frac{\vec{B_0}\times\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right)}{B^2_0}
+\end{equation}
+which by considering the form 	after time averaging becomes:
+\begin{equation}
+\langle\vec{v_g}\rangle_t=\frac{\vec{B_0}\times\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right)}{B^2_0}
+\end{equation}

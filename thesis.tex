@@ -1,4 +1,4 @@
-\includeonly{optimisation}
+%\includeonly{optimisation,detector}
 
 \documentclass{thesis}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
@@ -26,7 +26,7 @@
 %\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
 
 \hypersetup{%
-  colorlinks=false,% hyperlinks will be coloured
+  colorlinks=true,% hyperlinks will be coloured
   linkcolor=blue,% hyperlink text will be green
   urlcolor=blue,% hyperlink text will be green
   linkbordercolor=red% hyperlink border will be red
@@ -90,10 +90,10 @@ pdfauthor = {\textcopyright\ Ben Krikler},
   %\input{chap4}
 \end{mainmatter}
 
-%% Produce the appendices
-%\begin{appendices}
-%  \input{appendices}
-%\end{appendices}
+% Produce the appendices
+\begin{appendices}
+\include{appendix-bentSolenoidDrifts}
+\end{appendices}
 
 %% Produce the un-numbered back matter (e.g. colophon,
 %% bibliography, tables of figures etc., index...)
@@ -103,7 +103,8 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \input{acronyms.tex}
 \end{backmatter}
 
-\bibliographystyle{bensbib}
+\bibliographystyle{plain}
+%\bibliographystyle{bensbib}
 \bibliography{library/record}
 
 \end{document}

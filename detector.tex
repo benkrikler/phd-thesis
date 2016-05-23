@@ -1,0 +1,80 @@
+\input{figs/detector.tex}
+\chapter{The COMET Experiment}
+%\section{Muon to Electron Conversion: Signal and Backgrounds}
+% - COMET stands for COherent Muon to Electron Transitions
+% - Cite the experimenter's guide by Bob Bernstein
+
+%Introduction:
+The aim of the COMET experiment is to search for COherent Muon to Electron Transitions with a single-event-sensitivity of around \sensePII.
+This amounts to an improvement of four orders of magnitude compared to the current limit \cite{sindrum2006} which requires some significant changes to the way the experiment operates.
+
+The general experimental goals of COMET are to:
+\begin{itemize}
+\item stop many muons in aluminium,
+\item have a high signal acceptance,
+\item suppress potential background sources to well below a single event.
+\end{itemize}
+
+At the level of sensitivity desired for COMET these requirements translate to the need for:
+\begin{itemize}
+\item a very high intensity muon beam,
+\item a thin stopping target and low material budget detector,
+\item a low energy muon beam,
+\item a pulse beam and relatively low-Z stopping target.
+\end{itemize}
+
+Realising these goals requires many new experimental techniques and as such COMET has decided to operate in two stages, \phaseI and \phaseII.
+\phaseII will realise the final objective of \sensePII, whilst \phaseI is only aiming for \sensePI. 
+Although \phaseI will run sooner, since it is heavily motivated by \phaseII, I shall describe \phaseII in more depth first and return \phaseI subsequently.
+Firstly however I will discuss some of the key aspects common to both \phaseI and \phaseII.
+
+\section{Proton Beam Energy and Production Target}
+\CHECK{Figure for pion vs. antiproton production cross-section}
+
+\section{Particle Transport through Bent Solenoids}
+The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
+\begin{equation}
+\vec{F}=\frac{q}{m}\vec{p}\times\vec{B}
+\end{equation}
+where $q$, $\vec{p}$ and $m$ are the particle's charge, momentum and mass respectively, and $\vec{B}$ is the magnetic field.
+In a uniform magnetic field where all field lines are parallel, clearly the motion of the particle follows a helix whose axis is parallel to the field and
+with a helical pitch-angle given by:
+\begin{equation}
+\theta=\tan^{-1}\Big(\frac{P_\mathrm{T}}{P_\mathrm{L}}\Big)
+\end{equation}
+where $P_\mathrm{T}$ and $P_\mathrm{L}$ are respectively the transverse and longitudinal components of the momentum with respect to the magnetic field.
+Such a field can be realised to a high precision by a cylindrical solenoid coil.
+
+If instead one were to bend a solenoid coil, so that it's axis describes a circular arc, two effects are introduced:  firstly, the uniformity of the field is changed
+such that a higher magnetic field is found on the inside of the bend, and secondly the field lines also bend.
+Each of these changes causes the motion of the particle to deviate from that of a straight solenoid.
+Whilst one can think of the particle as following a helix around the field lines still, the centre of this helix can be shown to drift out of the plane of the bending.
+Firstly, the radial gradient introduced to the field causes a drift which is proportional to the transverse momentum of the particle.
+Secondly, the centrifugal pseudo-force as the particle tracks the now cylindrical field lines, creates a force that acts perpendicularly to the magnetic field.
+Since the field lines follow the solenoidal axis, this also produces a vertical drift, proportional to the longitudinal momentum, however.
+
+Taken together, the result is a vertical drift with a velocity given by:
+\begin{equation}
+\end{equation}
+
+\section{Stopping Target Material and Beam Pulsing}
+
+\section{\COMET \phaseII}
+COMET \phaseII will be the final stage of the experiment.
+It will make use of all the above techniques
+
+\FigPhaseII
+% - Proton beam energy
+% - Proton beam timing
+% - Production target and capture system
+% - Bent Transport system
+% - Stopping target
+% - Detector system
+
+\section{\COMET \phaseI}
+\FigPhaseI
+% - Measurement goals
+% - StrECAL detector
+% - CyDet detector
+
+\section{Status and Schedule}
