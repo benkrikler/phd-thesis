@@ -1,10 +1,13 @@
-#include <iostream>
+#include <TH2.h>
+#include <THStack.h>
+#include <TPaletteAxis.h>
 #include <TString.h>
+#include <TObjArray.h>
+#include <TGraph.h>
 #include <TCanvas.h>
 #include <TList.h>
 #include <TObject.h>
 #include <TFile.h>
-#include <THStack.h>
 #include <TH1.h>
 #include <TLegend.h>
 #include <TKey.h>
@@ -17,6 +20,11 @@
 #include <TMath.h>
 #include <TStyle.h>
 #include <vector>
+#include <cmath>
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <string>
 
 using std::cout;
 using std::endl;
@@ -60,6 +68,48 @@ TYPE* Find(TList* list, const TString& name=""){
     return NULL;
 }
 
+#define LOOP_STACK(list,body)\
+    TList* all_hists=list; \
+    TIterator* iterator=all_hists->MakeIterator();\
+    TObject* object=NULL;\
+    while((object=iterator->Next())){\
+	    body\
+    }
+
+void RebinStack(THStack* stack,TString axis, int rebin){
+     LOOP_STACK(stack->GetHists(),
+        if( object->InheritsFrom("TH2") && axis=="y"){
+            ((TH2*)object)->RebinY(rebin);
+        } else if( object->InheritsFrom("TH1") && axis=="x"){
+            ((TH1*)object)->Rebin(rebin);
+        }else continue;
+     )
+}
+
+void NormaliseStack(THStack* stack,double normalise){
+    LOOP_STACK(stack->GetHists(),
+        if( object->InheritsFrom("TH1")){
+            ((TH1*)object)->Scale(1/normalise);
+        }else continue;
+    )
+}
+
+void StackSetLineWidth(THStack* stack,double line_width){
+    LOOP_STACK(stack->GetHists(),
+        if( object->InheritsFrom("TH1")){
+            ((TH1*)object)->SetLineWidth(line_width);
+        }else continue;
+    )
+}
+
+void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
+    LOOP_STACK(graph->GetListOfGraphs(),
+        if( object->InheritsFrom("TGraph")){
+            ((TGraph*)object)->SetLineWidth(line_width);
+        }else continue;
+    )
+}
+
 struct AnnotatedLine{
   enum HorizontalTextAlign_t{ kBegin, kCentre, kEnd} text_pos_x;
   enum VerticalTextAlign_t{ kAbove, kOver, kBelow} text_pos_y;
@@ -86,9 +136,10 @@ struct AnnotatedLine{
   void SetTextAlignVer(VerticalTextAlign_t align, double displace=0){
     text_pos_y=align; text_pos_y_displacement=displace;
   }
-  void SetLineAppearance(int colour, int style){
+  void SetLineAppearance(int colour, int style, int weight=1){
     line->SetLineColor(colour);
     line->SetLineStyle(style);
+    line->SetLineWidth(weight);
   }
   void Draw()const{
     double x1=line->GetX1(),x2=line->GetX2(),y1=line->GetY1(), y2=line->GetY2();
@@ -136,12 +187,35 @@ struct AnnotatedLine{
   }
 };
 
+TString ParseAxisText(TString input_text,TH1* axes){
+    typedef std::map<const char*,const char*> ReplacementList;
+    ReplacementList replacements;
+    std::stringstream sstream;
+    sstream<<axes->GetXaxis()->GetBinWidth(1);
+    replacements["{x_bin_widths}"]=sstream.str().c_str();
+    sstream.str(""); sstream.flush();
+    sstream<<axes->GetYaxis()->GetBinWidth(1);
+    replacements["{y_bin_widths}"]=sstream.str().c_str();
+
+    // remove all anchors from text
+    for(ReplacementList::const_iterator i_repl=replacements.begin();
+            i_repl!= replacements.end(); ++i_repl){
+	    input_text.ReplaceAll(i_repl->first,i_repl->second);
+    }
+    return input_text;
+}
+
 struct PlotConfig{
+   TString title;
    TString x_axis_label;
    TString y_axis_label;
 
    double x_axis_label_offset;
    double y_axis_label_offset;
+   double x_axis_title_size;
+   double y_axis_title_size;
+   double x_axis_label_size;
+   double y_axis_label_size;
 
    int x_axis_decimal;
    int y_axis_decimal;
@@ -154,14 +228,38 @@ struct PlotConfig{
    int legend_columns;
    double legend_margin;
    double legend_text_size;
+   bool legend_remove;
 
    double shift_plot_x;
    double shift_plot_y;
 
+   double shift_palette;
+
+   double pad_margin_right;
+   double pad_margin_left;
+
+   double line_width;
+
+   int rebin_x;
+   int rebin_y;
+   double normalise;
+
+   int canvas_width;
+   int canvas_height;
+   double canvas_grow;
+   double canvas_ratio;
+
+   TString force_draw_option;
+
    bool stats_force_off;
+   bool log_z;
+   bool log_y;
+   bool log_x;
 
   private:
    std::vector<AnnotatedLine*> lines;
+   TLegend* _legend;
+   TPaletteAxis* _palette;
 
   public:
 
@@ -171,46 +269,200 @@ struct PlotConfig{
    void reset(){
      x_axis_label_offset=0;
      y_axis_label_offset=0;
+     x_axis_title_size=0;
+     y_axis_title_size=0;
+     x_axis_label_size=0;
+     y_axis_label_size=0;
      x_axis_range_high=x_axis_range_low=0;
      y_axis_range_high=y_axis_range_low=0;
      legend_x1=legend_x2=legend_y1=legend_y2=-1;
      legend_margin=0;
      legend_columns=0;
      legend_text_size=0;
+     legend_remove=false;
      x_axis_decimal=-1;
      y_axis_decimal=-1;
      shift_plot_x=0;
      shift_plot_y=0;
+     shift_palette=0;
+     pad_margin_right=0;
+     pad_margin_left=0;
+     title="";
      legend_header="";
      x_axis_label="";
      y_axis_label="";
      stats_force_off=false;
+     force_draw_option="";
+     rebin_x=1;
+     rebin_y=1;
+     normalise=1;
+     canvas_width=0;
+     canvas_height=0;
+     canvas_grow=1;
+     canvas_ratio=1;
+     line_width=1;
      ClearLines();
+     _legend=NULL;
+     _palette=NULL;
+     log_z=log_y=log_x=false;
    }
    void AddLine(AnnotatedLine& line){
        lines.push_back(&line);
    }
    void ClearLines(){lines.clear();}
-   void ApplyFixes(TH1* axes, TLegend* legend)const;
+   void ApplyFixes(TH1* axes, TLegend* legend,TNamed* hist);
+   void FixCanvas();
+   void UpdateEverything(TNamed*);
+   void RedrawLegend();
 };
 
-void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend)const{
+void PlotConfig::FixCanvas(){
   if(stats_force_off){
     gStyle->SetOptStat(0);
   }
+  if(pad_margin_left!=0){
+      gPad->ResetAttPad();
+      gPad->SetLeftMargin(pad_margin_left);
+  }
+  if(pad_margin_right!=0){
+      gPad->SetRightMargin(pad_margin_right);
+  }
+  if(shift_plot_x!=0){
+    gPad->SetLeftMargin( gPad->GetLeftMargin()+shift_plot_x);
+    gPad->SetRightMargin( gPad->GetRightMargin()-shift_plot_x);
+    gStyle->SetBarOffset(0);
+  }
+  if(shift_plot_y!=0){
+    gPad->SetTopMargin( gPad->GetTopMargin()+shift_plot_y);
+    gPad->SetBottomMargin( gPad->GetBottomMargin()-shift_plot_y);
+  }
+  if(canvas_grow!=1){
+	  int width=gPad->GetWw();
+	  int height=gPad->GetWh();
+	  gPad->SetCanvasSize(width*canvas_grow,height*canvas_grow);
+  }
+  if(canvas_ratio!=1){
+	  int width=gPad->GetWw();
+	  int height=gPad->GetWh();
+	  int area=width*height;
+	  double mean=sqrt(area);
+	  gPad->SetCanvasSize(mean*canvas_ratio,mean/canvas_ratio);
+  }
+  if(canvas_height!=0){
+	  int width=gPad->GetWw();
+	  gPad->SetCanvasSize(width,canvas_height);
+  }
+  if(canvas_width!=0){
+	  int height=gPad->GetWh();
+	  gPad->SetCanvasSize(canvas_width,height);
+  }
+  if(log_x)gPad->SetLogx(); else gPad->SetLogx(0);
+  if(log_y)gPad->SetLogy(); else gPad->SetLogy(0);
+  if(log_z)gPad->SetLogz(); else gPad->SetLogz(0);
+
+  gPad->Update();
+  gPad->Draw();
+}
+
+void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
   if(axes){
+    TString curr_title=axes->GetTitle();
+    cout<<curr_title<<endl;
+    if(curr_title.Contains(";")){
+        TObjArray* all_titles=curr_title.Tokenize(";");
+        if(title.Length()!=0) title=all_titles->At(0)->GetName();
+        if(x_axis_label.Length()!=0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
+        if(y_axis_label.Length()!=0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+    }
+    if(title.Length()!=0) {
+        axes->SetTitle(title.Data());
+        hist->SetTitle(title.Data());
+    }
     if(x_axis_range_high != x_axis_range_low)
+      axes->GetXaxis()->UnZoom();
       axes->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
-    if(y_axis_range_high != y_axis_range_low)
-      axes->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
-    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(x_axis_label.Data());
-    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(y_axis_label.Data());
+    if(y_axis_range_high != y_axis_range_low){
+	    axes->GetYaxis()->UnZoom();
+      	    axes->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
+	    cout<<"Changed y axis: "<<y_axis_range_low<<" to "<<y_axis_range_high<<endl;
+    }
     if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
     if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
+    if(x_axis_label_size!=0)   axes->GetXaxis()->SetLabelSize(x_axis_label_size);
+    if(y_axis_label_size!=0)   axes->GetYaxis()->SetLabelSize(y_axis_label_size);
+    if(x_axis_title_size!=0)   axes->GetXaxis()->SetTitleSize(x_axis_title_size);
+    if(y_axis_title_size!=0)   axes->GetYaxis()->SetTitleSize(y_axis_title_size);
     if(x_axis_decimal!=-1)   axes->GetXaxis()->SetDecimals(x_axis_decimal);
     if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
+    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes).Data());
+    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes).Data());
   }
+
+  if(hist){
+    if(force_draw_option!="") hist->Draw(force_draw_option.Data());
+    if(rebin_x!=1 ){
+	    if(hist->InheritsFrom("TH1")){
+	        ((TH1*) hist)->RebinX(rebin_x);
+	    }
+	    else if(hist->InheritsFrom("THStack")){
+		    RebinStack((THStack*) hist,"x",rebin_x);
+	    }else{
+		    cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+	    }
+    }
+    if(rebin_y!=1 ){
+	    if(hist->InheritsFrom("TH2")){
+	        ((TH2*) hist)->RebinY(rebin_y);
+	    } else if(hist->InheritsFrom("THStack")){
+		    RebinStack((THStack*) hist,"y",rebin_y);
+	    }else{
+		    cout<<"Error: Cannot rebin 2D histogram in Y if it is not derived from TH2 or THStack"<<endl;
+	    }
+    }
+    if(normalise!=1){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->Scale(1/normalise);
+      }
+      else if(hist->InheritsFrom("THStack")){
+              NormaliseStack((THStack*) hist,normalise);
+      }else{
+              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+      }
+    }
+    if(line_width!=1){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->SetLineWidth(line_width);
+      } else if(hist->InheritsFrom("THStack")){
+              StackSetLineWidth((THStack*) hist,line_width);
+      }else if(hist->InheritsFrom("TMultiGraph")){
+              MultiGraphSetLineWidth((TMultiGraph*) hist,line_width);
+      }else{
+              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+      }
+    }
+    if(y_axis_range_high != y_axis_range_low){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
+      } else if(hist->InheritsFrom("THStack")){
+          ((THStack*) hist)->SetMaximum(y_axis_range_high);
+          ((THStack*) hist)->SetMinimum(y_axis_range_low);
+      }else if(hist->InheritsFrom("TMultiGraph")){
+          ((TMultiGraph*) hist)->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
+      }else{
+              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+      }
+    }
+    if(hist->InheritsFrom("TH1")){
+	_palette=(TPaletteAxis*)((TH1*)hist)->GetListOfFunctions()->FindObject("palette");
+    }
+    if(_palette && shift_palette!=0){
+       _palette->SetX1NDC(_palette->GetX1NDC()+shift_palette);
+       _palette->SetX2NDC(_palette->GetX2NDC()+shift_palette);
+    }
+  }
+
   if(legend){
+	  _legend=legend;
     if(legend_x1!=-1) legend->SetX1NDC(legend_x1);
     if(legend_x2!=-1) legend->SetX2NDC(legend_x2);
     if(legend_y1!=-1) legend->SetY1NDC(legend_y1);
@@ -219,30 +471,41 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend)const{
     if(legend_columns!=0) legend->SetNColumns(legend_columns);
     if(legend_text_size!=0) legend->SetTextSize(legend_text_size);
     if(legend_header.Length()!=0) legend->SetHeader(legend_header.Data());
+    if(legend_remove) {
+	    legend->SetX1NDC(1.1);
+	    legend->SetX2NDC(1.5);
+    }
   }
   if(shift_plot_x!=0){
-    gPad->SetLeftMargin( gPad->GetLeftMargin()+shift_plot_x);
-    gPad->SetRightMargin( gPad->GetRightMargin()-shift_plot_x);
-    legend->SetX1NDC(legend->GetX1NDC()+shift_plot_x);
-    legend->SetX2NDC(legend->GetX2NDC()+shift_plot_x);
+    if(legend) legend->SetX1NDC(legend->GetX1NDC()+shift_plot_x);
+    if(legend) legend->SetX2NDC(legend->GetX2NDC()+shift_plot_x);
+    if(_palette) _palette->SetX1NDC(_palette->GetX1NDC()+shift_plot_x);
+    if(_palette) _palette->SetX2NDC(_palette->GetX2NDC()+shift_plot_x);
   }
   if(shift_plot_y!=0){
-    gPad->SetTopMargin( gPad->GetTopMargin()+shift_plot_y);
-    gPad->SetBottomMargin( gPad->GetBottomMargin()-shift_plot_y);
-    legend->SetY1NDC(legend->GetY1NDC()+shift_plot_y);
-    legend->SetY2NDC(legend->GetY2NDC()+shift_plot_y);
+    if(legend) legend->SetY1NDC(legend->GetY1NDC()+shift_plot_y);
+    if(legend) legend->SetY2NDC(legend->GetY2NDC()+shift_plot_y);
+    if(_palette) _palette->SetY1NDC(_palette->GetY1NDC()+shift_plot_y);
+    if(_palette) _palette->SetY2NDC(_palette->GetY2NDC()+shift_plot_y);
   }
-  gPad->Draw();
+}
+
+void PlotConfig::UpdateEverything(TNamed* hist){
+  gPad->Update();
   for(std::vector<AnnotatedLine*>::const_iterator i_line=lines.begin();
       i_line!=lines.end(); ++i_line){
     (*i_line)->Draw();
   }
-  if(legend) legend->Draw();
+  if(_legend) _legend->Draw();
+}
+
+void PlotConfig::RedrawLegend(){
+  if(_legend) _legend->Draw();
 }
 
 TFile* FixPlot(TString filename,
     const TString plot_type,
-    const PlotConfig& config){
+    PlotConfig& config){
   // Get the file
   TFile* file=TFile::Open(filename.Data(),"READ");
   if(!file || file->IsZombie()){
@@ -269,27 +532,44 @@ TFile* FixPlot(TString filename,
     cout<<"Warning: No legend for plot in file: '"<<filename<<"'"<<endl;
   }
 
+  // Change the canvas as wanted
+  config.FixCanvas();
+
   // Get the axis for the histogram
   TH1* axis=NULL;
+  TNamed* hist=NULL;
   if(plot_type=="THStack"){
     THStack* stack=Find<THStack>(canvas->GetListOfPrimitives());
     if(stack) {
       axis=stack->GetHistogram();
+      hist=stack;
     }
   }else if(plot_type=="TMultiGraph"){
     TMultiGraph* plot=Find<TMultiGraph>(canvas->GetListOfPrimitives());
     if(plot) {
       axis=plot->GetHistogram();
+      hist=plot;
     }
   } else{
     axis=Find<TH1>(canvas->GetListOfPrimitives());
+    if(!axis) {
+       TGraph* graph=Find<TGraph>(canvas->GetListOfPrimitives());
+       axis=graph->GetHistogram();
+    }
+    hist=axis;
   }
   if(!axis){
     cout<<"Warning: Cannot find histogram or stack to draw in file: '"<<filename<<"'"<<endl;
   }
 
   // Apply the actual fixes
-  config.ApplyFixes(axis,legend);
+  config.ApplyFixes(axis,legend,hist);
+  config.UpdateEverything(hist);
 
   return file;
+}
+
+void Overlay(TNamed* object,const char* options, PlotConfig& config){
+	object->Draw(options);
+	config.RedrawLegend();
 }
