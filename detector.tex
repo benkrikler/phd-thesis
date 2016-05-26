@@ -28,36 +28,93 @@ Realising these goals requires many new experimental techniques and as such COME
 Although \phaseI will run sooner, since it is heavily motivated by \phaseII, I shall describe \phaseII in more depth first and return \phaseI subsequently.
 Firstly however I will discuss some of the key aspects common to both \phaseI and \phaseII.
 
+\section{Overview of Signal and Backgrounds}
+\mueconv is experimentally attractive because its signal is so simple: a single monoenergetic electron at close to the muon mass of 105~MeV/c, given by:
+\begin{equation}
+E_e=M_\mu-E_{\mu,\mathrm{binding}}-E_\mathrm{recoil}
+\end{equation}
+where $M_\mu=$105.66~MeV/c$^2$ is the muon mass, $E_{\mu,\mathrm{binding}}$ the
+binding energy of the muon in the ground state of the muonic atom, and
+$E_\mathrm{recoil}$ is the kinetic energy of the recoiling nucleus.
+In the aluminium target used for COMET (see section \ref{sec:stop-tgt}) the electron energy is $E_e=104.97$~MeV.
+
+Background rates must be kept well below the signal sensitivity if an observation is to be confidently identified as signal, or if meaningful limits are to be set.
+Given the desired sensitivity of COMET is \sensePI  at \phaseI and \sensePII by \phaseII, background rates must be kept equally rare.
+
+\Tab{detector:backgrounds} summarizes the results of previous studies for background rates at \phaseI and \phaseII.
+
 \section{Proton Beam Energy and Production Target}
-\CHECK{Figure for pion vs. antiproton production cross-section}
+The muon beam used in COMET is produced as the decay products of a secondary pion beam created by protons striking a target.
+If maximising the muon intensity were the only concern, then both the proton beam energy and atomic mass of the target material would also be maximised since the pion production cross section
+grows with these two parameters.
+However, the need to suppress background rates and maintain the mechanical and operational stability of the target constrain both of these parameters.
+
+In particular, protons with more than 5.6~GeV \CHECK{Target dependence? Correct?} striking a stationary target have sufficient energy to produce antiprotons which travel relatively slowly (see \ref{sec:stop-tgt}) and can produce backgrounds.
+Since the antiproton yield grows very quickly above this threshold, it has been chosen to use protons with 8~GeV kinetic energy.
+
+For \phaseII running, the main ring will operate at 7~$\mu$A so that a beam power of 56~kW is achieved.  
+\phaseI on the other hand will use a lower beam intensity of 0.4~$\mu$A or 3.2~kW.
+
+A heavy metal target is preferable since it improves the pion yield, in particular tungsten since it is relatively cheap compared to other options.
+However, at the beam powers under consideration, a metal target would melt, such that we must actively cool the target.
+Such will be the approach in \phaseII, however for simplicity \phaseI will run with a radiatively cooled graphite target.
+
+\CHECK{Figure for pion vs. antiproton production cross-section for different proton energies and/or target materials}
 
 \section{Particle Transport through Bent Solenoids}
-The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
-\begin{equation}
-\vec{F}=\frac{q}{m}\vec{p}\times\vec{B}
-\end{equation}
-where $q$, $\vec{p}$ and $m$ are the particle's charge, momentum and mass respectively, and $\vec{B}$ is the magnetic field.
-In a uniform magnetic field where all field lines are parallel, clearly the motion of the particle follows a helix whose axis is parallel to the field and
-with a helical pitch-angle given by:
-\begin{equation}
-\theta=\tan^{-1}\Big(\frac{P_\mathrm{T}}{P_\mathrm{L}}\Big)
-\end{equation}
-where $P_\mathrm{T}$ and $P_\mathrm{L}$ are respectively the transverse and longitudinal components of the momentum with respect to the magnetic field.
-Such a field can be realised to a high precision by a cylindrical solenoid coil.
+Both \phaseI and II make use of bent solenoids to help select particles of a particular momentum.
+In bent solenoids, a dispersion occurs that is proportional to the momentum and charge of the particle passing through it.
 
-If instead one were to bend a solenoid coil, so that it's axis describes a circular arc, two effects are introduced:  firstly, the uniformity of the field is changed
-such that a higher magnetic field is found on the inside of the bend, and secondly the field lines also bend.
-Each of these changes causes the motion of the particle to deviate from that of a straight solenoid.
-Whilst one can think of the particle as following a helix around the field lines still, the centre of this helix can be shown to drift out of the plane of the bending.
-Firstly, the radial gradient introduced to the field causes a drift which is proportional to the transverse momentum of the particle.
-Secondly, the centrifugal pseudo-force as the particle tracks the now cylindrical field lines, creates a force that acts perpendicularly to the magnetic field.
-Since the field lines follow the solenoidal axis, this also produces a vertical drift, proportional to the longitudinal momentum, however.
+Charged particles moving through a straight solenoid follow a helical
+trajectory, orbiting a point that moves parallel to the solenoidal axis with constant velocity fixed by the longitudinal momentum of the particle.
+The frequency that the particle rotates about this point (betatron frequency or frequency of gyration) is determined by the transverse momentum.
 
-Taken together, the result is a vertical drift with a velocity given by:
+By comparison, if a charged particle moves through a solenoid channel that has been bent, the particle can still be considered to orbit a point, only now 
+the motion of that point can be shown to drift vertically, out of the plane of bending.  This drift arises from the gradient introduced to the field by bending the solenoid but also from the 
+non-rectilinear coordinate system of the field lines.  
+The total drift, $D$, of a particle with mass and charge $m$ and $q$ respectively  through a solenoid bent with a fixed radius of curvature, $R$, is given by:
+\begin{align}
+	D=&\frac{1}{qB}\left(\frac{s}{R}\right)\frac{p^2_\mathrm{L}+0.5p^2_\mathrm{T}}{p_\mathrm{L}}\eqlabel{detector:bent-solenoids:longVstrans}\\
+	 =&\frac{1}{qB}\left(\frac{s}{R}\right)\frac{p}{2}\left(\cos\theta + \frac{1}{\cos\theta}\right)\eqlabel{detector:bent-solenoids:pitchAngle}
+\end{align}
+where $B$ is the magnetic field strength\footnote{Strictly speaking, $B$ is the field strength along the path of the centre of gyration, which is constant for a fixed transverse distance from the focus of the bent solenoid.},
+$s$ is the distance travelled through the solenoid, $p$ the momentum of the particle, with longitudinal and transverse components with respect to the solenoid axis, $p_\mathrm{L}$ and $p_\mathrm{T}$ respectively.
+The pitch angle, $\theta$, is a property of the helical trajectory taken by the particle and defined as:
 \begin{equation}
+\theta=\tan^{-1}\left(\frac{p_\mathrm{T}}{p_\mathrm{L}}\right)
 \end{equation}
+See Appendix \ref{sec:appendix:bent-solenoid} for a derivation of equations \eq{detector:bent-solenoids:longVstrans} and \eq{detector:bent-solenoids:pitchAngle}.
+The angular dependence of this equation is shown in \fig{detector:bent-solenoids:angularDependence} where it can be seen that for angles below 50 degrees the variation in the drift is less than 10\%, such that the drift is determined almost completely by the momentum of particles up to these angles.
+
+\FigBentSolenoidRelativeDrift
+
+%The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
+%\begin{equation}
+%\vec{F}=\frac{q}{m}\vec{p}\times\vec{B}
+%\end{equation}
+%where $q$, $\vec{p}$ and $m$ are the particle's charge, momentum and mass respectively, and $\vec{B}$ is the magnetic field.
+%In a uniform magnetic field where all field lines are parallel, clearly the motion of the particle follows a helix whose axis is parallel to the field and
+%with a helical pitch-angle given by:
+%\begin{equation}
+%\theta=\tan^{-1}\Big(\frac{P_\mathrm{T}}{P_\mathrm{L}}\Big)
+%\end{equation}
+%where $P_\mathrm{T}$ and $P_\mathrm{L}$ are respectively the transverse and longitudinal components of the momentum with respect to the magnetic field.
+%Such a field can be realised to a high precision by a cylindrical solenoid coil.
+%
+%If instead one were to bend a solenoid coil, so that it's axis describes a circular arc, two effects are introduced:  firstly, the uniformity of the field is changed
+%such that a higher magnetic field is found on the inside of the bend, and secondly the field lines also bend.
+%Each of these changes causes the motion of the particle to deviate from that of a straight solenoid.
+%Whilst one can think of the particle as following a helix around the field lines still, the centre of this helix can be shown to drift out of the plane of the bending.
+%Firstly, the radial gradient introduced to the field causes a drift which is proportional to the transverse momentum of the particle.
+%Secondly, the centrifugal pseudo-force as the particle tracks the now cylindrical field lines, creates a force that acts perpendicularly to the magnetic field.
+%Since the field lines follow the solenoidal axis, this also produces a vertical drift, proportional to the longitudinal momentum, however.
+%
+%Taken together, the result is a vertical drift with a velocity given by:
+%\begin{equation}
+%\end{equation}
 
 \section{Stopping Target Material and Beam Pulsing}
+\label{sec:stop-tgt}
 
 \section{\COMET \phaseII}
 COMET \phaseII will be the final stage of the experiment.
