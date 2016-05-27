@@ -37,10 +37,11 @@ Schematic layout of COMET \phaseI.
 }
 
 \newcommand{\TabBackgroundSummary}{
+\begin{table}
 \begin{tabular}{lldd}
      \hline
      \hline\\[-1.8ex]
-     Type           & Background & \multicolumn{2}{c}{Predicted number of events per run} \\
+     Type           & Background & \multicolumn{2}{c}{Predicted number of events during run} \\
                     &  & \multicolumn{1}{c}{\phaseI \cite{TDR2014}} & \multicolumn{1}{c}{\phaseII \cite{CDRphase2} } \\
      \hline\\[-1.8ex]
      Intrinsic & Muon Decay-in-Orbit                       & 0.01              & 0.15    \\
@@ -64,4 +65,28 @@ Schematic layout of COMET \phaseI.
      \hline
      \hline
 \end{tabular}
+\caption{
+	\CHECK{UPDATE \phaseI values with TDR 2016}
+	Backgrounds for COMET \phaseI \cite{TDR2014} and \phaseII \cite{CDRphase2}.
+	Prompt backgrounds arise by protons that occur in between bunches and are therefore suppressed by the extinction factor.
+	For \phaseI, the recently measured value of $10^{-12}$ was used for the extinction factor, but for \phaseII the older expectation of $10^{-9}$ was used.
+}
+\tablabel{detector:backgrounds}
+\end{table}
+}
+
+\newcommand{\FigMuonNuclearParams}{
+\begin{figure}[bp]
+\centering
+\subfloat[][\figlabel{detector:mu-nucl-params:lifetimes}Lifetimes]{\includegraphics[width=0.9\textwidth]{figs/detector/MuNuclearParams_All_lifetimes.pdf}}\\
+\subfloat[][\figlabel{detector:mu-nucl-params:end-point}End-point Shift]{\includegraphics[width=0.49\textwidth]{figs/detector/MuNuclearParams_energies.pdf}}%\hspace{0.5cm}%
+\subfloat[][\figlabel{detector:mu-nucl-params:branching-ratio}Branching Fraction]{\includegraphics[width=0.49\textwidth]{figs/detector/MuNuclearParams_branching_fraction.pdf}}
+\caption{\figlabel{detector:mu-nucl-params}
+The effect of changing the atomic number on the branching ratio, lifetime and electron energy spectrum end-point.
+For the branching ratio and lifetime plots, the partial rate for muon nuclear capture and decay-in-orbit are shown separately.
+The capture and decay rates are taken from the Geant4 \cite{Geant42003} parametrisation for stopped negative muons.  
+Only elements for which at least 1 isotope uses a measured value are plotted.
+The values for the end-point energy level are calculated using the Bohr model for the muon ground-state binding energy.
+}
+\end{figure}
 }

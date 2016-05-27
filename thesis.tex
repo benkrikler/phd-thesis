@@ -1,6 +1,7 @@
 %\includeonly{optimisation,detector}
 
 \documentclass{thesis}
+\usepackage{dcolumn}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
 \usepackage{feynmp}
 \usepackage{graphicx}
@@ -8,7 +9,6 @@
 %\usepackage{minted}
 \usepackage{xspace}
 %\usepackage{siunitx}
-%\usepackage{dcolumn}
 %\usepackage{ragged2e}
 %\usepackage{array}
 \usepackage[printonlyused]{acronym}
@@ -31,6 +31,8 @@
   urlcolor=blue,% hyperlink text will be green
   linkbordercolor=red% hyperlink border will be red
 }
+
+\newcolumntype{d}{D{.}{\cdot}{1} }
 
 \makeatletter
 \Hy@AtBeginDocument{%
