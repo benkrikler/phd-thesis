@@ -7,7 +7,7 @@
 
 %Introduction:
 The aim of the COMET experiment is to search for COherent Muon to Electron Transitions with a single-event-sensitivity of around \sensePII.
-This amounts to an improvement of four orders of magnitude compared to the current limit \cite{sindrum2006} which requires some significant changes to the way the experiment operates.
+This amounts to an improvement of four orders of magnitude compared to the current limit~\cite{sindrum2006} which requires some significant changes to the way the experiment operates.
 
 The general experimental goals of COMET are to:
 \begin{itemize}
@@ -48,11 +48,11 @@ Given the desired sensitivity of COMET is \sensePI  at \phaseI and \sensePII by 
 There are predominantly four main groups of background sources: intrinsic, prompt, delayed and cosmic sources.
 
 Intrinsic processes are those that arise from muons stopping in the target and will therefore always be present regardless of how well you make your muon beam and detector.
-Of these, the dominant background is muon decay in orbit, which is the standard model process of a muon decaying to an electron, emitting two neutrinos in the process.
+Of these, the dominant background is muon \ac{DIO}, which is the standard model process of a muon decaying to an electron, emitting two neutrinos in the process.
 Although the decay of a free muon cannot produce electrons with energy greater than half the muon mass, once bound to a nucleus the neutrinos can be configured to carry almost no kinetic energy away, such that only the nucleus and electron are important in the end-point configuration.
 It can immediately be seen then the kinematics of the end-point configuration for muon decay-in-orbit are the same as for \mueconv, and indeed
-a tail in the spectrum of electrons coming from muon decay-in-orbit extends all the way up to this point.
-\Fig{detector:DIOSpectrum} shows the spectrum of electrons from muon decay-in-orbit in aluminium where it can be seen that the high energy tail does reach up to about 105~MeV/c, but with a very steeply falling rate.
+a tail in the spectrum of electrons coming from muon \ac{DIO} extends all the way up to this point.
+\Fig{detector:DIOSpectrum} shows the spectrum of electrons from muon \ac{DIO} in aluminium where it can be seen that the high energy tail does reach up to about 105~MeV/c, but with a very steeply falling rate.
 
 \CHECK{Figure for DIO spectrum on log / lin scales from 2011 paper, or 2015 paper?}
 
@@ -129,6 +129,16 @@ beam for both \phaseI and II, and as a spectrometer system for electrons coming
 from the stopping target in \phaseII, which will both be described in more
 detail below.
 
+Since the drift is proportional to the momentum of the particle, those particles with zero momentum would remain on axis, whilst particles of interest (105~MeV electrons in the \phaseII electron spectrometer and around 40~MeV/c muons in the muon beam line) drift to the sides.  
+To overcome this issue, a vertical component to the field lines is introduced.  
+If the solenoid were straight the axis of a particle's helical trajectory would follow the field line. 
+A vertical component would therefore cause the trajectories to move upwards with the field line itself.
+The same result is true in a bent solenoid and since the drift this introduces is not proportional to momentum a vertical component can be used to select at which momentum particles remain on-axis.
+Two techniques have been considered to introduce this vertical component: tilting the solenoid coils themselves, or adding additional dipole coils around the solenoids.
+\COMET has opted to pursue the latter, using a special, proprietary winding technique developed by Toshiba to introduce a vertical component by placing additional conductor around the other solenoid coils.
+Since the current through these dipole coils can be altered separately to the solenoid coils, this approach has the advantage that the two can be tuned against the other so that the optimal dipole field can be found whilst running and or the acceptance can be shifted to another momentum or charge to study backgrounds.
+Additional collimator material can also be introduced to remove particles with undesirable momentum.
+
 %The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
 %\begin{equation}
 %\vec{F}=\frac{q}{m}\vec{p}\times\vec{B}
@@ -165,16 +175,16 @@ the use of a pulsed proton beam with a relatively light stopping target.
 Since the signal process is coherent, its cross section grows roughly as the square of the number of nucleons (or protons, depending on the model)%
 \footnote{Although this growth is offset by the normalisation to the capture rate which is incoherent and grows linearly with the number of nucleons, so that the conversion rate itself is roughly linear.}
 until the muon is contained almost completely within the nucleus at which point the rate levels off.
-It is therefore desirable to use a high-Z target in order to increase the probability of conversion and indeed \sindrumII used both lead and gold targets, with its most stringent limit coming on gold \cite{sindrum2006}.
+It is therefore desirable to use a high-Z target in order to increase the probability of conversion and indeed \sindrumII used both lead and gold targets, with its most stringent limit coming on gold~\cite{sindrum2006}.
 
 However, as the nucleus gets larger, the lifetime of the muonic atom falls steeply due to the increase in the nuclear capture rate.
-This is illustrated in \fig{detector:mu-nucl-params} where it can be seen that for elements heavier than iron ($Z>26$)the muon lifetime is less than 200~ns.
+This is illustrated in \fig{detector:mu-nucl-params} where it can be seen that for elements heavier than iron ($Z>26$) the muon lifetime is less than 200~ns.
 The COMET beamline produces a beam flash that lasts for about 200~ns after the arrival of a proton at the production target.
 This means that for targets heavier than iron timing information can not be used to distinguish particles coming from the beam or from the decay of a muon stopped in the target.
 
 Whilst these are the two dominant factors in deciding the target material, other factors like the mechanical stability, cost, isotopic purity and the stability of the daughter nuclei following muon capture on the target must also be considered.
 Accordingly, titanium and aluminium are considered the two most viable target materials.  
-Titanium, in which the muon lifetime is about 330~ns, would be considerably harder to measure \mueconv so at this stage the COMET experiment is focussed on using aluminium where the muon lifetime is about 864~ns \cite{Suzuki1987}.
+Titanium, in which the muon lifetime is about 330~ns, would be considerably harder to measure \mueconv so at this stage the COMET experiment is focussed on using aluminium where the muon lifetime is about 864~ns~\cite{Suzuki1987}.
 
 The J-PARC accelerator has buckets separated by 550~ns, although separations of multiples of this number can in principle be achieved.
 For COMET running the intention is to fill every other bucket so that a separation of 1.17~$\mu$s is achieved.
@@ -187,7 +197,7 @@ The extinction factor quantifies the chance of this and is given by:
 \begin{equation}
 	R_\mathrm{Extinction}=\frac{N(p~\mathrm{between~bunches})}{N(p~\mathrm{per~bunch})}
 \end{equation}
-Original estimates were made assuming $R_\mathrm{Extinction}$ was around $10^{-9}$ \cite{CDRphase2} (about 1 out-of-time proton for every 7 bunches) although recent measurements have been able to demonstrate extinction at a level of $10^{-12}$ \cite{COMETExtinctionNote} (about 1 out-of-time proton for every 7100 bunches).
+Original estimates were made assuming $R_\mathrm{Extinction}$ was around $10^{-9}$~\cite{CDRphase2} (about 1 out-of-time proton for every 7 bunches) although recent measurements have been able to demonstrate extinction at a level of $10^{-12}$~\cite{COMETExtinctionNote} (about 1 out-of-time proton for every 7100 bunches).
 
 The bunch structure is initially defined by the linac at J-PARC which accelerates protons up to 600~MeV.
 The \ac{RCS} then takes these protons up to 3~GeV where up to two buckets can be stored at a time, although for COMET only one bunch at a time will be filled.
@@ -203,30 +213,56 @@ Thus only four out of the nine buckets in the \ac{MR} are filled and all other b
 % - Measurement goals
 % - StrECAL detector
 % - CyDet detector
+\phaseI will see the construction of the \COMET hall, the production target capture solenoids, the first 90 degrees of the bent muon transport solenoid, and the detector solenoid.  
+The beamline is shown schematically in \fig{detector:PhaseI:setup} where the two interchangeable detector systems can also be seen.
 
 There are two key goals to \phaseI:
 \begin{enumerate}
 \item measure \mueconv at a sensitivity of \sensePI,
 \item prepare for \phaseII by measuring the beam profile, particle yields and background rates, and prototype the detector technology.
 \end{enumerate}
-
-\phaseI will see the construction of the \COMET hall, the production target capture solenoids, the first 90 degrees of the bent muon transport solenoid, and the detector solenoid.  
-The beamline is shown schematically in \fig{detector:PhaseI:setup} where the two interchangeable detector systems can also be seen.
-
 Since the dynamics of bent solenoids are complicated, it is important to study the beam as close to the production target as possible.
 However, due to the high radiation environment, it is important that the detector and electronics be kept well shielded.
 \phaseI will therefore measure the beam after the first 90 degrees of bent solenoid using the same detector system to be used in \phaseII, namely the \ac{StrECAL} detector -- a series of Straw Tracker stations  followed by an ECAL
 all sitting in the beam.  
 
-Since the StrECAL detector will be hit by the full force of the muon beam, it would not be feasible to conduct a \mueconv search using this detector.
-As such, for \phaseI a second detector, known as the \ac{CyDet} will be used to conduct the \mueconv search.
+However, since the StrECAL detector will be hit by the full force of the muon beam, it would not be feasible to conduct a \mueconv search using this detector.
+As such, for \phaseI a second detector, known as the \ac{CyDet} will be used for this purpose.
+The \ac{CyDet} uses a Cylindrical Drift Chamber to reconstruct the trajectories of charged particles and a pair of Cherenkov and Scintillation counters (one upstream and one down) to trigger the read-out of the system.
+The \ac{CyDet} escapes the issue of the beam flash that the \ac{StrECAL} would face at \phaseI since only the outer region is instrumented.
+Since the detector sits in a 1~T solenoid field (and both the detector and solenoid are co-axial), particles follow helical trajectories with the radius of gyration determined by the transverse momentum of the particle.
+The beam is introduced in the centre and typically remains in an envelope of 15~cm whilst the stopping target sits in the centre of the detector with a radius of 10~cm.
+As such the detector itself is geometrically blind to charged particles in the beam and electrons coming from muon \ac{DIO} in the target with momentum less than 60~MeV/c which make up the majority of the \ac{DIO} spectrum.
+To reconstruct the longitudinal position of the particle's trajectory an all-stereo configuration is used in the Cylindrical Drift Chamber, where each layer is rotated in the opposite direction compared to the previous layer by an angle of 4\degree with respect to the solenoid axis.
 
+Because the \phaseI detector sits much closer to the stopping target, there is greater exposure to hadrons emitted following nuclear capture of the stopped negative muons, such as protons, deuterons, alpha particles and so on.
+Despite being emitted with kinetic energies of a few tens of MeV, momenta above 60~MeV are readily achieved given the large mass of these particles.
+For similar reasons these particles are typically very heavily ionising, so if left unchecked could readily dominate the occupancy of the \ac{CDC}.
+The \alcap experiment has shown that for muon capture on Al-27 nuclei, the emission of a proton occurs for about 3\% of every muon capture~\cite{NamThesis}.
+At this level, it is believed that no specific shielding is required beyond the carbon inner wall of the \ac{CDC} needed to contain the gas mixture.
+
+Four layers of scintillation bars will surround the outside of the detector to provide a veto for cosmic ray events.
+The most dangerous event would be a high energy muon reaching the target and decaying to a 105~MeV electron which is then detected. 
+Dedicated cosmic runs will be performed prior to operation with a beam in order to understand the flux of cosmic muons.
+Since the neutron flux from
 
 \section{\COMET \phaseII}
-COMET \phaseII will be the final stage of the experiment.
-It will make use of all the above techniques
-
 \FigPhaseII
+Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII, I shall only give a brief introductory overview here, most of which is based on the design as laid out in the CDR~\cite{CDRphase2}.
+
+COMET \phaseII will be the final stage of the experiment.
+It will extend the muon beamline built in for \phaseI by an extra 90\degree, and add two extra solenoid sections: one to hold the stopping target, and a second 180\degree bent solenoid with a large aperture of 60~cm radius.
+This layout is shown in \fig{detector:PhaseII:setup}.
+The bent solenoid after the stopping target acts both as a spectrometer, but also to remove the low energy \ac{DIO} electrons which otherwise could significantly increase the hit rate in the detector.
+The final detector system for \phaseII will use the \ac{StrECAL} from \phaseI but probably with thinner diameter straw tubes, thinner straw material, and more tracking stations in order to improve the energy resolution.
+
+The stopping target itself has typically been designed as thin disks of aluminium, followed by a beam blocker.  
+Even including the growth of the beam envelope as it passes from the 3~T field in the bent muon transport solenoids to the 1~T of the bent electron spectrometer solenoid the beam blocker removes all line-of-sight between the entrance of the electron spectrometer and the muon transport solenoids so that most of the beam flash is prevented from reaching the detector.
+The tapering of the field occurs almost completely across the target itself with the intention that signal electrons heading initially upstream will be magnetically mirrored back towards the detector.
+
+As for \phaseI, an active cosmic ray veto will prevent triggering on events caused by cosmic muons.
+At least the detector solenoid will be covered, but there is some scope
+
 % - Proton beam energy
 % - Proton beam timing
 % - Production target and capture system
