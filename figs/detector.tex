@@ -1,3 +1,17 @@
+\newcommand{\FigDecayInOrbitSpectrum}{
+\begin{figure}[t]
+\centering
+%\fbox{
+\includegraphics[width=0.95\textwidth,trim=2.6cm 3.2cm 2.6cm 19.7cm,clip=true]{figs/detector/Czarnecki_2011_spectrum}
+%}
+\caption{
+Spectrum of electrons coming from muon decay-in-orbit by Czarnecki \etal~\cite{Czarnecki2011}.
+The two spectra are the same, but left is on a linear-linear scale whilst the right plot is on a log-lin scale which shows clearly the high-energy tail reaching up to the \mueconv signal energy of 105~MeV.
+}
+\figlabel{detector:DIOSpectrum}
+\end{figure}
+}
+
 \newcommand{\FigBentSolenoidRelativeDrift}{
 \begin{figure}[t]
 \centering
@@ -38,41 +52,55 @@ Schematic layout of COMET \phaseI.
 
 \newcommand{\TabBackgroundSummary}{
 \begin{table}
-\begin{tabular}{lldd}
+\centering
+\begin{tabular}{lld{5}d{5}}
      \hline
      \hline\\[-1.8ex]
      Type           & Background & \multicolumn{2}{c}{Predicted number of events during run} \\
-                    &  & \multicolumn{1}{c}{\phaseI \cite{TDR2014}} & \multicolumn{1}{c}{\phaseII \cite{CDRphase2} } \\
+                    &  & \multicolumn{1}{c}{\phaseI \cite{TDR2016}} & \multicolumn{1}{c}{\phaseII \cite{CDRphase2} } \\
      \hline\\[-1.8ex]
      Intrinsic & Muon Decay-in-Orbit                       & 0.01              & 0.15    \\
-               & Radiative Muon Capture                    & 0.00056           & <0.001  \\
+               & Radiative Muon Capture                    & 0.0019            & <0.001  \\
                & $\mu^-$ Capture w/ n Emission             & <0.001            & <0.001  \\
                & $\mu^-$ Capture w/ Charged Part. Emission & <0.001            & <0.001  \\
-     Prompt    & Radiative Pion Capture                    & 0.00023           & 0.05    \\
-               & Beam Electrons                            & 0.00083           & <0.1^*  \\
-               & Muon Decay in Flight                      & \le0.0002         & <0.0002 \\
-               & Pion Decay in Flight                      & \le0.00023        & <0.0001 \\
-               & Neutron Induced                           & -                 & 0.024   \\
-               & Other beam induced B.G.                   & <2.8\times10^{-6} & -       \\
+     Prompt    & Radiative Pion Capture                    & 0.00028           & 0.05    \\
+               & Beam Electrons                            & \multicolumn{1}{c}{\multirow{3}{*}{$\Bigg\}\le$0.0038}\hspace{4pt}{}~} & <0.1^*  \\
+               & Muon Decay in Flight                      &         & <0.0002 \\
+               & Pion Decay in Flight                      &                  & <0.0001 \\
+               & Neutron Induced                           & \sim10^{-9}          & 0.024   \\
+%               & Other beam induced B.G.                   & <2.8\times10^{-6} & -       \\
      Delayed   & Delayed Radiative Pion Capture            & \sim0             & 0.002   \\
-               & Anti-proton Induced                        & 0.007             & 0.007   \\
+               & Anti-proton Induced                       & 0.0012            & 0.007   \\
                & Other delayed B.G.                        & \sim0             & -       \\
      Cosmic    & Cosmic Ray Muons                          & -                 & 0.002   \\
-               & Electrons from Cosmic Ray Muons           & <0.0001           & 0.002   \\
+               & Electrons from Cosmic Ray Muons           & <0.01             & 0.002   \\
      \hline\\[-1.8ex]
-     \multicolumn{2}{c}{Total background}                      & 0.019         & 0.34    \\
+     \multicolumn{2}{c}{Total background}                  & <0.032            & <0.34    \\
      \multicolumn{2}{c}{Signal (Assuming $B=1\times10^{-16}$)} & 0.31          & 3.8     \\
      \hline
      \hline
 \end{tabular}
 \caption{
-	\CHECK{UPDATE \phaseI values with TDR 2016}
-	Backgrounds for COMET \phaseI \cite{TDR2014} and \phaseII \cite{CDRphase2}.
+	Backgrounds for COMET \phaseI \cite{TDR2016} and \phaseII \cite{CDRphase2}.
 	Prompt backgrounds arise by protons that occur in between bunches and are therefore suppressed by the extinction factor.
 	For \phaseI, the recently measured value of $10^{-12}$ was used for the extinction factor, but for \phaseII the older expectation of $10^{-9}$ was used.
+        If this is not taken into account, the \phaseI estimates suggest a greater background to signal sensitivity than for \phaseII.
+        $*$) Result was statistically limited.
 }
 \tablabel{detector:backgrounds}
 \end{table}
+}
+
+\newcommand{\FigPionSpectraVsAngle}{
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth,trim=5cm 2.5cm 5cm 1cm,clip=true]{figs/detector/Meco023-Fig1}
+\caption{
+Double differential cross section of pion production on a tantalum target from protons with 10~GeV kinetic energy~(reproduced from Meco note 23~\cite{Meco023} which itself used~\cite{Armutliiski:17710}).
+It is clear that the high-energy component of the spectrum is suppressed as you move to higher production angles which is important for reducing background rates.
+}
+\figlabel{detector:piYield}
+\end{figure}
 }
 
 \newcommand{\FigMuonNuclearParams}{
@@ -103,3 +131,42 @@ At the time of writing, construction of the detector solenoid is underway as wel
 \end{figure}
 }
 
+\newcommand{\FigStatusFacility}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{detector:setup:facility:foundations}Oct. 2014]{\includegraphics[width=0.8\textwidth]{figs/detector/status_photos/Hall_foundations}}\\
+\subfloat[][\figlabel{detector:setup:facility:beamline}Mar. 2015]{\includegraphics[width=0.52\textwidth]{figs/detector/status_photos/Hall_muBeamline}}\hspace{0.3cm}
+\subfloat[][\figlabel{detector:setup:facility:me}Dec. 2015]{\includegraphics[width=0.29\textwidth]{figs/detector/status_photos/Hall_meVisit}}
+\caption{\figlabel{detector:setup:facility}
+Photographs of the experiment hall being constructed and first sections of beamline being installed.
+}
+\end{figure}
+}
+
+\newcommand{\FigStatusCyDet}{
+\begin{figure}[t]
+\centering
+	\subfloat[][\figlabel{detector:setup:CyDet:stringing}]{\includegraphics[width=0.52\textwidth]{figs/detector/status_photos/CDC-stringing.jpg}}\hspace{0.3cm}
+\subfloat[][\figlabel{detector:setup:CyDet:outerWall}]{\includegraphics[width=0.29\textwidth]{figs/detector/status_photos/CDC-outerWall.jpg}}
+\caption{\figlabel{detector:status:CyDet}
+The CDC being assembled and strung.
+}
+\end{figure}
+}
+
+\newcommand{\FigStatusStrECAL}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{straw-production}Straw Tube Construction and Prototype Tracker]{%
+       \includegraphics[height=0.2\textheight]{figs/detector/status_photos/StrawTrackerProduction.jpg}\hspace{4pt}%
+       \includegraphics[height=0.2\textheight]{figs/detector/status_photos/StrawTrackerPrototype.jpg}
+}\\
+\subfloat[][\figlabel{ecal-production}Crystal Wrapping and Test Beam]{%
+       \includegraphics[height=0.19\textheight,trim=5ex 4ex 5ex 4ex,clip]{figs/detector/status_photos/ECAL-crystal}\hspace{4pt}%
+       \includegraphics[height=0.19\textheight,trim=0 2cm 0 0,clip]{figs/detector/status_photos/ECAL-testBeam}
+}
+\caption{\figlabel{detector:status:StrECAL}
+Research and development for the \ac{StrECAL} showing both the individual straws or crystal and a prototype set up used at test beams to characterise the sub-detectors.
+}
+\end{figure}
+}

@@ -54,7 +54,7 @@ It can immediately be seen then the kinematics of the end-point configuration fo
 a tail in the spectrum of electrons coming from muon \ac{DIO} extends all the way up to this point.
 \Fig{detector:DIOSpectrum} shows the spectrum of electrons from muon \ac{DIO} in aluminium where it can be seen that the high energy tail does reach up to about 105~MeV/c, but with a very steeply falling rate.
 
-\CHECK{Figure for DIO spectrum on log / lin scales from 2011 paper, or 2015 paper?}
+\FigDecayInOrbitSpectrum
 
 %Since the nucleus is so massive compared to the electron, it requires very little energy to have it conserve momentum with the out-going electron.
 
@@ -92,6 +92,7 @@ However, at the beam powers under consideration, a metal target would melt, such
 Such will be the approach in \phaseII, however for simplicity \phaseI will run with a radiatively cooled graphite target.
 
 \CHECK{Figure for pion vs. antiproton production cross-section for different proton energies and/or target materials}
+\FigPionSpectraVsAngle
 
 Finally, only those pions and muons emitted in the backwards direction with respect to the proton beam are captured and transported to the muon beamline.
 This is a strong way to reduce the high-energy components of the muons and pions distributions since the yield for low momentum pions in the forward and backwards direction is similar, whilst the high energy tail is greatly suppressed in the backwards direction.
@@ -99,13 +100,13 @@ At this time however, there is a dearth of experimental measurements for pion pr
 \Fig{detector:piYield} shows a measurement of the cross section for pion production with 10~GeV protons on tantalum (which is adjacent to tungsten on the periodic table).
 
 \subsection{Particle Transport through Bent Solenoids}
-\FigBentSolenoidRelativeDrift
 Both \phaseI and II make use of bent solenoids to help select particles of a particular momentum.
 In bent solenoids, a dispersion occurs that is proportional to the momentum and charge of the particle passing through it.
 
 Charged particles moving through a straight solenoid follow a helical
 trajectory, orbiting a point that moves parallel to the solenoidal axis with constant velocity fixed by the longitudinal momentum of the particle.
 The frequency that the particle rotates about this point (betatron frequency or frequency of gyration) is determined by the transverse momentum.
+\FigBentSolenoidRelativeDrift
 
 By comparison, if a charged particle moves through a solenoid channel that has been bent, the particle can still be considered to orbit a point, only now 
 the motion of that point can be shown to drift vertically, out of the plane of bending.  This drift arises from the gradient introduced to the field by bending the solenoid but also from the 
@@ -275,14 +276,16 @@ At least the detector solenoid will be covered, but there is some scope
 The overall schedule for the COMET experiment is shown in \fig{detector:schedule}.
 \phaseI is due to start data taking in \ac{JFY} 2018 so that construction and development is well underway.
 
+\FigStatusFacility
 At the time of writing, with regards to the facility, the building to house the experiment is now finished attached to the side of the existing Hadron Hall at \ac{JPARC}.
 Cooling and power supplies are being installed and the shielding for the concrete hatch area is being produced.
 In the mean time the development of the new beamline to extract protons from the \ac{MR} and deliver them to the COMET area is being installed.
 In particular, the Lambertson magnet which directs the protons towards COMET rather than the existing Hadron Hall has been built.
 For the muon beamline, the \phaseI section of the bent muon transport solenoids has been built and installed and is now under commissioning studies.
 Construction of the detector solenoid has also begun with the capture solenoids around the production target soon to begin.
-A selection of photographs that show the construction of the facility and installation of the bent transport solenoid are show in \fig{detector:facility-photos}.
+A selection of photographs that show the construction of the facility and installation of the bent transport solenoid are show in \fig{detector:setup:facility}.
 
+\FigStatusStrECAL
 Much of the recent activity for the collaboration has been on the design and construction of the detector systems.
 Beam tests to understand the performance and resolution of prototype ECAL crystals, straw tubes and the \ac{CDC} have taken place.
 For the \ac{StrECAL}, production of all 2500 \phaseI straws has been completed and procurement of the \ac{LYSO} crystals for the ECAL is under way with some 200 or so crystals already purchased.
@@ -290,10 +293,11 @@ Aging tests of the straw tubes are under way with straws under pressure and tens
 Analysis of beam-test data is underway to understand the position resolution for a given straw, and the energy resolution of the ECAL, although better than 5\% resolution for 105~MeV electrons has already been shown.
 \Fig{detector:status:StrECAL} shows photographs of the prototypes and beam test set-ups of the Straw Tube Tracker and the ECAL.
 
+\FigStatusCyDet
 In the meantime the full \ac{CDC} has been strung, with some 20,000 wires less than 10 microns thick \CHECK{is this the correct wire size} being inserted.
 Every wire has had its tension checked using a vibrational resonance method, which showed some \_\_ \CHECK{How many wires needed to be replaced} wires were too loose and have since been replaced.
 Currently the inner wall of the CDC is being inserted so that leak tests can begin shortly.  
-\Fig{detector:status:CDC} shows photographs from the stringing of the \ac{CDC}.
+\Fig{detector:status:CyDet} shows photographs from the stringing of the \ac{CDC}.
 In parallel, cosmic ray tests have been used to study to the performance of CDC prototypes and analysis of the data is under way to deduce the X-T curve for the CDC cells.
 
 In the less-tangible realm that is software and simulation, in April last year the offline software reached its first stable release, and has since been used to perform three large-scale Monte Carlo productions of \phaseI.

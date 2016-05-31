@@ -8,6 +8,7 @@
 %%\usepackage{dblfloatfix}
 %\usepackage{minted}
 \usepackage{xspace}
+%\usepackage[heightadjust=all,valign=t]{floatrow,fr-subfig}
 %\usepackage{siunitx}
 %\usepackage{ragged2e}
 %\usepackage{array}
@@ -21,6 +22,7 @@
 %\usepackage{xfrac}
 %\usepackage{xcolor}
 \usepackage[sharp]{easylist}
+\usepackage{multirow}
 \usepackage{hyperref}
 %\usepackage[caption=false]{subfig}
 %\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
@@ -32,7 +34,7 @@
   linkbordercolor=red% hyperlink border will be red
 }
 
-\newcolumntype{d}{D{.}{\cdot}{1} }
+\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
 
 \makeatletter
 \Hy@AtBeginDocument{%
