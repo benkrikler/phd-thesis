@@ -1,0 +1,122 @@
+\input{figs/software.tex}
+\chapter{Offline Software and The COMET Simulation}
+In 2013 when I first worked on the COMET experiment, there were many disparate stand-alone simulations being run and no unified approach for data structures and analysis.
+Since then, a single unified software framework has been prepared and is now being used throughout the collaboration.
+Developing this framework has been a large part of my work over the last four years
+, so this chapter presents both a summary of the framework and its development as well as an explanation of the techniques used.
+
+\section{Developing the COMET Offline Framework}
+Work to produce a common, standardised software framework for COMET began when funding was awarded for \phaseI.
+With some four years to go before the switch on, it was clear that the support structure to handle and analyse the data needed to be in place soon.
+Given the scale of the project and the available resources, the decision was taken to base the COMET offline framework on an existing one, which would reduce the amount of work needed and improve the reliability of the software since it would have been tested elsewhere.
+A requirements document~\cite{COMETSoftwareRequirements} was drawn up with a list of items that the software should be able to do and a survey of existing experiments undertaken to build a list of candidate frameworks.
+The list contained:
+\begin{description}
+\item [art] A framework being developed primarily at Fermilab~\cite{art:2011} which is also being used by Mu2e amongst other experiments.
+\item [ND280] The framework~\cite{T2K:nim} used by the near detectors of the T2K experiment, which are also based at J-PARC.
+\item [GAUDI] which is used by LHCb amongst other experiments~\cite{gaudi:2001}.
+\item [MARLIN] The software being developed for the International Linear Collider (ILC)~\cite{marlin:web}.
+\end{description}
+
+The final decision was to use the ND280 framework\footnote{The term `ND280' can
+refer to one of either the ND280 detector itself, the site at J-PARC that
+houses both the ND280 and INGRID detectors, or the software used to analyse and
+simulate the T2K near-detectors.  For the purposes of this chapter, unless
+specified explicitly, the term `ND280' should be taken as referring to the
+software.} 
+since GAUDI and MARLIN would have required to much effort to adapt to the COMET
+requirements; since art is used by Mu2e and keeping the software distinct is
+important for the two experiments to co-exist as cross-checks; and because the
+ND280 software was already known to a large part of the COMET collaboration and
+had been tested on real data at J-PARC.
+
+\FigNDTwoEighty
+\Fig{software:ND280} shows an overview of the ND280 framework, including its package structure and the various interactions between packages.
+
+With the decision to base the COMET experiment on the ND280 framework -- and with the selection of the new name: `ICEDUST' -- the process of forking the software was begun.
+Since the ND280 framework had evolved somewhat organically a review of the conventions and code names was performed.
+For example, whilst the ND280 software prefixes all classes with a capital `T', the ICEDUST conventions~\cite{ID:conventions} agreed to swap this to a capital `I' to reduce clashes with ROOT which also uses `T'.
+The package renaming scheme~\cite{ID:packageRenaming} was developed so that the purpose of a package and its role with the other packages could be more clearly identified.
+
+Whilst fundamental, low-level packages have been left relatively unchanged higher-level packages which include more detector specific details had to be developed.
+Additionally some aspects of COMET needed considerably more support than had been present in the ND280 software.
+Some of the key changes that have been introduced between ICEDUST and ND280 are:
+\begin{description}
+	\item [Simulation] Although the fundamental data types have not been changed, the simulation has been nearly completely rewritten.
+		In particular, support for hadron production codes have been added to model the production target;
+		both the Geant4-based package (renamed to SimG4) and the detector response simulation (renamed as SimDetectorResponse) were given near-total makeovers;
+		a new package (SimHitMerger) for resampling the G4Hits (simulated charge or energy deposits) was added.
+		Custom physics models have been added to SimG4 to improve the modelling of the COMET-specific physics processes.
+	\item [Magnetic Field handling]  whilst the ND280 detector has a fairly straight-forward magnetic field, the COMET experiment has anything but this.  
+		Accordingly significant work has been made to replace the way
+		the magnetic field was handled from essentially a few constants
+		to the ability to use complete fieldmap descriptions made with
+		external field calculation software.
+	\item [Geometry handling] The unusual shape of the COMET experiment, the level of detail needed for background estimations in a high-precision experiment, and the changing nature of a staged experiment meant a more elaborate scheme for handling the geometry was necessary than had existed in ND280.
+	\item [Reconstruction and Calibration packages] As simply renaming of the packages, the interdependence of the calibration and reconstruction packages has been improved.
+		Additionally, support for track fitting using Genfit2~\cite{genfit-Hoppner:2009af} has been added as well as new track finding algorithms being developed.
+\end{description}
+
+In addition to the above changes to the way the software runs, the distribution of the software has changed from using CMT~\cite{cmt} with CVS version control to being based on git with a GitLab~\cite{GitLab} web-based user interface for the official repository.
+The switch to GitLab also brought a `merge-request' which has allowed development of ICEDUST to progress rapidly with only a small number of developers.
+Although initially the intention was also to switch the build system from CMT to CMake~\cite{cmake}, this decision has since been reversed due to improvements in CMT.
+
+In the 3 years since the initial work forking ND280 to produce ICEDUST in summer 2013 some 3,200 commits have edited about two million lines of code in the official version of the framework.
+This has been the work of some 25 collaborators whilst about 15 other users have GitLab accounts and use the software.
+ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events -- equivalent to 18,000 \phaseI bunches -- in some 100~TB of simulated data.
+
+\section{Overview of ICEDUST}
+ICEDUST Can Efficiently Do Useful Software Things and stands for the Integrated COMET Experiment Data User Software Toolkit.
+\Fig{software:ICEDUSTOverview} shows the flow of data through the different packages of the framework and the data formats used.
+
+\FigICEDUSTOverview
+
+Inside the framework, nearly all processing is done using a ROOT file-based format known as oaEvent.  
+Files of this type contain header information providing run identification numbers as well as a description of the geometry and magnetic field.  
+The data payload contained in oaEvent files is stored in a ROOT TTree with a single branch containing a single COMET event per entry.
+Each COMET event has a dynamic structure and can have any object which derives from the IDatum base class added to its list of data on an event-by-event basis.
+
+Data from the detector systems is recorded in MIDAS~\cite{MIDAS} format which also contains data from the slow control monitors such as temperature sensors and high-voltage power supplies.
+The task of converting the MIDAS files into the oaEvent format is handled by the package oaUnpack which writes out new, converted files, and oaRawEvent which can convert the MIDAS files to oaEvent format on the fly.
+
+Simulated data is also produced in the oaEvent format and involves some 4 to 6 packages being called, described in more depth in section~\sect{COMETSim}.
+
+Once either simulated data has been produced or real data has been converted, calibration routines can then be applied.
+Each sub-detector is capable of pulling constants that were previously generated from a MySQL database and applying these to the detected (or simulated) energy deposits.
+These calibrated hits are then passed into the reconstruction stage.  
+Here again each sub-detector system is first allowed to handle the data until a full reconstructed event is produced.
+For the tracking detectors this stage typically involves an initial track finding stage, where noise hits are removed and track candidates consisting of a list of hits are collected, and secondly a track fitting stage where the actual path of the underlying particle is reconstructed and key values like momentum and helical pitch-angle deduced.
+
+Nearly all of the processing of data up to this stage has used the oaEvent format.
+The final analysis stage however moves into a simpler, flatter format, known as oaAnalysis, which produces a data summary tree (as opposed to tape) that can be accessed without a dependence on the full ICEDUST software.
+
+Around all of this there are several utility packages, such as the event display which can visualise any oaEvent file, and IcedustControl which can run a single set of data through the data chain and is the main steering mechanism used for production running.
+
+\section{The COMET Simulation}
+\sectlabel{COMETSim}
+The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
+For the single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, fewer than one background events should occur during the run.
+By comparison, some $10^{18}$ and $10^{21}$~protons \CHECK{Is this the right number of protons on target?} will impinge the production target in \phaseI and \phaseII respectively so it is clear that the ability to suppress backgrounds must be demonstrably high.
+
+Simulation plays a crucial role in making such a demonstration. 
+Before the experiment is built it allows one to optimise crucial aspects of the geometry and run parameters, such as the magnetic fields or timing cuts.
+In addition, using Monte Carlo techniques an accurate simulation allows an estimation of the background rate by sampling the parameter space corresponding to each stage in the experiment.
+Clearly then the simulation itself must be as faithful a reproduction of the true experiment as possible.
+
+The COMET simulation therefore needs to be both highly accurate and highly efficient.
+As well as custom physics modelling, and special handling for the magnetic field, several resampling techniques have been introduced to increase the statistical power.
+To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS, MARS, Fluka and Geant.
+Geant4 then takes over the muon beam simulation and tracking of particles to the detectors.
+
+\subsection{Field Calculation}
+
+\subsection{Extending Geant4}
+
+\subsection{Handling Geometry}
+
+\subsection{Production Target Simulations}
+
+\subsection{Extending the Geant4 Physics Modelling}
+
+\subsection{Resampling With the Hit Merger}
+
