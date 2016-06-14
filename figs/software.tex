@@ -23,3 +23,19 @@ Overview diagram for the ND280 framework.
 \end{figure}
 }
 
+\newcommand{\FigSimulationOverview}{
+\begin{figure}[b]
+\centering
+%\fbox{
+\includegraphics[width=1.00\textwidth]{figs/software/Simulation_structure}
+%}
+\caption{
+Diagram showing the stages used to simulate COMET.
+The timing schematics on the right show how a simulated event is built up, firstly by producing many individual proton interactions with the production target,
+then by transporting the secondary particles to produce energy deposits in the detector, which are then combined with the truth hits from other proton events to produce a realistic bunch structure.
+Finally these bunch events are processed through the detector response simulation to produce fake waveforms and other detector read-outs.
+}
+\figlabel{software:SimulationOverview}
+\end{figure}
+}
+

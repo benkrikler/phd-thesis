@@ -94,29 +94,33 @@ Around all of this there are several utility packages, such as the event display
 
 \section{The COMET Simulation}
 \sectlabel{COMETSim}
+\FigSimulationOverview
 The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
-For the single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, fewer than one background events should occur during the run.
+For COMET's target single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, fewer than one background events should occur during the run.
 By comparison, some $10^{18}$ and $10^{21}$~protons \CHECK{Is this the right number of protons on target?} will impinge the production target in \phaseI and \phaseII respectively so it is clear that the ability to suppress backgrounds must be demonstrably high.
 
 Simulation plays a crucial role in making such a demonstration. 
-Before the experiment is built it allows one to optimise crucial aspects of the geometry and run parameters, such as the magnetic fields or timing cuts.
-In addition, using Monte Carlo techniques an accurate simulation allows an estimation of the background rate by sampling the parameter space corresponding to each stage in the experiment.
+Before the experiment is built and operated it allows one to optimise crucial aspects of the geometry and parameters, such as the magnetic field strengths or timing cuts.
+In addition, using Monte Carlo techniques in an accurate simulation allows an estimation of the background rate by sampling the parameter space corresponding to each stage of the experiment.
 Clearly then the simulation itself must be as faithful a reproduction of the true experiment as possible.
+
 
 The COMET simulation therefore needs to be both highly accurate and highly efficient.
 As well as custom physics modelling, and special handling for the magnetic field, several resampling techniques have been introduced to increase the statistical power.
-To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS, MARS, Fluka and Geant.
-Geant4 then takes over the muon beam simulation and tracking of particles to the detectors.
+The steps needed to build up the COMET simulation are shown in \fig{software:SimulationOverview}.
 
-\subsection{Field Calculation}
-
-\subsection{Extending Geant4}
+To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005} and Geant4~\cite{Geant42003}.
+The SimG4 package, which is based on Geant4, then takes over the muon beam simulation and tracking of particles to the detectors.
+These energy deposits, referred to as G4Hits, can then be converted to realistic electronic detector-readouts by the SimDetectorResponse package.
+Often though, the G4Hits are first reshuffled with G4Hits from other events.  
+Since one event coming out from SimG4 is 
 
 \subsection{Handling Geometry}
+
+\subsection{Field Calculation}
 
 \subsection{Production Target Simulations}
 
 \subsection{Extending the Geant4 Physics Modelling}
 
 \subsection{Resampling With the Hit Merger}
-
