@@ -116,8 +116,75 @@ Often though, the G4Hits are first reshuffled with G4Hits from other events.
 Since one event coming out from SimG4 is 
 
 \subsection{Handling Geometry}
+During the change from ND280 to ICEDUST, a new geometry handling scheme was introduced to the SimG4 package.
+This change was motivated by: 
+    the fact that COMET has a large number of components with a large variety of complexities, shapes and sizes;
+    the COMET geometry will change dramatically throughout the lifetime of the experiment;
+    all pieces of material closed to the beam could potentially contribute to background rates if, for example, they scatter high energy particles into a high-acceptance region in the phase space.
+
+The aim of the new geometry handling scheme tries to address these issues.
+The goals in developing the new were approach were to:
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+\item define a clear mechanism for how the geometry is implemented and controlled,
+\item decouple the code for physically isolated parts of the experiment,
+\item provide the flexibility to add and remove parts of the experiment,
+\item maximise the maintainability of the code related to geometry,
+\item allow for easy inspection of both the geometry and the various parameters that control it.
+\end{itemize}
+
+\FigGeometryHeirarchy
+
+The final scheme uses a nested component structure which is built up using compiled c++ to define the volumes hierarchy in a modular way with parameters provided at run-time to define the actual shapes and locations of the volumes.
+The run-time parameters are `owned' by the component they are attributed to and can be assigned values using based on the values of other parameters and inspected easily by various print commands.
+Access to values of other parameters is given provided they are owned by an accessible component.
+Whether or not another component is accessible depends on its relative position of in the component hierarchy: the target component must either be an ancestor, immediate child, or share the same parent component, as demonstrated in \fig{software:componentHeirarchy}.
+
+To provide the value of a parameter, standard, human readable infix notation allows integers, doubles, three-vectors and rotation matrices to be combined and manipulated.
+In addition parameters can be easily repeated or indexed, such as for the positions of crystals in the ECAL or straws in a straw tracker plane, where the $i$-th position depends on the value of $i$.
+A small demonstration of some valid parameter assignments is shown in \fig{software:geom:paramAssignments}.
+
+Using this scheme, multiple geometries for different stages of COMET have been developed and can be easily swapped between.
+Each one is able to re-use much of the code for another, such as the experiment hall building which appears in every geometry.
+In addition it has been straight forward to build up significant complexity in key areas such as the production target.
+\Fig{software:geometryScreenshots} shows some images of the geometry that has been created using this scheme.
+
+A more thorough description of the geometry scheme  in SimG4 as well as a users guide can be found at \url{www.hep.ph.ic.ac.uk/~bek07/comet/SimG4/documentation/index.shtml}.
+
+Once SimG4 has created the geometry, it writes it out to a ROOT-based format alongside the data, using ROOT's TGeo classes~\cite{ROOTTGeo}.
+This is then used by the other packages, such as calibration and analysis.  
+The event display also uses this to show the various hits and tracks overlaid on the geometry.
 
 \subsection{Field Calculation}
+\begin{easylist}
+%# In COMET a static magnetic field is used to capture and disperse charged particles.
+%# Bumps in field can mirror particles which will cause delays to particle arrival
+%# Need dipole field and solenoid field calculations
+# Calculations by Toshiba, and in-house using Opera, Tosca and G4Beamline.
+# Handling of fieldmap information in ICEDUST
+# Although pure magnetic fields are currently used, electric fields can in principle be added in exactly the same way.
+\end{easylist}
+
+An essential aspect of the \COMET experiment is the static magnetic field that is used along the beam line to capture, focus and disperse charged particles.
+Modelling this field accurately is important to ensure any outcomes of the simulation are reliable.
+In particular, dips in the field have a risk of mirroring particles backwards or even trapping particles for extended periods.
+This could be especially dangerous for \COMET since in the process the timing information of the particle is lost which would reduce the efficiency of the timing cut to suppress backgrounds.
+
+Magnetic field calculations can become quite computationally expensive.  
+As a result approximations and assumptions are often made to simplify the process, such as the assumption of symmetry about an axis or plane to reduce the effective number of dimensions to the problem.
+As well as modelling the electric current flow, material effects must also be accounted for particularly in the yoke and surrounding material of the beamline.
+Often these material effects are linear, but in regions of high magnetic field this linearity can be lost via processes such as saturation, further increasing the computational complexity.
+
+There are two distinct types of magnetic field used in COMET, a solenoidal field produced by a winding of super-conducting cable in a spiral, and that of the dipole fields which are produced by a novel winding technique which
+is proprietary to Toshiba.  
+Although there are several areas of 'bent' solenoid, these are actually formed by a series of smaller straight solenoid sections, and so do not need special treatment in the field calculation.
+Straight solenoids are used in many other applications so existing coil calculation methods are reliable. 
+Calculating the dipole field however is not so straight forward since the exact configuration is owned by Toshiba.
+
+The COMET collaboration have access to several resources for fieldmap calculations
+
+Whilst only magnetic fields have been used in the simulation up to now, ICEDUST is able to handle electric fields in exactly the same way.
+For instance future work might see the electric fields for the straw tracker and CDC included to account for the impact of these fields might have on particle scattering in the detector.
 
 \subsection{Production Target Simulations}
 
