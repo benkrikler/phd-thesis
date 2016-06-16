@@ -181,7 +181,10 @@ Although there are several areas of 'bent' solenoid, these are actually formed b
 Straight solenoids are used in many other applications so existing coil calculation methods are reliable. 
 Calculating the dipole field however is not so straight forward since the exact configuration is owned by Toshiba.
 
-The COMET collaboration have access to several resources for fieldmap calculations
+The COMET collaboration have used several different methods to perform field map calculations.
+G4Beamline~\cite{G4Beamline} provides numerous extensions to Geant4 and is able to perform simple solenoid calculations directly.
+Whilst it cannot model material effects its speed and simplicity allows quick and simple studies. 
+These include full 3D calculations that include material effects using Opera~\cite{Opera} and Tosca~\cite{TOSCA}.
 
 Whilst only magnetic fields have been used in the simulation up to now, ICEDUST is able to handle electric fields in exactly the same way.
 For instance future work might see the electric fields for the straw tracker and CDC included to account for the impact of these fields might have on particle scattering in the detector.
