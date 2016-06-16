@@ -23,6 +23,7 @@
 %\usepackage{xcolor}
 \usepackage[sharp]{easylist}
 \usepackage{multirow}
+\usepackage{listings}
 \usepackage{hyperref}
 %\usepackage[caption=false]{subfig}
 %\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
@@ -35,6 +36,31 @@
 }
 
 \newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=sh,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+
+\lstdefinestyle{customasm}{
+  belowcaptionskip=1\baselineskip,
+  frame=L,
+  xleftmargin=\parindent,
+  language=[x86masm]Assembler,
+  basicstyle=\footnotesize\ttfamily,
+  commentstyle=\itshape\color{purple!40!black},
+}
+
+\lstset{escapechar=@,style=customc}
 
 \makeatletter
 \Hy@AtBeginDocument{%

@@ -94,7 +94,6 @@ Around all of this there are several utility packages, such as the event display
 
 \section{The COMET Simulation}
 \sectlabel{COMETSim}
-\FigSimulationOverview
 The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
 For COMET's target single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, fewer than one background events should occur during the run.
 By comparison, some $10^{18}$ and $10^{21}$~protons \CHECK{Is this the right number of protons on target?} will impinge the production target in \phaseI and \phaseII respectively so it is clear that the ability to suppress backgrounds must be demonstrably high.
@@ -103,7 +102,7 @@ Simulation plays a crucial role in making such a demonstration.
 Before the experiment is built and operated it allows one to optimise crucial aspects of the geometry and parameters, such as the magnetic field strengths or timing cuts.
 In addition, using Monte Carlo techniques in an accurate simulation allows an estimation of the background rate by sampling the parameter space corresponding to each stage of the experiment.
 Clearly then the simulation itself must be as faithful a reproduction of the true experiment as possible.
-
+\FigSimulationOverview
 
 The COMET simulation therefore needs to be both highly accurate and highly efficient.
 As well as custom physics modelling, and special handling for the magnetic field, several resampling techniques have been introduced to increase the statistical power.
@@ -112,8 +111,27 @@ The steps needed to build up the COMET simulation are shown in \fig{software:Sim
 To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005} and Geant4~\cite{Geant42003}.
 The SimG4 package, which is based on Geant4, then takes over the muon beam simulation and tracking of particles to the detectors.
 These energy deposits, referred to as G4Hits, can then be converted to realistic electronic detector-readouts by the SimDetectorResponse package.
-Often though, the G4Hits are first reshuffled with G4Hits from other events.  
-Since one event coming out from SimG4 is 
+On most occasions though, the G4Hits are first reshuffled with G4Hits from other Proton-on-target events so that a realistic bunch structure is built up and processed, since it is this structure that the true detector will see.
+SimG4 produces one output event for every primary vertex introduced\footnote{This typically means one output event per proton-on-target, but in principle could be something else, such as one output event per signal electron in a dedicated trigger simulation} %
+whereas SimDetectorResponse needs to produce the same sort of data structure as will be seen in the real experiment, which is one event per proton bunch.
+
+This requires some intermediate step, known as SimHitMerger to shuffle the events from SimG4 together and build up realistic bunch events.
+At this point, a degree of resampling is also introduced, since there are virtually no correlations between proton events.
+Within a SimG4 output event all timing is given with respect to the original primary vertex.  
+Since protons on target are introduced at $t=0$, all G4Hits have their timing given with respect to the proton arriving at the production target.
+In the process of building bunch events, a realistic timing structure for the proton beam is introduced by shifting the time of all hits for a given proton event by a fixed amount, as if the proton had arrived slightly earlier or later.
+
+A bunch event in \phaseI will consist of about 8$\times10^{6}$~POT so, without resampling, a simulation of 8$\times10^{8}$~POT events could only produce 100 bunches.
+Since the proton events are uncorrelated, by picking different proton events and applying different time shifts to each event, one can in principle build a much larger number of events.
+
+An additional form of resampling can also be used during the Geant4 simulation, by dividing up the experiment into different stages and restarting the simulation multiple times at a later stage, reusing the output from the earlier section.
+For example, a simulation of the production target region is used to track particles up to the boundary of the muon beam line.
+The muon beam simulation is then repeated multiple times taking the particles leaving the production target section as an input and changing the initial random seed for each restart.
+This technique was used in the most recent large scale mass production twice -- once at the production target section and again at the entrance to the detector solenoid region -- restarting the simulation five times for each section, so that for each initial proton on target, 25 times this number of events were fed tracked through the detector solenoid.
+
+Both of these resampling techniques must be handled with care since this can produce correlations between the events produced from resampled inputs.
+Reconstruction methods often employ machine learning techniques which are particularly sensitive to correlations within a dataset.
+To reduce any potential impact due to resampling, the resampled data is handled in distinct sets so that within a set no proton on target event is repeated in more than one output bunch event.
 
 \subsection{Handling Geometry}
 During the change from ND280 to ICEDUST, a new geometry handling scheme was introduced to the SimG4 package.
@@ -144,6 +162,8 @@ To provide the value of a parameter, standard, human readable infix notation all
 In addition parameters can be easily repeated or indexed, such as for the positions of crystals in the ECAL or straws in a straw tracker plane, where the $i$-th position depends on the value of $i$.
 A small demonstration of some valid parameter assignments is shown in \fig{software:geom:paramAssignments}.
 
+\FigGeometryParameters{}
+
 Using this scheme, multiple geometries for different stages of COMET have been developed and can be easily swapped between.
 Each one is able to re-use much of the code for another, such as the experiment hall building which appears in every geometry.
 In addition it has been straight forward to build up significant complexity in key areas such as the production target.
@@ -156,14 +176,14 @@ This is then used by the other packages, such as calibration and analysis.
 The event display also uses this to show the various hits and tracks overlaid on the geometry.
 
 \subsection{Field Calculation}
-\begin{easylist}
-%# In COMET a static magnetic field is used to capture and disperse charged particles.
-%# Bumps in field can mirror particles which will cause delays to particle arrival
-%# Need dipole field and solenoid field calculations
-# Calculations by Toshiba, and in-house using Opera, Tosca and G4Beamline.
-# Handling of fieldmap information in ICEDUST
-# Although pure magnetic fields are currently used, electric fields can in principle be added in exactly the same way.
-\end{easylist}
+%\begin{easylist}
+%%# In COMET a static magnetic field is used to capture and disperse charged particles.
+%%# Bumps in field can mirror particles which will cause delays to particle arrival
+%%# Need dipole field and solenoid field calculations
+%# Calculations by Toshiba, and in-house using Opera, Tosca and G4Beamline.
+%# Handling of fieldmap information in ICEDUST
+%# Although pure magnetic fields are currently used, electric fields can in principle be added in exactly the same way.
+%\end{easylist}
 
 An essential aspect of the \COMET experiment is the static magnetic field that is used along the beam line to capture, focus and disperse charged particles.
 Modelling this field accurately is important to ensure any outcomes of the simulation are reliable.
@@ -182,15 +202,49 @@ Straight solenoids are used in many other applications so existing coil calculat
 Calculating the dipole field however is not so straight forward since the exact configuration is owned by Toshiba.
 
 The COMET collaboration have used several different methods to perform field map calculations.
-G4Beamline~\cite{G4Beamline} provides numerous extensions to Geant4 and is able to perform simple solenoid calculations directly.
+G4Beamline~\cite{G4Beamline} is a simulation toolkit that makes numerous extensions to Geant4 and is able to perform simple solenoid calculations directly.
 Whilst it cannot model material effects its speed and simplicity allows quick and simple studies. 
-These include full 3D calculations that include material effects using Opera~\cite{Opera} and Tosca~\cite{TOSCA}.
+The methods for solenoid calculations of this open-source project have been incorporated into SimG4, so that the package can directly produce the field for solenoid coils contained in its geometry.
+The resultant fieldmap is shown in \fig{software:fieldmap:G4Beamline}.
+
+For more elaborate calculations, Opera 3D finite-element-analysis software was used with the TOSCA submodule~\cite{Opera} for static electromagnetic fields.
+This calculation includes non-linear material effects in the yoke and shielding so that the final fieldmap should be much more accurate.
+\Fig{software:fieldmap:opera} shows the fieldmap calculated by Opera in the plane of the beam line axis.
+The difference between the G4Beamline and Opera calculations is given in \fig{software:fieldmap:comparison} where it can be seen how the two models disagree most at the exit of the solenoids.
+
+Whilst the above two methods have been used for the solenoid fields, calculating the dipole field structure is a different story, given that the winding is proprietary information belonging to Toshiba.
+For the dipoles in the muon beamline, Toshiba have provided a calculation for one octant of one winding, which is then mirrored and placed multiple times along the beamline.
+For the dipoles along the electron spectrometer of \phaseII, there is no accurate calculation at this time.
 
 Whilst only magnetic fields have been used in the simulation up to now, ICEDUST is able to handle electric fields in exactly the same way.
 For instance future work might see the electric fields for the straw tracker and CDC included to account for the impact of these fields might have on particle scattering in the detector.
 
+Field map files are treated as a single data file which are loaded in and placed with a given rotation and translation as well as an overall field scale factor.
+It is important that subsequent processing of data files are able to reproduce the same field as used to generate the data.
+Since many individual field map files are often loaded in to assemble an overall representation of the field to facilitate such book-keeping, a description of each of the used field map files is stored alongside the data similar to the way the geometry is handled.
+This information contains the name and a check-sum for the original field map as well as the rotation, translation and scale factor.
+All ICEDUST programs are therefore able to re-instantiate the field given a data file and the location of a directory containing the fieldmaps.
+Other field components such as solenoid fields produced with the incorporated G4Beamline code are also persisted in this manner.
+
+\CHECK{Add fieldmap plots (largely based on /home/ben/Conferences\_and\_Presentations/1512w49\_CM18/BKrikler\_151218\_SimulationUpdates.pdf.  Plots of: (Opera Calc/G4Beamline Calc./Difference)$\times$(2D in XZ plane/ 1D along axis)}
 \subsection{Production Target Simulations}
+\FigPiYieldHadronCodes
+There is currently a lack of experimental data for interactions of protons with 8~GeV kinetic energy with a tungsten target, especially for production of negative pions in the backwards direction.
+\Fig{detector:piYield} seems to be the best source of experimental data, but even this is problematic in that it represents 10.1~GeV protons striking a tantalum target and that the actual data points are not tabulated anywhere in the literature.
+
+The HARP experiment~\cite{HARP2007} has also measured pion yields in the context of future neutrino beam facilities, and have used an 8~GeV proton beam with a tungsten target, but only observed pion yields at angles of less than around 2 radians \CHECK{What angles did HARP measure up to?}.
+
+As a result of this shortage of measured values, it is important to use as many hadron models as possible to pin down the uncertainty on the predicted pion and muon yield.
+Previous studies have compared the HARP data to predictions from several hadron codes~\cite{AEdmondsThesis,YeYangPrivate} some of which are reproduced in \fig{software:piYield}.
+From these it is clear that no one model can reproduce the experimental data accurately for all angular regions and all materials.
+
+Currently PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005}, and Geant4~\cite{Geant42003} can all be used to run production target simulations and feed results into the rest of the experiment.
+The level of integration of these packages varies however.
+SimG4 (which is based on Geant4) and SimMARS (which interfaces MARS into ICEDUST) are able to read directly the standard ICEDUST geometry and fieldmap formats and they are able to output directly to a format known as oaRooTracker which the SimG4 package is able to read back in.
+Both Fluka and PHITS  on the other hand (interfaced via SimFluka and SimPHITS, respectively) are written in Fortran and have proved harder to integrate. 
+At this point in time, each must separately produce the geometry and fieldmap and have their outputs post-converted to the oaRooTracker format.  
+Fluka also lacks a primitive Torus volume implementation, so that other studies such as neutron rates are further limited in Fluka at this stage.
 
 \subsection{Extending the Geant4 Physics Modelling}
 
-\subsection{Resampling With the Hit Merger}
+%\subsection{Resampling With the Hit Merger}

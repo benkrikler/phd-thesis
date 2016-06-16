@@ -24,7 +24,7 @@ Overview diagram for the ND280 framework.
 }
 
 \newcommand{\FigSimulationOverview}{
-\begin{figure}[b]
+\begin{figure}[t]
 \centering
 %\fbox{
 \includegraphics[width=1.00\textwidth]{figs/software/Simulation_structure}
@@ -55,14 +55,26 @@ The Controller of component 1.a in red has access to the parameters managed by C
 
 \newcommand{\FigGeometryParameters}{
 \begin{figure}[t]
-\centering
-%\fbox{
-\includegraphics[width=0.70\textwidth]{figs/software/ComponentHeirarchy}
+\lstinputlisting[style=customc]{figs/software/demo-parameters.mac}
+%\caption{
+%An example set of parameters to control the geometry of 
 %}
-\caption{
-How parameters are shared amongst different components.
-The Controller of component 1.a in red has access to the parameters managed by Controllers of components contained in the larger violet region.
-}
-\figlabel{software:componentHeirarchy}
+%\figlabel{software:paramAssignments}
 \end{figure}
 }
+
+\newcommand{\FigPiYieldHadronCodes}{
+\begin{figure}[b]
+\centering
+%\fbox{
+\includegraphics[width=0.95\textwidth,trim=2cm 1cm 0.8cm 0.5cm,clip=true]{figs/software/PionYield_AEdmondsThesis}
+%}
+\caption{
+Comparison of various hadron production codes with experimental data from the HARP experiment from the thesis of A. Edmonds~\cite{AEdmondsThesis}.
+Points with error bars are the experimental data.  Left: double differential-production cross section for pion production from 20 to 32\degree with respect to the incoming proton direction, right: from 100 to 112\degree.
+The hadron production code that best reproduces the data depends strongly on which angular region one looks at.
+}
+\figlabel{software:piYield}
+\end{figure}
+}
+
