@@ -44,7 +44,7 @@ Any electrons coming from  \mueconv are then transported through another 180 deg
 \centering
 \includegraphics[height=0.4\textheight]{figs/detector/PhaseI_schematic}
 \caption{
-Schematic layout of COMET \phaseI. 
+Schematic layout of COMET \phaseI including the two detector systems that will run separately, being swapped in and out of the detector solenoid depending on the study.
 }
 \figlabel{detector:PhaseI:setup}
 \end{figure}
@@ -87,8 +87,8 @@ Schematic layout of COMET \phaseI.
         If this is not taken into account, the \phaseI estimates suggest a greater background to signal sensitivity than for \phaseII.
         $*$) Result was statistically limited.
 }
-\tablabel{detector:backgrounds}
-\end{table}
+\tablabel{detector:backgrounds}%
+\end{table}%
 }
 
 \newcommand{\FigPionSpectraVsAngle}{
@@ -130,6 +130,22 @@ At the time of writing, construction of the detector solenoid is underway as wel
 \figlabel{detector:schedule}
 \end{figure}
 }
+
+\newcommand{\FigTimingSchematic}{
+\begin{figure}[b]
+\centering
+\includegraphics[width=0.95\textwidth]{figs/detector/TimingSchematic}
+\caption{
+Schematic for the timing structure used in the COMET experiment.
+Protons arrive at the production target in 100~ns bunches separated by about 1.17~$\mu s$.
+These pulses create a flash of particles in the detector some 100~ns which lasts for about 300~ns.
+Muons that stop in that aluminium target last with a life-time of 864~ns, such that signal electrons would reach the detector in this time scale when the detector is able to be triggered.
+Very few protons should arrive in between bunches, else the corresponding secondaries could be detected as backgrounds.
+}
+\figlabel{detector:timing-schema}
+\end{figure}
+}
+
 
 \newcommand{\FigStatusFacility}{
 \begin{figure}[t]
