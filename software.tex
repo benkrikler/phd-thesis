@@ -246,5 +246,70 @@ At this point in time, each must separately produce the geometry and fieldmap an
 Fluka also lacks a primitive Torus volume implementation, so that other studies such as neutron rates are further limited in Fluka at this stage.
 
 \subsection{Extending the Geant4 Physics Modelling}
+\begin{easylist}
+# Geant4 is the main library used to track particles from the production target to the detectors.
+# Uses modular physics lists to run the possible interactions of a particle, either along a step in the tracking, at the end of a step or once the particle has come to rest in some material.
+# SimG4 builds on the physics list known as \_\_\_\_
+# This list defines models for ....
+%# Aside from the production target, which has already been discussed, crucial physics process for COMET are: Muon nuclear capture, muon decay in orbit, pion radiative capture
+# Modelling processes stopped negative muons is crucial to simulating COMET.
+	# The standard handling of a stopped negative muon is to decide whether the muon is captured or decayed, then apply specific implementations for these processes .... (pseudo-code for G4 algorithm?)
+	# DIO is treated as a crude variation of the free muon decay, such that an end-point in the spectrum occurs well below the true end-point
+	# Comparison of default Geant4 vs. Czarnecki et al paper
+	# RMC is treated as a Bertini cascade where the incoming projectile has the mass of a muon.  
+	# Bertini cascade was developed on data for pion capture, and is likely a bad model for the capture of a muon, since a muon undergoes no strong interactions within the nucleus.
+	# Alcap experiment has measured products from RMC and additional data can be found.
+	# Comparison of default Geant4 vs. RMC spectrum from Alcap
+	# In addition to modifying the physics processes for capture and decay, also need to include conversion in the simulation.
+	# Extension to Geant4 classes to inject custom DIO and muon capture spectra.
+	# New pseudo code for running negative stopped muon processes
+	# Additional models that should be added in the future:
+	## Antiprotons, RPC, DIO and capture on other materials
+\end{easylist}
+
+\subsubsection{Geant4 physics modelling}
+Aside from the production target region, most of the tracking of particles and creation of secondaries takes place in the SimG4 package, which is built against the Geant4 library.
+The trajectory of a particle is built up in steps each of which terminates either by a physics process (which might change the particle's direction or energy and produce a secondary track) or by the boundary of a volume in the simulated geometry.
+To decide what actually limits the step taken by a given particle (for example a positron), Geant4 calls the list of possible processes this particle can undergo (for example Brehmstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
+In the case of a geometry limit, the step length is the distance until the boundary of the geometry, including bending in the trajectory due to any electromagnetic field.
+On the other hand, for a physics process the proposed step length is typically selected randomly using a relevant probability distribution for this process.
+Often this involves a characteristic length or time of the process, for example the half-life of a particle that will decay.
+Out of all possible step limits the process proposing the shortest limit (or if the particle is at rest, the soonest limit) is chosen.
+The current position and momentum of the particle is updated accordingly and any secondary particles produced are prepared for tracking.
+
+Determining which processes are applied to which particles and how each process is modelled is an important part of building a Geant4 simulation; the library provides a list of standard physics lists to help the process.
+Choosing the right physics list depends on the goal of the simulation, for example which particles are involved, what energy ranges are interesting, which background effects must be included.
+To simulate \COMET the QGSP\_BERT\_HP physics list~\cite{Geant4:physicsLists} was chosen as a starting point.
+This model is expected to perform well for low energy dosimetry, shielding and neutron calculations~\cite{Geant4:PhysicsListsRecommends}.
+
+On top of this physics list, custom changes have been made to the way negative muons are treated once stopped in material.
+COMET is unusual in the field of modern particle physics for dealing with muons at very low energy, unlike at the \acv{CERN} experiments for example, where they are normally treated as minimally-ionising particles (MIPs).
+As a result,  low-energy negative muons are somewhat crudely modelled by the default physics processes of Geant4.
+In addition to this, for the COMET experiment it is important to add the process of coherent \mueconv, which as a currently unobserved process is not included in Geant4.
+
+In the \ac{sm}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
+As previously discussed, the end-point for electrons coming muon \ac{DIO} reaches up to the \mueconv limit, or around 105~MeV/c.  
+Vanilla Geant4 however is unable to produce this tail, and on aluminium is only able to produce electrons up to around 60 MeV/c.  
+This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction with a boost factor set by the muon binding energy.
+A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:DIO} where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
+
+Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available but limited data and the default Geant4 model.
+For example, the AlCap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
+This showed that proton emission occurs for around 3~\% of all nuclear captured muons; Geant4 produces around around 7 to 8 times more than this.
+The overal shape of the proton spectrum looks wrong as well.  
+Although the AlCap result is still only preliminary, the spectrum observed there is much softer than produced by standard Geant4 as shown in \fig{software:MuCaptureProtons}.
+
+Standard Geant4 models nuclear capture of negative muons using a Bertini cascade which was developed using incident hadrons~\cite{Geant4:Bertini}.
+Muon nuclear capture is thought to occur via a combination of direct capture on a proton, producing a neutron, or via an interaction with a set of clustered nucleons.
+The latter is typically invoked to explain proton emission.
+The Bertini cascade model handles negative muon capture by first handling the prompt process of muon capture on the nucleons then cascading the resultant nucleons through the nucleus.
+A point within the nucleus is chosen homogeneously and either a proton or nucleon pair interacted with the muon.
+It is not clear what causes the discrepancy between this model and the experimentally observed result for proton emissions.
+
+\subsubsection{Extending the physics processes}
+To resolve the issues mentioned custom physics classes have been added to the \COMET simulation.
+The key design goal of these classes was to allow future improvements in the experimental and theoretical inputs to be added yet decouple the implementation from the normal Geant4 implementation so that future updates to Geant4 could easily be absorbed.
+
+\Fig{software:ExtendedMuonClasses} shows the class interaction diagram for the extended stopped negative muon physics modelling.
 
 %\subsection{Resampling With the Hit Merger}
