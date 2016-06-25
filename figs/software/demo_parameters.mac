@@ -1,0 +1,20 @@
+/comet/Torus2/TS4_First/Dimension InnerR = 23*cm                                 
+/comet/Torus2/TS4_First/Dimension OuterR = [InnerR]+22*mm                        
+/comet/Torus2/TS4_First/Dimension Length = 10*cm                                 
+/comet/Torus2/TS4_First/Material  Material = Copper                              
+
+/comet/Torus2/TS4_Middle/Dimension InnerR = 23*cm                                
+/comet/Torus2/TS4_Middle/Dimension OuterR = [InnerR]+43*mm                       
+/comet/Torus2/TS4_Middle/Dimension Length = 10*cm                                
+/comet/Torus2/TS4_Middle/Material  Material = Copper                             
+
+/comet/Torus2/TS4_Last/Dimension InnerR = 23*cm                                  
+/comet/Torus2/TS4_Last/Dimension OuterR = [InnerR]+43*mm                         
+/comet/Torus2/TS4_Last/Dimension Length = 10*cm                                  
+/comet/Torus2/TS4_Last/Material  Material = Copper                               
+
+/comet/Torus2/Count Coils:Count = 16                                             
+/comet/Torus2/Angle Coils:PositionPhiStart = 0*degree                            
+/comet/Torus2/Angle Coils:PositionDeltaPhi = ([PhiTotal]-2*[Coils:PositionPhiStart])/([Coils:Count]-1)
+/comet/Torus2/Position (i<[Coils:Count]) Coils:Position = (r=[LargeRadius],theta=90*degree,phi=[Coils:PositionPhiStart]+[i]*[Coils:PositionDeltaPhi])
+/comet/Torus2/Rotation (i<[Coils:Count]) Coils:Rotation = (axis=(1,0,0),angle=90*degree)*(axis=(0,1,0),angle=[Coils:PositionPhiStart]+[i]*[Coils:PositionDeltaPhi])

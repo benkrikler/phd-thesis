@@ -78,3 +78,19 @@ The hadron production code that best reproduces the data depends strongly on whi
 \end{figure}
 }
 
+\newcommand{\FigSimulationPhysicsClasses}{
+\begin{figure}[tb]
+\centering
+%\fbox{
+\includegraphics[width=1.00\textwidth]{figs/software/SimulationMuonPhysicsClasses}
+%}
+\caption{
+The various classes involved in simulating the various processes of stopped negative muons.
+%Classes in red have been implemented for COMET and augment the existing Geant4 classes which are shown in blue.
+The standard Geant4 model is activated by registering `G4MuonMinusCapture' which instantiates `G4MuonMinusBoundDecay' and `G4CascadeInterface' to run the \ac{DIO} and nuclear capture respectively.
+To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' should be registered which sets up `COMETMuonMinusBoundDecayOrConversion' to produce the electron (and possibly neutrinos) from \ac{DIO} or conversion, and `COMETMuonMinusCapture' to do the nuclear capture.
+}
+\figlabel{software:ExtendedMuonClasses}
+\end{figure}
+}
+
