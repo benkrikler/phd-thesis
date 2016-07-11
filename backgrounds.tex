@@ -1,0 +1,39 @@
+\chapter{\phaseII Backgrounds}
+\section{Products of Anti-protons}
+Anti-protons can be produced when the primary 8~GeV proton beam interacts with the production target, creating a proton-antiproton pair:
+\begin{equation}
+p + N(A,Z) \rightarrow p + N^*(A,Z) + p+\bar{p}
+\end{equation}
+Given their relatively large mass, anti-protons travel much more slowly than other products with the same momentum which results in a smearing of the beam structure for anti-protons and their secondaries.
+This makes anti-protons particularly dangerous as the pulsed beam and time-gated detector window are not effective at suppressing the induced backgrounds.
+
+\subsection{Anti-proton Production Rate and Spectrum}
+There is really very little literature on the production of anti-protons from a tungsten target for a range of angles.
+Accordingly most hadron models are particularly under-constrained when it comes to anti-proton production, and indeed the QGSP_BERT_HP model used as the basis for SimG4 is completely unable to produce anti-protons.
+
+In the COMET TDR....
+
+Although tungsten targets seem not to have been studied at all at the right angles and proton energies, a set of papers do exist covering large-angle anti-proton production for a tantulum target (which is adjacent to tungsten on the periodic table) and with 10 GeV protons.
+In particular, angles of 10, 59, 97 and 119\degree providing the invariant double-differential cross section as a function of anti-proton momentum.
+\Fig{bg:antiprotons:cross-sections} shows the data from these papers.  
+In much the same was for pion production, it is clear the spectrum at large angles becomes considerably softer whilst the overall rate falls quickly.
+To convert the double differential invariant (per-nucleon) cross sections $\tilde{\sigma}(\theta)$ given in the literature into a production rate per \ac{POT}, $R(\theta)$ , the following formula is used:
+\begin{equation}
+R(\theta)=
+\end{equation}
+
+To build the limited number of data-points from this paper into a complete but conservative spectrum, empirical fits to the data were performed after adding two data points for the minimum and maximum momentum.
+The minimum momentum only added the constraint that at zero momentum the cross section also be zero.
+On the other hand, to calculate the maximum momentum the kinematic end-point was found by considering the entire nucleus and two out-going protons to recoil directly against the anti-proton.
+The value of the end-point kinetic energy and longitudinal and transverse momenta for tungsten and carbon are shown in \fig{bg:antiprotons:end-points} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
+This end-point will be a highly conservative estimate, since in reality not all the nucleus will recoil:  the de Broglie wavelength for a proton with 8~GeV kinetic energy is about 0.15~fm, compared to the 7~fm or so of a tungsten nucleus.
+Additionally, achieving this end-point configuration would be highly phase-space suppressed.
+
+With the addition of these two end-points a fit was constructed by fitting the data up to the final data point with a polynomial of order 4 to 6 (depending on the number of available data points).
+For the high-momentum tails of each spectrum two fits were tried: a straight line fit between the last measured value and the kinematic end-point described above; and an exponential plus constant fitted to the end-point and last two data points.  
+\Fig{bg:antiprotons:fitted-spectra} shows the results of this fitting procedure, where it can be seen that a low momentum peak is visible and a high momentum tail well described.
+Whilst these spectra are very likely not an accurate representation of the true production spectrum, they serve as useful upper bounds which can be used as inputs to estimate the antiproton background rate.
+
+
+\subsection{Anti-proton Transmission}
+\subsection{Delayed Pion Production}
