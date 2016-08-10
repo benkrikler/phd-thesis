@@ -53,27 +53,28 @@ Schematic layout of COMET \phaseI including the two detector systems that will r
 \newcommand{\TabBackgroundSummary}{
 \begin{table}
 \centering
+%	\renewcommand{\arraystretch}{1} % Default value: 1
 \begin{tabular}{lld{5}d{5}}
      \hline
      \hline\\[-1.8ex]
-     Type           & Background & \multicolumn{2}{c}{Predicted number of events during run} \\
-                    &  & \multicolumn{1}{c}{\phaseI \cite{TDR2016}} & \multicolumn{1}{c}{\phaseII \cite{CDRphase2} } \\
+     Type           & Background & \multicolumn{2}{c}{Number of events during run} \\
+		    &  & \multicolumn{1}{c}{\phaseI \cite{TDR2016}} & \multicolumn{1}{c}{\phaseII\cite{CDRphase2}\hspace{-0.5cm}{}~} \\
      \hline\\[-1.8ex]
      Intrinsic & Muon Decay-in-Orbit                       & 0.01              & 0.15    \\
                & Radiative Muon Capture                    & 0.0019            & <0.001  \\
                & $\mu^-$ Capture w/ n Emission             & <0.001            & <0.001  \\
                & $\mu^-$ Capture w/ Charged Part. Emission & <0.001            & <0.001  \\
      Prompt    & Radiative Pion Capture                    & 0.00028           & 0.05    \\
-               & Beam Electrons                            & \multicolumn{1}{c}{\multirow{3}{*}{$\Bigg\}\le$0.0038}\hspace{4pt}{}~} & <0.1^*  \\
+               & Beam Electrons                            & \multicolumn{1}{c}{\multirow{3}{*}{$\Bigg\}\le0.0038$}\hspace{4pt}{}~} & <0.1^*  \\
                & Muon Decay in Flight                      &         & <0.0002 \\
                & Pion Decay in Flight                      &                  & <0.0001 \\
-               & Neutron Induced                           & \sim10^{-9}          & 0.024   \\
+               & Neutron Induced                           & \multicolumn{1}{c}{$\sim10^{-9}$\hspace{1ex}{}~}          & 0.024   \\
 %               & Other beam induced B.G.                   & <2.8\times10^{-6} & -       \\
      Delayed   & Delayed Radiative Pion Capture            & \sim0             & 0.002   \\
                & Anti-proton Induced                       & 0.0012            & 0.007   \\
                & Other delayed B.G.                        & \sim0             & -       \\
-     Cosmic    & Cosmic Ray Muons                          & -                 & 0.002   \\
-               & Electrons from Cosmic Ray Muons           & <0.01             & 0.002   \\
+	Cosmic    & Cosmic Ray Muons                          & \multicolumn{1}{c}{\multirow{2}{*}{$\bigg\}\le0.01$}\hspace{17pt}{}~}                 & 0.002   \\
+               & Electrons from Cosmic Ray Muons           &                   & 0.002   \\
      \hline\\[-1.8ex]
      \multicolumn{2}{c}{Total background}                  & <0.032            & <0.34    \\
      \multicolumn{2}{c}{Signal (Assuming $B=1\times10^{-16}$)} & 0.31          & 3.8     \\
