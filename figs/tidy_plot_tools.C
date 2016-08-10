@@ -35,21 +35,22 @@ const double kMax=-999999999999999999;
 }
 
 TString gTidyPlotCurrentPlotName;
-void SavePlot(const char* filename=0,const char* extension=0,bool makeRootFile=true){
+void SavePlot(const char* extension=0,const char* directory=NULL, const char* filename=NULL,bool makeRootFile=true){
   if(gTidyPlotCurrentPlotName.Length()==0) {
     cout<<"Error: It looks like there is no current plot (gTidyPlotCurrentPlotName is empty)"<<endl;
     return;
   }
-  const char* name=Form("Tidied_%s",gTidyPlotCurrentPlotName.Data());
-  if(filename) name=filename;
+  TString name=Form("Tidied_%s",gTidyPlotCurrentPlotName.Data());
+  if(filename!=NULL) name=filename;
+  if(directory) name=Form("%s/%s",directory,name.Data());
 
   if(!extension){
-    gPad->Print(Form("%s.pdf",name));
-    gPad->Print(Form("%s.png",name));
+    gPad->SaveAs(Form("%s.pdf",name.Data()));
+    gPad->SaveAs(Form("%s.png",name.Data()));
   } else{
-    gPad->Print(Form("%s.%s",name,extension));
+    gPad->SaveAs(Form("%s.%s",name.Data(),extension));
   }
-  if(makeRootFile) gPad->Print(Form("%s.root",name));
+  if(makeRootFile) gPad->SaveAs(Form("%s.root",name.Data()));
 
 }
 
@@ -238,6 +239,7 @@ struct PlotConfig{
    double pad_margin_right;
    double pad_margin_left;
 
+   int marker_color;
    double line_width;
 
    int rebin_x;
@@ -255,6 +257,9 @@ struct PlotConfig{
    bool log_z;
    bool log_y;
    bool log_x;
+   bool grid_y;
+   bool grid_x;
+
 
   private:
    std::vector<AnnotatedLine*> lines;
@@ -300,11 +305,13 @@ struct PlotConfig{
      canvas_height=0;
      canvas_grow=1;
      canvas_ratio=1;
+     marker_color=kBlack;
      line_width=1;
      ClearLines();
      _legend=NULL;
      _palette=NULL;
      log_z=log_y=log_x=false;
+     grid_x=grid_y=false;
    }
    void AddLine(AnnotatedLine& line){
        lines.push_back(&line);
@@ -359,6 +366,8 @@ void PlotConfig::FixCanvas(){
   if(log_x)gPad->SetLogx(); else gPad->SetLogx(0);
   if(log_y)gPad->SetLogy(); else gPad->SetLogy(0);
   if(log_z)gPad->SetLogz(); else gPad->SetLogz(0);
+  if(grid_x)gPad->SetGridx(); else gPad->SetGridx(0);
+  if(grid_y)gPad->SetGridy(); else gPad->SetGridy(0);
 
   gPad->Update();
   gPad->Draw();
@@ -427,6 +436,17 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
               NormaliseStack((THStack*) hist,normalise);
       }else{
               cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+      }
+    }
+    if(marker_color!=kBlack){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->SetMarkerColor(marker_color);
+      //} else if(hist->InheritsFrom("THStack")){
+      //        StackSetLineWidth((THStack*) hist,line_width);
+      //}else if(hist->InheritsFrom("TMultiGraph")){
+      //        MultiGraphSetLineWidth((TMultiGraph*) hist,line_width);
+      }else{
+              cout<<"Error: Cannot change marker colour that is not derived from TH1 "<<endl;
       }
     }
     if(line_width!=1){
