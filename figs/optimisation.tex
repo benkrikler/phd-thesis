@@ -1,0 +1,106 @@
+\newcommand{\TabOptimisationParameters}{
+\begin{table}[tb]
+\begin{tabular}{ll}
+	\hline
+	Region for optimisation & Approx.\ No.\  of parameters \\
+	\hline
+	Production target dimensions and location & $3+3$ \\
+	Torus1 dipole field strength & 1 \\
+	Torus2 dipole field strength & 1 \\
+	Muon beam collimator shapes, position, and material & $3+1+1$ \\
+	Stopping target shape and location & $4+3$ \\
+	Beam blocker position, form, and material& $3+3+1$ \\
+	Electron spectrometer dipole field strength& 1 \\
+	DIO blockers in the spectrometer & $4$ \\
+	\hline
+	Approx. total number of parameters& 32 \\
+	\hline
+\end{tabular}
+	\caption{\tablabel{optimisation:possible-parameters}%
+	The list of parameters that can be optimised and an estimate for the number of parameters that this represents.
+	In the case of the target, beam blocker and collimator shapes the number of parameters is only approximate; crudely speaking there is at least a width, length and height but in principle one could have a very irregular shape that cannot be parametrised by only three numbers, for example shapes that change as a function of distance along the beamline.
+}
+\end{table}
+}
+
+\newcommand{\FigOptimProdTgtLength}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
+\caption{
+Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
+Target length is given as half-length which is the Geant4 convention.  
+}
+\label{optimisation:ProdTgtSec:Length:Momentum}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_toZero}}
+\caption{\figlabel{optimisation:ProdTgtSec:Length:Integral}
+Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
+}
+\end{figure}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_ratios}}
+\caption{\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio}
+Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimProdTgtRad}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_momentum}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_momentum}}
+\caption{
+Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target radii.
+}
+\label{optimisation:ProdTgtSec:Radius:Momentum}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_toZero}}
+\caption{\figlabel{optimisation:ProdTgtSec:Radius:Integral}
+Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
+}
+\end{figure}
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}}
+\caption{\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio}
+Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamDipoleMuStops}{
+\begin{figure}[b]
+\centering
+\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.5cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_muons.pdf}
+\caption{\figlabel{optim:muBeamDipole:stoppedMu}
+	Muon stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
+	A clear anti-correlation is visible which is discussed in the text.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamDipolePiStops}{
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.5cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_pions.pdf}
+\caption{\figlabel{optim:muBeamDipole:stoppedPi}
+	Pion stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
+At the level of statistics used to generate each point, no clear trend is obvious.
+Empty squares are those where no pions stopped in the run.
+}
+\end{figure}
+}

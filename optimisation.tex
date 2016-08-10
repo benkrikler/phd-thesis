@@ -1,52 +1,77 @@
+\input{figs/optimisation.tex}
 \chapter{Phase-II Optimisation}
 \sectlabel{phaseII-optimisation}
-\begin{easylist}
-# Before a substantial sensitivity estimate can be made, need a solidly optimised design
-# Aiming for \sensePII within a single year of running
-# Designs previously optimised \cite{CDR}, and these results are used as nominal design / starting point
-# Fresh optimisation using new software / simulation, updated fieldmaps, physics lists and geometry
-# Some aspects fixed already since \phaseI under construction: Experiment hall, Torus1, detector solenoid, fieldmap and coil parameters?
-# Key areas for optimising:
-## Production target dimensions
-## Torus1 dipole field strength
-## Torus2 dipole field strength
-## Electron spectrometer dipole field strength
-## collimator shapes and locations
-## stopping target and beam blocker position and form
-## DIO blockers on spectrometer
-\end{easylist}
+%\begin{easylist}
+%# Before a substantial sensitivity estimate can be made, need a solidly optimised design
+%# Aiming for \sensePII within a single year of running
+%# Designs previously optimised \cite{CDR}, and these results are used as nominal design / starting point
+%# Fresh optimisation using new software / simulation, updated fieldmaps, physics lists and geometry
+%# Some aspects fixed already since \phaseI under construction: Experiment hall, Torus1, detector solenoid, fieldmap and coil parameters?
+%# Key areas for optimising:
+%## Production target dimensions
+%## Torus1 dipole field strength
+%## Torus2 dipole field strength
+%## Electron spectrometer dipole field strength
+%## collimator shapes and locations
+%## stopping target and beam blocker position and form
+%## DIO blockers on spectrometer
+%\end{easylist}
+The last study into the sensitivity of \COMET \phaseII was performed in 2009~\cite{CDRphase2}, before the staged approach and \phaseI design had even been considered.
+That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running with a total expected background count rate of fewer than 0.34 events over the entire run period.
+Since then, the focus of the collaboration has shifted to the \phaseI design and R\&D and the \phaseII design has not been optimisised or studied further.
+
+The purpose of this chapter is to apply the updates in the fieldmap calculation, the geometry handling and physics modelling to revisit the design of \phaseII and demonstrate that it can do at least as well as the previous 2009 design.
+Some aspects of the design have been fixed already by \phaseI such as the experiment hall and the coils and cold-mass of the first stages of the muon beamline.
+The aspects of the experiment that remain open for optimisation are shown in \tab{optimisation:possible-parameters}.
+
+\TabOptimisationParameters
+As an initial configuration, much of the design from the 2009 study will be used, with updates included for the areas of the experiment that have since been refined by the \phaseI design.
 
 \section{Optimisation Strategy}
-\begin{easylist}
-# Take some aspects as fixed
-# Limit scope and approach:
-## Ideally, each aspect optimised in combination to maximise signal acceptance and reduce background
-## How decoupled are each section?
-## In practise such an optimisation is not easy to do, instead aim to produce a baseline optimisation so that all backgrounds / issues can be identified
-## This can then form basis for further optimisation, with perhaps a smarter more integrated approach
-# Method:
-## Production target optimisation
-### Maximise muon and pion yield between 0 and 80 MeV at entrance to muon beamline
-### Parameters to vary: target length, target radius
-## Muon beam optimisation
-### Maximise muon stopping rate in stopping target
-### Minimise pion stopping rate
-### vary dipole along TS2 and TS4
-### vary Collimators: TS2 and at TS3
-## Electron spectrometer optimisation
-### Optimise dipole to increase signal acceptance
-### Optimse DIO blockers so DIO rate per straw is less than 1 kHz
-### Vary solenoidal field to increase separation?
-## Stopping target / beam blocker optimisation
-### Maximise reflection of signal electrons from upstream by tuning target position
-## Detector optimisation
-\end{easylist}
+%\begin{easylist}
+%# Take some aspects as fixed
+%# Limit scope and approach:
+%## Ideally, each aspect optimised in combination to maximise signal acceptance and reduce background
+%## How decoupled are each section?
+%## In practise such an optimisation is not easy to do, instead aim to produce a baseline optimisation so that all backgrounds / issues can be identified
+%## This can then form basis for further optimisation, with perhaps a smarter more integrated approach
+%# Method:
+%## Production target optimisation
+%### Maximise muon and pion yield between 0 and 80 MeV at entrance to muon beamline
+%### Parameters to vary: target length, target radius
+%## Muon beam optimisation
+%### Maximise muon stopping rate in stopping target
+%### Minimise pion stopping rate
+%### vary dipole along TS2 and TS4
+%### vary Collimators: TS2 and at TS3
+%## Electron spectrometer optimisation
+%### Optimise dipole to increase signal acceptance
+%### Optimse DIO blockers so DIO rate per straw is less than 1 kHz
+%### Vary solenoidal field to increase separation?
+%## Stopping target / beam blocker optimisation
+%### Maximise reflection of signal electrons from upstream by tuning target position
+%## Detector optimisation
+%\end{easylist}
 
-\section{Optimisation Goals}
-\begin{easylist}
-# Set sensitivity goal and optimise to reach this
-# Single event sensitivity only considers signal acceptance, but also need to understand backgrounds in terms of final confidence limit that can be set
-\end{easylist}
+Some 32 parameters are listed in \tab{optimisation:possible-parameters} and yet this number alone does not describe the full challenge of optimising the \phaseII design since many of these parameters will be correlated.
+It would seem natural for correlations to exist between the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
+Other less intuitive correlations might also exist however, and a complete optimisation would need to include the impact of these as well.
+
+This optimisation study then can be considered a scan through a (greater than) 32 dimension parameter space.
+A brute force search of such a space would be nightmarishly slow and require an enormous amount of computing power.
+Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
+In the meantime however I am forced to use the technique of 'physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
+The outputs of this optimisation then should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can improve.
+
+The goal of this chapter therefore is not only to optimise the experiment but also to evaluate the correlations.
+ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
+
+%\section{Optimisation Goals}
+%\begin{easylist}
+%# Set sensitivity goal and optimise to reach this
+%# Identify which parameters are strongly correlated to help focus and improve the efficiency of future optimisation studies.
+%# Single event sensitivity only considers signal acceptance, but also need to understand backgrounds in terms of final confidence limit that can be set
+%\end{easylist}
 
 \section{Production Target Optimisation}
 In the \phaseII \ac{CDR}, the production target is given as being 16~cm in
@@ -165,33 +190,7 @@ weaker than apparent here, since in the present sample size, the high momentum
 tail is not well sampled at small target lengths, such that a skew in the
 normalisation might occur.
 
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
-\caption{
-Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
-Target length is given as half-length which is the Geant4 convention.  
-}
-\label{optimisation:ProdTgtSec:Length:Momentum}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_toZero}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_toZero}}
-\caption{\figlabel{optimisation:ProdTgtSec:Length:Integral}
-Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
-}
-\end{figure}
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_ratios}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_ratios}}
-\caption{\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio}
-Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
-}
-\end{figure}
+\FigOptimProdTgtLength
 
 \subsection{Radius scan}
 In parallel to the length optimisation scan, different radii targets were also simulated.
@@ -202,32 +201,7 @@ The results of these scans can be seen in \fig{optimisation:ProdTgtSec:Radius:Mo
 where it can be seen that a maximum in both the muon and pion yields at the entrance to the Torus1 section is achieved at a radius of about 10~mm.
 As in the length scan, the shape variation of the momentum distributions is rather weak as a function of target radius.
 
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_momentum}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_momentum}}
-\caption{
-Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target radii.
-}
-\label{optimisation:ProdTgtSec:Radius:Momentum}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_toZero}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_toZero}}
-\caption{\figlabel{optimisation:ProdTgtSec:Radius:Integral}
-Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
-}
-\end{figure}
-\begin{figure}[t]
-\centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_ratios}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}}
-\caption{\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio}
-Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
-}
-\end{figure}
+\FigOptimProdTgtRad
 
 \subsection{Final Result}
 Since the length and radius scan were performed in parallel, a final cross check was performed where the optimal radius was confirmed at the optimised target length.
@@ -247,3 +221,122 @@ Comparison of the combined muon and pion yield at the entrance to Torus1 for \ph
 \figlabel{optimisation:ProdTgtSec:ComparePhI-II}
 \end{figure}
 
+\section{Dipole Strengths of the Muon Beamline}
+%\begin{easylist}
+%# Production target simulation
+%	## Plots of input distribtion (possibly shown in previous section)
+%	## Mention gas pressure at exit of ProdTgtSec but show why this shouldn't have been an issue
+%# Optimisation technique
+%	## Vary dipole field strength in Torus1 and Torus2 simultaneously
+%	## Mesh scan through parameter space
+%	## Look at muon stopping rate
+%	## Stopping target as in the CDR 
+%	## No collimator material included
+%# Results
+%	## Muon stopping rate vs dipole field plot
+%	## Pion stopping rate vs dipole field plot
+%	## Discussion of corraltion
+%# Selected optimal value
+%\end{easylist}
+
+The full 180\degree bent solenoid that makes up the bulk of the muon transport beam line is actually broken down into two
+90\degree pieces -- Torus1 and Torus2 (also known as TS2 and TS4 by the magnet group).
+Each of these sections has its own dipole field which need not provide the same dipole field strength.
+The Torus1 section has been built already and was previously optimised for both \phaseI~\cite{TDR2016} and \phaseII~\cite{CDRphase2}. 
+The dipole coils that it contains are designed to produce a dipole field of 0.055~T.
+By running a lower current through these coils one could reduce the Torus1 dipole field without too much effort. 
+However if \phaseII should require a greater dipole field strength for this region
+that might be trickier since it could require additional windings to be inserted -- this would not be impossible but might costly.
+
+\subsection{Large-sample Production Target Simulation}
+Before the muon beam section could be optimised, a large set of \ac{POT} events were produced transporting all particles up to the entrance of the muon beam section.
+In total, $2.4\times10^{8}$~POT were simulated through this stage, equivalent to about 1.4 bunches at \phaseII.
+\CHECK{Are these numbers correct?}
+The production target used the optimised geometry from the previous section.
+All particles that hit the surface of the Torus1 container volume were read out for later re-use.
+In addition, particles entering the proton beam dump were also saved if later simulations wished to study their impacts.
+
+\CHECK{plot that shows the momentum distributions of particles in this input}
+
+\begin{table}[t]
+\CHECK{Fill this table in properly}
+\centering
+\begin{tabular}{lp{0.7\textwidth}}
+	\hline
+	\multicolumn{2}{l}{\bf Pions and muons from Prod.\ Tgt.\ simulation}\\
+	%Energy spread, $\sigma_E$ & 0.135 MeV \\
+	\hline
+	\multicolumn{2}{l}{\bf Software configuration}\\
+	Packages & \ttfamily{---}  \\
+	Externals & \ttfamily{---}  \\
+	Fieldmap & 160104 \CHECK{} with additional scale factors applied to Torus dipole field\\
+	\hline
+	\multicolumn{2}{l}{\bf Sample Sizes}\\
+	Final scan &   \\
+\hline
+\end{tabular}
+\caption{Key parameters in the configuration of the muon beamline dipole field optimisation.}
+\tablabel{optimisation:ProdTgtSec:configuration}
+\end{table}
+
+\subsection{The Optimised Dipole Field Strengths}
+The figure-of-merit for this optimisation is the muon stopping rate, which will be maximised at the optimal field configuration.
+%Toshiba have previously performed a realistic field calculation using OPERA for a single coil whose on-axis field has a mean of about 0.055~T.
+To identify such a configuration, a 2D-grid scan was done where the Torus1 and Torus2 dipole fields were simultaneously varied.
+Varying the field strength was done by applying a scale factor to the fieldmaps for each 90\degree section described in \sect{sw:fieldmap}.
+These scale factors were varied in steps of 0.125 (equivalent to 6.875~mT) and for each point muons and pions from $8\times10^6$~POT were transported to the stopping target.
+The stopping rate for each combination of scale factors was then assessed.
+
+\FigOptimMuBeamDipoleMuStops
+\FigOptimMuBeamDipolePiStops
+
+The muon stopping rate as a function of the two dipole field strengths are shon in \fig{optim:muBeamDipole:stoppedMu}.
+A scale factor of 1 on the x-axis means no change to the current \phaseI design and since there is little improvement by moving to larger values for Torus1 the optimal scale factors are chosen to be 1 and 0.5 for the Torus1 and TTorus2 respectively.  
+This translates to dipole field strengths of 0.055 and 0.0275~T respectively.
+\CHECK{Are these the final selected dipole field strengths?}
+
+Also striking from \fig{optim:muBeamDipole:stoppedMu} is the anti-correlation between the two dipole field strengths.  
+Roughly speaking the sum of the optimal dipole field values is constant, \ie $B_1^\text{optimal} + B_2^\text{optimal} = \text{const}$.
+Although this was not previously foreseen, such a correlation can be understood accordingly.
+The stopping target geometry and position is held fixed in this parameter scan, which essentially fixes the upper momentum of muons that can stop in the target.
+%The initial momentum distribution grows roughly linearly with momentum for the momenta of muons that will stop in the target (see the later sections for more on this), which would suggest tuning to the higher momentum would increase the number of muons reaching the target.
+%That effect however is greatly reduced by the fact that the initial muon beam has a very large transverse position profile
+The drift of a particle due to the dipole field is proportional only to the time spent in that dipole field and the dipole field strength, and does not depend on the particle's momentum.
+This means that the total drift due to the Torus1 and Torus2 dipole components is proportional to the weighted sum of the two dipole field strengths, where the weight is the time spent passing through each of the two sections.
+Since each section is the same length, the time for a particle to pass through Torus1 will be roughly the same as the time in Torus2 so that the weights would be roughly equal.
+This leads to the total drift being proportional to the sum of the two dipole fields, and since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed heights with respect to one another, the stopping rate is proportional to the total drift.
+
+With that said, the Torus1 section has a higher pion flux which causes some assymetry between the two sections.
+Keeping pions on-axis in the Torus1 section means that more muons enter the Torus2 section.
+This could explain the slight assymetry seen and the fact that the apparent gradient of the correlation is not quite unity (which would imply equal time spent in each of the two sections if the beam were purely muons).
+
+It is also interesting to consider the pion stopping rate as a function of the dipole field strengths.
+However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate is close to the level of POT events used in the simulation so that the plot is dominated by statistical fluctuations.
+
+\section{Collimators in the Muon Beamline}
+\begin{easylist}
+# Muon beam without collimators
+	## Height vs momentum before and after 180 degrees
+	## Beamline projection for stopped and high-P muons
+	## Subtraction of the good and bad muons to suggest the region of interest for collimators
+	## Why the assymetry upstream?
+# Collimator optimisation
+	## Analytic collimator study to reduce simulation time
+	### Cannot study secondary particles
+	### Assumes all particles entering the collimators are killed
+	## Current collimator from Phase-I are in a different location to those suggested here
+# Results of study, recommended collimator design
+\end{easylist}
+
+\section{Electron Spectrometer's Dipole}
+\section{Stopping Target Position}
+\section{The Beam and Decay-in-Orbit Blockers}
+\section{Revisiting the Torus2 Collimator after Beam Background Studies}
+\section{Summary of optimised parameters}
+\section{Future optimisations}
+\begin{easylist}
+# Stopping target shape, thickness, disk spacing etc
+# High energy electron acceptance vs beamline distance
+# Correlation between dipole fields and stopping target shape
+# Simultaneous signal efficiency and background acceptance optimisation (use final expected confidence limit as figure of merit)
+\end{easylist}
