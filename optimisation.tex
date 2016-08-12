@@ -61,10 +61,10 @@ This optimisation study then can be considered a scan through a (greater than) 3
 A brute force search of such a space would be nightmarishly slow and require an enormous amount of computing power.
 Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
 In the meantime however I am forced to use the technique of 'physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
-The outputs of this optimisation then should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can improve.
 
 The goal of this chapter therefore is not only to optimise the experiment but also to evaluate the correlations.
 ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
+The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can improve.
 
 %\section{Optimisation Goals}
 %\begin{easylist}
@@ -301,14 +301,16 @@ Although this was not previously foreseen, such a correlation can be understood 
 The stopping target geometry and position is held fixed in this parameter scan, which essentially fixes the upper momentum of muons that can stop in the target.
 %The initial momentum distribution grows roughly linearly with momentum for the momenta of muons that will stop in the target (see the later sections for more on this), which would suggest tuning to the higher momentum would increase the number of muons reaching the target.
 %That effect however is greatly reduced by the fact that the initial muon beam has a very large transverse position profile
-The drift of a particle due to the dipole field is proportional only to the time spent in that dipole field and the dipole field strength, and does not depend on the particle's momentum.
-This means that the total drift due to the Torus1 and Torus2 dipole components is proportional to the weighted sum of the two dipole field strengths, where the weight is the time spent passing through each of the two sections.
+The drift of a particle due to the dipole field is proportional only to the distance travelled in that dipole field and the dipole field strength, and does not depend on the particle's momentum.
+This means that the total drift due to the Torus1 and Torus2 dipole components is proportional to the weighted sum of the two dipole field strengths, where the weight is the distance travelled through each of the two sections.
 Since each section is the same length, the time for a particle to pass through Torus1 will be roughly the same as the time in Torus2 so that the weights would be roughly equal.
-This leads to the total drift being proportional to the sum of the two dipole fields, and since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed heights with respect to one another, the stopping rate is proportional to the total drift.
+This leads to the total drift being proportional to the sum of the two dipole fields.
+Since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed height with respect to one another the optimal vertical drift is also fixed so that the sum of the dipole field strengths should also be roughly fixed.
 
 With that said, the Torus1 section has a higher pion flux which causes some assymetry between the two sections.
-Keeping pions on-axis in the Torus1 section means that more muons enter the Torus2 section.
-This could explain the slight assymetry seen and the fact that the apparent gradient of the correlation is not quite unity (which would imply equal time spent in each of the two sections if the beam were purely muons).
+Keeping more pions on-axis in the Torus1 section means that more muons will enter the Torus2 section from those pions that have decayed.
+But since the pion momentum distribution is slightly higher than the muon distribution keeping pions on axis requires a larger dipole field strength.
+This could explain the slight assymetry where the muon stopping rate appears slightly larger if Torus1's field is larger than that of Torus2.
 
 It is also interesting to consider the pion stopping rate as a function of the dipole field strengths.
 However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate is close to the level of POT events used in the simulation so that the plot is dominated by statistical fluctuations.
@@ -329,8 +331,10 @@ However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate i
 \end{easylist}
 
 \section{Electron Spectrometer's Dipole}
+
 \section{Stopping Target Position}
 \section{The Beam and Decay-in-Orbit Blockers}
+
 \section{Revisiting the Torus2 Collimator after Beam Background Studies}
 \section{Summary of optimised parameters}
 \section{Future optimisations}
