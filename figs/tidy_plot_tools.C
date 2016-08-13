@@ -35,13 +35,13 @@ const double kMax=-999999999999999999;
 }
 
 TString gTidyPlotCurrentPlotName;
-void SavePlot(const char* extension=0,const char* directory=NULL, const char* filename=NULL,bool makeRootFile=true){
+void SavePlot(const char* extension=0,const char* directory=NULL, const TString filename="",bool makeRootFile=true){
   if(gTidyPlotCurrentPlotName.Length()==0) {
     cout<<"Error: It looks like there is no current plot (gTidyPlotCurrentPlotName is empty)"<<endl;
     return;
   }
   TString name=Form("Tidied_%s",gTidyPlotCurrentPlotName.Data());
-  if(filename!=NULL) name=filename;
+  if(filename.Length()>0) name=filename;
   if(directory) name=Form("%s/%s",directory,name.Data());
 
   if(!extension){
@@ -210,6 +210,7 @@ struct PlotConfig{
    TString title;
    TString x_axis_label;
    TString y_axis_label;
+   TString z_axis_label;
 
    double x_axis_label_offset;
    double y_axis_label_offset;
@@ -223,6 +224,9 @@ struct PlotConfig{
 
    double x_axis_range_high, x_axis_range_low;
    double y_axis_range_high, y_axis_range_low;
+   double z_axis_range_high, z_axis_range_low;
+
+   bool z_axis_label_centred;
 
    TString legend_header;
    double legend_x1, legend_x2, legend_y1,legend_y2;
@@ -280,6 +284,7 @@ struct PlotConfig{
      y_axis_label_size=0;
      x_axis_range_high=x_axis_range_low=0;
      y_axis_range_high=y_axis_range_low=0;
+     z_axis_range_high=z_axis_range_low=0;
      legend_x1=legend_x2=legend_y1=legend_y2=-1;
      legend_margin=0;
      legend_columns=0;
@@ -296,6 +301,8 @@ struct PlotConfig{
      legend_header="";
      x_axis_label="";
      y_axis_label="";
+     z_axis_label="";
+     z_axis_label_centred=false;
      stats_force_off=false;
      force_draw_option="";
      rebin_x=1;
@@ -382,18 +389,24 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
         if(title.Length()!=0) title=all_titles->At(0)->GetName();
         if(x_axis_label.Length()!=0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
         if(y_axis_label.Length()!=0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+        if(z_axis_label.Length()!=0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
     }
     if(title.Length()!=0) {
         axes->SetTitle(title.Data());
         hist->SetTitle(title.Data());
     }
-    if(x_axis_range_high != x_axis_range_low)
+    if(x_axis_range_high != x_axis_range_low){
       axes->GetXaxis()->UnZoom();
       axes->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
+    }
     if(y_axis_range_high != y_axis_range_low){
 	    axes->GetYaxis()->UnZoom();
       	    axes->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
 	    cout<<"Changed y axis: "<<y_axis_range_low<<" to "<<y_axis_range_high<<endl;
+    }
+    if(z_axis_range_high != z_axis_range_low){
+      axes->GetZaxis()->UnZoom();
+      axes->GetZaxis()->SetRangeUser(z_axis_range_low,z_axis_range_high);
     }
     if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
     if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
@@ -405,6 +418,8 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
     if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes).Data());
     if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes).Data());
+    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes).Data());
+    if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
   }
 
   if(hist){
