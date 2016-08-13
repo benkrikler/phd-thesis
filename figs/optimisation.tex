@@ -85,7 +85,9 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 \newcommand{\FigOptimMuBeamDipoleMuStops}{
 \begin{figure}[b]
 \centering
-\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.5cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_muons.pdf}
+%	\fbox{
+\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.0cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_muons.pdf}
+%}
 \caption{\figlabel{optim:muBeamDipole:stoppedMu}
 	Muon stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
 	A clear anti-correlation is visible which is discussed in the text.
@@ -96,7 +98,9 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 \newcommand{\FigOptimMuBeamDipolePiStops}{
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.5cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_pions.pdf}
+%	\fbox{
+\includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.0cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_pions.pdf}
+%}
 \caption{\figlabel{optim:muBeamDipole:stoppedPi}
 	Pion stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
 At the level of statistics used to generate each point, no clear trend is obvious.
@@ -104,3 +108,95 @@ Empty squares are those where no pions stopped in the run.
 }
 \end{figure}
 }
+
+\newcommand{\FigOptimMuBeamDipoleMuDispersion}{
+\begin{figure}[t]
+\centering 
+\subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Entry}Torus1 Entry]{\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_entrance.pdf}}
+\subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Exit}Torus2 Exit]  {\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_exit.pdf}}
+\caption{\figlabel{optim:MuBeamDipole:MuDispersion}
+Dispersive effect of the 180\degree bent transport solenoid and dipole field on muons.
+No collimating material is yet included, so the high-energy muons being removed is due purely to the beam-pipe itself.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimMuonPaths}{
+\begin{figure}[p]
+\centering 
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:All}All Muons]                  {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_All_muons_wGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Stopped}Stopped Muons]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Stopped_muons_wGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_HighP_muons_wGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Diff}Where to Place Collimators]{\fbox{\includegraphics[width=1\textwidth,trim=5cm 0.5cm 1.5cm 1.3cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Where_to_collimate_wGeom}}}
+\caption{\figlabel{optim:MuBeamCollim:Beamline}
+The heights of muons as they pass along the beamline.  
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:Stopped}: The paths of muons that stop in the target.
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:HighP}: The heights of muons with momentum greater than 70 MeV/c when they enter the region around the stopping target.  These could potentially decay in flight to give electrons with 100 MeV/c or greater.
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:Diff}: The difference between plot \protect\subref{fig:optim:MuBeamCollim:Beamline:Stopped} and plot \protect\subref{fig:optim:MuBeamCollim:Beamline:HighP}.  Regions in dark blue would give the greatest impact in removing high momentum muons whilst leave the stopping muons untouched.
+	These plots should be compared to those of \fig{optim:MuBeamCollim:BeamWColl} once collimators have been introduced.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimTransverseSep}{
+\begin{figure}[t]
+\centering 
+\subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:start}At 0\degree]  {\includegraphics[height=0.35\textheight,trim=0.0cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_Torus1Tor1FirstPoint}}
+\subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:start}At 90\degree] {\includegraphics[height=0.35\textheight,trim=1.7cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_Torus2Monitor_0}}
+\subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:start}At 180\degree]{\includegraphics[height=0.35\textheight,trim=1.7cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_StopTgtSecMonitor_0}}
+\caption{\figlabel{optim:MuBeamCollim:TransverseSep}
+The separation between stopping and dangerous muons.
+The separation is largest at the exit (180\degree), reasonable at the entrance (0\degree), and smallest around the mid-point (90\degree).
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimMuonPathsWColl}{
+\begin{figure}[p]
+\centering 
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_HighPMuons_WGeom}}}\\
+\caption{\figlabel{optim:MuBeamCollim:BeamWColl}
+The heights of muons as they pass along the beamline.  
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:Stopped}: The paths of muons that stop in the target.
+	\protect\subref{fig:optim:MuBeamCollim:Beamline:HighP}: The heights of muons with momentum greater than 70 MeV/c when they enter the region around the stopping target.  These could potentially decay in flight to give electrons with 100 MeV/c or greater.
+	These plots should be compared to those of \fig{optim:MuBeamCollim:Beamline} before collimators were introduced, where it is clear how well the dangerous muons are being suppressed.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimTorusOne}{
+\begin{figure}[t]
+\centering 
+\subfloat[][\figlabel{optim:MuBeamCollim:Torus1:perPOT}Particles Surviving per POT]{\includegraphics[width=0.5\textwidth,trim=0.8cm 0.8cm 0.6cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll1_unNormalised-log.pdf}}
+\subfloat[][\figlabel{optim:MuBeamCollim:Torus1:fraction}Fraction Surviving Collimator]{\includegraphics[width=0.5\textwidth,trim=0.8cm 0.8cm 0.6cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll1_Normalised-lin.pdf}}
+\caption{\figlabel{optim:MuBeamCollim:Torus1}
+The effect of changing the height of the collimator in Torus1 on the particle distributions.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimTorusTwoPerPOT}{
+\begin{figure}[t]
+\centering 
+\includegraphics[width=0.95\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_unNormalised-lin.pdf}
+\caption{\figlabel{optim:MuBeamCollim:Torus2:perPOT}
+The number of particles reaching the end of the Torus2 solenoid per POT for different heights of both collimators in Torus1 and Torus2.
+}
+\end{figure}
+}
+
+
+\newcommand{\FigOptimMuBeamCollimTorusTwoFraction}{
+\begin{figure}[t]
+\centering 
+\includegraphics[width=0.95\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_unNormalised-lin.pdf}
+\caption{\figlabel{optim:MuBeamCollim:Torus2:fraction}
+	The number of particles reaching the end of the Torus2 solenoid relative to the number that enter the Torus1 solenoid (\ie the survival probability) for different heights of both collimators in Torus1 and Torus2.
+}
+\end{figure}
+}
+
