@@ -307,6 +307,8 @@ Since each section is the same length, the time for a particle to pass through T
 This leads to the total drift being proportional to the sum of the two dipole fields.
 Since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed height with respect to one another the optimal vertical drift is also fixed so that the sum of the dipole field strengths should also be roughly fixed.
 
+\FigOptimMuBeamDipoleMuDispersion
+
 With that said, the Torus1 section has a higher pion flux which causes some assymetry between the two sections.
 Keeping more pions on-axis in the Torus1 section means that more muons will enter the Torus2 section from those pions that have decayed.
 But since the pion momentum distribution is slightly higher than the muon distribution keeping pions on axis requires a larger dipole field strength.
@@ -329,44 +331,70 @@ However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate i
 %	## Current collimator from Phase-I are in a different location to those suggested here
 %# Results of study, recommended collimator design
 %\end{easylist}
-\FigOptimMuBeamDipoleMuDispersion
 \Fig{optim:MuBeamDipole:MuDispersion} shows the dispersive effect of the bent solenoid and dipole field on muons passing through the beamline.
-Thanks to this dispersion low momentum muons that can stop in the target and high momentum muons which could produce backgrounds are separated sufficiently so that material in the beam pipe and selectively remove the dangerous, high-momentum muons with only a small impact on the muon stopping rate.
+Thanks to this dispersion low momentum muons that can stop in the target and high momentum muons which could produce backgrounds are separated sufficiently so that material in the beam pipe can selectively remove the dangerous, high-momentum muons with only a small impact on the muon stopping rate.
 
 \subsection{Collimator Placement}
 \FigOptimMuBeamCollimMuonPaths
 The plots in \fig{optim:MuBeamCollim:Beamline} give a sense of where best to locate the collimating material.
 In \fig{optim:MuBeamCollim:Beamline:All} the paths of all muons along the beamline is shown.
 \Fig{optim:MuBeamCollim:Beamline:Stopped} then separates out the muons that stop in the target which should be compared to 
-\fig{optim:MuBeamCollim:Beamline:HighP} which shows the paths of muons that reach the stopping target region with momentum greater than 70~MeV/c (the threshold for a muon to decay to an electron with $p>100$~MeV/c).
+\fig{optim:MuBeamCollim:Beamline:HighP} showing the paths of muons that reach the stopping target region with momentum greater than 70~MeV/c (the threshold for a muon to decay to an electron with $p>100$~MeV/c).
 
 It is interesting to note the apparent asymmetry in the high-momentum muons at the entrance to the Torus1 that can be seen in \fig{optim:MuBeamCollim:Beamline:HighP}.  
-This is not because of some momentum-dependence in the acceptance of the preceding beamline, but due to the fact that muons in that plot are only included if they are `dangerous' in the region around the stopping target region.
+This is not because of some momentum-dependence in the acceptance of the preceding beamline, but due to the fact that muons in that plot are only included if they are `dangerous' in the region around the stopping target.
 Even without additional collimators, the beam pipe itself removes high momentum muons that enter in the lower half of the beamline.
 The validity of only tagging high momentum muons around the stopping target region comes from the assumption that the products of high-momentum muons that decay before this region can be reliably removed.
-It is important then that this assumption be checked, but at this stage checking this shall be left as a task for the future.
+It is important then that this assumption be checked, but for this work this is left as a task for the future.
 
 Finally then in \fig{optim:MuBeamCollim:Beamline:Diff} the difference between the high-momentum muons and the paths of those that stop is shown. 
 Regions in blue on this plot show where many more high-momentum muons pass than stopping muons; it is in these locations that collimator material will be most effective.
 This approach could also be improved, since taking the straight difference between the two plots implies equal weighting for stopping muons and high-momentum ones.
-In reality, whilst a muon tagged as stopping is definitely going to stop, a high-momentum muon should be weighted by the probability to produce a signal-like electron which is then accepted by the beamline.
-That means the weighting for the high-momentum muons should actually be a function of the beamline distance itself which again requires a study into how high-momentum electrons are accepted.
+In reality, whilst a muon tagged as stopping is definitely going to stop, a high-momentum muon should be weighted by the probability to produce a signal-like electron and the probability that this electron survives to be accepted into the detector, passing all analysis cuts.
+This would make the weighting for the high-momentum muons be a function of the beamline distance itself which again requires a study into how high-momentum electrons are accepted.
 However for the purposes of obtaining a qualitative sense of where to collimate the unweighted difference should be sufficient.
 
-The two regions of interest then are in the upper half of the entrance to Torus1 and the lower half of the exit of Torus2.  
-Collimating at the Torus1 entrance is justified by the basis that high momentum muons will tend to have larger gyroradii compared to the muons that stop and at that point the beam is largely on-axis and has not yet been dispersed.
-Collimating at the exit of Torus2 is readily understood on the grounds that the high momentum muons will have all drifted downwards by this point, compared to the low momentum stopping muons.
+Two regions of interest appear: in the upper half of the entrance to Torus1 and the lower half of the exit of Torus2.  
+Collimating at the Torus1 entrance is justified by the basis that high momentum muons will tend to have larger gyroradii compared to the muons that stop, and that at this point the beam is largely on-axis and has not yet been dispersed.
+Collimating at the exit of Torus2 is readily understood on the grounds that the high momentum muons will have all drifted downwards by this point, compared to the low momentum stopping muons which are kept on-axis by the dipole fields.
 
 \FigOptimMuBeamCollimTransverseSep
 These conclusions are backed by the plots shown in \fig{optim:MuBeamCollim:TransverseSep} which show transverse slices through the beamline at the entrance to Torus1 (0\degree of bent solenoid), the midpoint between Torus1 and Torus2 (after 90\degree of bent solenoid) and at the exit of Torus2 (after 180\degree).
-Again it is clear that in the middle of the solenoid the separation between muons that will stop and those that will have momentum greater than or equal to 70~MeV/c in the stopping target region is weakest.
+From these plots one can also see how in the middle of the bent solenoids (at 90\degree) the separation between muons that will stop and those that will have momentum greater than or equal to 70~MeV/c in the stopping target region is weakest, and hence collimators in this location will not be so effective.
 
 \subsection{Collimator Height Optimisation}
 \FigOptimMuBeamCollimTorusOne
-\FigOptimMuBeamCollimTorusTwoPerPOT
+To identify the optimum height for the collimators in a computationally efficient way, events were generated without any collimators included.
+The full three dimensional trajectory of all particles as well as the decay tree were persisted.
+This allows for a `virtual' collimator to be used, where particles that enter a defined region and their secondaries are removed from the downstream plots.
+Whilst this method allows for many collimator shapes and heights to be tested quickly, it comes with a couple of limitations.
+Firstly, the accuracy depends on the trajectory sampling density, which should be fine but this results in large data sizes.
+Secondly, realistic material effects of the collimator cannot be captured, such as the probability a particle is simply scattered rather than stopping completely, or the result of secondary particles produced in the collimator itself.
 \FigOptimMuBeamCollimTorusTwoFraction
+\FigOptimMuBeamCollimTorusTwoContours
 \FigOptimMuBeamCollimMuonPathsWColl
 
+\Fig{optim:MuBeamCollim:Torus1} shows the results of lowering the bottom edge of the collimator material in Torus1.
+\Fig{optim:MuBeamCollim:Torus1:perPOT} shows the probability per \ac{POT} that different types of particle (stopped muons and high momentum muons, pions, and electrons) pass the collimator as a function of the collimator height.
+On the other hand, \fig{optim:MuBeamCollim:Torus1:fraction} shows the same plots but normalised to the total number of each particle type that reaches the collimator in the first place, therefore showing the survival probability along just the collimator region.
+Based on these plots, for a collimator that starts at 120~mm above the beamline axis, 14\% of high momentum pions are removed, high momentum muons are suppressed by 14\% whilst the muon stopping rate is reduced only by 3\%.
+
+For the second collimator at the exit to Torus2, the situation is slightly more complicated since in principle the optimum height could be correlated to the height of the upstream Torus1 collimator.
+To account for this, the virtual collimator technique was applied for both the Torus1 and Torus2 collimator sections simultaneously.
+As a result, the 1-dimensional plots of \fig{optim:MuBeamCollim:Torus1} become 2D as can be seen in 
+%\fig{optim:MuBeamCollim:Torus2:perPOT}, which is normalised to the rate per POT, and 
+\fig{optim:MuBeamCollim:Torus2:fraction}, which is normalised to the particle flux just before the collimator similar to \fig{optim:MuBeamCollim:Torus1:fraction}.
+%\FigOptimMuBeamCollimTorusTwoPerPOT
+
+\Fig{optim:MuBeamCollim:Torus2:contours} represents the stopping and high-momentum plots in a way that is easier to compare the two directly.
+Each line in that plot is a contour showing a change of 2.5 percentage points to the yield.  Total acceptance, or 100\% is in the bottom right corner.
+From this plot it can be seen that whilst keeping more than 97.5\% of the muon stopping rate (the bottom-right most blue contour), the maximum high momentum muon suppression is achieved when the Torus1 collimator sits about 140~mm above the beam axis, and the Torus2 collimator sits about 120~mm below it.
+To be precise, at these collimator values  the muon stopping rate is kept at 99\% of the no-collimator rate, whilst high momentum pions, muons and electrons drop to 27.6\%, 20.9\% and 11\% (although this last value is very statistically limited) respectively, compared to their no-collimator rates.
+At this point the selected values for the collimator heights give conservative background suppressions and tighter values could be chosen.
+Given that backgrounds from high-momentum muons are suppressed compared to the actual rate of `dangerous' muons by the geometric acceptance of the remaining beamline and the timing and momentum cuts this seems reasonable at this stage although this will of course be investigated in the next chapter.
+
+Finally, for comparison to the original plots, \fig{optim:MuBeamCollim:BeamWColl} shows the impact the new collimators have on the muon components of the beam.
+It is clear how greatly reduced the number of muons passing the stopping target region has now become.
 
 
 \section{Electron Spectrometer's Dipole}

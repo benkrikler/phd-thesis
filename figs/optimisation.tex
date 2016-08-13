@@ -110,7 +110,7 @@ Empty squares are those where no pions stopped in the run.
 }
 
 \newcommand{\FigOptimMuBeamDipoleMuDispersion}{
-\begin{figure}[t]
+\begin{figure}[b]
 \centering 
 \subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Entry}Torus1 Entry]{\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_entrance.pdf}}
 \subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Exit}Torus2 Exit]  {\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_exit.pdf}}
@@ -153,7 +153,7 @@ The separation is largest at the exit (180\degree), reasonable at the entrance (
 }
 
 \newcommand{\FigOptimMuBeamCollimMuonPathsWColl}{
-\begin{figure}[p]
+\begin{figure}[p!]
 \centering 
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom}}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom}}}\\
@@ -193,9 +193,22 @@ The number of particles reaching the end of the Torus2 solenoid per POT for diff
 \newcommand{\FigOptimMuBeamCollimTorusTwoFraction}{
 \begin{figure}[t]
 \centering 
-\includegraphics[width=0.95\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_unNormalised-lin.pdf}
+\includegraphics[width=0.8\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_unNormalised-lin.pdf}
 \caption{\figlabel{optim:MuBeamCollim:Torus2:fraction}
 	The number of particles reaching the end of the Torus2 solenoid relative to the number that enter the Torus1 solenoid (\ie the survival probability) for different heights of both collimators in Torus1 and Torus2.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimMuBeamCollimTorusTwoContours}{
+\begin{figure}[tb]
+\centering 
+\includegraphics[width=0.6\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_StoppedVsHighP-Muons.pdf}
+\caption{\figlabel{optim:MuBeamCollim:Torus2:contours}
+2.5\% contours showing how changing the collimator height affects the stopped and high-momentum muon rates.
+Each contour represents a reduction of 2.5 percentage points to the particle flux, with 100\% acceptance sitting in the bottom right.
+Blue lines represent the flux of stopping muons, whilst red lines represent the flux of high-momentum muons.
+So for collimator heights within the first blue contour near the bottom-right corner, less than 2.5\% of stopped muons are lost.
 }
 \end{figure}
 }
