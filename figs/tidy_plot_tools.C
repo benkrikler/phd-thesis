@@ -107,6 +107,7 @@ void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
     LOOP_STACK(graph->GetListOfGraphs(),
         if( object->InheritsFrom("TGraph")){
             ((TGraph*)object)->SetLineWidth(line_width);
+	    cout<<"Changing line width of "<<graph->GetName()<<" to "<<line_width<<endl;
         }else continue;
     )
 }
@@ -188,14 +189,14 @@ struct AnnotatedLine{
   }
 };
 
-TString ParseAxisText(TString input_text,TH1* axes){
+TString ParseAxisText(TString input_text,TH1* axes,int rebin_x,int rebin_y){
     typedef std::map<const char*,const char*> ReplacementList;
     ReplacementList replacements;
     std::stringstream sstream;
-    sstream<<axes->GetXaxis()->GetBinWidth(1);
+    sstream<<axes->GetXaxis()->GetBinWidth(1)*rebin_x;
     replacements["{x_bin_widths}"]=sstream.str().c_str();
     sstream.str(""); sstream.flush();
-    sstream<<axes->GetYaxis()->GetBinWidth(1);
+    sstream<<axes->GetYaxis()->GetBinWidth(1)*rebin_y;
     replacements["{y_bin_widths}"]=sstream.str().c_str();
 
     // remove all anchors from text
@@ -416,9 +417,9 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(y_axis_title_size!=0)   axes->GetYaxis()->SetTitleSize(y_axis_title_size);
     if(x_axis_decimal!=-1)   axes->GetXaxis()->SetDecimals(x_axis_decimal);
     if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
-    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes).Data());
-    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes).Data());
-    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes).Data());
+    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes,rebin_x,rebin_y).Data());
+    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes,rebin_x,rebin_y).Data());
+    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes,rebin_x,rebin_y).Data());
     if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
   }
 
@@ -469,6 +470,8 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
           ((TH1*) hist)->SetLineWidth(line_width);
       } else if(hist->InheritsFrom("THStack")){
               StackSetLineWidth((THStack*) hist,line_width);
+      }else if(hist->InheritsFrom("TGraph")){
+          ((TGraph*) hist)->SetLineWidth(line_width);
       }else if(hist->InheritsFrom("TMultiGraph")){
               MultiGraphSetLineWidth((TMultiGraph*) hist,line_width);
       }else{
@@ -581,6 +584,12 @@ TFile* FixPlot(TString filename,
     }
   }else if(plot_type=="TMultiGraph"){
     TMultiGraph* plot=Find<TMultiGraph>(canvas->GetListOfPrimitives());
+    if(plot) {
+      axis=plot->GetHistogram();
+      hist=plot;
+    }
+  }else if(plot_type=="TGraph"){
+    TGraph* plot=Find<TGraph>(canvas->GetListOfPrimitives());
     if(plot) {
       axis=plot->GetHistogram();
       hist=plot;
