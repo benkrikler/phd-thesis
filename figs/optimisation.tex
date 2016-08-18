@@ -124,10 +124,10 @@ No collimating material is yet included, so the high-energy muons being removed 
 \newcommand{\FigOptimMuBeamCollimMuonPaths}{
 \begin{figure}[p]
 \centering 
-\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:All}All Muons]                  {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_All_muons_wGeom}}}\\
-\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Stopped}Stopped Muons]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Stopped_muons_wGeom}}}\\
-\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_HighP_muons_wGeom}}}\\
-\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Diff}Where to Place Collimators]{\fbox{\includegraphics[width=1\textwidth,trim=5cm 0.5cm 1.5cm 1.3cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Where_to_collimate_wGeom}}}
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:All}All Muons]                  {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_All_muons_wGeom}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Stopped}Stopped Muons]          {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Stopped_muons_wGeom}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_HighP_muons_wGeom}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Diff}Where to Place Collimators]{\includegraphics[width=1\textwidth,trim=5cm 0.5cm 1.5cm 1.3cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Where_to_collimate_wGeom}}
 \caption{\figlabel{optim:MuBeamCollim:Beamline}
 The heights of muons as they pass along the beamline.  
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
@@ -155,9 +155,9 @@ The separation is largest at the exit (180\degree), reasonable at the entrance (
 \newcommand{\FigOptimMuBeamCollimMuonPathsWColl}{
 \begin{figure}[p!]
 \centering 
-\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom}}}\\
-\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom}}}\\
-\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\fbox{\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_HighPMuons_WGeom}}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom}}\\
+\subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_HighPMuons_WGeom}}\\
 \caption{\figlabel{optim:MuBeamCollim:BeamWColl}
 The heights of muons as they pass along the beamline.  
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
@@ -208,8 +208,134 @@ The number of particles reaching the end of the Torus2 solenoid per POT for diff
 2.5\% contours showing how changing the collimator height affects the stopped and high-momentum muon rates.
 Each contour represents a reduction of 2.5 percentage points to the particle flux, with 100\% acceptance sitting in the bottom right.
 Blue lines represent the flux of stopping muons, whilst red lines represent the flux of high-momentum muons.
-So for collimator heights within the first blue contour near the bottom-right corner, less than 2.5\% of stopped muons are lost.
+For example, for collimator heights within the first blue contour towards the bottom-right corner, less than 2.5\% of stopped muons are lost.
 }
 \end{figure}
 }
 
+\newcommand{\FigOptimESTDipoleBeamHeightTwoD}{
+\begin{figure}[tp]
+\centering 
+	\subfloat[][\figlabel{optim:ESTDipole:Beam:0.0}No Dipole]  {\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_00}}\\
+\subfloat[][\figlabel{optim:ESTDipole:Beam:0.1}0.1~T Dipole]{\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_10}}\\
+\subfloat[][\figlabel{optim:ESTDipole:Beam:0.2}0.2~T Dipole]{\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_20}}\\
+\caption{\figlabel{optim:ESTDipole:Beam}
+The heights of signal electrons for different dipole field values.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimESTDipoleBeamHeightMean}{
+\begin{figure}[tb]
+\centering 
+%	\fbox{
+\includegraphics[width=0.8\textwidth,trim=1.0cm 1.3cm 3.8cm 0.9cm,clip]{figs/optimisation/EST_dipole/Tidied_NoShift-Height}
+%}
+\caption{\figlabel{optim:ESTDipole:MeanHeight}
+Mean height of signal electrons for different values of the dipole field strength.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimESTDipoleBeamFluxMean}{
+\begin{figure}[tb]
+\centering 
+\includegraphics[width=0.8\textwidth,trim=1.0cm 0.3cm 3.8cm 1.8cm,clip]{figs/optimisation/EST_dipole/Tidied_NoShift-Flux}
+\caption{\figlabel{optim:ESTDipole:MeanFlux}
+Survival probability for signal electrons as a function of the distance along the beamline for different values of the electron spectrometer's dipole field strengths.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimESTDipoleAcceptanceVsDipole}{
+\begin{figure}[tb]
+\centering 
+\includegraphics[width=0.6\textwidth,trim=0.3cm 0.3cm 1.9cm 1.1cm,clip]{figs/optimisation/EST_dipole/Tidied_acceptance}
+\caption{\figlabel{optim:ESTDipole:acceptance}
+Geometric acceptance into the StrECAL detector as a function of the dipole field strength over the electron spectrometer.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimStopTgtPosMuStops}{
+\begin{figure}[tb]
+\centering 
+%	\fbox{
+\includegraphics[width=0.7\textwidth,trim=2.0cm 0.05cm 0.9cm 0.3cm,clip]{figs/optimisation/StopTgtPosition/Tidied_MuonStoppingRate.pdf}
+%}
+\caption{\figlabel{optim:StopTgtPos:MuStops}
+Muon stopping rate per \ac{POT} for different target positions.
+The linear behaviour arises from the reduced field strength and fixed target radius such that fewer muons impact the target as it is moved downstream.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimStopTgtPosSensitivitySpect}{
+\begin{figure}[tb]
+\centering 
+%	\fbox{
+\includegraphics[width=0.9\textwidth,,trim=1.3cm 0.2cm 0.7cm 0.6cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum.pdf}
+%}
+\caption{\figlabel{optim:StopTgtPos:AcceptedMomSpect}
+The momentum dependence of the electron acceptance into the detector for different target positions.
+The spectrum for each target position is normalised to the muon stopping rate for that position, such that each 
+The linear behaviour arises from the reduced field strength and fixed target radius such that fewer muons impact the target as it is moved downstream.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimStopTgtPosSensitivityNoBeamBlock}{
+\begin{figure}[tb]
+\centering 
+%	\fbox{
+\includegraphics[width=0.9\textwidth,trim=1.3cm 0.2cm 0.7cm 0.6cm,clip]{figs/optimisation/StopTgtPosition/Tidied_NoBeamBlocker-AcceptedMomentum.pdf}
+%}
+\caption{\figlabel{optim:StopTgtPos:AcceptedMomSpectNoBeamBlock}
+The momentum dependence of the electron acceptance into the detector for different target positions when the beam blocker is removed.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimStopTgtPosSensitivityIntegral}{
+\begin{figure}[tb]
+\centering 
+%	\fbox{
+\subfloat[][\figlabel{optim:StopTgtPos:AcceptIntegral:Adjacent}Sensitivity]{%
+\includegraphics[width=0.45\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_adjacent.pdf}}
+\subfloat[][\figlabel{optim:StopTgtPos:AcceptIntegral:Ratio}Change in Shape]{%
+\includegraphics[width=0.45\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_ratios.pdf}}
+%}
+\caption{\figlabel{optim:StopTgtPos:AcceptIntegral}
+\protect\subref{fig:optim:StopTgtPos:AcceptIntegral:Adjacent} 
+The variation in sensitivity (acceptance $\times$ stopping rate) to electrons with different momenta as a function of the target position with respect to the nominal location. 
+The darkest red line towards the top of the plot represents the sensitivity to signal, and it is that line that should therefore be maximised.
+\protect\subref{fig:optim:StopTgtPos:AcceptIntegral:Ratio} 
+The change in the shape of the acceptance vs. momentum spectrum as a function of the stopping target location.
+}
+\end{figure}
+}
+
+%\newcommand{\FigOptimStopTgtPosSensitivityIntegral}{
+%\begin{figure}[tb]
+%\centering 
+%%	\fbox{
+%\includegraphics[width=0.9\textwidth,trim=1.2cm 0.05cm 0.9cm 0.6cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_adjacent.pdf}
+%%}
+%\caption{\figlabel{optim:StopTgtPos:AcceptedIntegrated}
+%The variation in sensitivity to different momentum electrons as a function of the target position, with respect to the nominal location.
+%The darkest red line towards the top of the plot represents the signal sensitivity, and it is that line that should therefore be maximised.
+%}
+%\end{figure}
+%}
+%
+%\newcommand{\FigOptimStopTgtPosSensitivityIntegralRatio}{
+%\begin{figure}[tb]
+%\centering 
+%%	\fbox{
+%\includegraphics[width=0.9\textwidth,trim=1.2cm 0.05cm 0.9cm 0.6cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_ratios.pdf}
+%%}
+%\caption{\figlabel{optim:StopTgtPos:AcceptedIntegratedRatio}
+%The relative avvep
+%}
+%\end{figure}
+%}

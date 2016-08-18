@@ -307,8 +307,6 @@ Since each section is the same length, the time for a particle to pass through T
 This leads to the total drift being proportional to the sum of the two dipole fields.
 Since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed height with respect to one another the optimal vertical drift is also fixed so that the sum of the dipole field strengths should also be roughly fixed.
 
-\FigOptimMuBeamDipoleMuDispersion
-
 With that said, the Torus1 section has a higher pion flux which causes some assymetry between the two sections.
 Keeping more pions on-axis in the Torus1 section means that more muons will enter the Torus2 section from those pions that have decayed.
 But since the pion momentum distribution is slightly higher than the muon distribution keeping pions on axis requires a larger dipole field strength.
@@ -317,7 +315,49 @@ This could explain the slight assymetry where the muon stopping rate appears sli
 It is also interesting to consider the pion stopping rate as a function of the dipole field strengths.
 However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate is close to the level of POT events used in the simulation so that the plot is dominated by statistical fluctuations.
 
+\section{Electron Spectrometer's Dipole}
+\begin{easylist}
+# Method
+	## Realistic muon stopping distribution
+	## Signal electrons at the target 
+	## vary the dipole field strength and study the acceptance
+	## Uniform dipole field with sharp turn-on
+# Signal height vs. dipole field strength
+	## 2D plots for no dipole, 0.1 T and 0.2 T
+	## Stack of 1D mean heights
+# Signal acceptance vs. Dipole field
+	## Survival probability vs beamline pos
+	## Overall acceptance at the detector
+# Mean height for other momenta
+\end{easylist}
+\FigOptimESTDipoleBeamHeightTwoD
+\FigOptimESTDipoleBeamHeightMean
+\FigOptimESTDipoleBeamFluxMean
+\FigOptimESTDipoleAcceptanceVsDipole
+
+\section{Stopping Target Position}
+\begin{easylist}
+# Method
+	## Shift target position up or downstream by 50 cm 
+	## Muon stopping distribution with realistic beam sim. only include muons for speed
+	## Electron acceptance using realistic stopping distribution
+	## Don't change anything else about the target (size, length, number of disks, beam blocker distance, etc)
+	### Too many parameters, want only to achieve a complete baseline here.
+# Muon stopping rate vs, position
+# Electron acceptance times muon stopping rate = signal sensitivity vs. position
+# Stability of dipole field tune
+# Impact of beam blocker on acceptance
+## See appendix for further discussion and further optimisation in this region
+\end{easylist}
+\FigOptimStopTgtPosMuStops
+\FigOptimStopTgtPosSensitivitySpect
+\FigOptimStopTgtPosSensitivityIntegral
+\FigOptimStopTgtPosSensitivityNoBeamBlock
+
+\section{The Beam and Decay-in-Orbit Blockers}
+
 \section{Collimators in the Muon Beamline}
+\FigOptimMuBeamDipoleMuDispersion
 %\begin{easylist}
 %# Muon beam without collimators
 %	## Height vs momentum before and after 180 degrees
@@ -331,6 +371,8 @@ However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate i
 %	## Current collimator from Phase-I are in a different location to those suggested here
 %# Results of study, recommended collimator design
 %\end{easylist}
+With the beam line optimised for high signal efficiency, one can look at improving the background by adding collimators into the muon beam line to reduce the flux of high-momentum muons and pions.
+
 \Fig{optim:MuBeamDipole:MuDispersion} shows the dispersive effect of the bent solenoid and dipole field on muons passing through the beamline.
 Thanks to this dispersion low momentum muons that can stop in the target and high momentum muons which could produce backgrounds are separated sufficiently so that material in the beam pipe can selectively remove the dangerous, high-momentum muons with only a small impact on the muon stopping rate.
 
@@ -397,12 +439,7 @@ Finally, for comparison to the original plots, \fig{optim:MuBeamCollim:BeamWColl
 It is clear how greatly reduced the number of muons passing the stopping target region has now become.
 
 
-\section{Electron Spectrometer's Dipole}
-
-\section{Stopping Target Position}
-\section{The Beam and Decay-in-Orbit Blockers}
-
-\section{Revisiting the Torus2 Collimator after Beam Background Studies}
+%\section{Revisiting the Torus2 Collimator after Beam Background Studies}
 \section{Summary of optimised parameters}
 \section{Future optimisations}
 \begin{easylist}
