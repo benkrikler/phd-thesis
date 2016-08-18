@@ -37,8 +37,8 @@ void tidy_plots(const char* ext="png"){
 
   TString top_dir="~/comet/1601w04_StopTarget_DIO_optimisation/";
   //file=FixPlot(top_dir+"StoppingRate_with-without_beamBlocker.root","", config);
-  file=FixPlot(top_dir+"160220_StoppingRate_muons-start_-50.root","TGraph", config);
-  SavePlot(ext,NULL,"Tidied_MuonStoppingRate");
+//  file=FixPlot(top_dir+"160220_StoppingRate_muons-start_-50.root","TGraph", config);
+//  SavePlot(ext,NULL,"Tidied_MuonStoppingRate");
 
   ///////////////////////   Accepted momentum
   config.reset();
@@ -61,13 +61,13 @@ void tidy_plots(const char* ext="png"){
   config.canvas_ratio=1.4;
 
   config.rebin_x=8;
-  file=FixPlot(top_dir+"no_beam_blocked_analysis/160816_remade_plots/NoBeamBlocker-AcceptedMomentum.root","THStack", config);
-  SavePlot(ext);
+//  file=FixPlot(top_dir+"no_beam_blocked_analysis/160816_remade_plots/NoBeamBlocker-AcceptedMomentum.root","THStack", config);
+//  SavePlot(ext);
 
   config.rebin_x=2;
   TString top_dir="~/comet/160213_StopTgtPositionOptimisation/";
-  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum.root","THStack", config);
-  SavePlot(ext);
+//  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum.root","THStack", config);
+//  SavePlot(ext);
 
   config.canvas_ratio=0.8;
   config.legend_text_size= 0.035;
@@ -92,10 +92,9 @@ void tidy_plots(const char* ext="png"){
   config.y_axis_label_offset = 1.2;
   config.y_axis_label    = "Relative Acceptance for Electrons";
   config.y_axis_range_high=1.25;
-  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum-Integrated_ratios.root","TMultiGraph", config);
-  SavePlot(ext);
+//  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum-Integrated_ratios.root","TMultiGraph", config);
+//  SavePlot(ext);
 
-  return;
   ///////////////////////   Integrated momentum acceptance
   config.reset();
   config.y_axis_label_offset = 1.9;
@@ -114,8 +113,8 @@ void tidy_plots(const char* ext="png"){
   config.canvas_grow  = 2;
 
   config.y_axis_label    = "Electron acceptance #times muon stopping rate per POT";
-  file=FixPlot(top_dir+"160216_plots/AcceptedMomentum-Integrated_adjacent.root","TMultiGraph", config);
-  SavePlot("WithBeamBlocker-BinnedAcceptanceVsTgtShift","png");
+//  file=FixPlot(top_dir+"160216_plots/AcceptedMomentum-Integrated_adjacent.root","TMultiGraph", config);
+//  SavePlot("WithBeamBlocker-BinnedAcceptanceVsTgtShift","png");
 
 //  ///////////////////////   Flux 
 //  config.reset();
@@ -145,16 +144,16 @@ void tidy_plots(const char* ext="png"){
 
   config.y_axis_range_high  = 0.8;
   config.y_axis_range_low  = 0;
-  file=FixPlot(top_dir+"160221_plots/-PhiAcceptanceNormalised_050.root","THStack", config);
-  SavePlot("WithBeamBlocker-PhiAccepted-Shift_050cm","png");
+//  file=FixPlot(top_dir+"160221_plots/-PhiAcceptanceNormalised_050.root","THStack", config);
+//  SavePlot("WithBeamBlocker-PhiAccepted-Shift_050cm","png");
 
   config.y_axis_range_high  = 0.65;
   config.canvas_ratio  = 1.3; 
   config.legend_remove  = true; 
-  for(int i=0; i <=100; i+=10){
-	  file=FixPlot(top_dir+Form("160221_plots/-PhiAcceptanceNormalised_%03d.root",i),"THStack", config);
-	  SavePlot(Form("WithBeamBlocker-PhiAccepted-Shift_%03dcm-squeezed",i),"png");
-  }
+//  for(int i=0; i <=100; i+=10){
+//	  file=FixPlot(top_dir+Form("160221_plots/-PhiAcceptanceNormalised_%03d.root",i),"THStack", config);
+//	  SavePlot(Form("WithBeamBlocker-PhiAccepted-Shift_%03dcm-squeezed",i),"png");
+//  }
 
   ///////////////////////   Theta accepted
 //  file=FixPlot(top_dir+"no_beam_blocked_analysis/ThetaAccepted-IntrinsicElectrons-Shift_040cm.root","THStack", config);
@@ -162,18 +161,17 @@ void tidy_plots(const char* ext="png"){
 
   config.y_axis_range_high  = 1.;
   config.canvas_ratio  = 1; 
-  file=FixPlot(top_dir+"160221_plots/-PhiAcceptanceNormalised_050.root","THStack", config);
-  SavePlot("WithBeamBlocker-PhiAccepted-Shift_050cm","png");
+//  file=FixPlot(top_dir+"160221_plots/-PhiAcceptanceNormalised_050.root","THStack", config);
+//  SavePlot("WithBeamBlocker-PhiAccepted-Shift_050cm","png");
 
   config.y_axis_range_high  = 1.1;
   config.canvas_ratio  = 1.3; 
   config.legend_remove  = true; 
-  for(int i=0; i <=100; i+=10){
-	  file=FixPlot(top_dir+Form("160221_plots/-ThetaAcceptanceNormalised_%03d.root",i),"THStack", config);
-	  SavePlot(Form("WithBeamBlocker-ThetaAccepted-Shift_%03dcm-squeezed",i),"png");
-  }
+//  for(int i=0; i <=100; i+=10){
+//	  file=FixPlot(top_dir+Form("160221_plots/-ThetaAcceptanceNormalised_%03d.root",i),"THStack", config);
+//	  SavePlot(Form("WithBeamBlocker-ThetaAccepted-Shift_%03dcm-squeezed",i),"png");
+//  }
 
-  return;
 
 //  ///////////////////////   Heights
 //  config.reset();
@@ -189,7 +187,7 @@ void tidy_plots(const char* ext="png"){
   config.reset();
   config.x_axis_range_low=16000;
   config.x_axis_range_high=33000;
-  config.line_width  = 2;
+  config.line_width  = 1.5;
   //config.shift_plot_x = 0.05;
   //config.x_axis_label    = "Phi Angle (^{#circ})";
   //config.canvas_width = 900;
@@ -203,39 +201,51 @@ void tidy_plots(const char* ext="png"){
   config.legend_x1  = 0.13 ; config.legend_y1  = 0.6;
   config.legend_x2  = 0.4; config.legend_y2  = 0.89;
 
-  AnnotatedLine StopTgtSec_start("",18000, plot::kMin, 18000,plot::kMax);
-  AnnotatedLine        EST_start("",21700, plot::kMin, 21700,plot::kMax);
-  AnnotatedLine     DetSol_start("",28000, plot::kMin, 28000,plot::kMax);
+  AnnotatedLine StopTgtSec_start("",18000, plot::kMin, 18000,plot::kMax);StopTgtSec_start.SetLineAppearance(kMagenta,2);
+  AnnotatedLine        EST_start("",21700, plot::kMin, 21700,plot::kMax);       EST_start.SetLineAppearance(kMagenta,2); 
+  AnnotatedLine     DetSol_start("",28000, plot::kMin, 28000,plot::kMax);    DetSol_start.SetLineAppearance(kMagenta,2);
   config.AddLine(StopTgtSec_start);
   config.AddLine(EST_start);
   config.AddLine(DetSol_start);
 
+  config.legend_text_size= 0.05;
+  config.legend_x1  = 0.9 ; config.legend_y1  = 0.16;
+  config.legend_x2  = 0.98; config.legend_y2  = 0.96;
+  config.legend_columns=1;
+  config.legend_header= "Target Pos.(cm)";
+  config.y_axis_label_size= 0.05;
+  config.x_axis_label_size= 0.05;
+  config.x_axis_label="Distance Along Beam Axis (m)";
+  config.x_axis_title_size=0.06;
+  config.y_axis_title_size=0.06;
+  config.y_axis_label_offset=0.4;
+  config.shift_plot_y=-0.03;
+  config.grid_y=config.grid_x=true;
+  config.title=" ";
+  config.y_axis_label="Height Above Beam Axis (mm)";
+
   config.canvas_height=300;
+  config.y_axis_range_high=100;
+  config.y_axis_range_low=-800;
+  file=FixPlot(top_dir+"160816_plots/-Height-momentum_102.5.root","THStack", config);
+  if(geomHist) Overlay(geomHist,"same",config);
+  SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_102-5");
+
+  file=FixPlot(top_dir+"160816_plots/-Height-momentum_82.5.root","THStack", config);
+  if(geomHist) Overlay(geomHist,"same",config);
+  SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_82-5");
+
+  file=FixPlot(top_dir+"160816_plots/-Height-momentum_62.5.root","THStack", config);
+  if(geomHist) Overlay(geomHist,"same",config);
+  SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_62-5");
+
+  file=FixPlot(top_dir+"160816_plots/-Height-momentum_42.5.root","THStack", config);
+  if(geomHist) Overlay(geomHist,"same",config);
+  SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_42-5");
+
   config.y_axis_range_high=150;
   config.y_axis_range_low=-100;
-  file=FixPlot(top_dir+"160221_plots/-Height-momentum_102.5.root","THStack", config);
+  file=FixPlot(top_dir+"160816_plots/-Height-momentum_102.5.root","THStack", config);
   //if(geomHist) Overlay(geomHist,"same",config);
-  SavePlot("WithBeamBlocker-Height-VaryShifts-Momentum_102.5-Zoom","png");
-
-  config.legend_text_size= 0.025;
-  config.legend_x1  = 0.24;config.legend_y1  = 0.15;
-  config.legend_x2  = 0.47;config.legend_y2  = 0.55;
-
-  config.y_axis_range_high=80;
-  config.y_axis_range_low=-800;
-  file=FixPlot(top_dir+"160221_plots/-Height-momentum_102.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
-  SavePlot("WithBeamBlocker-Height-VaryShifts-Momentum_102.5","png");
-
-  file=FixPlot(top_dir+"160221_plots/-Height-momentum_82.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
-  SavePlot("WithBeamBlocker-Height-VaryShifts-Momentum_82.5","png");
-
-  file=FixPlot(top_dir+"160221_plots/-Height-momentum_62.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
-  SavePlot("WithBeamBlocker-Height-VaryShifts-Momentum_62.5","png");
-
-  file=FixPlot(top_dir+"160221_plots/-Height-momentum_42.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
-  SavePlot("WithBeamBlocker-Height-VaryShifts-Momentum_42.5","png");
+  SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_102-5-Zoom");
 }
