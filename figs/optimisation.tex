@@ -258,7 +258,7 @@ Geometric acceptance into the StrECAL detector as a function of the dipole field
 }
 
 \newcommand{\FigOptimStopTgtPosMuStops}{
-\begin{figure}[tb]
+\begin{figure}[bt]
 \centering 
 %	\fbox{
 \includegraphics[width=0.7\textwidth,trim=2.0cm 0.05cm 0.9cm 0.3cm,clip]{figs/optimisation/StopTgtPosition/Tidied_MuonStoppingRate.pdf}
@@ -301,9 +301,9 @@ The momentum dependence of the electron acceptance into the detector for differe
 \centering 
 %	\fbox{
 \subfloat[][\figlabel{optim:StopTgtPos:AcceptIntegral:Adjacent}Sensitivity]{%
-\includegraphics[width=0.45\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_adjacent.pdf}}
+\includegraphics[width=0.49\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_adjacent.pdf}}
 \subfloat[][\figlabel{optim:StopTgtPos:AcceptIntegral:Ratio}Change in Shape]{%
-\includegraphics[width=0.45\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_ratios.pdf}}
+\includegraphics[width=0.49\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_ratios.pdf}}
 %}
 \caption{\figlabel{optim:StopTgtPos:AcceptIntegral}
 \protect\subref{fig:optim:StopTgtPos:AcceptIntegral:Adjacent} 
@@ -311,6 +311,27 @@ The variation in sensitivity (acceptance $\times$ stopping rate) to electrons wi
 The darkest red line towards the top of the plot represents the sensitivity to signal, and it is that line that should therefore be maximised.
 \protect\subref{fig:optim:StopTgtPos:AcceptIntegral:Ratio} 
 The change in the shape of the acceptance vs. momentum spectrum as a function of the stopping target location.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimStopTgtPosHeights}{
+\begin{figure}[p]
+\centering 
+\subfloat[][\figlabel{optim:StopTgtPos:Height:42.5}Electrons from 40 to 45 MeV/c]{%
+\includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_42-5.pdf}}%
+\\\subfloat[][\figlabel{optim:StopTgtPos:Height:62.5}Electrons from 60 to 65 MeV/c]{%
+\includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_62-5.pdf}}%
+\\\subfloat[][\figlabel{optim:StopTgtPos:Height:82.5}Electrons from 80 to 85 MeV/c]{%
+\includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_82-5.pdf}}%
+\\\subfloat[][\figlabel{optim:StopTgtPos:Height:102.5}Electrons from 100 to 105 MeV/c]{%
+\includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_102-5.pdf}}%
+\\\subfloat[][\figlabel{optim:StopTgtPos:Height:102.5-zoom}Electrons from 100 to 105 MeV/c (Zoomed)]{%
+\includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_102-5-Zoom.pdf}}%
+\caption{\figlabel{optim:StopTgtPos:Height}
+The effect of stopping target position on the height of electrons with a fixed momentum as they pass through the Electron Spectrometer.
+The size of the variation indicates the stability of the dipole tune; the two parameters are clearly correlated.
+Also striking -- particularly in \protect\subref{fig:optim:StopTgtPos:Height:102.5-zoom} -- is the way the dependence on the helical pitch angles is affected by the stopping target position.
 }
 \end{figure}
 }
