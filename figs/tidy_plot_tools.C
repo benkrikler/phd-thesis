@@ -69,6 +69,20 @@ TYPE* Find(TList* list, const TString& name=""){
     return NULL;
 }
 
+void SetHistTitle(TNamed* hist,TString given_title,TString x_axis_label,TString y_axis_label,TString z_axis_label){
+	TString curr_full_title=hist->GetTitle();
+        TObjArray* all_titles=curr_full_title.Tokenize(";");
+        if(given_title.Length()==0) given_title=all_titles->At(0)->GetName();
+        if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
+        if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+        if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
+	TString final_title=given_title+";";
+	final_title+=x_axis_label+";";
+	final_title+=y_axis_label+";";
+	final_title+=z_axis_label+";";
+	hist->SetTitle(final_title.Data());
+}
+
 #define LOOP_STACK(list,body)\
     TList* all_hists=list; \
     TIterator* iterator=all_hists->MakeIterator();\
@@ -204,6 +218,7 @@ TString ParseAxisText(TString input_text,TH1* axes,int rebin_x,int rebin_y){
             i_repl!= replacements.end(); ++i_repl){
 	    input_text.ReplaceAll(i_repl->first,i_repl->second);
     }
+    cout<<input_text<<endl;
     return input_text;
 }
 
@@ -384,17 +399,16 @@ void PlotConfig::FixCanvas(){
 void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
   if(axes){
     TString curr_title=axes->GetTitle();
-    cout<<curr_title<<endl;
     if(curr_title.Contains(";")){
         TObjArray* all_titles=curr_title.Tokenize(";");
-        if(title.Length()!=0) title=all_titles->At(0)->GetName();
-        if(x_axis_label.Length()!=0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
-        if(y_axis_label.Length()!=0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
-        if(z_axis_label.Length()!=0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
+        if(title.Length()==0) title=all_titles->At(0)->GetName();
+        if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
+        if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+        if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
     }
     if(title.Length()!=0) {
         axes->SetTitle(title.Data());
-        hist->SetTitle(title.Data());
+        if(hist)hist->SetTitle(title.Data());
     }
     if(x_axis_range_high != x_axis_range_low){
       axes->GetXaxis()->UnZoom();
@@ -420,6 +434,8 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes,rebin_x,rebin_y).Data());
     if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes,rebin_x,rebin_y).Data());
     if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes,rebin_x,rebin_y).Data());
+    // Need to reset the original histogram title in some cases (eg. THStacks)
+    SetHistTitle(hist,title,x_axis_label,y_axis_label,z_axis_label);
     if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
   }
 
