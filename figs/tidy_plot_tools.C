@@ -70,12 +70,16 @@ TYPE* Find(TList* list, const TString& name=""){
 }
 
 void SetHistTitle(TNamed* hist,TString given_title,TString x_axis_label,TString y_axis_label,TString z_axis_label){
+	if(!hist) return;
+	if(TString(hist->ClassName())!="THStack") return;
 	TString curr_full_title=hist->GetTitle();
         TObjArray* all_titles=curr_full_title.Tokenize(";");
-        if(given_title.Length()==0) given_title=all_titles->At(0)->GetName();
-        if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
-        if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
-        if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
+	if(all_titles && all_titles->GetEntries()>0){
+		if(given_title.Length()==0) given_title=all_titles->At(0)->GetName();
+		if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
+		if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+		if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
+	}
 	TString final_title=given_title+";";
 	final_title+=x_axis_label+";";
 	final_title+=y_axis_label+";";
@@ -124,6 +128,51 @@ void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
 	    cout<<"Changing line width of "<<graph->GetName()<<" to "<<line_width<<endl;
         }else continue;
     )
+}
+
+TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_entry_formula_str ,TString legend_entry_format_str ){
+    legend_build_from.ToLower();
+    if(legend_build_from!="index" && legend_build_from!="legend_obj" && legend_build_from!="line_colour"){
+	    cout<<"Error: Cannot build a legend using any value but the histogram's 'index' or the TNamed 'legend_obj' in the stack (at this time)"<<endl;
+	    return NULL;
+    }
+
+    TFormula* formula=NULL;
+    if (legend_entry_formula_str.Length()>0){
+	    formula=new TFormula("legend_formula",legend_entry_formula_str.Data());
+    }
+   TList* all_hists=stack->GetHists();
+   int entries=all_hists->GetEntries();
+   typedef std::map<double,std::pair<TH1*,TString> > SortedEntryList;
+   SortedEntryList sortedEntries;
+   TLegend* legend=new TLegend();
+   for(int i=0; i<entries;++i){
+	TObject* obj=all_hists->At(i);
+	if(!obj->InheritsFrom("TH1")) continue;
+	TH1* hist=(TH1*)obj;
+
+	TString entry_name;
+	if(legend_build_from=="legend_obj"){
+		TNamed* legend_obj=Find<TNamed>(hist->GetListOfFunctions(), "legend");
+		if(legend_obj)entry_name=legend_obj->GetTitle();
+		legend->AddEntry(hist,entry_name,"l");
+	}
+	if(entry_name.Length()==0){
+		double legend_value=i;
+		if(legend_build_from=="line_colour"){
+			legend_value=(hist->GetLineColor()-gStyle->GetColorPalette(0))*1.0/gStyle->GetNumberOfColors();
+			cout<<"[BuildLegend]  Entry index="<<i<<", colour= "<<legend_value<<endl;
+		}
+		if(formula) legend_value=formula->Eval(legend_value);
+		entry_name=Form(legend_entry_format_str,legend_value);
+		sortedEntries[legend_value]=std::make_pair(hist,entry_name);
+	}
+   }
+   for(SortedEntryList::const_iterator i_entry=sortedEntries.begin();
+	i_entry!=sortedEntries.end(); ++i_entry){
+	legend->AddEntry(i_entry->second.first,i_entry->second.second.Data(),"l");
+   }
+   return legend;
 }
 
 struct AnnotatedLine{
@@ -230,6 +279,7 @@ struct PlotConfig{
 
    double x_axis_label_offset;
    double y_axis_label_offset;
+   double z_axis_label_offset;
    double x_axis_title_size;
    double y_axis_title_size;
    double x_axis_label_size;
@@ -250,6 +300,9 @@ struct PlotConfig{
    double legend_margin;
    double legend_text_size;
    bool legend_remove;
+   TString legend_build_from;
+   TString legend_entry_format;
+   TString legend_entry_formula;
 
    double shift_plot_x;
    double shift_plot_y;
@@ -294,6 +347,7 @@ struct PlotConfig{
    void reset(){
      x_axis_label_offset=0;
      y_axis_label_offset=0;
+     z_axis_label_offset=0;
      x_axis_title_size=0;
      y_axis_title_size=0;
      x_axis_label_size=0;
@@ -306,6 +360,9 @@ struct PlotConfig{
      legend_columns=0;
      legend_text_size=0;
      legend_remove=false;
+     legend_build_from="";
+     legend_entry_format="%lg";
+     legend_entry_formula="";
      x_axis_decimal=-1;
      y_axis_decimal=-1;
      shift_plot_x=0;
@@ -425,6 +482,7 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     }
     if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
     if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
+    if(z_axis_label_offset!=0)   axes->GetZaxis()->SetTitleOffset(z_axis_label_offset);
     if(x_axis_label_size!=0)   axes->GetXaxis()->SetLabelSize(x_axis_label_size);
     if(y_axis_label_size!=0)   axes->GetYaxis()->SetLabelSize(y_axis_label_size);
     if(x_axis_title_size!=0)   axes->GetXaxis()->SetTitleSize(x_axis_title_size);
@@ -515,6 +573,18 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     }
   }
 
+  if(legend_build_from.Length()!=0){
+      if(hist->InheritsFrom("THStack")){
+	      // hide the existing legend if it exists
+	      if(legend){
+		  legend->SetX1NDC(1.1);
+		  legend->SetX2NDC(1.5);
+	      }
+	      legend=BuildLegend((THStack*)hist,legend_build_from,legend_entry_formula,legend_entry_format);
+      }else{
+              cout<<"Error: Cannot add a legend if plot is not made from a THStack"<<endl;
+      }
+  }
   if(legend){
 	  _legend=legend;
     if(legend_x1!=-1) legend->SetX1NDC(legend_x1);
