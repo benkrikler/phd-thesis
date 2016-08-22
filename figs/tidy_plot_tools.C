@@ -121,6 +121,14 @@ void StackSetLineWidth(THStack* stack,double line_width){
     )
 }
 
+void StackSetFillTransparency(THStack* stack,double fill_transparency){
+    LOOP_STACK(stack->GetHists(),
+        if( object->InheritsFrom("TH1")){
+            ((TH1*) object)->SetFillColorAlpha(((TH1*) object)->GetFillColor(),fill_transparency);
+        }else continue;
+    )
+}
+
 void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
     LOOP_STACK(graph->GetListOfGraphs(),
         if( object->InheritsFrom("TGraph")){
@@ -154,8 +162,11 @@ TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_ent
 	TString entry_name;
 	if(legend_build_from=="legend_obj"){
 		TNamed* legend_obj=Find<TNamed>(hist->GetListOfFunctions(), "legend");
-		if(legend_obj)entry_name=legend_obj->GetTitle();
-		legend->AddEntry(hist,entry_name,"l");
+		if(legend_obj){
+			entry_name=legend_obj->GetTitle();
+			legend->AddEntry(hist,entry_name,"l");
+			continue;
+		}
 	}
 	if(entry_name.Length()==0){
 		double legend_value=i;
@@ -313,7 +324,9 @@ struct PlotConfig{
    double pad_margin_left;
 
    int marker_color;
+   double marker_size;
    double line_width;
+   double fill_transparency;
 
    int rebin_x;
    int rebin_y;
@@ -386,7 +399,9 @@ struct PlotConfig{
      canvas_grow=1;
      canvas_ratio=1;
      marker_color=kBlack;
+     marker_size=0;
      line_width=1;
+     fill_transparency=1;
      ClearLines();
      _legend=NULL;
      _palette=NULL;
@@ -528,6 +543,11 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
               cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
       }
     }
+    if(marker_size!=0){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->SetMarkerSize(marker_size);
+      }
+    }
     if(marker_color!=kBlack){
       if(hist->InheritsFrom("TH1")){
           ((TH1*) hist)->SetMarkerColor(marker_color);
@@ -537,6 +557,19 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       //        MultiGraphSetLineWidth((TMultiGraph*) hist,line_width);
       }else{
               cout<<"Error: Cannot change marker colour that is not derived from TH1 "<<endl;
+      }
+    }
+    if(fill_transparency!=1){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->SetFillColorAlpha(((TH1*) hist)->GetFillColor(),fill_transparency);
+      } else if(hist->InheritsFrom("THStack")){
+              StackSetFillTransparency((THStack*) hist,fill_transparency);
+      }else if(hist->InheritsFrom("TGraph")){
+          ((TGraph*) hist)->SetFillColorAlpha(((TGraph*) hist)->GetFillColor(),fill_transparency);
+      //}else if(hist->InheritsFrom("TMultiGraph")){
+      //        MultiGraphSetLineWidth((TMultiGraph*) hist,fill_transparency);
+      }else{
+              cout<<"Error: Cannot set transparency for objects not derived from TH1, THStack, TGraph"<<endl;
       }
     }
     if(line_width!=1){
