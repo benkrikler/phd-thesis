@@ -1,4 +1,4 @@
-void tidy_plots(){
+void tidy_plots(const char* format="png"){
 
   gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
 
@@ -16,21 +16,21 @@ void tidy_plots(){
   config.legend_x2  = 0.85; config.legend_y2  = 0.85;
   config.shift_plot_x  = 0.05;
 
-  // Length, muons
-  config.legend_header   = "Target Half-Length (cm)";
-  file=FixPlot(top_dir+"length_optimisation/mu-minus_momentum.root","THStack", config);
-  SavePlot("Length_mu-minus_momentum","pdf");
-  // Length, pions
-  file=FixPlot(top_dir+"length_optimisation/pi-minus_momentum.root","THStack", config);
-  SavePlot("Length_pi-minus_momentum","pdf");
-
-  // Radius, muons
-  config.legend_header   = "Target Radius (mm)";
-  file=FixPlot(top_dir+"radius_optimisation/mu-minus_momentum.root","THStack", config);
-  SavePlot("Radius_mu-minus_momentum","pdf");
-  // Radius, pions
-  file=FixPlot(top_dir+"radius_optimisation/pi-minus_momentum.root","THStack", config);
-  SavePlot("Radius_pi-minus_momentum","pdf");
+//  // Length, muons
+//  config.legend_header   = "Target Half-Length (cm)";
+//  file=FixPlot(top_dir+"length_optimisation/mu-minus_momentum.root","THStack", config);
+//  SavePlot("Length_mu-minus_momentum",format);
+//  // Length, pions
+//  file=FixPlot(top_dir+"length_optimisation/pi-minus_momentum.root","THStack", config);
+//  SavePlot("Length_pi-minus_momentum",format);
+//
+//  // Radius, muons
+//  config.legend_header   = "Target Radius (mm)";
+//  file=FixPlot(top_dir+"radius_optimisation/mu-minus_momentum.root","THStack", config);
+//  SavePlot("Radius_mu-minus_momentum",format);
+//  // Radius, pions
+//  file=FixPlot(top_dir+"radius_optimisation/pi-minus_momentum.root","THStack", config);
+//  SavePlot("Radius_pi-minus_momentum",format);
 
   //====================================================
   // INTEGRATED SPECTRA
@@ -44,6 +44,8 @@ void tidy_plots(){
   config.legend_x1  = 0.11; config.legend_y1  = 0.8;
   config.legend_x2  = 0.89; config.legend_y2  = 0.89;
   config.legend_columns = 5;
+  config.grid_x=config.grid_y=true;
+  config.y_axis_label_offset = 1.2;
 
   AnnotatedLine cdr_length("Length in CDR '09", 8, plot::kMin, 8, plot::kMax);
   AnnotatedLine cdr_radius("Radius in CDR '09", 4, plot::kMin, 4, plot::kMax);
@@ -57,37 +59,39 @@ void tidy_plots(){
   config.x_axis_label    = "Target Half Length (cm)";
   config.AddLine(cdr_length);
   config.AddLine(optimal_length);
-  // Length, muon
-  config.y_axis_range_high = 12.5;
-  file=FixPlot(top_dir+"length_optimisation/mu-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("Length_mu-minus_integral_toZero","pdf");
-  // Length, pion
-  config.y_axis_range_high = 8;
-  file=FixPlot(top_dir+"length_optimisation/pi-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("Length_pi-minus_integral_toZero","pdf");
+//  // Length, muon
+//  config.y_axis_range_high = 12.5;
+//  file=FixPlot(top_dir+"length_optimisation/mu-minus_integral_toZero.root","TMultiGraph", config);
+//  SavePlot(format,NULL,"Length_mu-minus_integral_toZero");
+//  // Length, pion
+//  config.y_axis_range_high = 8;
+//  file=FixPlot(top_dir+"length_optimisation/pi-minus_integral_toZero.root","TMultiGraph", config);
+//  SavePlot(format,NULL,"Length_pi-minus_integral_toZero");
 
   config.x_axis_label    = "Target Radius (mm)";
   config.ClearLines();
   config.AddLine(cdr_radius);
   config.AddLine(optimal_radius);
-  // Radius, muon
-  config.y_axis_range_high = 18;
-  file=FixPlot(top_dir+"radius_optimisation/mu-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("Radius_mu-minus_integral_toZero","pdf");
-  // Radius, pion
-  config.y_axis_range_high = 11;
-  file=FixPlot(top_dir+"radius_optimisation/pi-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("Radius_pi-minus_integral_toZero","pdf");
+//  // Radius, muon
+//  config.y_axis_range_high = 18;
+//  file=FixPlot(top_dir+"radius_optimisation/mu-minus_integral_toZero.root","TMultiGraph", config);
+//  SavePlot(format,NULL,"Radius_mu-minus_integral_toZero");
+//  // Radius, pion
+//  config.y_axis_range_high = 11;
+//  file=FixPlot(top_dir+"radius_optimisation/pi-minus_integral_toZero.root","TMultiGraph", config);
+//  SavePlot(format,NULL,"Radius_pi-minus_integral_toZero");
 
-  // Radius, muon
-  config.y_axis_range_high = 18;
+  // Radius Final, muon
+  config.normalise=1e-3;
+  config.y_axis_range_high = 22;
   file=FixPlot(top_dir+"radius_optimisation-TotalLength_32cm/mu-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("OptimalLengthRadius_mu-minus_integral_toZero","pdf");
-  // Radius, pion
-  config.y_axis_range_high = 11;
+  SavePlot(format,NULL,"OptimalLengthRadius_mu-minus_integral_toZero");
+  // Radius Final, pion
+  config.y_axis_range_high = 13;
   file=FixPlot(top_dir+"radius_optimisation-TotalLength_32cm/pi-minus_integral_toZero.root","TMultiGraph", config);
-  SavePlot("OptimalLengthRadius_pi-minus_integral_toZero","pdf");
+  SavePlot(format,NULL,"OptimalLengthRadius_pi-minus_integral_toZero");
 
+  return
 
   //====================================================
   // SPECTRAL SHAPE CHANGES
@@ -105,18 +109,18 @@ void tidy_plots(){
   config.x_axis_label    = "Target Half Length (cm)";
   // Length, muons
   file=FixPlot(top_dir+"length_optimisation/mu-minus_integral_ratios.root","TMultiGraph", config);
-  SavePlot("Length_mu-minus_integral_ratios","pdf");
+  SavePlot("Length_mu-minus_integral_ratios",format);
   // Length, pions
   file=FixPlot(top_dir+"length_optimisation/pi-minus_integral_ratios.root","TMultiGraph", config);
-  SavePlot("Length_pi-minus_integral_ratios","pdf");
+  SavePlot("Length_pi-minus_integral_ratios",format);
 
   config.x_axis_label    = "Target Radius (mm)";
   // Radius, muons
   file=FixPlot(top_dir+"radius_optimisation/mu-minus_integral_ratios.root","TMultiGraph", config);
-  SavePlot("Radius_mu-minus_integral_ratios","pdf");
+  SavePlot("Radius_mu-minus_integral_ratios",format);
   // Radius, pions
   file=FixPlot(top_dir+"radius_optimisation/pi-minus_integral_ratios.root","TMultiGraph", config);
-  SavePlot("Radius_pi-minus_integral_ratios","pdf");
+  SavePlot("Radius_pi-minus_integral_ratios",format);
 
 
   //====================================================
@@ -135,5 +139,5 @@ void tidy_plots(){
   config.stats_force_off = true;
 
   file=FixPlot(top_dir+"MuonsAndPionsPerProton_Ph2vsPh1.root","TH1", config);
-  SavePlot("Compare_PhIandII_MuAndPi","pdf");
+  SavePlot("Compare_PhIandII_MuAndPi",format);
 }
