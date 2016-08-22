@@ -96,7 +96,7 @@ Around all of this there are several utility packages, such as the event display
 \sectlabel{COMETSim}
 The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
 For COMET's target single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, fewer than one background events should occur during the run.
-By comparison, some $10^{18}$ and $10^{21}$~protons \CHECK{Is this the right number of protons on target?} will impinge the production target in \phaseI and \phaseII respectively so it is clear that the ability to suppress backgrounds must be demonstrably high.
+By comparison, some $10^{19}$ and $10^{21}$~protons will impinge the production target in \phaseI and \phaseII respectively so it is clear that the ability to suppress backgrounds must be demonstrably high.
 
 Simulation plays a crucial role in making such a demonstration. 
 Before the experiment is built and operated it allows one to optimise crucial aspects of the geometry and parameters, such as the magnetic field strengths or timing cuts.
@@ -168,6 +168,7 @@ Using this scheme, multiple geometries for different stages of COMET have been d
 Each one is able to re-use much of the code for another, such as the experiment hall building which appears in every geometry.
 In addition it has been straight forward to build up significant complexity in key areas such as the production target.
 \Fig{software:geometryScreenshots} shows some images of the geometry that has been created using this scheme.
+\CHECK{Add screenshots of geometry}
 
 A more thorough description of the geometry scheme  in SimG4 as well as a users guide can be found at \url{www.hep.ph.ic.ac.uk/~bek07/comet/SimG4/documentation/index.shtml}.
 
@@ -293,6 +294,7 @@ As previously discussed, the end-point for electrons coming muon \ac{DIO} reache
 Vanilla Geant4 however is unable to produce this tail, and on aluminium is only able to produce electrons up to around 60 MeV/c.  
 This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction with a boost factor set by the muon binding energy.
 A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:DIO} where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
+\CHECK{Add DIO comparison spectrum}
 
 Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available but limited data and the default Geant4 model.
 For example, the AlCap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
