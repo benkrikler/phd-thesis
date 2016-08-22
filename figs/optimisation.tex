@@ -153,7 +153,7 @@ The separation is largest at the exit (180\degree), reasonable at the entrance (
 }
 
 \newcommand{\FigOptimMuBeamCollimMuonPathsWColl}{
-\begin{figure}[p!]
+\begin{figure}[pH]
 \centering 
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\includegraphics[width=1\textwidth,trim=6cm 0.5cm 2.5cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom}}\\
@@ -360,3 +360,67 @@ Also striking -- particularly in \protect\subref{fig:optim:StopTgtPos:Height:102
 %}
 %\end{figure}
 %}
+
+\newcommand{\FigOptimDIOBeamBlockGeometry}{
+\begin{figure}[tb]
+\centering 
+%\fbox{
+\includegraphics[width=0.8\textwidth]{figs/optimisation/BeamAndDIOBlocker/StopTgt_to_Detector-cropped.png}
+%}
+\caption{\figlabel{optim:DIOBeamBlock:Geometry}
+Location of the beam blocker and one possible geometry for the \ac{DIO} blockers, both highlighted in green, shown here before optimisation.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimDIOBeamBlockESTDispersion}{
+\begin{figure}[tb]
+\centering 
+%\fbox{
+\includegraphics[width=0.8\textwidth,trim=0.3cm 0 1.7cm 0.6cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_ElectronDispersion-EST.pdf}
+%}\\\fbox{
+\includegraphics[width=0.8\textwidth,trim=0.3cm 0 1.7cm 0.6cm,clip]{figs/optimisation/BeamAndDIOBlocker/HandTidied_ElectronDispersion-EST-envelope.pdf}
+%\includegraphics[width=0.8\textwidth,trim=1.5cm 0 8.5cm 3.0cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_ElectronDispersion-EST-envelope.png}
+%}
+\caption{\figlabel{optim:DIOBeamBlock:ESTDispersion}
+Momentum-dependent dispersion of electrons passing through the spectrometer.
+Top plot: the mean height of different momenta electrons as a function beamline distance, showing how the drift of the centre of gyration is truly proportional to the momentum.
+Bottom plot: single standard deviation bands for electrons at different momentum, which shows how the envelope for different momenta overlap considerably, reducing the effectiveness of any collimators.
+%Whilst the drift of the centre of gyration is proportional to momentum (top plot), there is reasonable overlap in the overall enevelope
+%Mean height of electrons with different momentum from the stopping target to the detector before adding any DIO blockers and before optimised of the beam blocker.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimDIOBeamBlockAcceptances}{
+\begin{figure}[tb]
+\centering 
+%\fbox{
+\subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:40}40 MeV/c]  {\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_40.pdf}}\hspace{1cm}
+\subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:60}60 MeV/c]  {\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_60.pdf}}\\
+\subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:80}80 MeV/c]  {\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_80.pdf}}\hspace{1cm}
+\subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:100}100 MeV/c]{\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_100.pdf}}
+%}
+\caption{\figlabel{optim:DIOBeamBlock:Acceptance}
+Acceptance into the straw tracker for electrons with different momentum at the stopping target as a function of the beam and DIO blocker dimensions.
+Note the logarthmic scale for the colour bar.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimDIOBeamBlockHitRate}{
+\begin{figure}[tb]
+\centering 
+%\fbox{
+%\hspace{-1.3cm}
+\subfloat[\figlabel{optim:DIOBeamBlock:HitRate}Hit Rate from DIO]               {\includegraphics[width=0.45\textwidth,trim=0.8cm 0.3cm 0.3cm 1.05cm,clip]{figs/optimisation/BeamAndDIOBlocker/HitRate2d.pdf}}\hspace{0.04\textwidth}
+\subfloat[\figlabel{optim:DIOBeamBlock:HitVAccept}Signal Acceptance vs Hit Rate]{\includegraphics[width=0.45\textwidth,trim=0.8cm 0.3cm 0.3cm 1.05cm,clip]{figs/optimisation/BeamAndDIOBlocker/HitRateVsAcceptance2dRatio.pdf}\vspace{1cm}{}}
+%\subfloat[\figlabel{optim:DIOBeamBlock:HitVAccept}Signal Acceptance vs Hit Rate]{\includegraphics[width=0.45\textwidth,trim=0.8cm 0.3cm 2.5cm 1.05cm,clip]{figs/optimisation/BeamAndDIOBlocker/HitRateVsAcceptance2d.pdf}\vspace{1cm}{}}
+%\hspace{0.12\textwidth}
+%}
+\caption{\figlabel{optim:DIOBeamBlock:HitRateAcceptance}
+\protect\subref{fig:optim:DIOBeamBlock:HitRate} Number of straw tracker hits per DIO electron.
+\protect\subref{fig:optim:DIOBeamBlock:HitVAccept} Ratio between the high-momentum electron ($p>100$~MeV/c) acceptance to the number of hits per DIO electron.  Colour is on a logarithmic scale.
+}
+\end{figure}
+}

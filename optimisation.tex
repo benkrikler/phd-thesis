@@ -452,8 +452,6 @@ Having corrected the normalisation of the plots, the conclusion now is that the 
 However the improvement to the sensitivity would have been small: shifting the target back about 20~cm improves the sensitivity by around 2\% compared to the signal acceptance at nominal position.
 %Given this small improvement and the complexity of this region it was decided that the stopping target was kept to the nominal position.
 
-\section{The Beam and Decay-in-Orbit Blockers}
-
 \section{Collimators in the Muon Beamline}
 \FigOptimMuBeamDipoleMuDispersion
 %\begin{easylist}
@@ -502,22 +500,22 @@ Collimating at the exit of Torus2 is readily understood on the grounds that the 
 These conclusions are backed by the plots shown in \fig{optim:MuBeamCollim:TransverseSep} which show transverse slices through the beamline at the entrance to Torus1 (0\degree of bent solenoid), the midpoint between Torus1 and Torus2 (after 90\degree of bent solenoid) and at the exit of Torus2 (after 180\degree).
 From these plots one can also see how in the middle of the bent solenoids (at 90\degree) the separation between muons that will stop and those that will have momentum greater than or equal to 70~MeV/c in the stopping target region is weakest, and hence collimators in this location will not be so effective.
 
-\subsection{Collimator Height Optimisation}
 \FigOptimMuBeamCollimTorusOne
+\FigOptimMuBeamCollimTorusTwoFraction
+\subsection{Collimator Height Optimisation}
 To identify the optimum height for the collimators in a computationally efficient way, events were generated without any collimators included.
 The full three dimensional trajectory of all particles as well as the decay tree were persisted.
 This allows for a `virtual' collimator to be used, where particles that enter a defined region and their secondaries are removed from the downstream plots.
 Whilst this method allows for many collimator shapes and heights to be tested quickly, it comes with a couple of limitations.
 Firstly, the accuracy depends on the trajectory sampling density, which should be fine but this results in large data sizes.
 Secondly, realistic material effects of the collimator cannot be captured, such as the probability a particle is simply scattered rather than stopping completely, or the result of secondary particles produced in the collimator itself.
-\FigOptimMuBeamCollimTorusTwoFraction
-\FigOptimMuBeamCollimTorusTwoContours
-\FigOptimMuBeamCollimMuonPathsWColl
 
 \Fig{optim:MuBeamCollim:Torus1} shows the results of lowering the bottom edge of the collimator material in Torus1.
 \Fig{optim:MuBeamCollim:Torus1:perPOT} shows the probability per \ac{POT} that different types of particle (stopped muons and high momentum muons, pions, and electrons) pass the collimator as a function of the collimator height.
 On the other hand, \fig{optim:MuBeamCollim:Torus1:fraction} shows the same plots but normalised to the total number of each particle type that reaches the collimator in the first place, therefore showing the survival probability along just the collimator region.
 Based on these plots, for a collimator that starts at 120~mm above the beamline axis, 14\% of high momentum pions are removed, high momentum muons are suppressed by 14\% whilst the muon stopping rate is reduced only by 3\%.
+
+\FigOptimMuBeamCollimTorusTwoContours
 
 For the second collimator at the exit to Torus2, the situation is slightly more complicated since in principle the optimum height could be correlated to the height of the upstream Torus1 collimator.
 To account for this, the virtual collimator technique was applied for both the Torus1 and Torus2 collimator sections simultaneously.
@@ -526,6 +524,7 @@ As a result, the 1-dimensional plots of \fig{optim:MuBeamCollim:Torus1} become 2
 \fig{optim:MuBeamCollim:Torus2:fraction}, which is normalised to the particle flux just before the collimator similar to \fig{optim:MuBeamCollim:Torus1:fraction}.
 %\FigOptimMuBeamCollimTorusTwoPerPOT
 
+\FigOptimMuBeamCollimMuonPathsWColl
 \Fig{optim:MuBeamCollim:Torus2:contours} represents the stopping and high-momentum plots in a way that is easier to compare the two directly.
 Each line in that plot is a contour showing a change of 2.5 percentage points to the yield.  Total acceptance, or 100\% is in the bottom right corner.
 From this plot it can be seen that whilst keeping more than 97.5\% of the muon stopping rate (the bottom-right most blue contour), the maximum high momentum muon suppression is achieved when the Torus1 collimator sits about 140~mm above the beam axis, and the Torus2 collimator sits about 120~mm below it.
@@ -535,14 +534,115 @@ Given that backgrounds from high-momentum muons are suppressed compared to the a
 
 Finally, for comparison to the original plots, \fig{optim:MuBeamCollim:BeamWColl} shows the impact the new collimators have on the muon components of the beam.
 It is clear how greatly reduced the number of muons passing the stopping target region has now become.
+\clearpage
 
+\section{The Beam and Decay-in-Orbit Blockers}
+%\begin{easylist}
+%# Dispersion of electrons through the spectrometer
+%# Width of beam plot (1 sigma band around mean height for different momentum?)
+%# Method for optimisation
+%# Goal: Hit rate suppression, not backgrounds
+%# Signal, DIO acceptance
+%# Hit rate
+%\end{easylist}
+\FigOptimDIOBeamBlockGeometry
+\FigOptimDIOBeamBlockESTDispersion
+For every muonic atom formed in the stopping target some 39\% will undergo \acf{DIO}.
+With some $1.4\times10^{8}$~\ac{POT} per bunch and a muon stopping efficiency around $1.7\times10^{-3}$ stops per \ac{POT}, one can expect about $9\times10^{4}$ DIO events per bunch.
+If the detector system were exposed to this level of hits it would be impossible to resolve any signal electrons.
+However, above the end-point energy for electrons coming from free muon decay, the DIO spectrum falls extremely quickly, with around 99\% of DIO electrons being produced with less than 60~MeV/c \CHECK{Are these the exact numbers, is my memory correct?}.
+To this end the electron spectrometer's primary purpose is to disperse away the electrons below 60~MeV/c whilst keep signal electrons on-axis, such that material in the beamline can be tuned to remove the low energy DIO electrons.
+The beam and DIO blockers are highlighted in green in \fig{optim:DIOBeamBlock:Geometry}.
+
+\Fig{optim:DIOBeamBlock:ESTDispersion} demonstrates the dispersion that appears at the end of the spectrometer with the nominal beam blocker design and no DIO blockers in place.
+The DIO blockers will be inserted along the bottom of the spectrometer and tuned to scrape away a sufficient number of DIO electrons, which will tend to travel towards the bottom of the beam pipe.
+However whilst the centre of gyration drifts with a well-behaved proportionality in a bent solenoid, the actual separation between signal and \ac{DIO} electrons is in reality less clear as can be seen by the lower plot in \fig{optim:DIOBeamBlock:ESTDispersion}.
+
+In addition to the DIO blockers along the spectrometer, the material of the beam blocker immediately after the stopping target also plays a role in suppressing the \ac{DIO} rate since low energy electrons remain closer to the beam axis, as can be seen in the lower plot of \fig{optim:DIOBeamBlock:ESTDispersion} around the stopping target.
+
+This section therefore describes a simultaneous optimisation of the beam blocker radius and the DIO blocker height.
+The overall goal is to suppress the DIO rate to less than a single DIO electron per bunch whilst maintain maximal signal acceptance.
+As for the muon beam collimators, we use the analysis-based collimator approach, where no blocking material is included during simulation.
+Instead a high-sampling density for particle trajectories is used such that during analysis particles and their secondaries can be `killed' if they enter a region that would contain material of either the DIO or beam blocker.
+
+\FigOptimDIOBeamBlockAcceptances
+\FigOptimDIOBeamBlockHitRate
+The results of this study are shown in \fig{optim:DIOBeamBlock:Acceptance}, where the geometric acceptance into the detector is shown for four different electron momenta as a function of the beam blocker radius and DIO blocker height.
+It is clear that for all values of the blockers' dimensions, electrons above 100~MeV/c have a much better acceptance.
+
+The mean hit rate per DIO event is shown in \fig{optim:DIOBeamBlock:HitRate}.  
+It is formed by, for each combination of DIO and beam blocker dimension, the weighted integral of the acceptance of electrons as a function of momentum with the mean DIO rate in each momentum bin.
+To compare the hit rate to the acceptance of signal, the ratio between the hit rate and the high-momentum electron acceptance is shown in \fig{optim:DIOBeamBlock:HitVAccept}.
+It is clear from this figure how quickly (note the logarithmic colour scale) the DIO hit rate is suppressed by increasing the DIO and beam blocker dimensions compared to the signal acceptance.
+
+With a beam blocker of 24~cm radius and DIO blockers set to 35~cm below the beam axis, the DIO hit rate is about $2.2\times10^{-5}$ per DIO event, or about 2 DIO hits per bunch.
+For the same blocker dimensions, the geometric signal acceptance is about 0.22\%.
+Given the steep drop-off in hit rate versus signal acceptance around these values a finer scan in this region is an important check for the future.
+What hit rate in the straw tracker is tolerable is a number for future studies.  In \phaseI, the straw tracker is expected to operate with a hit rate around 1~kHz per straw.
+\phaseII will likely use finer straws, but with the current \phaseI design, some 133 straws occupy a layer, so that a total hit rate into the Straw Tracker of around 200~kHz should be acceptable.
+
+Given the scope for future improvements in the granularity of the \phaseII straw tracker and the sensitivity to the beam and DIO blocker dimensions, the somewhat non-conservative values described above of 24~cm and 35~cm for beam blocker radius and DIO~blocker depth below the beam axis are selected here.
 
 %\section{Revisiting the Torus2 Collimator after Beam Background Studies}
 \section{Summary of optimised parameters}
+The complete set of optimised parameters is shown in \tab{optim:AllParameters}.
+
+\begin{table}[btp]
+	\centering
+	%\begin{tabular}{r|lp{6cm}}
+	\begin{tabular}{llm{4cm}}
+		Parameter & Value & Comments \\
+		\hline
+		\hline
+		Production Target Length & 32~cm & \multirow{2}{4cm}{Placed asymmetrically about muon beamline axis} \\
+		Production Target Radius & 1~cm & \\[1ex]
+		\hline
+		Torus1 (TS2) Dipole Strength & 0.055~T & same as \phaseI \\
+		Torus2 (TS4) Dipole Strength & 0.0275~T & same as \phaseI \\
+		\hline
+		Torus1 Entrance Collimator Height& 14~cm above beam axis & From top of beam pipe downwards  \\
+		Torus2 Exit Collimator Height& 12~cm below beam axis & From bottom of beam pipe upwards\\
+		\hline
+		Stopping Target Location& 0~cm& Unchanged from CDR value \\
+		\hline
+		Electron Spectrometer Dipole & -0.18~T& Negative compared to Torus1 and Torus2 dipole fields \\
+		\hline
+		Beam Blocker Radius & 24~cm &  \\
+		DIO Blocker Height & 35~cm below beam axis& From bottom of spectrometer upwards  \\
+		\hline
+		\hline
+	\end{tabular}
+\caption{\tablabel{optim:AllParameters}
+Optimised values for the parameters studied in this chapter.
+Many more parameters remain to be optimised that were considered beyond the scope of the present work.
+}
+\end{table}
+
 \section{Future optimisations}
-\begin{easylist}
-# Stopping target shape, thickness, disk spacing etc
-# High energy electron acceptance vs beamline distance
-# Correlation between dipole fields and stopping target shape
-# Simultaneous signal efficiency and background acceptance optimisation (use final expected confidence limit as figure of merit)
-\end{easylist}
+The primary goal of this work is to update the previous optimisation from the 2009 CDR and provide a new baseline design.
+However whilst touching every aspect of the layout of \phaseII, the optimisation developed here is not exhaustive and there is much scope for further work.
+
+The following list is a short a summary of some of the areas that could be developed further:
+\begin{description}
+\item[ Refine the optimisation criteria]
+	In many of these studies only the signal efficiency, or even some proxy, is used to identify the optimal value of the parameter under question.
+	In reality one ought also to study simultaneously the background rates.  
+	These two quantities should be combined into the expected confidence limits given a null or background-only measurement.
+	At the same time other quantities such as cost and run-time will also need considering, although the latter is likely reduced simultaneously with maximising the overall sensitivity.
+\item[ High energy electron acceptance vs. beamline distance ]
+	When tuning the muon beam collimators, the key goal is to remove high-energy particles that can produce high energy electrons. 
+	A particularly useful study would be to evaluate the acceptance to signal-like electrons which originate along the beamline.
+	This should include those electrons which originate with momentum greater than 105~MeV/c but which arrive at the detector with signal-like energies.
+	With this information, it becomes easier to identify how soon along the beamline one must collimate away the high-energy particles which may lead to improvements in the muon stopping rate or the signal acceptance.
+\item[ Stopping target shape, thickness, and disk spacing ]
+	This study has focussed only on the position of the stopping target.
+	Clearly the actual shape should be studied as well. In particular, given the dispersion in the muon beam, and the changing solenoidal field strength around the target, a target design that uses disks of varying profile or even thickness has potential to improve the experimental sensitivity.  
+\item[ Correlation between dipole fields and stopping target shape ]
+	Since the bent solenoids introduce dispersion into the beam and the dipole fields compensate for this, the height and momentum of the muon beam at the stopping target can be controlled to a degree.
+	Whilst in the optimisation of the muon beam dipoles of this thesis the target shape was held fixed, in principle some of the identified correlations might be different if the target design was allowed to vary simultaneously.  
+	Such a study would clearly involve an enormous parameter space, so perhaps this is a study that could be best performed with a smarter machine-learning based approach.
+\item[ Spectrometer's solenoidal field strength and aperture]
+	Since the dispersive effect of a bent solenoid is inversely proportional to the solenoidal field strength, reducing the field in the spectrometer will likely improve the DIO--signal separation, reducing the hit rate.
+	This could however also affect the signal acceptance since the trajectories will acquire larger envelopes.
+	Increasing the spectrometer aperture size could compensate this, but then one faces an increase in the cost of the spectromter and the detector solenoid which would need to be considered.
+\end{description}
