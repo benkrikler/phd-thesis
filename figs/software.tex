@@ -57,9 +57,24 @@ The Controller of component 1.a in red has access to the parameters managed by C
 \begin{figure}[t]
 \lstinputlisting[style=customc]{figs/software/demo-parameters.mac}
 \caption{
-An example set of parameters definitions which control the building of the Torus2 geometry.
+An example set of parameter definitions which control the geometry for the Torus2.
+Parameter specifications use natural arithmetic notation and can references other parameters, use standard units.
+They can also be formed as sets where each element has a different value, such as the \texttt{Coils:Position} parameter.
 }
 \figlabel{software:geom:paramAssignments}
+\end{figure}
+}
+
+\newcommand{\FigGeometryScreenshots}{
+\begin{figure}[tb]
+        \subfloat[][\figlabel{software:geom:screenshots:phaseI}\phaseI]  {\includegraphics[height=0.25\textheight]{figs/software/Phase-I-UpdateGeom}}\hspace{2ex}%
+        \subfloat[][\figlabel{software:geom:screenshots:phaseII}\phaseII]{\includegraphics[height=0.25\textheight,trim=0 0.3cm 0 2.6cm,clip=true]{figs/software/Phase-II-UpdateGeom.png}}
+\caption{\figlabel{software:geom:screenshots} %
+Two of the possible simulation `worlds' that can be selected at run-time:
+        \protect\subref{fig:software:geom:screenshots:phaseI} \phaseI with the CyDet detector installed, and
+        \protect\subref{fig:software:geom:screenshots:phaseII} \phaseII.  
+	Mutiple \phaseI worlds exist, one for each potential running configuration.
+}
 \end{figure}
 }
 
@@ -75,6 +90,28 @@ Points with error bars are the experimental data.  Left: double differential-pro
 The hadron production code that best reproduces the data depends strongly on which angular region one looks at.
 }
 \figlabel{software:piYield}
+\end{figure}
+}
+
+\newcommand{\FigSoftwarePhysicsSpectra}{
+\begin{figure}[b]
+\centering
+%\fbox{
+\subfloat[][\figlabel{software:customPhysic:DIO}Electrons from $\mu$ Decay-in-Orbit]{
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 0.0cm 1.3cm,clip=true]{figs/software/160822_BoundDecay_Geant4_vs_Czarnecki-lin.pdf}
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 0.0cm 1.3cm,clip=true]{figs/software/160822_BoundDecay_Geant4_vs_Czarnecki-log.pdf}
+}\\
+\subfloat[][\figlabel{software:customPhysic:ProtMuCap}Protons Emitted Following $\mu$ Nuclear Capture]{
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 1.8cm 1.9cm,clip=true]{figs/software/160822_Geant4VsAlcap-lin.pdf}
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 1.8cm 1.9cm,clip=true]{figs/software/160822_Geant4VsAlcap-log.pdf}
+}
+%}
+\caption{
+\figlabel{software:customPhysic}
+Comparison of the realistic spectra for \ac{DIO} electrons, \protect\subref{fig:software:customPhysic:DIO} (normalised to agree at 35~MeV), and protons coming from muon nuclear capture, \protect\subref{fig:software:customPhysic:ProtMuCap} (normalised to have the same maximum value), each on a linear scale (left) and a logarithmic scale (right).
+The \ac{DIO} spectrum used in default Geant4 has a sharp cut-off slightly above the free muon decay end-point, to be compared with the long but steeply falling tail of the Czarnecki \etal theoretical calculation~\cite{Czarnecki2011}.
+The comparison of protons coming from muon capture between the preliminary result from AlCap and default Geant4 shows that the true proton spectrum is much softer than the Geant4 model.
+}
 \end{figure}
 }
 
@@ -94,3 +131,36 @@ To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' s
 \end{figure}
 }
 
+\newcommand{\FigSoftwareFieldMap}{
+\begin{figure}[b]
+\centering
+%\fbox{
+\subfloat[][\figlabel{software:field:Opera}Opera calculation]{
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_Opera.png}
+}
+\subfloat[][\figlabel{software:field:G4Beamline}G4Beamline calculation]{
+\includegraphics[width=0.45\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_G4Beamline.png}
+}
+%}
+\caption{
+\figlabel{software:field}
+Fieldmap produced by \protect\subref{fig:software:field:Opera} Opera and \protect\subref{fig:software:field:G4Beamline} G4Beamline.
+Although the fringe field is larger with the G4Beamline calculation, the lack of material effects make this calculation less reliable.
+Note that the G4Beamline calculation does not include the detector solenoid.
+}
+\end{figure}
+}
+
+\newcommand{\FigSoftwareFieldMapComparison}{
+\begin{figure}[b]
+\centering
+%\fbox{
+\includegraphics[width=0.9\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_ratio_opera-G4Beamline.png}
+%}
+\caption{
+\figlabel{software:field:comparison}
+The ratio of the Opera and G4Beamline calculations shown in \fig{software:field}.
+On-axis the fields are fairly similar although towards the ends of the solenoids the agreement is poorer.
+}
+\end{figure}
+}

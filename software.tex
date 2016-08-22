@@ -162,13 +162,13 @@ To provide the value of a parameter, standard, human readable infix notation all
 In addition parameters can be easily repeated or indexed, such as for the positions of crystals in the ECAL or straws in a straw tracker plane, where the $i$-th position depends on the value of $i$.
 A small demonstration of some valid parameter assignments is shown in \fig{software:geom:paramAssignments}.
 
-\FigGeometryParameters{}
+\FigGeometryParameters
+\FigGeometryScreenshots
 
 Using this scheme, multiple geometries for different stages of COMET have been developed and can be easily swapped between.
 Each one is able to re-use much of the code for another, such as the experiment hall building which appears in every geometry.
 In addition it has been straight forward to build up significant complexity in key areas such as the production target.
-\Fig{software:geometryScreenshots} shows some images of the geometry that has been created using this scheme.
-\CHECK{Add screenshots of geometry}
+\Fig{software:geom:screenshots} shows some images of the geometry that has been created using this scheme.
 
 A more thorough description of the geometry scheme  in SimG4 as well as a users guide can be found at \url{www.hep.ph.ic.ac.uk/~bek07/comet/SimG4/documentation/index.shtml}.
 
@@ -186,6 +186,9 @@ The event display also uses this to show the various hits and tracks overlaid on
 %# Handling of fieldmap information in ICEDUST
 %# Although pure magnetic fields are currently used, electric fields can in principle be added in exactly the same way.
 %\end{easylist}
+
+\FigSoftwareFieldMap
+\FigSoftwareFieldMapComparison
 
 An essential aspect of the \COMET experiment is the static magnetic field that is used along the beam line to capture, focus and disperse charged particles.
 Modelling this field accurately is important to ensure any outcomes of the simulation are reliable.
@@ -207,12 +210,12 @@ The COMET collaboration have used several different methods to perform field map
 G4Beamline~\cite{G4Beamline} is a simulation toolkit that makes numerous extensions to Geant4 and is able to perform simple solenoid calculations directly.
 Whilst it cannot model material effects its speed and simplicity allows quick and simple studies. 
 The methods for solenoid calculations of this open-source project have been incorporated into SimG4, so that the package can directly produce the field for solenoid coils contained in its geometry.
-The resultant fieldmap is shown in \fig{software:fieldmap:G4Beamline}.
+The resultant fieldmap is shown in \fig{software:field:G4Beamline}.
 
 For more elaborate calculations, Opera 3D finite-element-analysis software was used with the TOSCA submodule~\cite{Opera} for static electromagnetic fields.
 This calculation includes non-linear material effects in the yoke and shielding so that the final fieldmap should be much more accurate.
-\Fig{software:fieldmap:opera} shows the fieldmap calculated by Opera in the plane of the beam line axis.
-The difference between the G4Beamline and Opera calculations is given in \fig{software:fieldmap:comparison} where it can be seen how the two models disagree most at the exit of the solenoids.
+\Fig{software:field:Opera} shows the fieldmap calculated by Opera in the plane of the beam line axis.
+The ratio between the G4Beamline and Opera calculations is given in \fig{software:field:comparison} where it can be seen how the two models disagree most at the exit of the solenoids.
 
 Whilst the above two methods have been used for the solenoid fields, calculating the dipole field structure is a different story, given that the winding is proprietary information belonging to Toshiba.
 For the dipoles in the muon beamline, Toshiba have provided a calculation for one octant of one winding, which is then mirrored and placed multiple times along the beamline.
@@ -228,7 +231,6 @@ This information contains the name and a check-sum for the original field map as
 All ICEDUST programs are therefore able to re-instantiate the field given a data file and the location of a directory containing the fieldmaps.
 Other field components such as solenoid fields produced with the incorporated G4Beamline code are also persisted in this manner.
 
-\CHECK{Add fieldmap plots (largely based on /home/ben/Conferences\_and\_Presentations/1512w49\_CM18/BKrikler\_151218\_SimulationUpdates.pdf.  Plots of: (Opera Calc/G4Beamline Calc./Difference)$\times$(2D in XZ plane/ 1D along axis)}
 \subsection{Production Target Simulations}
 \FigPiYieldHadronCodes
 There is currently a lack of experimental data for interactions of protons with 8~GeV kinetic energy with a tungsten target, especially for production of negative pions in the backwards direction.
@@ -289,18 +291,18 @@ COMET is unusual in the field of modern particle physics for dealing with muons 
 As a result,  low-energy negative muons are somewhat crudely modelled by the default physics processes of Geant4.
 In addition to this, for the COMET experiment it is important to add the process of coherent \mueconv, which as a currently unobserved process is not included in Geant4.
 
+\FigSoftwarePhysicsSpectra
 In the \ac{sm}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
 As previously discussed, the end-point for electrons coming muon \ac{DIO} reaches up to the \mueconv limit, or around 105~MeV/c.  
 Vanilla Geant4 however is unable to produce this tail, and on aluminium is only able to produce electrons up to around 60 MeV/c.  
 This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction with a boost factor set by the muon binding energy.
-A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:DIO} where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
-\CHECK{Add DIO comparison spectrum}
+A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:customPhysic:DIO} where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
 
 Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available but limited data and the default Geant4 model.
 For example, the AlCap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
 This showed that proton emission occurs for around 3~\% of all nuclear captured muons; Geant4 produces around around 7 to 8 times more than this.
 The overal shape of the proton spectrum looks wrong as well.  
-Although the AlCap result is still only preliminary, the spectrum observed there is much softer than produced by standard Geant4 as shown in \fig{software:MuCaptureProtons}.
+Although the AlCap result is still only preliminary, the spectrum observed there is much softer than produced by standard Geant4 as shown in \fig{software:customPhysic:ProtMuCap}.
 
 Standard Geant4 models nuclear capture of negative muons using a Bertini cascade which was developed using incident hadrons~\cite{Geant4:Bertini}.
 Muon nuclear capture is thought to occur via a combination of direct capture on a proton, producing a neutron, or via an interaction with a set of clustered nucleons.
