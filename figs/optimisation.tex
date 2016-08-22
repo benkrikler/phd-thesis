@@ -1,6 +1,6 @@
-\newcommand{\TabOptimisationParameters}{
-\begin{table}[tb]
-\begin{tabular}{ll}
+\newcommand{\TabOptimisationParameters}{%
+\begin{table}[tb]%
+\begin{tabular}{ll}%
 	\hline
 	Region for optimisation & Approx.\ No.\  of parameters \\
 	\hline
@@ -15,38 +15,36 @@
 	\hline
 	Approx. total number of parameters& 32 \\
 	\hline
-\end{tabular}
+\end{tabular}%
 	\caption{\tablabel{optimisation:possible-parameters}%
 	The list of parameters that can be optimised and an estimate for the number of parameters that this represents.
 	In the case of the target, beam blocker and collimator shapes the number of parameters is only approximate; crudely speaking there is at least a width, length and height but in principle one could have a very irregular shape that cannot be parametrised by only three numbers, for example shapes that change as a function of distance along the beamline.
-}
-\end{table}
+}%
+\end{table}%
 }
 
 \newcommand{\FigOptimProdTgtLength}{
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
-\caption{
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Muons}Muons]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
+\caption{\figlabel{optimisation:ProdTgtSec:Length:Momentum}
 Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
 Target length is given as half-length which is the Geant4 convention.  
 }
-\label{optimisation:ProdTgtSec:Length:Momentum}
 \end{figure}
-
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_toZero}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Muons}Muons]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_toZero}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Integral:Pions}Pions]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_toZero}}
 \caption{\figlabel{optimisation:ProdTgtSec:Length:Integral}
 Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
 }
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_ratios}}
-\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Muons}Muons]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_integral_ratios}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio:Pions}Pions]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_integral_ratios}}
 \caption{\figlabel{optimisation:ProdTgtSec:Length:IntegralRatio}
 Change in the momentum distribution of muons and pions at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target length.
 }
@@ -54,17 +52,16 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 }
 
 \newcommand{\FigOptimProdTgtRad}{
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_momentum}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Momentum:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_momentum}}
 \caption{
+\figlabel{optimisation:ProdTgtSec:Radius:Momentum}
 Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target radii.
 }
-\label{optimisation:ProdTgtSec:Radius:Momentum}
 \end{figure}
-
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_toZero}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_toZero}}
@@ -72,7 +69,7 @@ Change to momentum distributions at the entrance to the first 90 degrees of the 
 Integrated muon and pion yields up to a certain momentum at the entrance to the first 90 degrees of the bent muon beam solenoid as a function of target radius.
 }
 \end{figure}
-\begin{figure}[t]
+\begin{figure}[pt]
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_mu-minus_integral_ratios}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Radius:IntegralRatio:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}}
@@ -82,6 +79,28 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 \end{figure}
 }
 
+\newcommand{\FigOptimProdTgtFinal}{
+\begin{figure}[pt]
+\centering
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Final:Integral:Muons}Muons]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/OptimalLengthRadius_mu-minus_integral_toZero.pdf}}
+\subfloat[][\figlabel{optimisation:ProdTgtSec:Final:Integral:Pions}Pions]{\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/OptimalLengthRadius_pi-minus_integral_toZero.pdf}}
+\caption{\figlabel{optimisation:ProdTgtSec:Final:Integral}
+Variation in muon and pion yields as a function of target radius when the total target length is set to the optimised value of 32~cm.
+Despite the longer target length the optimal radius is still 1~cm.
+}
+\end{figure}
+}
+
+\newcommand{\FigOptimProdTgtComparePhases}{
+\begin{figure}[pt]
+\centering
+\includegraphics[width=0.9\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Plot_compare_phase_1and2.pdf}
+\caption{\figlabel{optimisation:ProdTgtSec:Phase1vs2}
+Comparison of the muon and pion yields per POT for \phaseI and \phaseII.
+The difference arises from the change of target material between the phases.
+}
+\end{figure}
+}
 \newcommand{\FigOptimMuBeamDipoleMuStops}{
 \begin{figure}[b]
 \centering

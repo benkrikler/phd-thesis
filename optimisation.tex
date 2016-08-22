@@ -18,14 +18,14 @@
 %\end{easylist}
 The last study into the sensitivity of \COMET \phaseII was performed in 2009~\cite{CDRphase2}, before the staged approach and \phaseI design had even been considered.
 That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running with a total expected background count rate of fewer than 0.34 events over the entire run period.
-Since then, the focus of the collaboration has shifted to the \phaseI design and R\&D and the \phaseII design has not been optimisised or studied further.
+Since then, the collaboration's focus has shifted to design and R\&D for \phaseI and no further studies have been made of the \phaseII design.
 
-The purpose of this chapter is to apply the updates in the fieldmap calculation, the geometry handling and physics modelling to revisit the design of \phaseII and demonstrate that it can do at least as well as the previous 2009 design.
-Some aspects of the design have been fixed already by \phaseI such as the experiment hall and the coils and cold-mass of the first stages of the muon beamline.
+The purpose of this chapter is to make use of the updates in the fieldmap calculation, the geometry handling, and physics modelling to revisit the design of \phaseII and demonstrate that it can do at least as well as the previous 2009 design.
+In addition to updates in the simulation some aspects of the actual design have been refined and fixed alongside \phaseI preparation such as the experiment hall and the coils and cold-mass of the first stages of the muon beamline.
 The aspects of the experiment that remain open for optimisation are shown in \tab{optimisation:possible-parameters}.
 
-\TabOptimisationParameters
 As an initial configuration, much of the design from the 2009 study will be used, with updates included for the areas of the experiment that have since been refined by the \phaseI design.
+\TabOptimisationParameters%
 
 \section{Optimisation Strategy}
 %\begin{easylist}
@@ -54,16 +54,17 @@ As an initial configuration, much of the design from the 2009 study will be used
 %\end{easylist}
 
 Some 32 parameters are listed in \tab{optimisation:possible-parameters} and yet this number alone does not describe the full challenge of optimising the \phaseII design since many of these parameters will be correlated.
-It would seem natural for correlations to exist between the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
-Other less intuitive correlations might also exist however, and a complete optimisation would need to include the impact of these as well.
+For example, it would seem natural for correlations to exist between the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
+Other less intuitive correlations might also exist and a complete optimisation should be able to include the impact of these as well.
 
-This optimisation study then can be considered a scan through a (greater than) 32 dimension parameter space.
+A complete optimisation study then can be considered a scan through a parameter space with at least 32 dimensions.
 A brute force search of such a space would be nightmarishly slow and require an enormous amount of computing power.
 Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
 In the meantime however I am forced to use the technique of 'physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
+%This should be sufficient to establish a reasoned baseline geometry, whilst allowing for future work to refine the design further.
 
 The goal of this chapter therefore is not only to optimise the experiment but also to evaluate the correlations.
-ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
+Ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
 The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can improve.
 
 %\section{Optimisation Goals}
@@ -75,14 +76,14 @@ The outputs of this optimisation should not be considered as final but should in
 
 \section{Production Target Optimisation}
 In the \phaseII \ac{CDR}, the production target is given as being 16~cm in
-length and 4~mm in radius~\cite{CDR}.  Since then, there have been changes to
+length and 4~mm in radius~\cite{CDRphase2}.  Since then, there have been changes to
 the magnetic field in this region, as well as the lengths and locations of
 solenoids, shielding and beam-pipe, and the proton beam.  Previous studies have
-looked at comparing the Tungsten target proposed for Phase-II to other
-materials~\cite{thesis-AEdmonds}, and also drawn a comparison between
-MARS~\cite{MARS}, Geant4~\cite{Geant4} and the limited data available.
+looked at comparing the tungsten target proposed for \phaseII to other
+materials~\cite{AEdmondsThesis}, and also drawn a comparison between
+MARS~\cite{MARS1995}, Geant4~\cite{Geant42003} and the limited data available.
 
-The goal in this study then is to optimise the production target with the
+The goal in this study is to optimise the production target with the
 up-to-date configurations.  This study aims to maximise the total muon and pion
 yield below 80~MeV at the entrance to the Torus1 bent solenoid, by varying the
 radius and length of the production target.
@@ -114,9 +115,9 @@ radius and length of the production target.
 
 \Tab{optimisation:ProdTgtSec:configuration} gives the key parameters for the
 beam input and other aspects of this simulation.  The location and orientation
-of the target were held fixed, since the proton beamline is fixed with respect
-to the muon beam axis.  Once a realistic proton beam becomes available, these
-values would also benefit from optimisation, however.  During the scan over
+of the target were held fixed, since the axis of the proton beamline is fixed to intercept the muon beam axis
+at a given point.  Once a more realistic proton beam becomes available, the location and direction of the production target
+would also benefit from optimisation however.  During the scan over
 length, the back face of the target was kept 8~cm away from the muon beam since
 the radiation shielding has previously been optimised, and since beyond this
 the magnetic field will no longer be able to capture the pions and muons
@@ -124,20 +125,20 @@ produced.
 
 It must be noted that at this point in time there is an appreciable
 uncertainty in the proton beam profile and position.  In particular, whilst the
-proton beamline upstream has been delivered, the effect of the magnetic
-field and necessary dipole and quadrupole magnetics are still being studied by
-the proton beam-line group.  The beam profile is given in the \phaseI \ac{TDR}
-as having a Gaussian profile and energy distribution, but no divergence or
-location is given.  The effect of the proton beam distribution on the overall
-sensitivity shall therefore be considered later on.
+upstream proton beamline has been delivered, the effect of the magnetic
+field and necessary dipole and quadrupole magnets is still being studied by
+the proton beamline group.  The beam profile is given in the \phaseI \ac{TDR}
+as having a Gaussian position profile and energy distribution~\cite{TDR2016}, although no divergence or
+location is specified.  The effect of the proton beam distribution on the overall
+sensitivity shall therefore have to be considered in future studies.
 
-Protons originated from a plane (distributed as a two dimensional Gaussian
-across this surface) but since there is therefore some scope to tune the proton
+Protons in the simulation originated from a plane (distributed as a two dimensional Gaussian
+across this surface) but since there is some scope to tune the proton
 beam's position, the input particle plane was moved to remain 1~cm away from
 the front surface of the target.  Since the aim is to maximise the muon and
 pion yield by varying only the length and radius, shifting the proton beam
 input plane in this way removes any variation of target acceptance due to
-divergences of the proton beam in the magnetic field.
+divergences of the proton beam in the field before the target.
 
 \begin{table}[t]
 \centering
@@ -162,8 +163,8 @@ divergences of the proton beam in the magnetic field.
 	Fieldmap & 160104 \CHECK{} \\
 	\hline
 	\multicolumn{2}{l}{\bf Sample Sizes}\\
-	Length scan &  3e5 \ac{POT} (30 runs of 1e4) \\
-	Radius scan & 4.9e5 \ac{POT} (49 runs of 1e4)  \\
+	Length scan &  \sci{3}{5} \ac{POT} (30 runs of \sci{1}{4}) \\
+	Radius scan & \sci{4.9}{5} \ac{POT} (49 runs of \sci{1}{4})  \\
 	Final scan &   \\
 \hline
 \end{tabular}
@@ -171,13 +172,14 @@ divergences of the proton beam in the magnetic field.
 \tablabel{optimisation:ProdTgtSec:configuration}
 \end{table}
 
+\FigOptimProdTgtLength
 \subsection{Length Scan}
-Different length targets were simulated with 3e5 POT per length.
-Target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
+Different length targets were simulated with \sci{3}{5}~POT per length.
+The target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
 
-\Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths.
-Target length is given as half-length which is the Geant4 convention.  
-\Fig{optimisation:ProdTgtSec:Length:Integral} then shows these distributions integrated up to different momentum.
+\Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths, which are 
+given as half-length following the Geant4 convention.  
+\Fig{optimisation:ProdTgtSec:Length:Integral} then shows these distributions integrated up to different momenta.
 From these plots it can be seen that for both muons and pions, the optimum target length occurs around a total length of 32~cm.
 
 Additionally it can be seen from
@@ -190,8 +192,8 @@ weaker than apparent here, since in the present sample size, the high momentum
 tail is not well sampled at small target lengths, such that a skew in the
 normalisation might occur.
 
-\FigOptimProdTgtLength
-
+\FigOptimProdTgtRad
+\FigOptimProdTgtFinal
 \subsection{Radius scan}
 In parallel to the length optimisation scan, different radii targets were also simulated.
 Targets with radii of 2, 4, 6, 8, 10, 14, 18, 22, 26, and 30~mm were tested.
@@ -199,27 +201,16 @@ The target length was held at the \ac{CDR} value of 16~cm in total.
 
 The results of these scans can be seen in \fig{optimisation:ProdTgtSec:Radius:Momentum} and \fig{optimisation:ProdTgtSec:Radius:Integral},
 where it can be seen that a maximum in both the muon and pion yields at the entrance to the Torus1 section is achieved at a radius of about 10~mm.
-As in the length scan, the shape variation of the momentum distributions is rather weak as a function of target radius.
-
-\FigOptimProdTgtRad
+As in the length scan, the varation in the shape of the momentum distributions is rather weak as a function of target radius.
 
 \subsection{Final Result}
+\FigOptimProdTgtComparePhases
 Since the length and radius scan were performed in parallel, a final cross check was performed where the optimal radius was confirmed at the optimised target length.
-The integrated spectrum is shown in \fig{optimisation:ProdTgtSec:Combined:Integral} where it can be seen that the optimum radius once the target length is increased to 32~cm is still 10~mm.
+The integrated spectrum is shown in \fig{optimisation:ProdTgtSec:Final:Integral} where it can be seen that the optimum radius once the target length is increased to 32~cm is still 10~mm.
 
-\begin{easylist}
-	# Figure comparing Phase-II to Phase-I
-	# Conclusions
-\end{easylist}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Radius_pi-minus_integral_ratios}
-\caption{
-Comparison of the combined muon and pion yield at the entrance to Torus1 for \phaseI (blue) and \phaseII (red).
-}
-\figlabel{optimisation:ProdTgtSec:ComparePhI-II}
-\end{figure}
+\Fig{optimisation:ProdTgtSec:Phase1vs2} shows the total muon and pion yields at the entrance to the Torus1 for the final optimised \phaseII target and compares this to the optimised \phaseI target design.
+The increased yield in the low momentum range is due to the heavier target nucleus which produces more low-momentum pions in the backwards direction.
+Since only muons below around 50~MeV/c tend to stop in the target, this increase in the low momentum yield amounts to a factor 2 or so gain in the stopping muon rate per POT.
 
 \section{Dipole Strengths of the Muon Beamline}
 %\begin{easylist}
@@ -250,14 +241,12 @@ that might be trickier since it could require additional windings to be inserted
 
 \subsection{Large-sample Production Target Simulation}
 Before the muon beam section could be optimised, a large set of \ac{POT} events were produced transporting all particles up to the entrance of the muon beam section.
-In total, $2.4\times10^{8}$~POT were simulated through this stage, equivalent to about 1.4 bunches at \phaseII.
-\CHECK{Are these numbers correct?}
+In total, $2.3\times10^{8}$~POT were simulated through this stage, equivalent to about 1.5 bunches at \phaseII.
 The production target used the optimised geometry from the previous section.
-All particles that hit the surface of the Torus1 container volume were read out for later re-use.
+All particles that hit the surface of the Torus1 container volume were read out for later re-use in a way that ensured double-counting of particles could not occur.
 In addition, particles entering the proton beam dump were also saved if later simulations wished to study their impacts.
 
-\CHECK{plot that shows the momentum distributions of particles in this input}
-
+%\CHECK{plot that shows the momentum distributions of particles in this input}
 \begin{table}[t]
 \CHECK{Fill this table in properly}
 \centering
@@ -293,7 +282,7 @@ The stopping rate for each combination of scale factors was then assessed.
 The muon stopping rate as a function of the two dipole field strengths are shon in \fig{optim:muBeamDipole:stoppedMu}.
 A scale factor of 1 on the x-axis means no change to the current \phaseI design and since there is little improvement by moving to larger values for Torus1 the optimal scale factors are chosen to be 1 and 0.5 for the Torus1 and TTorus2 respectively.  
 This translates to dipole field strengths of 0.055 and 0.0275~T respectively.
-\CHECK{Are these the final selected dipole field strengths?}
+%\CHECK{Are these the final selected dipole field strengths?}
 
 Also striking from \fig{optim:muBeamDipole:stoppedMu} is the anti-correlation between the two dipole field strengths.  
 Roughly speaking the sum of the optimal dipole field values is constant, \ie $B_1^\text{optimal} + B_2^\text{optimal} = \text{const}$.
@@ -550,7 +539,7 @@ It is clear how greatly reduced the number of muons passing the stopping target 
 For every muonic atom formed in the stopping target some 39\% will undergo \acf{DIO}.
 With some $1.4\times10^{8}$~\ac{POT} per bunch and a muon stopping efficiency around $1.7\times10^{-3}$ stops per \ac{POT}, one can expect about $9\times10^{4}$ DIO events per bunch.
 If the detector system were exposed to this level of hits it would be impossible to resolve any signal electrons.
-However, above the end-point energy for electrons coming from free muon decay, the DIO spectrum falls extremely quickly, with around 99\% of DIO electrons being produced with less than 60~MeV/c \CHECK{Are these the exact numbers, is my memory correct?}.
+However, above the end-point energy for electrons coming from free muon decay, the DIO spectrum falls extremely quickly, with around 99\% of DIO electrons being produced with less than 59~MeV/c.
 To this end the electron spectrometer's primary purpose is to disperse away the electrons below 60~MeV/c whilst keep signal electrons on-axis, such that material in the beamline can be tuned to remove the low energy DIO electrons.
 The beam and DIO blockers are highlighted in green in \fig{optim:DIOBeamBlock:Geometry}.
 
