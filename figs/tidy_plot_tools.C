@@ -113,6 +113,23 @@ void NormaliseStack(THStack* stack,double normalise){
     )
 }
 
+void NormaliseGraph(TGraph* graph,double normalise){
+	const int N=graph->GetN();
+	double x=0, y=0;
+	for(int i=0;i<N;++i){
+		graph->GetPoint(i,x,y);
+		graph->SetPoint(i,x,y/normalise);
+	}
+}
+
+void NormaliseMultiGraph(TMultiGraph* mg,double normalise){
+    LOOP_STACK(mg->GetListOfGraphs(),
+        if( object->InheritsFrom("TGraph")){
+		NormaliseGraph((TGraph*)object,normalise);
+        }else continue;
+    )
+}
+
 void StackSetLineWidth(THStack* stack,double line_width){
     LOOP_STACK(stack->GetHists(),
         if( object->InheritsFrom("TH1")){
@@ -539,8 +556,12 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       }
       else if(hist->InheritsFrom("THStack")){
               NormaliseStack((THStack*) hist,normalise);
+      }else if(hist->InheritsFrom("TGraph")){
+              NormaliseGraph((TGraph*) hist,normalise);
+      }else if(hist->InheritsFrom("TMultiGraph")){
+              NormaliseMultiGraph((TMultiGraph*) hist,normalise);
       }else{
-              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+              cout<<"Error: Cannot normalise plot that is not derived from TH1, THStack, TMultiGraph"<<endl;
       }
     }
     if(marker_size!=0){
