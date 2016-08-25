@@ -1,5 +1,7 @@
 \input{figs/backgrounds.tex}
 \chapter{\phaseII Backgrounds}
+\section{\acf{DIO}}
+\sectlabel{bg:dio}
 \section{Antiproton Induced Backgrounds}
 Antiprotons can be produced when the primary 8~GeV proton beam interacts with the production target, creating a proton-antiproton pair:
 \begin{equation}
@@ -80,7 +82,7 @@ Material at the join between the production target capture region and the first 
 Based on these simulations, the probability that an antiproton will enter the bent muon transport solenoid is well less than XXXX per POT.
 
 \subsection{Delayed Pion Production}
-A larger 
+\sectlabel{bg:rpc}
 
 \begin{easylist}
 	# Pion stops per pion passing Torus2 monitor = 3.21826657700288808e-04 %based on file: ~/comet/1603w12_Phase-II_estimates/pions_in_beam/160429_Pions-1_BeamTags_analysis.root
@@ -93,4 +95,14 @@ A larger
 	# Total backgrounds from pions from antiprotons:
 	## For region 1: 5.32e-4 * 2.1e-9 * 7.3e-11 = 8.5e-23 per POT
 	# Assumes no timing cut, but actually timing cut will help reduce this
+\end{easylist}
+
+\subsection{Beam related backgrounds}
+A larger 
+
+\begin{easylist}
+	# Number of POT simulated
+	# Number of observed high momentum electrons or muons
+	# Lifetime of muons at the target (need to smear this a bit ?): Fit the projection of high momentum particles to the time with an exponential and extrapolate
+	# Survival probability per high momentum particle before the target to reach the straw tracker
 \end{easylist}

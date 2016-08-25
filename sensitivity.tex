@@ -1,39 +1,162 @@
 \input{figs/sensitivity.tex}
 \chapter{\phaseII Signal Sensitivity}
-\FigSensMuStopsTwoD
+As discussed previously, the signal sensitivity of COMET is a measure of both the ability to produce a signal event
+and the ability to detect it.
+The signal efficiency per \ac{POT} is therefore the product of the muon stopping rate, the rate of muon capture from the ground state of a muonic atom (the normalisation in the conversion rate), and the total signal acceptance after all analysis cuts and geometric acceptances are considered.
+%This product is analogous to the cross section times branching ration often used to describe collider efficiencies.
+
+Since signal efficiency describes only the ability to produce and detect signal, this chapter could in principle ignore all possible backgrounds.
+However in order to tune analysis cuts, one must consider at some level the potential background rates, which must be minimised and controlled.
+Furthermore, until the full analysis chain is implemented, we consider only a handful of crude analysis cuts, namely the momentum and timing of electrons.
+The 2009 \ac{CDR} additionally included cuts on the reconstruction~\cite{CDRphase2} such as track fitting quality, and the ratio between transverse and longitudinal momentum of particles (related to the pitch angle).
+
+\FigSensMuMomentum
 \section{Muon Stopping Rate}
-\begin{easylist}
-# Profile in target
-# Timing of muon stops
-# 1.64e-3 per POT
-# Asymmetry in X
-# Y dependence due to momentum dispersion
-# Scope for improvements, see appendix
-# Effect of proton beam
-# Hadron production model?
-# Comparison of muon momenta: before collimator, around target, stopping in target, passing beam blocker
-\end{easylist}
+%\begin{easylist}
+%# 1.64e-3 per POT
+%# Comparison of muon momenta: before collimator, around target, stopping in target, passing beam blocker
+%# Profile in target
+%# Timing of muon stops
+%# Asymmetry in X
+%# Y dependence due to momentum dispersion
+%# Scope for improvements, see appendix
+%# Effect of proton beam
+%# Hadron production model?
+%\end{easylist}
+Based on a simulation of some 1.1 billion \ac{POT} the muon stopping rate of the optimised design was found to be \sci{1.61}{-3}~per \ac{POT}.
+This amounts to some 43\% of the muons that reach the target itself, a fraction that is driven mostly by the muon momentum distribution and the total amount of target material, as demonstrated by \fig{sense:muMomenta}
+showing the momentum of muons at different points in the beam.
+\CHECK{Add the muon momentum plot}
+
+\Fig{sense:stops2D} shows where muons stop in the target based on this simulation from which it is clear that several asymmetries and correlations exist.
+Firstly the correlation between Z and Y shown in \fig{sense:stops2D:ZY} arises due to the disperse muon beam arriving at the target. 
+Since high momentum muons are vertically lower (towards negative Y) in the beam and since these muons have a larger stopping distance, muons lower down in Y tend to travel further through the target (towards lower values of Z).
+It is interesting however that when the integration is taken over all target disks the distribution in Y demonstrates little asymmetry. 
+This is most likely due to the fact that the Y-position is controlled by the Torus1 and Torus2 dipole fields which were optimised to maximise the stopping rate, which one might expect to be achieved when the stopping distribution is symmetric.
+\CHECK{Is it worth adding the 1D projections of the stopping distribution?}
+
+\FigSensMuStopsTwoD
+Given this correlation, there might be a gain in signal sensitivity if there were less material at the top of the target.
+Since this material is less important for stopping the low energy muons removing the extra material might have little impact on the stopping efficiency.
+On the other hand it will likely increase signal acceptance since signal electrons will pass through less material.
+
+Whilst the vertical stopping distribution is largely symmetric (in the integral),
+a striking asymmetry exists in the horizontal stopping distribution
+The cause of this asymmetry is at this stage unclear.
+It could arise from the fact that the production target itself is asymmetric in the horizontal transverse direction, such that more muons and pions are produced to one side of the beam axis.
+On the other hand, it could also arise from the transportation dynamics of the bent solenoid, dipole field and collimator design. 
+Since this asymmetry could suggest low energy muons are missing the target on one side studying the cause of this asymmetry is important as removing it could be another source of sensitivity increases.
+%Both of these possibilities should be studied further in the future as a potential method for increasing the muon stopping rate.
+
+%Further increases in the stopping rate might be achieved by adding additional 
 
 \section{Acceptance of Stopping Target Electrons}
 \FigSensGeomAccept
-\FigSensMomTransfer
-\FigSensMomSpectra
-\FigSensMomIntegral
-\FigSensTiming
-\begin{easylist}
-# Geometric acceptance
-## Flux plot and beamline height plot
-# Momentum transfer matrix
-# Momentum cut efficiency
-## Spectrum after energy loss
-## Spectrum after realistic resolution (TODO)
-## Integrate downwards plot, with $S/\sqrt(S+B)$
-# Timing cut
-# Total signal acceptance
-## This study vs. CDR
-\end{easylist}
+%\begin{easylist}
+%# Geometric acceptance
+%## Flux plot and beamline height plot
+%# Momentum transfer matrix
+%# Momentum cut efficiency
+%## Spectrum after energy loss
+%## Spectrum after realistic resolution (TODO)
+%## Integrate downwards plot, with $S/\sqrt(S+B)$
+%# Timing cut
+%# Total signal acceptance
+%## This study vs. CDR
+%\end{easylist}
+Many factors contribute to the signal acceptance, and we consider here the geometric acceptance and efficiency of the timing and momentum cuts.
+And whilst stopping rate and signal acceptance are often discussed separately, they are in reality coupled through the position and time of the stopped muons.
+The position impacts on the amount of material the electrons must pass through and therefore their momentum at the detector, and their subsequent transport through the very inhomogeneous magnetic field of the COMET beamline.
+To study signal acceptance then, a realistic muon stopping distribution was first acquired which was then re-used as the input position and time distribution for signal electrons.
 
-\section{Single Signal Event Sensitivity \acs{SES} and Run Time}
+\subsection{Geometric Acceptance}
+\Fig{sense:accept:height} demonstrates the path of signal electrons injected at the target with a realistic stopping distribution.
+From this one can see how the initially isotropically directed electrons are mirrored back to head downstream towards the detector.
+\Fig{sense:accept:flux} is then a projection of the above plot normalised to the number of primary signal electrons, and as such gives the survival probability for electrons as a function of beamline distance.
+
+Based on this and a second analysis that uses the hits in the Straw Tracker directly, the geometric acceptance of the beamline and Straw Tracker is found to be 22.3\%.
+This should be compared to the value expected with the analytic collimator approach from \sect{optim:BeamAndDIOBlocker} suggesting that such an approach is adequate for this sort of study.
+
+\subsection{Timing Window Efficiency}
+\FigSensTiming
+A time gated detector window is used as a way to reduce the background rate. 
+Whether this is implemented in the trigger, offline in the analysis, or at different levels in both of these is yet to be determined, be the impact on signal efficiency will likely be the same.
+
+\Fig{sense:time:signal} shows the arrival time of signal electrons \CHECK{Add the muon stopping time, and beam flash timing to this plot?}.
+A subtlety of the gated time window is that since the signal lifetime is large compared to the pulse separation of 1.17~$\mu$s, a signal electron has a reasonable chance of arriving in detector windows later than the first one.
+\Fig{sense:time:efficiency} shows the signal acceptance as a function of the start time of the detector window for three different stop times.
+Time in that plot is with respect to the proton pulse's arrival; since it takes about 100~ns before any beam flash hits the detector, it is reasonable that the gated-time detector window be open at the very moment when the proton pulse arrives.
+This would be the case at the very end of the window that ends at 1200~ns given that pulses are separated by about 1170~ns.
+
+One must also consider the timing of background processes to pick a valid time window.
+Motivated primarily by the pion radiative capture background (which will be discussed in completion in section \sect{bg:rpc}, the time window of 600 to 1200~ns is selected.
+The signal efficiency of this timing window is 0.53\%.
+
+\FigSensMomTransfer
+\subsection{Momentum Cut Efficiency}
+\FigSensMomSpectra
+Between production in the stopping target and detection at the StrECAL, electrons lose energy by scattering, brehmstrahlung and ionisation of material in the electron's path, including the stopping target itself and the detector.
+\Fig{sense:momTransfer} shows the momentum transfer function for electrons coming from the target and reaching the detector.
+Each bin represents the probability that an electron is observed at a particular momentum given an initial momentum.
+
+Crucial for signal sensitivity is how this energy loss effects signal electrons compared to \ac{DIO} electrons.
+\Fig{sense:spectra:ELoss} shows the impact this energy loss has close to the signal energy, where it is clear that a low-energy tail appears to what is intrinsically a monoenergetic signal.
+
+In addition to energy losses in material in the beamline, further smearing of the signal spectrum occurs during particle trajectory reconstruction.
+No reconstruction algorithm can ever reproduce the true momentum of a particle with perfect accuracy.
+A design requirement of the StrECAL has been that it achieves 200~keV/c resolution for 105~MeV/c electrons and indeed work on \phaseI has demonstrated performance better than this.
+Since at this time work on the \phaseII reconstruction has not yet begun and even the \phaseI StrECAL reconstruction requires further development, we approximate the residual function -- the difference between reconstructed and true momentum -- by a single gaussian with a variance of 200~keV/c.
+The impact that such a residual function would have on the observed DIO and \mueconv spectra is shown in \fig{sense:spectra:resolution}.
+
+\FigSensMomIntegral
+Elaborate analysis techniques might then count the number of signal events by fitting simultaneously fitting the above signal and background functions to the measured total spectrum.
+For the purpose of developing a baseline sensitivity estimate however, we envisage instead a simple analysis procedure which puts a single cut on observed electron energy.
+In that procedure one would tune the cut to maximise the signal to background separation, as demonstrated by \fig{sense:integral} where the cut value is increased and the number of electrons passing above that cut are integrated.
+Also shown is the function of signal divided by the square root of signal plus background, an indicator of the relative signal to background fluctuations one can expect and a function which peaks at around 103.68~MeV/c.
+Since this value is only optimal for the demonstration signal conversion of $R=\sci{3}{-16}$ and to bring the \ac{DIO} rate down further (see \sect{bg:dio}), a cut of 103.9~MeV/c is selected.
+At this value the signal efficiency of the cut is 77.9\%.
+It should be noted though that whilst changing the cut value leaves the signal efficiency relatively unchanged, the DIO rate varies dramatically: a shift of the threshold up or down by 0.1~MeV/c changes the signal acceptance by about 1.5 percentage points, but changes the DIO rate by a factor of 2.
+
+\subsection{Total Signal Acceptance}
+\begin{table}[tb]
+	\centering
+\begin{tabular}{lll}%d{.}d{.}}
+\bf{Overall Acceptance}                          & 2009 CDR~\cite{CDRphase2} & This Study                    \\ 
+\hline                                                                                                       
+Geometric acceptance                             & 0.20                      & 0.22 \\ 
+\hspace{1ex} \emph{Solid angle with mirroring}   & \emph{(0.73)}             &                               \\ 
+\hspace{1ex} \emph{Beam blocker acceptance}      & \emph{(0.57)}             &                               \\ 
+\hspace{1ex} \emph{Spectrometer acceptance}      & \emph{(0.47)}             &                               \\ 
+Timing window efficiency                         & 0.39                      & 0.53                          \\ 
+Momentum cut efficiency                          & 0.72                      & 0.78                          \\ 
+\hline                                                                                                       
+TDAQ acceptance and efficiency                   & 0.90                      & N/A                           \\ 
+                Reconstruction aspects           & 0.78                      & N/A                           \\ 
+\hspace{1ex} \emph{Recon.~efficiency}            & \emph{(0.88)}             &                               \\ 
+\hspace{1ex} \emph{Track quality cut efficiency} & \emph{(0.89)}             &                               \\ 
+Additional analysis cuts                         & 0.98                      & N/A                           \\ 
+\hspace{1ex} \emph{$E/p$ cut efficiency}         & \emph{(0.99)}             &                               \\ 
+\hspace{1ex} \emph{Pitch angle cut efficiency}   & \emph{(0.99)}             &                               \\ 
+\hline                                                                                                       
+\hline                                                                                                       
+Total acceptance at `truth level'                & 0.056                     & 0.091                         \\ 
+Total (with CDR recon. and TDAQ efficiencies)    & 0.039                     & 0.064                         \\ 
+\hline                                                                                                       
+\end{tabular}
+\caption{\tablabel{sense:acceptance}
+Numbers that go into estimating the total signal acceptance from this study and compared to the previous study documented in the 2009 CDR.
+Since this study has not estimated reconstruction issues, we include the previous values in the final estimate on the expectation 
+that with the improvements in reconstruction techniques and with the benefit of \phaseI final reconstruction efficiency will be improved compared to the 2009 CDR values.
+        }
+\end{table}
+\Tab{sense:acceptance} gives a break down of the signal acceptance as estimated here compared to the values from the previous study for the CDR.
+For the CDR the geometric acceptance had to be factorised into each section of the beamline to reduce the processing power required.  
+The present study, being able to perform this in a single step, is likely more reliable for the total geometric acceptance yet agrees well with the previous estimate.
+
+For reconstruction and Trigger and DAQ efficiencies, we expect the CDR value to be a reliable lower limit and so we re-use these here as a conservative baseline.
+This is another aspect of this study that can be improved in the future, and indeed thanks to the \phaseI run will not only be finalised within the next year or so but will be tested and debugged on real data prior to the \phaseII run.
+
+\section{Single Signal Event Sensitivity (\acs{ses}) and Run Time}
 \begin{easylist}
 # Equation
 # Value of all parameters included in a table
@@ -42,3 +165,4 @@
 # Compare to previous prediction and Phase-II
 # Plot of sensitivity vs. time ?
 \end{easylist}
+Finally we can pull all these numbers together to give 
