@@ -455,6 +455,14 @@ void PlotConfig::FixCanvas(){
     gPad->SetTopMargin( gPad->GetTopMargin()+shift_plot_y);
     gPad->SetBottomMargin( gPad->GetBottomMargin()-shift_plot_y);
   }
+  if(canvas_height!=0){
+	  int width=gPad->GetWw();
+	  gPad->SetCanvasSize(width,canvas_height);
+  }
+  if(canvas_width!=0){
+	  int height=gPad->GetWh();
+	  gPad->SetCanvasSize(canvas_width,height);
+  }
   if(canvas_grow!=1){
 	  int width=gPad->GetWw();
 	  int height=gPad->GetWh();
@@ -466,14 +474,6 @@ void PlotConfig::FixCanvas(){
 	  int area=width*height;
 	  double mean=sqrt(area);
 	  gPad->SetCanvasSize(mean*canvas_ratio,mean/canvas_ratio);
-  }
-  if(canvas_height!=0){
-	  int width=gPad->GetWw();
-	  gPad->SetCanvasSize(width,canvas_height);
-  }
-  if(canvas_width!=0){
-	  int height=gPad->GetWh();
-	  gPad->SetCanvasSize(canvas_width,height);
   }
   if(log_x)gPad->SetLogx(); else gPad->SetLogx(0);
   if(log_y)gPad->SetLogy(); else gPad->SetLogy(0);
@@ -614,6 +614,16 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
           ((THStack*) hist)->SetMinimum(y_axis_range_low);
       }else if(hist->InheritsFrom("TMultiGraph")){
           ((TMultiGraph*) hist)->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
+      }else{
+              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+      }
+    }
+    if(x_axis_range_high != x_axis_range_low){
+      if(hist->InheritsFrom("TH1")){
+          ((TH1*) hist)->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
+      //} else if(hist->InheritsFrom("THStack")){
+      }else if(hist->InheritsFrom("TMultiGraph")){
+          ((TMultiGraph*) hist)->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
       }else{
               cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
       }
