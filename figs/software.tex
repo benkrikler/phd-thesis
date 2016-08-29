@@ -33,7 +33,7 @@ Overview diagram for the ND280 framework.
 Diagram showing the stages used to simulate COMET.
 The timing schematics on the right show how a simulated event is built up, firstly by producing many individual proton interactions with the production target,
 then by transporting the secondary particles to produce energy deposits in the detector, which are then combined with the truth hits from other proton events to produce a realistic bunch structure.
-Finally these bunch events are processed through the detector response simulation to produce fake waveforms and other detector read-outs.
+Finally, these bunch events are processed through the detector response simulation to produce fake waveforms and other detector read-outs.
 }
 \figlabel{software:SimulationOverview}
 \end{figure}
@@ -58,7 +58,7 @@ The Controller of component 1.a in red has access to the parameters managed by C
 \lstinputlisting[style=customc]{figs/software/demo-parameters.mac}
 \caption{
 An example set of parameter definitions which control the geometry for the Torus2.
-Parameter specifications use natural arithmetic notation and can references other parameters, use standard units.
+Parameter specifications use natural arithmetic notation and can reference other parameters and use standard units.
 They can also be formed as sets where each element has a different value, such as the \texttt{Coils:Position} parameter.
 }
 \figlabel{software:geom:paramAssignments}
@@ -85,9 +85,9 @@ Two of the possible simulation `worlds' that can be selected at run-time:
 \includegraphics[width=0.95\textwidth,trim=2cm 1cm 0.8cm 0.5cm,clip=true]{figs/software/PionYield_AEdmondsThesis}
 %}
 \caption{
-Comparison of various hadron production codes with experimental data from the HARP experiment from the thesis of A. Edmonds~\cite{AEdmondsThesis}.
-Points with error bars are the experimental data.  Left: double differential-production cross section for pion production from 20 to 32\degree with respect to the incoming proton direction, right: from 100 to 112\degree.
-The hadron production code that best reproduces the data depends strongly on which angular region one looks at.
+Comparison of various hadron production codes with experimental data from the HARP experiment, taken from the thesis of A. Edmonds~\cite{AEdmondsThesis}.
+Points with error bars are the experimental data.  Left: double differential-production cross-section for pion production from 20 to 32\degree with respect to the incoming proton direction; right: from 100 to 112\degree.
+The hadron production code that best reproduces the data depends strongly on the angular region under consideration.
 }
 \figlabel{software:piYield}
 \end{figure}
@@ -124,8 +124,8 @@ The comparison of protons coming from muon capture between the preliminary resul
 \caption{
 The various classes involved in simulating the various processes of stopped negative muons.
 %Classes in red have been implemented for COMET and augment the existing Geant4 classes which are shown in blue.
-The standard Geant4 model is activated by registering `G4MuonMinusCapture' which instantiates `G4MuonMinusBoundDecay' and `G4CascadeInterface' to run the \ac{DIO} and nuclear capture respectively.
-To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' should be registered which sets up `COMETMuonMinusBoundDecayOrConversion' to produce the electron (and possibly neutrinos) from \ac{DIO} or conversion, and `COMETMuonMinusCapture' to do the nuclear capture.
+The standard Geant4 model is activated by registering `G4MuonMinusCapture', which instantiates `G4MuonMinusBoundDecay' and `G4CascadeInterface' to run the \ac{DIO} and nuclear capture respectively.
+To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' should be registered, which sets up `COMETMuonMinusBoundDecayOrConversion' to produce the electron (and possibly neutrinos) from \ac{DIO} or conversion, and `COMETMuonMinusCapture' to do the nuclear capture.
 }
 \figlabel{software:ExtendedMuonClasses}
 \end{figure}
@@ -160,7 +160,7 @@ Note that the G4Beamline calculation does not include the detector solenoid.
 \caption{
 \figlabel{software:field:comparison}
 The ratio of the Opera and G4Beamline calculations shown in \fig{software:field}.
-On-axis the fields are fairly similar although towards the ends of the solenoids the agreement is poorer.
+For most of the field within the beamline the calculations agree within 10\%, although around the ends of the solenoids the agreement is poorer.
 }
 \end{figure}
 }
