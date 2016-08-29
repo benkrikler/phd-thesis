@@ -1,0 +1,20 @@
+\newcommand{\FigMuecCreation}{
+\begin{figure}[bt]
+\centering 
+%\fbox{
+%\input{figs/feynman/mu_to_e_gamma_via_SM-Wgamma.tex}
+\subfloat[][\figlabel{muec:underlying}Underlying Process]{%
+\includegraphics[width=0.32\textwidth,trim=-0.6cm 0 -0.6cm 0,clip]{figs/feynman/pdfs/mu_e_conversion.pdf}}\hspace{0.01\textwidth}%
+\subfloat[][\figlabel{muec:atomSketch}Conversion from Ground State]{%
+\includegraphics[width=0.30\textwidth]{figs/mueconv/MuEConversion-atom-sketch.pdf}}\hspace{0.01\textwidth}%
+\subfloat[][\figlabel{muec:beamOnTgt}Muon Beam Stopped in Target]{%
+\includegraphics[width=0.32\textwidth,trim=2.5cm 0.5cm 2.5cm 0.5cm,clip]{figs/mueconv/BeamOnTarget.png}}
+%}
+\caption{\figlabel{muec:creation}
+The underlying \mueconv process \protect\subref{fig:muec:underlying} occurs from the ground state of a muonic atom~\protect\subref{fig:muec:atomSketch}.
+To produce the muonic atoms a beam of muons has to be stopped in a target~\protect\subref{fig:muec:beamOnTgt}.
+}
+%\footnote{though the author has failed to reproduce the stereoscopic effect with his own eyes}
+\end{figure}
+}
+

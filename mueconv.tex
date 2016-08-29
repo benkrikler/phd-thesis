@@ -1,0 +1,119 @@
+\input{figs/mueconv.tex}
+\chapter{\mueconv and the Muonic Atom}
+\sectlabel{theory:atomicMuon}
+Muon-to-electron conversion is the spontaneous decay of  muon to an electron within the Coulomb potential of an atomic nucleus and without the emission of neutrinos.
+It is given by the formula:
+\begin{equation}
+\mu^{-}+N(A,Z) \rightarrow e^{-}+N(A,Z)
+\end{equation}
+
+\FigMuecCreation
+In general the nucleus involved can be excited under \mueconv, although all experimental searches to date have additionally required that the nucleus be left unchanged.
+This constraint has two effects: firstly, coherent terms in the \mueconv cross section dominate since the interaction will largely be with the whole nucleus.
+Being coherent, the rate of \mueconv will in general grow more quickly as a function of the atomic mass or number (which one of these itself is model dependent).
+Secondly, the constraint of an unchanged nucleus means that all the free energy of the initial muon has to go into the kinetic energies of the electron and the nuclear recoil.
+Since the initial system is at rest, the fact this is a two body decay fixes the energy of the outgoing electron:
+\begin{equation}
+E_e=M_\mu-E_{\mu,\mathrm{binding}}-E_\mathrm{recoil}
+\end{equation}
+where $M_\mu=$105.66~MeV/c$^2$ is the muon mass, $E_{\mu,\mathrm{binding}}$ the
+binding energy of the muon in the ground state of the muonic atom, and
+$E_\mathrm{recoil}$ is the kinetic energy of the recoiling nucleus.
+In the aluminium target used for COMET (see section \sect{stop-tgt}) the electron energy is $E_e=104.97$~MeV.
+The simplicity and model independence of the signal -- a single, monoenergetic electron -- makes the process experimentally very attractive.
+
+The underlying physics takes place in the interaction between the muon in the ground state atomic orbital and the atomic nucleus, as illustrated in \fig{muec:creation}.
+To produce the muonic atoms a beam of negative muons is brought to stop in a target, which would produce electrons that are then detected.
+When negative muons in a material reach energies of a few keV of less, they become atomically captured around the nucleus of the target.
+From here, on the order of 100~fs, these muons will undergo Auger and radiative transitions to the atomic ground-state.
+The X-rays emitted during this electromagnetic cascade have well defined energies and intensities and can be detected as a means to evaluate the number of muons stopped in the target.
+\Fig{muec:alXrays} shows the X-ray spectrum for muonic aluminium.
+\CHECK{Add muonic Xrays plots}
+
+From the ground state, in addition to the anticipated \mueconv process, there are two \ac{SM} processes that can occur to the bound muon:
+\ac{DIO} and nuclear capture.
+\ac{DIO} is the normal decay of a muon, during which process two neutrinos are emitted, although the spectrum of the emitted electron is modified compared to the free muon decay due to the presence of the nucleus.
+Nuclear capture of the muon is the process where the muon is absorbed into the nucleus in analogue to electron nuclear capture and inverse beta decay.
+A single muon-neutrino is emitted as well as various other possible particles, since the daughter nucleus is often unstable.
+Both of these are important in \mueconv searches since they impose various experimental constraints and will be discussed more shortly.
+
+These two processes determine the lifetime of the bound muon, which is not the same as the free muon.
+In the case of decay, being bound to the nucleus reduces the available energy, therefore reducing the available phase-space for decay. 
+In addition, a time-dilation effect occurs because the muon is never truly at rest. 
+As a result the lifetime due to muon decay increases in the bound muon system compared to the free muon, and this increase grows with the atomic number, as the muon is bound tighter and tighter to the nucleus.
+However, whilst the rate of decay decreases with atomic number the rate of muon capture increases.
+This occurs firstly because there are more protons against which to capture, and secondly because the muon wavefunction overlaps more and more with the nucleus.
+For atomic numbers larger than $Z=30$ the muon wavefunction is contained almost completely within the nucleus.\CHECK{Calculate this? Is 30 a reasonable value of Z for this statement?}
+Whilst for light elements, up to around $Z=12$, the decay process dominates, for the rest of the periodic table the capture process determines the muon lifetime.
+For an aluminium target, the two processes are roughly equal, with branching ratios of 61:39 for capture to decay, and a muon lifetime of 864~ns~\cite{Measday2007Comparison}.
+\CHECK{Do I want the lifetime plot in here, or is it better left in the detector section?}
+
+Since the muon is 200~times heavier than the electron, the muon wavefunction feels the effect of the nucleus a lot more.
+Rather than the full branching ratio, typically \mueconv experiments discuss the conversion rate, which is given by:
+\begin{equation}
+\mathcal{C.R.}=\frac{\Gamma\left(\mathrm{\mueconv}\right)}{\Gamma\left(\mathrm{nuclear~capture}\right)}
+\end{equation}
+The key advantage over using the full branching ratio is that by normalising to the number of muons that undergo nuclear capture, as opposed to the total number of stopped muons, the theoretical uncertainty due to the initial muon wave-function is reduced since this is would be needed to predict the decay rate.
+
+From this, one defines the \acf{ses} to be:
+\begin{equation}
+	\eqlabel{det:ses}
+\mathrm{S.E.S}(\muec)=\frac{1}{N_\mu \mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}
+\end{equation}
+where $N_\mu$ is the number of muons stopped, $\mathcal{B}_\mathrm{capture}$ is the branching ratio for muon nuclear capture, and $A_{\mu\rightarrow e}$ is the total acceptance of electrons coming from \mueconv.
+
+\section{Muon Decay in Orbit}
+In free muon decay the maximum energy for the outgoing electron occurs when the neutrinos recoil back-to-back with the electron.
+In this configuration, exactly half the energy released in the decay is available to the electron, so that the maximum energy of an electron coming from the decay of a free muon at rest is: $\max(E_{e}^\textrm{free})=m_\mu/2=52.5$~MeV.
+
+This situation is changed completely when the muon becomes bound to the nucleus of an atom.
+Once bound, the neutrinos can be arranged back-to-back with each one another, carrying away a negligible amount of energy.
+Four-momentum can still be conserved however, since the nucleus of the atom recoils against the electron.  
+Given the enormous mass of any nucleus compared to the electron, momentum can be conserved with only a small amount of kinetic energy and the maximum electron energy is hugely increased compared to the free decay.
+In fact, if the neutrinos take away no energy the kinematic configuration of this decay becomes identical to that of \mueconv but for the mass of the neutrinos: $\max(E_{e}^\textrm{DIO})\simeq{}E_{e}^\textrm{conversion}$.
+
+The spectrum of electrons from \ac{DIO} in aluminium is shown in \fig{muec:DIO}.
+It can be seen how the peak electron energy is close to the free muon decay end-point, and in reality about 99\% of \ac{DIO} electrons will be emitted below 55~MeV \CHECK{99\% energy for DIO electrons}.
+Whilst the end-point for the spectrum is indeed around 104.97~MeV, it is clear how suppressed this part of the spectrum is -- some twenty orders of magnitude less likely than at the peak energy.
+Achieving the end-point energy requires radiative connections between the nucleus and the muon or electron; the low neutrino momentum brings about a helicity suppression; and the small amount of phase-space available to produce low-energy electrons further suppresses things.
+\CHECK{Add DIO spectrum plot and label the free muon decay and the \mueconv end point}
+
+For these reasons, \mueconv searches historically described themselves as `background free'.
+However, given the projected sensitivities of modern experiments, the \ac{DIO} rate close to the end-point of the spectrum is now at an appreciable level.
+Indeed, the next generation of searches (and COMET \phaseI in particular) will be the first to measure the \ac{DIO} spectrum above 90~MeV, which will form an important check for the theoretical prediction of muon \ac{DIO}.
+
+\section{Muon Nuclear Capture}
+%\begin{easylist}
+%# Inverse beta-decay
+%# Prompt process of muon-proton -> neutron and neutrino
+%# Nucleon clustering means prompt protons also observed (muon-nucleon cluster -> neutrino-neutron-proton)
+%# about 50~MeV excitation of the nucleus
+%# Emission of various particles during nuclear de-excitation: protons, neutrons, gammas, deuterons, triton, alphas
+%# Difficult to predict products and rates theoretically
+%# Interest in this process towards the end of the 70s as a means to test nuclear theory but since then interest has waned
+%# Lack of experimental measurements for Al($\mu$,X)Mg so needed to measure things: \alcap
+%# See appendix for an overview of \alcap
+%# Proton emission around 3.5\% of every muon captured
+%\end{easylist}
+The nuclear capture of negative muons is governed by the equation:
+\begin{equation}
+\mu^-+N(A,Z)\rightarrow \nu_\mu+N'(A,Z-1)
+\end{equation}
+Whilst it is clearly an incoherent process, the direct process can occur directly between a muon and proton, resulting in a prompt neutron, or between a cluster of nucleons, which can cause both prompt neutrons and protons to be produced.
+The nuclear excitation after such a process is typically around 50~MeV, with the other half of the total incoming energy lost to the outgoing neutrino.
+Whilst both prompt neutrons and protons are possible, the remnant nucleus is often left in an excited, unstable state, such that during de-excitation other particles can also be emitted.
+These include neutrons and protons but also gammas, deuterons, triton and alpha particles.
+
+From the perspective of a sensitive \mueconv experiment the emission products following nuclear capture can be dangerous, since, in the case of charged particles, they can swamp the detector if left unchecked.
+Similarly, neutrons and gamma rays produced by nuclear capture can become dangerous for electronics systems if left unchecked.
+As such it is important to understand the rates of these particles emitted after nuclear capture of the muon.
+
+However, theoretical predictions of the rates and energy distributions of capture products is extremely complex and experimental measurements are necessary.
+Unfortunately, in the case of aluminium, the target choice for \COMET, the existing experimental data is not extensive.
+\Fig{muec:capture:data} shows a summary of the available information.  
+Accordingly it has been necessary to measure this directly.
+The \alcap experiment~\cite{AlcapProposal2012} is a joint effort between COMET and Mu2e tasked with measuring the rate and spectra of particles emitted following muon capture in aluminium.
+Three runs have been held at \ac{PSI} from 2013 to 2015, and data analysis is on-going, although preliminary neutron and proton spectra and rates have been achieved.
+The measured proton rate is low enough that \COMET does not expect to have to take any precautionary measures to reduce it further.
+For more information on \alcap, see appendix~\sect{appendix:alcap} and the PhD thesis by Nam Tran~\cite{NamThesis}.
+\CHECK{Add figure summarizing the capture data}
