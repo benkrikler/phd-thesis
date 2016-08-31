@@ -4,14 +4,37 @@
 % Number of muons stopped
 % Total run time
 \chapter{\phaseII Backgrounds}
+Having optimised and evaluated the signal sensitivity, it is now important to check the expected background rates.
+Interpreting the final result to declaring an observation or produce a confidence limit is only possible if the number of background events has been predicted.
+The certainty of any observation or the stringency of a final confidence limit is determined by the relative background rate and signal sensitivity; ideally the background rate should be small, well below a single expected event.
 
+The types of background we must consider for COMET were outlined in \sect{detector:background}, but in this section they are evaluated in the optimised experiment design using the improved simulation.
+
+\FigDIOBackground
 \section{Muon Decay in Orbit (\acs{DIO})}
 \sectlabel{bg:dio}
-\begin{easylist}
-# Discussed in previous section \sect{sense:momentum}
-# DIO spectrum near end-point: which expansion is correct?
-# Final DIO rate above momentum threshold with resolution
-\end{easylist}
+%\begin{easylist}
+%# Discussed in previous section \sect{sense:momentum}
+%# DIO spectrum near end-point: which expansion is correct?
+%# Final DIO rate above momentum threshold with resolution
+%\end{easylist}
+In order to decide the optimal threshold for the momentum cut, it was necessary, in section \sect{sense:momentum}, to study the rate of \ac{DIO} events.
+At the selected momentum threshold of \VarMomThreshold, the number of expected DIO events per muon stop is \VarDIOPerMuStop.
+Given the \VarTotalMuStops~muon stops that should take place during \phaseII, the expected number of background events due to DIO is therefore \VarDIOTotal.
+
+However, it is important to note just how steeply falling the DIO rate is in this region.
+\Fig{bg:dio:rates} shows how, given a fixed signal sensitivity, the number of DIO background events is affected.
+Changing the momentum threshold also affects the signal acceptance, so that for a fixed \ac{ses} one must increase the running time.
+Simultaneously, with more muons stopped the \ac{DIO} rate will increase for a fixed momentum threshold.
+\Fig{bg:dio:rates} was produced using the same DIO and signal spectra shown in \fig{sense:spectra:resolution}, which included energy losses in the material of the target, beamline, and detector, as well as a 200~keV/c Gaussian resolution function. 
+In addition, all the acceptance parameters of the sensitivity chapter were held fixed, except for the momentum cut efficiency.
+
+\FigDIOEndPointComparison
+The fact that the run-time, signal acceptance, and background rate depend so strongly on the momentum threshold makes the theoretical prediction for the \ac{DIO} spectrum particularly important.
+The two most recent calculations of the high energy tail of the DIO spectrum are shown in \fig{bg:dio:spectra}, as well as the cruder function that fits the whole spectrum range that is contained in SimG4.
+The more conservative spectrum from the 2011 paper has been used in this study.
+However, if one were to use the more recent 2015 spectrum, background rates due to DIO would fall to 0.19 at the same momentum threshold.
+This would agree with that papers statement that the inclusion of radiative corrections suppresses the DIO background by 15\% at the end-point.
 
 \section{Radiative Muon Capture (\acs{RMC})}
 \sectlabel{bg:rmc}

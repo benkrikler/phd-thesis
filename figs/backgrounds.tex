@@ -1,3 +1,31 @@
+\newcommand{\FigDIOBackground}{
+\begin{figure}[tbp]
+\centering
+%\fbox{
+\includegraphics[width=1.0\textwidth,trim=0 0 1cm 0.93cm,clip]{figs/backgrounds/Dio_BackgroundRate.pdf}
+%}
+\caption{\figlabel{bg:dio:rates}
+The DIO background rate as a function of momentum threshold.
+Each line show a different desired \ac{ses}.  
+With that held fixed, the signal acceptance at a given threshold determines the number of muons that must be stoppped.
+This, in turn, determines both the necessary run time (shown as the text labels along the line in units of \sci{1}{7} s) and the number of expected DIO background events.
+\CHECK{This would be far nicer as lines of fixed running time, and SES on the text labels. Dammit...}
+}
+\end{figure}
+}
+
+\newcommand{\FigDIOEndPointComparison}{
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.8\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/CompareDIOEndpoints.pdf}
+\caption{\figlabel{bg:dio:spectra}
+Comparison of the various available end-point expansions.
+The red and blue lines show the parametrisations reported in the literature, whilst the black shows the digitisation of the spectrum used in SimG4.
+For this study, the more conservative parametrisation from the 2011 Czarnecki paper~\cite{Czarnecki2011} has been used.
+}
+\end{figure}
+}
+
 \newcommand{\FigAntiprotonEndpoint}{
 \begin{figure}[btp]
 \centering
