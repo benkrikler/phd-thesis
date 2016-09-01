@@ -280,6 +280,7 @@ Often this involves a characteristic length or time of the process, for example 
 Out of all possible step limits the process proposing the shortest limit (or if the particle is at rest, the soonest limit) is chosen.
 The current position and momentum of the particle is updated accordingly and any secondary particles produced are prepared for tracking.
 
+\FigSoftwarePhysicsSpectra
 Determining which processes are applied to which particles and how each process is modelled is an important part of building a Geant4 simulation; the library provides a list of standard physics lists to help the process.
 Choosing the right physics list depends on the goal of the simulation, for example which particles are involved; what energy ranges are interesting; and which background effects must be included.
 To simulate \COMET the QGSP\_BERT\_HP physics list~\cite{Geant4:physicsLists} was chosen as a starting point.
@@ -290,8 +291,7 @@ COMET is unusual in the field of modern particle physics for dealing with muons 
 As a result,  low-energy negative muons are somewhat crudely modelled by the default physics processes of Geant4.
 In addition to this, for the COMET experiment it is important to add the process of coherent \mueconv, which, as a currently unobserved process, is not included in Geant4.
 
-\FigSoftwarePhysicsSpectra
-In the \ac{sm}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
+In the \ac{SM}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
 As previously discussed, the end-point for electrons coming muon \ac{DIO} reaches up to the \mueconv limit, or around 105~MeV/c.  
 Vanilla Geant4, however, is unable to produce this tail, and on aluminium is only able to produce electrons up to around 60 MeV/c.  
 This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction, with the boost factor set by the muon binding energy.
