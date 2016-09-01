@@ -2,14 +2,13 @@
 \begin{figure}[tbp]
 \centering
 %\fbox{
-\includegraphics[width=1.0\textwidth,trim=0 0 1cm 0.93cm,clip]{figs/backgrounds/Dio_BackgroundRate.pdf}
+\includegraphics[width=1.0\textwidth,trim=0 0 1cm 0.93cm,clip]{figs/backgrounds/Dio_BackgroundRateVsRuntime.pdf}
 %}
 \caption{\figlabel{bg:dio:rates}
-The DIO background rate as a function of momentum threshold.
-Each line show a different desired \ac{ses}.  
-With that held fixed, the signal acceptance at a given threshold determines the number of muons that must be stoppped.
-This, in turn, determines both the necessary run time (shown as the text labels along the line in units of \sci{1}{7} s) and the number of expected DIO background events.
-\CHECK{This would be far nicer as lines of fixed running time, and SES on the text labels. Dammit...}
+The DIO background rate as a function of momentum threshold for different total running times.
+Given a fixed the running time, the total number of stopped muons is also fixed, which in turn sets the DIO background rate for a given momentum threshold.
+All signal acceptance parameters were held fixed, except for the efficiency of the momentum threshold, which when combined with the number of stopped muons determines the \ac{ses}.
+The \ac{ses} is indicated in the number along the lines in units of \num{1e-17}.
 }
 \end{figure}
 }

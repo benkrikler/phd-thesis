@@ -1,12 +1,19 @@
-\newcommand{\VarMomThreshold}{104.2~MeV/c\xspace}
+% The VarUnits and VarNum commands are declared in the eval.sty file
+% They create new commands of the form \Var<arg1>
 
-\newcommand{\VarAcceptanceMom}{0.70\xspace}
-\newcommand{\VarAcceptanceTime}{0.53\xspace}
-\newcommand{\VarSignalAcceptance}{5.7\%\xspace}
+\VarUnits{MomThreshold}{104.2}{MeV/c}
 
-\newcommand{\VarMuStopsPerPOT}{\sci{1.61}{-3}\xspace}
-\newcommand{\VarTotalMuStops}{\sci{1.40}{18}\xspace}
+\VarNum{AcceptanceMom}{0.70}
+\VarNum{AcceptanceTime}{0.53}
+\VarUnits{TotalSignalAcceptance}{5.7}{\%}
 
-\newcommand{\VarDIOPerMuStop}{\sci{1.67}{-19}\xspace}
-\newcommand{\VarDIOTotal}{0.23\xspace}
+\VarNum{MuStopsPerPOT}{1.61e-3}
+\VarNum{TotalMuStops}{1.40e18}
+
+\VarNum{PredictedSES}{2.04e-17}
+\VarNum{PredictedSESPerYear}{1.29e-17}
+\newcommand{\VarRunTime}[1][0]{\sci{\decimals[#1]{2.00}}{7}\xspace}
+
+\VarNum{DIOPerMuStop}{6.2e-20}
+\VarNum{DIOTotal}{0.086}
  

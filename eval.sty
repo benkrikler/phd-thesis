@@ -1,0 +1,53 @@
+% This is my (Ben Krikler's) attempt to make it easy to update numbers in the text easily
+% Perhaps one day this will become a full blown package (with a better name)
+% This packages requires that the siunitx package be installed
+
+% Useage:
+% %%% Declare a bunch of variables
+%\newcommand\x{30}
+%\newcommand\y{50}
+%
+% %%% Declare calculated variables (can be in the body of the document)
+%\newcommand{\z}{\x+3*\y}
+%\newcommand{\w}{\x/7*\y}
+%
+%\begin{document}
+%\textbackslash{}x=\x
+%
+%\textbackslash{}y=\y
+%
+% %%% \decimals prints the number by decimal place rounding (default DP=2, but optional parameter changes this)
+%\textbackslash{}z=\z=\decimals{\z}=\decimals[3]{\z}
+%
+% %%% \sigfigs prints the number by significant figure rounding (default SF=2, but optional parameter changes this)
+%\textbackslash{}w=\w=\decimals{\w}=\sigfigs{\w}(def.\ sig.\ figs)=\sigfigs[5]{\w}(5 s.f.)
+%\end{document}
+
+\usepackage{xparse}
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\eval}{m}{\fp_eval:n{#1}}
+\ExplSyntaxOff
+
+\newcommand*{\decimals}[2][2]{\num[%
+  round-mode=places,% Round output to specified number of places
+  round-precision=#1,% Round-precision is 3
+  output-decimal-marker={.},% Use , as decimal marker
+  round-integer-to-decimal,
+  ]{\eval{#2}}}
+
+%\newcommand*{\int}[1]{\decimals[0]{#1}}
+
+\newcommand*{\sigfigs}[2][2]{\num[%
+  round-mode=figures,% Round output to specified number of places
+  round-precision=#1,% Round-precision is 3
+  output-decimal-marker={.},% Use , as decimal marker
+  add-decimal-zero=true,
+  ]{\eval{#2}}}
+
+\newcommand\Var[2]{%
+\expandafter\newcommand\csname Var#1\endcsname{#2\xspace}}
+\newcommand\VarNum[2]{%
+\expandafter\newcommand\csname Var#1\endcsname{\num{#2}\xspace}}
+\newcommand\VarUnits[3]{%
+\expandafter\newcommand\csname Var#1\endcsname{\SI{#2}{#3}\xspace}}
+

@@ -8,7 +8,8 @@
 %\usepackage{minted}
 \usepackage{xspace}
 %\usepackage[heightadjust=all,valign=t]{floatrow,fr-subfig}
-%\usepackage{siunitx}
+\usepackage{siunitx}
+\usepackage{eval}
 %\usepackage{ragged2e}
 %\usepackage{array}
 \usepackage[printonlyused]{acronym}
@@ -82,7 +83,6 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 
 \input{figs/feynman/fixFeynmpForPdf}
 \input{library/definitions}
-\input{key_numbers}
 %\input{figs/figures.tex}
 
 \renewcommand{\textfraction}{0.01}
@@ -95,6 +95,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \author{Benjamin Edward Krikler}
 
 \begin{document}
+\input{key_numbers}
 
 %% Define the un-numbered front matter (cover pages, rubrik and table of contents)
 \begin{frontmatter}

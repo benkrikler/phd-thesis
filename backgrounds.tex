@@ -19,8 +19,8 @@ The types of background we must consider for COMET were outlined in \sect{detect
 %# Final DIO rate above momentum threshold with resolution
 %\end{easylist}
 In order to decide the optimal threshold for the momentum cut, it was necessary, in section \sect{sense:momentum}, to study the rate of \ac{DIO} events.
-At the selected momentum threshold of \VarMomThreshold, the number of expected DIO events per muon stop is \VarDIOPerMuStop.
-Given the \VarTotalMuStops~muon stops that should take place during \phaseII, the expected number of background events due to DIO is therefore \VarDIOTotal.
+At the selected momentum threshold of \VarMomThreshold, the number of expected DIO events per muon stop is \VarDIOPerMuStop{}.
+Given the \VarTotalMuStops~muon stops that should take place during \phaseII, the total expected number of background events due to DIO is \VarDIOTotal.
 
 However, it is important to note just how steeply falling the DIO rate is in this region.
 \Fig{bg:dio:rates} shows how, given a fixed signal sensitivity, the number of DIO background events is affected.
@@ -31,10 +31,13 @@ In addition, all the acceptance parameters of the sensitivity chapter were held 
 
 \FigDIOEndPointComparison
 The fact that the run-time, signal acceptance, and background rate depend so strongly on the momentum threshold makes the theoretical prediction for the \ac{DIO} spectrum particularly important.
-The two most recent calculations of the high energy tail of the DIO spectrum are shown in \fig{bg:dio:spectra}, as well as the cruder function that fits the whole spectrum range that is contained in SimG4.
+The two most recent calculations of the high energy tail of the DIO spectrum are shown in \fig{bg:dio:spectra}, as well as the cruder function that fits the whole spectrum range, used in SimG4.
 The more conservative spectrum from the 2011 paper has been used in this study.
-However, if one were to use the more recent 2015 spectrum, background rates due to DIO would fall to 0.19 at the same momentum threshold.
+However, if one were to use the more recent 2015 spectrum, background rates due to DIO would fall to 0.072 events at the same momentum threshold.
 This would agree with that papers statement that the inclusion of radiative corrections suppresses the DIO background by 15\% at the end-point.
+
+In total, based on the 2011 DIO spectrum, \sci{14}{-17} electrons would be produced per muon stop with momentum greater than 104~MeV/c.
+Therefore, the DIO rejection efficiency, including both geometric effects and the threshold on the detected momentum, suppress the detection of DIO end-point electrons by about 98.4\%.
 
 \section{Radiative Muon Capture (\acs{RMC})}
 \sectlabel{bg:rmc}
