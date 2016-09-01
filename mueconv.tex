@@ -28,9 +28,9 @@ When muons in the beam enter the target they will initially lose energy predomin
 Once they reach energies of around a few keV they become atomically captured around a nucleus.
 From here, on the order of 100~fs, these muons will undergo Auger and radiative transitions to the ground state.
 The X-rays emitted during this electromagnetic cascade have well defined energies and intensities and can therefore be detected as a means to evaluate the number of muons stopped in the target.
-%\Fig{muec:alXrays} shows the X-ray spectrum for muonic aluminium.
-%\CHECK{Add muonic Xrays plots}
+\Fig{muec:alXrays} shows the X-ray spectrum for muonic aluminium.
 
+\FigMuonicXrays
 From the ground state there are two processes that can occur to the bound muon in the \ac{SM}:
 \acf{DIO} and nuclear capture.
 \ac{DIO} is the normal decay of a muon with neutrino emission, although the spectrum of the emitted electron is modified compared to the free muon decay due to the presence of the nucleus.
@@ -64,7 +64,6 @@ Based on this, one defines the \acf{ses} to be:
 where $N_\mu$ is the number of muons stopped, $\mathcal{B}_\mathrm{capture}$ is the branching ratio for muon nuclear capture, and $A_{\mu\rightarrow e}$ is the total acceptance of electrons coming from \mueconv.
 
 \section{Muon Decay in Orbit}
-\FigDecayInOrbitSpectrum
 In free muon decay the maximum energy for the outgoing electron occurs when the neutrinos recoil back-to-back with the electron.
 In this configuration, exactly half the energy released in the decay is available to the electron, so that the maximum energy of an electron coming from the decay of a free and stationary muon is: $\max(E_{e}^\textrm{free})=m_\mu/2=52.5$~MeV.
 
@@ -73,8 +72,9 @@ Once bound, the neutrinos can be arranged back-to-back with each one another, ca
 Four-momentum can still be conserved however, since the nucleus of the atom recoils against the electron.  
 Given the enormous mass of any nucleus compared to the electron, momentum is conserved with only a small amount of kinetic energy and the maximum electron energy is hugely increased compared to the free decay.
 In fact, in the limit where the neutrinos carry away no energy, the kinematic configuration of this decay becomes identical to that of \mueconv, but for the mass of the neutrinos, and accordingly: $\max(E_{e}^\textrm{DIO})\simeq{}E_{e}^\textrm{conversion}$.
+\FigDecayInOrbitSpectrum
 
-The spectrum of electrons from \ac{DIO} in aluminium is shown in \fig{muec:DIO}.
+The spectrum of electrons from \ac{DIO} in aluminium is shown in \fig{muec:dio}.
 It can be seen how the peak electron energy is close to the free muon decay end-point, and in reality about 99\% of \ac{DIO} electrons will be emitted below 55~MeV \CHECK{99\% energy for DIO electrons}.
 Whilst the end-point for the spectrum is indeed around 104.97~MeV, it is clear how suppressed this part of the spectrum is -- some twenty orders of magnitude less likely than at the peak energy.
 Achieving the end-point energy requires radiative connections between the nucleus and either the incoming muon, intermediate $W$-boson, or the outgoing electron; the low value of the neutrino momenta brings about a helicity suppression; and the specific energies of all particles implies a small phase-space volume for the decay products.
