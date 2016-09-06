@@ -315,6 +315,8 @@ struct PlotConfig{
 
    int x_axis_decimal;
    int y_axis_decimal;
+   int x_axis_divisions;
+   int y_axis_divisions;
 
    double x_axis_range_high, x_axis_range_low;
    double y_axis_range_high, y_axis_range_low;
@@ -395,6 +397,8 @@ struct PlotConfig{
      legend_entry_formula="";
      x_axis_decimal=-1;
      y_axis_decimal=-1;
+     x_axis_divisions=-1;
+     y_axis_divisions=-1;
      shift_plot_x=0;
      shift_plot_y=0;
      shift_palette=0;
@@ -550,6 +554,16 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
 		    cout<<"Error: Cannot rebin 2D histogram in Y if it is not derived from TH2 or THStack"<<endl;
 	    }
     }
+    if(x_axis_divisions!=-1){
+        if(hist->InheritsFrom("TH1")){
+            ((TH1*) hist)->SetNdivisions(x_axis_divisions,"x");
+        }
+    }
+    if(y_axis_divisions!=-1){
+        if(hist->InheritsFrom("TH1")){
+            ((TH1*) hist)->SetNdivisions(y_axis_divisions,"y");
+        }
+    }
     if(normalise!=1){
       if(hist->InheritsFrom("TH1")){
           ((TH1*) hist)->Scale(1/normalise);
@@ -691,33 +705,13 @@ void PlotConfig::RedrawLegend(){
   if(_legend) _legend->Draw();
 }
 
-TFile* FixPlot(TString filename,
+void FixCanvas(TCanvas* canvas,
     const TString plot_type,
     PlotConfig& config){
-  // Get the file
-  TFile* file=TFile::Open(filename.Data(),"READ");
-  if(!file || file->IsZombie()){
-    std::cout<<"Error: Cannot find file: '"<<filename<<"'"<<std::endl;
-    return NULL;
-  }
-
-  // Obtain the canvas
-  TCanvas* canvas=Find<TCanvas>(file->GetListOfKeys());
-  if(!canvas) {
-    std::cout<<"Error: Cannot find TCanvas object in file: '"<<filename<<"'"<<std::endl;
-    return NULL;
-  }
-  canvas->Draw();
-
-  // Set the current file name
-  gTidyPlotCurrentPlotName=filename;
-  gTidyPlotCurrentPlotName.Remove(gTidyPlotCurrentPlotName.Last('.'));
-  gTidyPlotCurrentPlotName.Remove(0,gTidyPlotCurrentPlotName.Last('/')+1);
-
   // Get the legend object (if any)
   TLegend* legend=Find<TLegend>(canvas->GetListOfPrimitives());
   if(!legend){
-    cout<<"Warning: No legend for plot in file: '"<<filename<<"'"<<endl;
+    cout<<"Warning: No legend for plot in file: '"<<gTidyPlotCurrentPlotName<<"'"<<endl;
   }
 
   // Change the canvas as wanted
@@ -753,13 +747,67 @@ TFile* FixPlot(TString filename,
     hist=axis;
   }
   if(!axis){
-    cout<<"Warning: Cannot find histogram or stack to draw in file: '"<<filename<<"'"<<endl;
+    cout<<"Warning: Cannot find histogram or stack to draw in file: '"<<gTidyPlotCurrentPlotName<<"'"<<endl;
   }
 
   // Apply the actual fixes
   config.ApplyFixes(axis,legend,hist);
   config.UpdateEverything(hist);
 
+}
+
+TFile* FixPlot(TString filename,
+    const TString plot_type,
+    PlotConfig& config){
+  // Get the file
+  TFile* file=TFile::Open(filename.Data(),"READ");
+  if(!file || file->IsZombie()){
+    std::cout<<"Error: Cannot find file: '"<<filename<<"'"<<std::endl;
+    return NULL;
+  }
+
+  // Obtain the canvas
+  TCanvas* canvas=Find<TCanvas>(file->GetListOfKeys());
+  if(!canvas) {
+    std::cout<<"Error: Cannot find TCanvas object in file: '"<<filename<<"'"<<std::endl;
+    return NULL;
+  }
+  canvas->Draw();
+
+  // Set the current file name
+  gTidyPlotCurrentPlotName=filename;
+  gTidyPlotCurrentPlotName.Remove(gTidyPlotCurrentPlotName.Last('.'));
+  gTidyPlotCurrentPlotName.Remove(0,gTidyPlotCurrentPlotName.Last('/')+1);
+
+  FixCanvas(canvas,plot_type,config);
+  return file;
+}
+
+TFile* DrawFixPlot(TString filename,TString histname,
+    const TString plot_type,
+    PlotConfig& config, const char* draw_string=""){
+  // Get the file
+  TFile* file=TFile::Open(filename.Data(),"READ");
+  if(!file || file->IsZombie()){
+    std::cout<<"Error: Cannot find file: '"<<filename<<"'"<<std::endl;
+    return NULL;
+  }
+
+  // Obtain the object to draw
+  TObject* object=file->Get(histname.Data());
+  if(!object) {
+    std::cout<<"Error: Cannot find object in file: '"<<filename<<"' called: '"<<histname<<"'"<<std::endl;
+    return NULL;
+  }
+  object->Draw(draw_string);
+
+  // Set the current file name
+  gTidyPlotCurrentPlotName=filename;
+  gTidyPlotCurrentPlotName.Remove(gTidyPlotCurrentPlotName.Last('.'));
+  gTidyPlotCurrentPlotName.Remove(0,gTidyPlotCurrentPlotName.Last('/')+1);
+  gTidyPlotCurrentPlotName+=histname.ReplaceAll("/","--");
+
+  FixCanvas(gPad->GetCanvas(),plot_type,config);
   return file;
 }
 
