@@ -124,12 +124,12 @@ It should be noted though that whilst changing the cut value leaves the signal e
 \begin{tabular}{lll}%d{.}d{.}}
 \bf{Overall Acceptance}                                & 2009 CDR~\cite{CDRphase2} & This Study \\ 
 \hline
-Geometric acceptance                                   & 0.20                      & 0.22       \\ 
+Geometric acceptance                                   & 0.20                      & \VarAcceptanceGeom       \\ 
 \hspace{1ex} \emph{Solid angle with mirroring}         & \emph{(0.73)}             &            \\ 
 \hspace{1ex} \emph{Beam blocker acceptance}            & \emph{(0.57)}             &            \\ 
 \hspace{1ex} \emph{Spectrometer acceptance}            & \emph{(0.47)}             &            \\ 
-Timing window efficiency                               & 0.39                      & 0.53       \\ 
-Momentum cut efficiency                                & 0.72                      & 0.78       \\ 
+Timing window efficiency                               & 0.39                      & \VarAcceptanceTime       \\ 
+Momentum cut efficiency                                & 0.72                      & \VarAcceptanceMom       \\ 
 \hline
 TDAQ acceptance and efficiency                         & 0.90                      & N/A        \\ 
 Reconstruction aspects                                 & 0.78                      & N/A        \\ 
@@ -142,7 +142,7 @@ Additional analysis cuts                               & 0.81                   
 \hline
 \hline
 Total acceptance at `truth level'                      & 0.056                     & 0.091      \\ 
-Total (with CDR recon. and TDAQ efficiencies)          & 0.039                     & 0.064      \\ 
+Total (with CDR recon. and TDAQ efficiencies)          & 0.039                     & \VarTotalSignalAcceptanceDec      \\ 
 \hline                                                                                                       
 \end{tabular}
 \caption{\tablabel{sense:acceptance}
@@ -173,20 +173,21 @@ Finally, it remains to pull all these numbers together into equation \eq{det:ses
 Since our target \ac{ses} is fixed we instead tune the amount of running time needed to stop enough muons to achieve this goal, hence the by inversion of \eq{det:ses} we get the necessary run time as:
 \begin{equation}
 %\mathrm{S.E.S}(\muec)=\frac{1}{N_\mu \mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}
-        t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}\mathrm{S.E.S}},
+	t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}f_\mathrm{1s}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}\mathrm{S.E.S}},
 \end{equation}
 where $N_\mu$ has been expanded to the proton beam current divided by the proton charge, $I_p/e$, times the muon stopping rate per \ac{POT}, $R_{\mu/p}$.
-\Tab{sense:ses} lists the values of these parameters, from which we can see that a single signal event sensitivity of \sensePII can be achieved in around \sci{1.21}{7} seconds or about 140 days.
-Alternatively, if we ran for some \sci{2}{7} seconds, a \acf{ses} of \sci{1.8}{-17} would be possible.
+\Tab{sense:ses} lists the values of these parameters, from which we can see that a single signal event sensitivity of \sensePII can be achieved in around \num{1.57e7} seconds or about 180 days.
+Alternatively, if we ran for some \VarRunTime[0] seconds, an \acf{ses} of \VarPredictedSES would be possible.
 \Tab{sense:comparisons} compares this to the CDR estimate, which expected to achieve a \ac{ses} of \sci{2.6}{-16} in a run time of \sci{2}{7}~s, and \phaseI which is expected to reach its goal of \sensePI in about 140 days of running.
-On a year-by-year basis the predicted \phaseII sensitivity is about four times better than the Mu2e experiment's expectation~\cite{Mu2e2014}. 
+On a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}. 
 
 \begin{table}[tb]
 \centering
 \begin{tabular}{lll}
 	\hline
-        $I_p$                          & 7~$\mu$A & Proton beam current                            \\ 
+         $I_p$                          & 7~$\mu$A & Proton beam current                            \\ 
 	 ${R}_{\mu\textrm{-stop}}$      & \VarMuStopsPerPOT & Muon stopping rate per POT                     \\ 
+	 $f_\mathrm{1s}$                & 90\%    & Probability of reaching the ground state \\ 
 	 $\mathcal{B}_\mathrm{capture}$ & 61\%    & Branching ratio for muon nuclear capture in Al \\ 
 	 $A_{\mu\rightarrow e}$         & \VarTotalSignalAcceptance   & Total signal acceptance of \phaseII            \\ 
 	\hline
@@ -202,9 +203,9 @@ On a year-by-year basis the predicted \phaseII sensitivity is about four times b
                                                         & Single event sensitivity & Total \ac{POT} ($\times10^{19}$) &Beam time $t_\textrm{run}$ (s) & Sensitivity per year of continuous beam \\ 
   \hline
   COMET \phaseII\hspace{1ex}(this study)                & \VarPredictedSES         & 87 & \VarRunTime[2]                  & \VarPredictedSESPerYear                         \\ 
-  COMET \phaseII\hspace{1ex}(CDR 2009~\cite{CDRphase2}) & \sci{2.6}{-17}           & 85 & \sci{2.00}{7}                  & \sci{1.65}{-17}                         \\ 
-  Mu2e~\cite{Mu2e2014}                                  & \sci{2.4}{-17}           & 36 & \sci{6.00}{7}                  & \sci{4.57}{-17}                         \\ 
-  COMET \phaseI~\cite{TDR2016}                          & \sci{3.0}{-15}           & 3.2 & \sci{1.26}{7}                  & \sci{1.19}{-15}                         \\ 
+  COMET \phaseII\hspace{1ex}(CDR 2009~\cite{CDRphase2}) & \sci{2.60}{-17}           & 85 & \sci{2.00}{7}                  & \sci{1.65}{-17}                         \\ 
+  Mu2e~\cite{Mu2e2014}                                  & \sci{2.40}{-17}           & 36 & \sci{6.00}{7}                  & \sci{4.57}{-17}                         \\ 
+  COMET \phaseI~\cite{TDR2016}                          & \sci{3.00}{-15}           & 3.2 & \sci{1.26}{7}                  & \sci{1.19}{-15}                         \\ 
 	\hline
 \end{tabular}
         \caption{\tablabel{sense:comparisons}
