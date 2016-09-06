@@ -557,11 +557,15 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(x_axis_divisions!=-1){
         if(hist->InheritsFrom("TH1")){
             ((TH1*) hist)->SetNdivisions(x_axis_divisions,"x");
+	}else if(hist->InheritsFrom("TH1")){
+            ((THStack*) hist)->GetHistogram()->SetNdivisions(x_axis_divisions,"x");
         }
     }
     if(y_axis_divisions!=-1){
         if(hist->InheritsFrom("TH1")){
             ((TH1*) hist)->SetNdivisions(y_axis_divisions,"y");
+	}else if(hist->InheritsFrom("TH1")){
+            ((THStack*) hist)->GetHistogram()->SetNdivisions(y_axis_divisions,"y");
         }
     }
     if(normalise!=1){
@@ -785,7 +789,7 @@ TFile* FixPlot(TString filename,
 
 TFile* DrawFixPlot(TString filename,TString histname,
     const TString plot_type,
-    PlotConfig& config, const char* draw_string=""){
+    PlotConfig& config, const char* draw_string="",bool normToEventsRead=true){
   // Get the file
   TFile* file=TFile::Open(filename.Data(),"READ");
   if(!file || file->IsZombie()){
@@ -800,6 +804,17 @@ TFile* DrawFixPlot(TString filename,TString histname,
     return NULL;
   }
   object->Draw(draw_string);
+
+  if(normToEventsRead){
+    // Obtain the object's normalisation
+    TNamed* norm_obj=(TNamed*)file->Get("events_read");
+    if(norm_obj){
+	    std::stringstream sstream(norm_obj->GetTitle());
+	    double norm=0;
+	    sstream>>norm;
+	    config.normalise=norm;
+    }
+  }
 
   // Set the current file name
   gTidyPlotCurrentPlotName=filename;
