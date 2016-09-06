@@ -73,6 +73,56 @@ The overlaid spectrum is normalised arbitrarily to fit on the plot.
 \end{figure}
 }
 
+\newcommand{\FigRPCData}{
+\begin{figure}[btp]
+\centering
+\subfloat[][\figlabel{bg:rpc:data:ca}Calcium]  {\includegraphics[width=0.43\textwidth]{figs/backgrounds/RPC-data-calcium.png}}\hspace{0.2cm}%
+\subfloat[][\figlabel{bg:rpc:data:mg}Magnesium]{\includegraphics[width=0.53\textwidth]{figs/backgrounds/RPC-data-magnesium.png}}
+\caption{\figlabel{bg:rpc:data}
+Spectrum of photons coming from \acf{RPC}~\cite{Bistirlich:1972jy}.
+The spectrum of manesium, which is adjacent to aluminium on the periodic table, was used as the basis of these studies.
+}
+\end{figure}
+}
+
+\newcommand{\FigRPCSimulatedSpectrum}{
+\begin{figure}[btp]
+\centering
+%\fbox{%
+\includegraphics[width=0.73\textwidth,trim=1cm 0.5cm 2cm 1cm,clip]{figs/backgrounds/RPC_simulated_spectrum.pdf}%
+%}
+\caption{\figlabel{bg:rpc:spectrum}
+Digitised (red) and smoothed (blue) spectrum of \ac{RPC} from magnesium (see \fig{bg:rpc:data:mg}) used as input to the Monte Carlo simulation.
+}
+\end{figure}
+}
+
+\newcommand{\FigPionStopDist}{
+\begin{figure}[btp]
+\centering
+\subfloat[][\figlabel{bg:piStop:dist:x}X-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-X.pdf}}\hspace{0.1cm}%
+\subfloat[][\figlabel{bg:piStop:dist:y}Y-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-Y.pdf}}\hspace{0.1cm}%
+\subfloat[][\figlabel{bg:piStop:dist:z}Z-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-Z.pdf}}
+\caption{\figlabel{bg:piStop:dist}
+Stopping distributions of pions in the target.
+These distributions have considerably different forms to the muon stopping distributions shown in \fig{sense:stops2D}, mostly due to the different momenta of muons and pions.
+}
+\end{figure}
+}
+
+\newcommand{\FigPiVsMuMomenta}{
+\begin{figure}[btp]
+\centering
+%\fbox{%
+\includegraphics[width=0.9\textwidth,trim=0 0.5cm 1.3cm 0.4cm,clip]{figs/backgrounds/Tidied_MuVsPiMomentum.pdf}%
+%}
+\caption{\figlabel{bg:piVsMu:momenta}
+The momentum of muons and pions for those that reach the target area and those that actually stop.
+It is clear how the pion momenta are in general higher, including those that stop, although the maximum stopping momentum for pions is similar to that of muons.
+}
+\end{figure}
+}
+
 \newcommand{\FigAntiprotonEndpoint}{
 \begin{figure}[btp]
 \centering

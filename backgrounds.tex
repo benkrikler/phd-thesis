@@ -143,6 +143,35 @@ Additionally, it could be possible to remove the stopping target and replace it 
 
 \section{Radiative Pion Capture (\acs{RPC})}
 \sectlabel{bg:rpc}
+\subsection{Pion Stopping Rate}
+Negative pions risk producing background events since photons emitted during their capture can reach above the \mueconv signal given the large pion mass.
+As for the photons of \ac{RMC}, the \ac{RPC} photons can be converted via Compton scattering or pair production to signal-like electrons.
+
+However, since the pion interacts via the strong force negative pions capture almost immediately in the nucleus, on the order of picoseconds~\cite{Engelhardt:1975ct}.
+The timing of backgrounds caused from pion capture are therefore determined predominantly by the time when the pion was produced.
+If a background arises from pion capture and the pion was produced in the main muon pulse, then the pion or resultant background electron must have been significantly delayed.
+Delayed \ac{RPC} backgrounds are therefore suppressed by the delayed-time detector window.
+If however a background arises because the pion was produced outside of the main proton pulse, due to late-arriving protons, then this background is considered prompt.
+These \ac{RPC} background events are, therefore, suppressed by the extinction factor.
+
+\FigRPCData
+\subsection{Photons from Radiative Pion Capture (\acs{RPC})}
+In much the same way as \ac{RMC}, when a pion is captured in a nucleus there is a chance that it will produce a prompt, hard photon.
+\Fig{bg:rpc:spectra} shows the observed spectrum of photons coming from RPC for magnesium and calcium.
+The relative rate for \ac{RPC} compared to ordinary pion capture is discussed in Amaro \etal~\cite{Amaro:1997ed}.
+For the three isotopes studied there -- carbon, oxygen, and calcium -- the measured and predicted branching ratios are all within 1.19\% and 2.27\%, so we take here the branching ratio for RPC on aluminium to be the largest of these (likely an overestimate) of 2.27\%.
+
+\subsection{Pion Stopping Rate}
+\begin{easylist}
+# Long decay channel before stopping target
+# beamline is designed to remove high-momentum particles and most pions are more energetic than the stopping muons
+# Pion stopping rate at Phase-I is \num{3.4e-6}~\cite{TDR2016}.
+\end{easylist}
+\FigPionStopDist
+\FigPiVsMuMomenta
+\subsection{Simulating \acs{RPC}}
+\FigRPCSimulatedSpectrum
+\subsection{Results}
 
 \section{Anti-protons in the Beam}
 \sectlabel{bg:antiprotons}
