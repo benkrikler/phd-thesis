@@ -40,6 +40,7 @@ In total, based on the 2011 DIO spectrum, \sci{14}{-17} electrons would be produ
 Therefore, the DIO rejection efficiency, including both geometric effects and the threshold on the detected momentum, suppress the detection of DIO end-point electrons by about 98.4\%.
 
 \section{Radiative Muon Capture (\acs{RMC})}
+\TabRMCEndPoints%
 \sectlabel{bg:rmc}
 During the process of nuclear muon capture, there is a finite probability of a hard photon being radiated from the muon, nucleus, or the exchanged $W$-boson.
 This is known as \acf{RMC} and is distinguished from radioactive gamma-ray production during nuclear de-excitation or decay of the daughter nucleus.
@@ -48,7 +49,7 @@ The maximum energy this photon can take, $\max(E_e^\textrm{RMC})$, differs from 
 \max(E_e^\textrm{RMC})=&\big(M_\mu - B_{\mu,\textrm{binding}} - E_\textrm{rec}\big)-\big(M_{N_2}+\sum_iM_{h_i}-M_{N_1}-\Delta{}Z\cdot{}M_e\big),\\
                       =&E^\textrm{Conversion}_e  - \Delta{}M,
 \end{align}
-with $M_{N_1}$ and $M_{N_2}$ the mass of the parent and daughter nuclei respectively, $M_{h_i}$ the mass of the $i$-th hadron (proton, neutron, alpha, \etc).
+with $M_{N_1}$ and $M_{N_2}$ the mass of the parent and daughter nuclei respectively, and $M_{h_i}$ the mass of the $i$-th hadron (proton, neutron, alpha, \etc).
 The mass of the electron, $M_e$, must also be included since for ever proton removed from the nucleus, given by $\Delta{}Z$, a free electron must be ejected from the atomic orbitals.
 $\Delta{}M$ is then the total energy lost to changes in the atomic mass%
 \footnote{
@@ -58,38 +59,63 @@ Under nuclear muon capture (radiative or otherwise), the number of protons in th
 The notation here follows that of the COMET TDR~\cite{TDR2016} and CDR~\cite{CDRphase2}, where the electron mass is absorbed into the value of $\Delta{}M$ (although there it is called $\Delta_{Z-1}$).
 }
 of the nuclei and other emitted hadrons.
-\FigRMCExperiments
 
 When an aluminium-27 nucleus captures a muon various daughter nuclei are possible.
 If no other particles are emitted, as part of a prompt process or direct nucleon capture, the daughter nucleus will be magnesium-27.
 In general, this could be left in an excited state, but to reach the end-point of the \ac{RMC} spectrum it will be left in the ground-state configuration.
 The atomic mass difference between these two nuclei is shown in \tab{bg:rmc:massDifferences}, where it can be seen the RMC end-point is separated from the \mueconv signal energy by around 3~MeV.
 
+\FigRMCExperiments
 %\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
-\begin{table}[tb]
-\centering
-\begin{tabular}{lSSS}
-Reaction & \multicolumn{1}{m{3cm}}{Atomic Mass of Daughter (u)} & \multicolumn{1}{m{2cm}}{$\Delta{}M$ (MeV/c$^{2}$)}&  \multicolumn{1}{m{2cm}}{$\max(E_e^\textrm{RMC})$ (MeV/c$^{2}$)} \\
-\hline
-${}^{27}$Al$(\mu,\gamma\nu){}^{27}  $Mg     & 26.984341 &  3.12  & 101.85 \\
-${}^{27}$Al$(\mu,\gamma\nu2n){}^{26}$Mg     & 25.982593 &  9.56  &  95.41 \\
-${}^{27}$Al$(\mu,\gamma\nu2n){}^{25}$Mg     & 24.985837 & 20.66  &  84.31 \\
-${}^{27}$Al$(\mu,\gamma\nu{}p){}^{26}$Na    & 25.992633 & 18.13  &  87.37 \\
-${}^{27}$Al$(\mu,\gamma\nu{}np){}^{25}$Na   & 24.989954 & 23.71  &  81.77 \\
-${}^{27}$Al$(\mu,\gamma\nu{}d){}^{25}$Na    & 24.989954 & 21.49  &  84.00 \\
-${}^{27}$Al$(\mu,\gamma\nu\alpha){}^{23}$Na & 22.994467 & 15.49  &  91.01 \\
-\hline
-\end{tabular}
-\caption{\tablabel{bg:rmc:massDifferences}
-Several potential daughter nuclei of nuclear muon capture in \textsuperscript{27}Al.
-The mass of \textsuperscript{27}Al is 26.98153863~$u$, and one $u$ is taken as 931.494061~MeV/c$^2$~\cite{PDG2014}.
-All masses come from~\cite{AUDI20033}.
-}
-\end{table}
 
-It is interesting to note that in all experiments to date~\cite{PhysRevC.37.1633,PhysRevC.46.1094,PhysRevC.59.2853} none of the emprical fits to RMC used have suggested an end-point above 90.1~MeV.
+\Fig{bg:rmc:experiments} shows the summary table of experimental data on Aluminium, taken from the summary by Gorringe~\cite{RevModPhys.76.31}.
+It is interesting to note that in all experiments to date none of the emprical fits to RMC used have suggested an end-point above 90.1~MeV~\cite{PhysRevC.37.1633,PhysRevC.46.1094,PhysRevC.59.2853}.
 This is close to the end-point predicted by the various transitions besides ${}^{27}$Al$(\mu,\gamma\nu){}^{27}$Mg.
 The most recent of these two experiments both measure the branching ratio for \ac{RMC} producing photons with $E>57~$MeV to ordinary muon capture to be \sci{1.43}{-5}. 
+
+To produce a background event in the detector, the high energy photons produced from RMC must be produce to a high energy electron.
+Asymmetric pair production from this photon is one such process, although producing the positron at rest is highly suppressed.
+In addition, around 1~MeV is consumed my the mass of the electron-positron pair.
+Compton scattering provides another mechanism by which the high-energy photon can convert to a high-energy electron.
+In the limit where the photon is reflected directly back, the resultant electron is around $M_e/2$ more energy than the incoming photon.
+As such it is Compton scattering which is more of a concern for COMET.
+
+Finally, given the maximum photon energy is below the momentum threshold of \VarMomThreshold, the energy needs to be mis-reconstructed by around 2.4~MeV.
+If the final resolution function were Gaussian with a 200~keV/c width (at signal energies), then mis-reconstruction by such an amount would be an 11~$\sigma$ event, \ie $P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\num{1.9e-28}$.
+However, the resolution function is not likely to be a pure Gaussian.
+On-going studies for reconstruction with the  \phaseI StrECAL currently suggest that $P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\num{7.5e-3}$~\cite{YFujiiStrECALRecon}.
+Although this is considerably larger than the pure Gaussian, this is based on the most preliminary results of reconstruction algorithms.
+If need be, cuts on fit quality can be improved over the current \phaseI values; the sensitivity estimate presented here should be robust against this since it includes the CDR estimate for the signal efficiency of such a cut.
+
+\subsection{Calculation and Simulation of RMC}
+Conversion of the RMC photons can take place in any of the material around the target, such as the beam blocker, solenoids, or cryostat.
+To estimate the acceptance of the electrons produced from this conversion a simulation was performed where RMC photons were input at the stopping target, using the realistic muon stopping distribution obtained previously.
+Geant4 implements the process of photo conversion via both of the above methods.
+
+To build a realistic end-point spectrum, the same recipe as used in the \phaseI TDR was applied~\cite{TDR2016}.
+The spectrum shape near the end-point is modelled by the equation~\cite{CHRISTILLIN1980331}:
+\begin{equation}
+	\eqlabel{bg:rmc:spect}
+	\Gamma(\textrm{RMC})\propto(1-2x+2x^2)(x)(1-x)^2,
+\end{equation}
+where $x=E_\gamma/\max(E_e^\textrm{RMC})$.
+The largest observed branching ratio for \ac{RMC} -- \num{1.83e-5} compared to ordinary muon capture --  is used to set the normalisation.
+The relative rate of \ac{RMC} resulting in photons with energies above 90~MeV is, based on the spectrum in equation~\eq{bg:rmc:spect}, \num{7.7e-3} of the experimentally observed rate.
+\FigRMCSimResults
+
+Given the total number of muon stops during \phaseII, the probability of ordinary muon capture, and the relative rates for \ac{RMC}, one expects some \num{1.2e11} photons to be produced in the target with energies above 95~MeV.
+Since this is an intrinsic background, the lifetime of this process will be the same as for signal events. 
+Assuming, therefore, the same timing window acceptance, and applying the same reconstruction and TDAQ efficiencies as for signal, this number is reduced to \num{3.3e10}.
+If the resolution function were truly a 200~keV/c Gaussian, then this would be no issue, regardless of the geometric acceptance or probability of Compton scattering.
+If, however, the current \phaseI high-energy reconstruction tail were present, we would expect some \num{2.4e8} events to be considered dangerous if they were all accepted.
+
+To check the geometric acceptance of the beamline, some \num{6e7} RMC events were generated in the stopping target, with initial photon energies greater than 90~MeV and distributed according to the spectrum in equation~\eq{bg:rmc:spect}.
+\Fig{bg:rmc:simulation} shows the momentum and rate at which these were detected.
+Based on this, the fraction of events reaching the detector with momentum larger than 98~MeV/c was \num{6.2e-7}, whilst above 100~MeV/c only \num{3.3e-8} electrons per \ac{RMC}$|_{p>90}$ event were detected.
+
+As a result, if the current \phaseI resolution were applied, we would expect around 8 background events during the entire run.
+However, since the resolution function at this stage is so poorly known, it seems to premature to define a value.
+Instead, the predicted RMC rate provides a constraint on the high-energy tail of the resolution function: to do better than 0.1 background events during \phaseII from RMC, fewer than 1 in \num{1e4} high-energy electrons can be reconstructed with a momentum more than 2.4~MeV/c larger than the true value.
 
 \subsection{Aluminium-26 and \ac{RMC}}
 Based on the above energy calculation, the end-point for \ac{RMC} against ${}^{26}$Al (to ${}^{26}$Mg with no other particles emitted) would be 108.5~MeV.
@@ -103,9 +129,9 @@ with protons, deuterons, gammas, and neutrons coming from either the beam or as 
 The exact rate of Al-26 production, however, is a complicated value to estimate and one that unfortunately cannot be estimated here.
 
 One can, however, set an acceptable rate of production if the induced background event rate is to be kept at the level of 0.1 events.
-Based on the previous simulation of Al-27 \ac{RMC}, the probability of an electron being detected within 6~MeV of the \ac{RMC} end-point is XXXXX per nuclear muon capture.
-With \VarTotalMuStops muon stops during \phaseII, and assuming that the branching ratios for both ordinary and radiative muon capture are the same for Al-26 and Al-27 (61\%), then the 
-the concentration of Al-26 in the stopping target must be less than XXXXX, on average during the entire \phaseII run.
+Based on the previous simulation of Al-27 \ac{RMC}, the probability of an electron being detected within 5~MeV of the \ac{RMC} end-point is \num{5.6e-18} per nuclear muon capture.
+With \VarTotalMuStops muon stops during \phaseII, and assuming that the branching ratios for both ordinary and radiative muon capture are the same for Al-26 and Al-27 (61\%), then the
+concentration of Al-26 in the stopping target must be less than 1\% (by number density) on average during the entire \phaseII run.
 The branching ratio for radiative muon capture is, in reality, likely to be slightly more than in Al-27, based on the fact that the neutron excess of a given isotope seems a better indicator of the branching ratio than atomic number, and that the two are anti-correlated~\cite{RevModPhys.76.31}.
 
 Clearly though, there is more work to be done on this, including a better understanding of \ac{RMC} events coming from Al-26, as well as understanding the rate of Al-26 production from muon beams.

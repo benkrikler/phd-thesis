@@ -38,6 +38,41 @@ The column lablled `$\alpha$' is the neutron excess for the element, determined 
 \end{figure}
 }
 
+\newcommand{\TabRMCEndPoints}{%
+\begin{table}[tb]%
+%\centering
+\begin{tabular}{lSSS}%
+\hline
+Reaction & \multicolumn{1}{m{3cm}}{Atomic Mass of Daughter (u)} & \multicolumn{1}{m{2cm}}{$\Delta{}M$ (MeV/c$^{2}$)}&  \multicolumn{1}{m{2cm}}{$\max(E_e^\textrm{RMC})$ (MeV/c$^{2}$)} \\
+\hline
+${}^{27}$Al$(\mu,\gamma\nu){}^{27}  $Mg     & 26.984341 &  3.12  & 101.85 \\
+${}^{27}$Al$(\mu,\gamma\nu2n){}^{26}$Mg     & 25.982593 &  9.56  &  95.41 \\
+${}^{27}$Al$(\mu,\gamma\nu2n){}^{25}$Mg     & 24.985837 & 20.66  &  84.31 \\
+${}^{27}$Al$(\mu,\gamma\nu{}p){}^{26}$Na    & 25.992633 & 18.13  &  87.37 \\
+${}^{27}$Al$(\mu,\gamma\nu{}np){}^{25}$Na   & 24.989954 & 23.71  &  81.77 \\
+${}^{27}$Al$(\mu,\gamma\nu{}d){}^{25}$Na    & 24.989954 & 21.49  &  84.00 \\
+${}^{27}$Al$(\mu,\gamma\nu\alpha){}^{23}$Na & 22.994467 & 15.49  &  91.01 \\
+\hline
+\end{tabular}
+\caption{\tablabel{bg:rmc:massDifferences}%
+Several potential daughter nuclei of nuclear muon capture in \textsuperscript{27}Al.
+The mass of \textsuperscript{27}Al is 26.98153863~$u$, and one $u$ is taken as 931.494061~MeV/c$^2$~\cite{PDG2014}.
+All masses come from~\cite{AUDI20033}.}\end{table}%
+\xspace}%
+
+\newcommand{\FigRMCSimResults}{
+\begin{figure}[tbp]
+\centering
+%\fbox{
+\includegraphics[width=0.85\textwidth]{figs/backgrounds/RMC_simResults.pdf}
+%}
+\caption{\figlabel{bg:rmc:simulation}
+Observed electrons from a simulation of \num{6e7} \ac{RMC} photons.
+The overlaid spectrum is normalised arbitrarily to fit on the plot.
+}
+\end{figure}
+}
+
 \newcommand{\FigAntiprotonEndpoint}{
 \begin{figure}[btp]
 \centering
