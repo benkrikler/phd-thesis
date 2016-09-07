@@ -1,21 +1,35 @@
 % The VarUnits and VarNum commands are declared in the eval.sty file
 % They create new commands of the form \Var<arg1>
 
+%%%%%%% SIGNAL
 \VarUnits{MomThreshold}{104.2}{MeV/c}
 
+% Signal acceptance
 \VarNum{AcceptanceGeom}{0.22}
 \VarNum{AcceptanceMom}{0.70}
 \VarNum{AcceptanceTime}{0.53}
 \VarUnits{TotalSignalAcceptance}{5.7}{\%}
 \VarNum{TotalSignalAcceptanceDec}{0.057}
 
+% Muon stopping
 \VarNum{MuStopsPerPOT}{1.61e-3}
 \VarNum{TotalMuStops}{1.40e18}
 
+% Signal Sensitivity
 \VarNum{PredictedSES}{2.27e-17}
 \VarNum{PredictedSESPerYear}{1.44e-17}
 \newcommand{\VarRunTime}[1][0]{\sci{\decimals[#1]{2.00}}{7}\xspace}
 
+%%%%%%% BACKGROUNDS
+%\VarNum{ExtinctionFactor}{1e-12}
+\newcommand{\VarExtinctionFactor}[1][0]{\sci{\decimals[#1]{1.00}}{-12}\xspace}
+% DIO
 \VarNum{DIOPerMuStop}{6.2e-20}
 \VarNum{DIOTotal}{0.086}
- 
+
+% RPC
+\VarNum{PiStopsPerPOT}{4.33e-7}
+\VarNum{DetectedEsPerRPC}{1.05e-5}
+\VarNum{RPCTimingEfficiency}{9.51e-15}
+\VarNum{RPCDelayedPerPOT}{1.82E-25}
+\VarNum{RPCPromptPerPOT}{1.73E-27}

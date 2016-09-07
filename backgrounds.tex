@@ -141,38 +141,94 @@ Finally, if this does produce a sizeable background contribution, one can imagin
 Provided one can measure the concentration of Al-26 in the stopping target at the end of the run, and ideally at various stages whilst running, then the number of backgrounds can be predicted and possibly subtracted.
 Additionally, it could be possible to remove the stopping target and replace it with a fresh one such that the Al-26 concentration never rises beyond an unsafe level.
 
+\CHECK{Mention that this could be a useful source of calibration}
+
 \section{Radiative Pion Capture (\acs{RPC})}
 \sectlabel{bg:rpc}
-\subsection{Pion Stopping Rate}
-Negative pions risk producing background events since photons emitted during their capture can reach above the \mueconv signal given the large pion mass.
-As for the photons of \ac{RMC}, the \ac{RPC} photons can be converted via Compton scattering or pair production to signal-like electrons.
+When low-energy negative pions are stopped in material they behave similarly to negative muons and form pionic atoms.
+The probability that the pion is then captured by the nucleus rather than decays in orbit is, however, considerably larger than for a muon.
+Furthermore, given the extra 30~MeV/c$^2$ of the pion mass and the lack of an outgoing neutrino, the end-point for \acf{RPC} by the nucleus is well above the \mueconv signal energy.
+As for photons of \ac{RMC}, the \ac{RPC} photons can then be converted via Compton scattering or pair production to signal-like electrons.
+Pion capture could, therefore, be a dangerous source of backgrounds and was likely the dominant source of background events at \sindrumII.
 
-However, since the pion interacts via the strong force negative pions capture almost immediately in the nucleus, on the order of picoseconds~\cite{Engelhardt:1975ct}.
+Since the pion interacts via the strong force, negative pions capture almost immediately in the nucleus, on the order of picoseconds~\cite{Engelhardt:1975ct}.
 The timing of backgrounds caused from pion capture are therefore determined predominantly by the time when the pion was produced.
 If a background arises from pion capture and the pion was produced in the main muon pulse, then the pion or resultant background electron must have been significantly delayed.
-Delayed \ac{RPC} backgrounds are therefore suppressed by the delayed-time detector window.
-If however a background arises because the pion was produced outside of the main proton pulse, due to late-arriving protons, then this background is considered prompt.
-These \ac{RPC} background events are, therefore, suppressed by the extinction factor.
+Delayed \ac{RPC} backgrounds are therefore suppressed by the time-gated detector window.
+If however a background arises because the pion was produced outside of the main proton pulse, due to late-arriving protons (or from antiprotons, but we will treat these separately below), then this background is considered prompt.
+These prompt \ac{RPC} background events are, therefore, suppressed by the extinction factor.
+
+The background rate per \ac{POT} for prompt and delayed pions is therefore:
+\begin{align}
+	R_\textrm{prompt}=&R_{\pi/p}\mathcal{B}_\textrm{RMC}f_{e,\textrm{RMC}}A_\textrm{time}, \\
+	R_\textrm{prompt}=&R_{\pi/p}\mathcal{B}_\textrm{RMC}f_{e,\textrm{RMC}}\epsilon_\textrm{extinction},
+\end{align}
+where $R_{\pi/p}$ is the pion stopping rate per \ac{POT} and $\mathcal{B}_\textrm{RMC}$ is the branching ratio of \ac{RMC} for stopped pions.
+$\epsilon_\textrm{extinction}$ is the extinction factor, whereas $A_\textrm{time}$ is the acceptance of the time-gated detector window to RMC electrons.
+$f_{e,\textrm{RMC}}$ is the probability that an RMC photon converts to an electron which reaches the detector with signal-like momentum.
+To a reasonable approximation, this can be factorised as:
+\begin{equation}
+f_{e,\textrm{RMC}}=f_{\gamma\rightarrow{}e^-}A_\textrm{geom}A_\textrm{mom}
+\end{equation}
+where $f_{\gamma\rightarrow{}e^-}$ is the conversion rate of RMC photons to an electron, $A_\textrm{geom}$ and $A_\textrm{mom}$
+are, respectively, the geometric acceptance and momentum cut efficiency for such electrons.
+However, such a factorisation misses out various correlations, such as where in the experiment the conversion takes place and at what momentum the secondary electron is produced, so that only a single value for $f_{e,\textrm{RMC}}$ will be reported here.
 
 \FigRPCData
 \subsection{Photons from Radiative Pion Capture (\acs{RPC})}
-In much the same way as \ac{RMC}, when a pion is captured in a nucleus there is a chance that it will produce a prompt, hard photon.
-\Fig{bg:rpc:spectra} shows the observed spectrum of photons coming from RPC for magnesium and calcium.
+%In much the same way as \ac{RMC}, when a pion is captured in a nucleus there is a chance that it will produce a prompt, hard photon.
+There is a range of experimental and theoretical data on \ac{RPC}. 
+\Fig{bg:rpc:spectra} shows what is perhaps the most useful data currently available: the observed spectrum of photons coming from RPC for magnesium and calcium.
+Magnesium being adjacent to aluminium on the periodic table, this spectrum is a reasonable proxy for the spectrum of \ac{RPC} on aluminium.
 The relative rate for \ac{RPC} compared to ordinary pion capture is discussed in Amaro \etal~\cite{Amaro:1997ed}.
-For the three isotopes studied there --- carbon, oxygen, and calcium --- the measured and predicted branching ratios are all within 1.19\% and 2.27\%, so we take here the branching ratio for RPC on aluminium to be the largest of these (likely an overestimate) of 2.27\%.
+For experimental and theoretical studies of the three isotopes summarised in that paper --- carbon, oxygen, and calcium --- the measured and predicted branching ratios are all within 1.19\% and 2.27\%.
+To be conservative, we take here the branching ratio for RPC on aluminium to be the largest of these as 2.27\%.
 
 \subsection{Pion Stopping Rate}
-\begin{easylist}
-# Long decay channel before stopping target
-# beamline is designed to remove high-momentum particles and most pions are more energetic than the stopping muons
-# Pion stopping rate at Phase-I is \num{3.4e-6}~\cite{TDR2016}.
-\end{easylist}
 \FigPionStopDist
 \FigPiVsMuMomenta
+To simulate the pion stopping rate, the pions from the main production simulation were resample multiple times to build up a large number of pion stops.
+\Fig{bg:piStop:dist} shows the distribution of pions stopping in the target, in one-dimensional projections to the ICEDUST global coordinate system.
+In that coordinate system, pions arrive from large values of Z at the target, so the pion beam in \fig{bg:piStop:dist:z} is going from right to left.
+By comparison with the plots in \fig{sense:stops2D}, pions tend to stop further downstream in the target.
+This is readily understood by the fact that pions reaching the stopping target tend to have much higher momentum than muons reaching the target, as shown in \fig{bg:piVsMu:momenta}.
+
+In total, the number of pions stopping in the target per \ac{POT} is $R_{\pi/p}=$\VarPiStopsPerPOT.
+
 \subsection{Simulating \acs{RPC}}
 \FigRPCSimulatedSpectrum
-\subsection{Results}
 \FigRPCSimResults
+Using the realistic pion stopping distribution shown in \fig{bg:piStop:dist}, \ac{RPC} photons were generated in the target and Geant4 used to convert and track electrons resulting from this process.
+To model the distribution of photon energies from \ac{RPC}, the experimentally obtained spectrum from magnesium of ref.~\cite{Bistirlich:1972jy} was used.
+To build the model, the raw spectrum was first digitised and then smoothed, using `TGraphSmooth::SuperSmooth()' from the  ROOT library~\cite{ROOT}.
+These steps are shown in \fig{bg:rpc:spectrum}.
+
+Based on a simulation of \num{4e6} RPC photons, the distribution of electrons and positrons reaching the detector was obtained.
+The timing and momentum of such electrons is shown in \fig{bg:rpc:sim}, where it is clear that although many signal-like electrons are detected, they all arrive well before the gated-time threshold of 600~ns.
+
+The probability of an \ac{RPC} photon producing an electron that reaches the detector with momentum between \VarMomThreshold and 105~MeV/c is: $f_{e,\textrm{RMC}}=$\VarDetectedEsPerRPC.
+To estimate the rate of delayed \ac{RPC} backgrounds, we also need to know the value of $A_\textrm{time}$.
+As can be seen in \fig{bg:rpc:sim:momVtime}, the timing for electrons originating from RPC photons and detected with momentum greater than 30~MeV/c is independent of the momentum.
+By fitting the tail of this distribution with a single exponential, the lifetime of the high energy electrons is found to be 18.6~ns, such that with the timing window between 600 and 1200~ns we find the acceptance of the timing window to be: $A_\textrm{time}=\VarRPCTimingEfficiency$.
+
+\Tab{bg:rpc:estimates} summarizes these numbers, from which we find that the rate of backgrounds for delayed \ac{RPC} is \VarRPCDelayedPerPOT per POT, whilst the prompt form occurs at \VarRPCPromptPerPOT.
+\begin{table}[tb]
+\centering
+        \begin{tabular}{llm{0.5\textwidth}}
+	\hline
+        Parameter & \multicolumn{1}{l}{Value} & Description \\
+	\hline
+        $R_{\pi/p}$                    & \VarPiStopsPerPOT & Pion stopping rate per \ac{POT}  \\ 
+        $\mathcal{B}_\textrm{RPC}$     & \num{2.27e-2} & Branching ratio of \ac{RPC} \\ 
+	$f_{e,\textrm{RPC}}$           & \VarDetectedEsPerRPC & Probability of an RPC photon producing signal-like electrons in the detector \\ 
+	$A_\textrm{time}$              & \VarRPCTimingEfficiency & Acceptance of timing window to seondary electrons from RPC \\ 
+        $\epsilon_\textrm{extinction}$ & \VarExtinctionFactor[2] &  Extinction factor\\ 
+	\hline
+\end{tabular}
+\caption{\tablabel{bg:rpc:estimates}
+Parameters and their values in the determination of the \ac{RPC} background rate.
+}
+\end{table}
 
 \section{Anti-protons in the Beam}
 \sectlabel{bg:antiprotons}

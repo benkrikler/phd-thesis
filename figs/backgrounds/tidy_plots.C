@@ -121,6 +121,7 @@ void tidy_plots(const char* ext="png"){
   SavePlot(ext,NULL,"Tidied_RPC_sim_mom-time");
   config.shift_plot_y=-0.05;
 
+  config.z_axis_label="Particle Flux per RPC Event   ";
   config.rebin_y=config.rebin_x=4;
   config.y_axis_range_high=0;
   config.y_axis_label_offset=1;
@@ -131,11 +132,11 @@ void tidy_plots(const char* ext="png"){
 
   config.legend_build_from="legend_obj";
   config.legend_x1=0.49; config.legend_x2=0.88; 
-  config.legend_y1=0.70; config.legend_y2=0.93; 
+  config.legend_y1=0.75; config.legend_y2=0.98; 
   config.legend_margin=0.5;
   config.legend_columns=2;
 
-  config.y_axis_label="Particle Flux per RPC Event";
+  config.y_axis_label="Particle Flux per RPC Event   ";
   config.x_axis_range_low=0; config.x_axis_range_high=140;
   config.x_axis_label="Momentum (MeV/c)";
   file=DrawFixPlot(top_dir+filename,"truth_IPhaseIISignalAcceptanceAnalyzer/StrawTrk/hMomentum_StrawTrkCombined","THStack", config,"nostack");
