@@ -35,7 +35,7 @@ const double kMax=-999999999999999999;
 }
 
 TString gTidyPlotCurrentPlotName;
-void SavePlot(const char* extension=0,const char* directory=NULL, const TString filename="",bool makeRootFile=true){
+void SavePlot(const TString extension="",const char* directory=NULL, const TString filename="",bool makeRootFile=true){
   if(gTidyPlotCurrentPlotName.Length()==0) {
     cout<<"Error: It looks like there is no current plot (gTidyPlotCurrentPlotName is empty)"<<endl;
     return;
@@ -44,11 +44,11 @@ void SavePlot(const char* extension=0,const char* directory=NULL, const TString 
   if(filename.Length()>0) name=filename;
   if(directory) name=Form("%s/%s",directory,name.Data());
 
-  if(!extension){
+  if(extension!=""){
     gPad->SaveAs(Form("%s.pdf",name.Data()));
     gPad->SaveAs(Form("%s.png",name.Data()));
   } else{
-    gPad->SaveAs(Form("%s.%s",name.Data(),extension));
+    gPad->SaveAs(Form("%s.%s",name.Data(),extension.Data()));
   }
   if(makeRootFile) gPad->SaveAs(Form("%s.root",name.Data()));
 
@@ -706,8 +706,6 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       axes->GetZaxis()->SetRangeUser(z_axis_range_low,z_axis_range_high);
       axes->SetMinimum(z_axis_range_low);
       axes->SetMaximum(z_axis_range_high);
-      axes->Print();
-      cout<<axes->GetMinimum()<<" --> "<<axes->GetMaximum()<<endl;
     }
     if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
     if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
@@ -824,7 +822,7 @@ void FixCanvas(TCanvas* canvas,
 
   // Apply the actual fixes
   config.ApplyFixes(axis,legend,hist);
-  //config.UpdateEverything(hist);
+  config.UpdateEverything(hist);
 
 }
 
