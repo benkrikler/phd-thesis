@@ -155,12 +155,51 @@ void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
     )
 }
 
-TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_entry_formula_str ,TString legend_entry_format_str ){
+void StackFilterLines(TString stack_include, TString stack_remove,THStack* stack){
+   TObjArray* remove=stack_remove.Tokenize(";");
+   TObjArray* include=stack_include.Tokenize(";");
+
+   TList* all_hists=stack->GetHists();
+   int entries=all_hists->GetEntries();
+   for(int i=0;i<entries;++i){
+	TObject* obj=all_hists->At(i);
+	if(!obj->InheritsFrom("TH1")) continue;
+	//cout<<"Inspecting: "<<obj->GetName()<<endl;
+	TH1* hist=(TH1*)obj;
+
+	bool remove_object=false;
+	if(include->GetEntries()>0) remove_object=true;
+	if(include->FindObject(obj->GetName())){
+		remove_object=false;
+	}else if(remove->FindObject(obj->GetName())){
+		remove_object=true;
+	}else{
+		TNamed* legend_obj=Find<TNamed>(hist->GetListOfFunctions(), "legend");
+		if(legend_obj){
+			if(include->FindObject(legend_obj->GetTitle())) {
+				remove_object=false;
+			}else if(remove->FindObject(legend_obj->GetTitle())) {
+				remove_object=true;
+			}
+		}
+	}
+	if(remove_object){
+	//cout<<"Removing: "<<obj->GetName()<<endl;
+		stack->RecursiveRemove(obj);
+		--i;
+		--entries;
+	}
+   }
+}
+
+TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_entry_formula_str ,TString legend_entry_format_str ,TString legend_dont_include){
     legend_build_from.ToLower();
     if(legend_build_from!="index" && legend_build_from!="legend_obj" && legend_build_from!="line_colour"){
 	    cout<<"Error: Cannot build a legend using any value but the histogram's 'index' or the TNamed 'legend_obj' in the stack (at this time)"<<endl;
 	    return NULL;
     }
+
+    TObjArray* ignores=legend_dont_include.Tokenize(";");
 
     TFormula* formula=NULL;
     if (legend_entry_formula_str.Length()>0){
@@ -181,7 +220,9 @@ TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_ent
 		TNamed* legend_obj=Find<TNamed>(hist->GetListOfFunctions(), "legend");
 		if(legend_obj){
 			entry_name=legend_obj->GetTitle();
-			legend->AddEntry(hist,entry_name,"l");
+			if(!ignores->FindObject(entry_name)) {
+				legend->AddEntry(hist,entry_name,"l");
+			}
 			continue;
 		}
 	}
@@ -198,7 +239,11 @@ TLegend* BuildLegend(THStack* stack,TString legend_build_from,TString legend_ent
    }
    for(SortedEntryList::const_iterator i_entry=sortedEntries.begin();
 	i_entry!=sortedEntries.end(); ++i_entry){
-	legend->AddEntry(i_entry->second.first,i_entry->second.second.Data(),"l");
+	const TString &text=i_entry->second.second.Data();
+	if(ignores->FindObject(text.Data())) {
+		continue;
+	}
+	legend->AddEntry(i_entry->second.first,text.Data(),"l");
    }
    return legend;
 }
@@ -333,11 +378,16 @@ struct PlotConfig{
    TString legend_build_from;
    TString legend_entry_format;
    TString legend_entry_formula;
+   TString legend_dont_include;
+
+   TString stack_remove;
+   TString stack_include;
 
    double shift_plot_x;
    double shift_plot_y;
 
-   double shift_palette;
+   double shift_palette_x;
+   double shift_palette_y;
 
    double pad_margin_right;
    double pad_margin_left;
@@ -393,15 +443,19 @@ struct PlotConfig{
      legend_text_size=0;
      legend_remove=false;
      legend_build_from="";
+     legend_dont_include="";
      legend_entry_format="%lg";
      legend_entry_formula="";
+     stack_remove="";
+     stack_include="";
      x_axis_decimal=-1;
      y_axis_decimal=-1;
      x_axis_divisions=-1;
      y_axis_divisions=-1;
      shift_plot_x=0;
      shift_plot_y=0;
-     shift_palette=0;
+     shift_palette_x=0;
+     shift_palette_y=0;
      pad_margin_right=0;
      pad_margin_left=0;
      title="";
@@ -440,6 +494,7 @@ struct PlotConfig{
 };
 
 void PlotConfig::FixCanvas(){
+  _legend=NULL;
   if(stats_force_off){
     gStyle->SetOptStat(0);
   }
@@ -490,50 +545,15 @@ void PlotConfig::FixCanvas(){
 }
 
 void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
-  if(axes){
-    TString curr_title=axes->GetTitle();
-    if(curr_title.Contains(";")){
-        TObjArray* all_titles=curr_title.Tokenize(";");
-        if(title.Length()==0) title=all_titles->At(0)->GetName();
-        if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
-        if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
-        if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
-    }
-    if(title.Length()!=0) {
-        axes->SetTitle(title.Data());
-        if(hist)hist->SetTitle(title.Data());
-    }
-    if(x_axis_range_high != x_axis_range_low){
-      axes->GetXaxis()->UnZoom();
-      axes->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
-    }
-    if(y_axis_range_high != y_axis_range_low){
-	    axes->GetYaxis()->UnZoom();
-      	    axes->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
-	    cout<<"Changed y axis: "<<y_axis_range_low<<" to "<<y_axis_range_high<<endl;
-    }
-    if(z_axis_range_high != z_axis_range_low){
-      axes->GetZaxis()->UnZoom();
-      axes->GetZaxis()->SetRangeUser(z_axis_range_low,z_axis_range_high);
-    }
-    if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
-    if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
-    if(z_axis_label_offset!=0)   axes->GetZaxis()->SetTitleOffset(z_axis_label_offset);
-    if(x_axis_label_size!=0)   axes->GetXaxis()->SetLabelSize(x_axis_label_size);
-    if(y_axis_label_size!=0)   axes->GetYaxis()->SetLabelSize(y_axis_label_size);
-    if(x_axis_title_size!=0)   axes->GetXaxis()->SetTitleSize(x_axis_title_size);
-    if(y_axis_title_size!=0)   axes->GetYaxis()->SetTitleSize(y_axis_title_size);
-    if(x_axis_decimal!=-1)   axes->GetXaxis()->SetDecimals(x_axis_decimal);
-    if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
-    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes,rebin_x,rebin_y).Data());
-    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes,rebin_x,rebin_y).Data());
-    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes,rebin_x,rebin_y).Data());
-    // Need to reset the original histogram title in some cases (eg. THStacks)
-    SetHistTitle(hist,title,x_axis_label,y_axis_label,z_axis_label);
-    if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
-  }
 
   if(hist){
+    if(stack_include!="" || stack_remove!=""){
+	    if(hist->InheritsFrom("THStack")){
+		    StackFilterLines(stack_include,stack_remove,(THStack*) hist);
+	    }else{
+		    cout<<"Error: Cannot remove histograms from plot unless object is a THStack"<<endl;
+	    }
+    }
     if(force_draw_option!="") hist->Draw(force_draw_option.Data());
     if(rebin_x!=1 ){
 	    if(hist->InheritsFrom("TH1")){
@@ -649,10 +669,61 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(hist->InheritsFrom("TH1")){
 	_palette=(TPaletteAxis*)((TH1*)hist)->GetListOfFunctions()->FindObject("palette");
     }
-    if(_palette && shift_palette!=0){
-       _palette->SetX1NDC(_palette->GetX1NDC()+shift_palette);
-       _palette->SetX2NDC(_palette->GetX2NDC()+shift_palette);
+    if(_palette && shift_palette_x!=0){
+       _palette->SetX1NDC(_palette->GetX1NDC()+shift_palette_x);
+       _palette->SetX2NDC(_palette->GetX2NDC()+shift_palette_x);
     }
+    if(_palette && shift_palette_y!=0){
+       _palette->SetY1NDC(_palette->GetY1NDC()+shift_palette_y);
+       _palette->SetY2NDC(_palette->GetY2NDC()+shift_palette_y);
+    }
+  }
+
+  if(axes){
+    TString curr_title=axes->GetTitle();
+    if(curr_title.Contains(";")){
+        TObjArray* all_titles=curr_title.Tokenize(";");
+        if(title.Length()==0) title=all_titles->At(0)->GetName();
+        if(x_axis_label.Length()==0 && all_titles->GetEntries()>1) x_axis_label=all_titles->At(1)->GetName();
+        if(y_axis_label.Length()==0 && all_titles->GetEntries()>2) y_axis_label=all_titles->At(2)->GetName();
+        if(z_axis_label.Length()==0 && all_titles->GetEntries()>3) z_axis_label=all_titles->At(3)->GetName();
+    }
+    if(title.Length()!=0) {
+        axes->SetTitle(title.Data());
+        if(hist)hist->SetTitle(title.Data());
+    }
+    if(x_axis_range_high != x_axis_range_low){
+      axes->GetXaxis()->UnZoom();
+      axes->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
+    }
+    if(y_axis_range_high != y_axis_range_low){
+	    axes->GetYaxis()->UnZoom();
+      	    axes->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
+	    cout<<"Changed y axis: "<<y_axis_range_low<<" to "<<y_axis_range_high<<endl;
+    }
+    if(z_axis_range_high != z_axis_range_low){
+      axes->GetZaxis()->UnZoom();
+      axes->GetZaxis()->SetRangeUser(z_axis_range_low,z_axis_range_high);
+      axes->SetMinimum(z_axis_range_low);
+      axes->SetMaximum(z_axis_range_high);
+      axes->Print();
+      cout<<axes->GetMinimum()<<" --> "<<axes->GetMaximum()<<endl;
+    }
+    if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
+    if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
+    if(z_axis_label_offset!=0)   axes->GetZaxis()->SetTitleOffset(z_axis_label_offset);
+    if(x_axis_label_size!=0)   axes->GetXaxis()->SetLabelSize(x_axis_label_size);
+    if(y_axis_label_size!=0)   axes->GetYaxis()->SetLabelSize(y_axis_label_size);
+    if(x_axis_title_size!=0)   axes->GetXaxis()->SetTitleSize(x_axis_title_size);
+    if(y_axis_title_size!=0)   axes->GetYaxis()->SetTitleSize(y_axis_title_size);
+    if(x_axis_decimal!=-1)   axes->GetXaxis()->SetDecimals(x_axis_decimal);
+    if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
+    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes,rebin_x,rebin_y).Data());
+    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes,rebin_x,rebin_y).Data());
+    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes,rebin_x,rebin_y).Data());
+    // Need to reset the original histogram title in some cases (eg. THStacks)
+    SetHistTitle(hist,title,x_axis_label,y_axis_label,z_axis_label);
+    if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
   }
 
   if(legend_build_from.Length()!=0){
@@ -662,7 +733,8 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
 		  legend->SetX1NDC(1.1);
 		  legend->SetX2NDC(1.5);
 	      }
-	      legend=BuildLegend((THStack*)hist,legend_build_from,legend_entry_formula,legend_entry_format);
+	      legend=BuildLegend((THStack*)hist,legend_build_from,legend_entry_formula,legend_entry_format,legend_dont_include);
+	      legend->Draw();
       }else{
               cout<<"Error: Cannot add a legend if plot is not made from a THStack"<<endl;
       }
@@ -744,10 +816,6 @@ void FixCanvas(TCanvas* canvas,
     }
   } else{
     axis=Find<TH1>(canvas->GetListOfPrimitives());
-    if(!axis) {
-       TGraph* graph=Find<TGraph>(canvas->GetListOfPrimitives());
-       axis=graph->GetHistogram();
-    }
     hist=axis;
   }
   if(!axis){
@@ -756,7 +824,7 @@ void FixCanvas(TCanvas* canvas,
 
   // Apply the actual fixes
   config.ApplyFixes(axis,legend,hist);
-  config.UpdateEverything(hist);
+  //config.UpdateEverything(hist);
 
 }
 
@@ -802,6 +870,9 @@ TFile* DrawFixPlot(TString filename,TString histname,
   if(!object) {
     std::cout<<"Error: Cannot find object in file: '"<<filename<<"' called: '"<<histname<<"'"<<std::endl;
     return NULL;
+  }
+  if(config.z_axis_range_high != config.z_axis_range_low && object->InheritsFrom("TH2")){
+	  ((TH2*)object)->GetZaxis()->SetRangeUser(config.z_axis_range_low,config.z_axis_range_high);
   }
   object->Draw(draw_string);
 
