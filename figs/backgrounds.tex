@@ -141,6 +141,17 @@ Although many high-momentum electrons are detected, they are all well before the
 \end{figure}
 }
 
+\newcommand{\FigAntiprotonData}{
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=1.0\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/Antiproton_RatePerPOT_data.pdf}
+\caption{\figlabel{bg:antiprotons:data}
+Experimental data for antiproton production rates for 10~GeV protons~\cite{Boyarinov:1994tp,Kiselev:2012sj}.
+Each line represents the cross section obtained for the four different target materials covered in those papers, scaled to match the number of nucleons of tungsten and with the additional factors of \eq{bg:antiprotons:rate} included.
+}
+\end{figure}
+}
+
 \newcommand{\FigAntiprotonEndpoint}{
 \begin{figure}[btp]
 \centering
@@ -181,14 +192,13 @@ For reweighting events the interpolated (straight solid) lines were used to be c
 \newcommand{\TabAntiprotonRegions}{
 \begin{table}[bp]
 \centering
-	\begin{tabular}{rccl}
-		Region & Data source & Fitted Momentum Function & Total $\bar{p}$ per POT \\
+	\begin{tabular}{rclrS}
+		\multicolumn{3}{c}{Region} & Data source & \multicolumn{1}{r}{Total $\bar{p}$ per POT} \\
 \hline
-                $0 \le \theta< 59\degree$ & 10\degree \cite{Kiselev:2012sj} &         & $5.32\times10^{-4}  $\\
-                $59 \le \theta< 97\degree$ & 59\degree \cite{Kiselev:2012sj} &        & $2.80\times10^{-8 } $\\
-                $97 \le \theta< 119\degree$ & 97\degree \cite{Boyarinov:1994tp} &     & $2.39\times10^{-12} $\\
-                $119 \le \theta< 180\degree$ & 119\degree \cite{Boyarinov:1994tp} &   & $1.22\times10^{-12} $\\
-
+                  $0 \le$&$\theta<$&$59\degree$ & 10\degree \cite{Kiselev:2012sj}          & 5.26e-05\\
+                 $59 \le$&$\theta<$&$97\degree$ & 59\degree \cite{Kiselev:2012sj}         & 4.17e-09\\
+                 $97 \le$&$\theta<$&$119\degree$ & 97\degree \cite{Boyarinov:1994tp}      & 1.74e-12\\
+                $119 \le$&$\theta<$&$180\degree$ & 119\degree \cite{Boyarinov:1994tp}   & 5.71e-13\\
 \hline
 \end{tabular}
 \caption{\tablabel{bg:antiprotons:regions}
@@ -199,3 +209,84 @@ The values in the final column are result of converting to rates per POT and int
 \end{table}
 }
 
+\newcommand{\FigAntiprotonSimHeightsTwoDPbar}{
+\begin{figure}[pH]
+\centering 
+%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:10}Production between 0 and 59\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_10.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:59}Production between 59 and 97\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_59.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:97}Production between 97 and 119\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_97.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:119}Production between 119 and 180\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_119.png}}
+\caption{\figlabel{bg:antiprotons:sim:2D-antip}
+The heights of antiprotons passing along the beamline for the four different angular regions of productions.
+}
+\end{figure}
+}
+
+\newcommand{\FigAntiprotonSimHeightsTwoDPiMin}{
+\begin{figure}[pH]
+\centering 
+%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:10}Production between 0 and 59\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_10.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:59}Production between 59 and 97\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_59.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:97}Production between 97 and 119\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_97.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:119}Production between 119 and 180\degree]{
+\includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_119.png}}
+\caption{\figlabel{bg:antiprotons:sim:2D-pi}
+The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.
+}
+\end{figure}
+}
+
+\newcommand{\FigAntiprotonSimFluxes}{
+\begin{figure}[pH]
+\centering 
+%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:10}Production between 0 and 59\degree]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_10.pdf}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:59}Production between 59 and 97\degree]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_59.pdf}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:97}Production between 97 and 119\degree]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_97.pdf}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:119}Production between 119 and 180\degree]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_119.pdf}}
+\caption{\figlabel{bg:antiprotons:sim:fluxes}
+The surivival probability of antiprotons and their secondaries per antiproton produced in the target as a function of distance along the beamline.
+}
+\end{figure}
+}
+
+
+\newcommand{\HeaderPi}[1]{\multicolumn{1}{#1}{Torus1 $\pi^-$}}
+\newcommand{\HeaderPBar}[1]{\multicolumn{1}{#1}{$\bar{p}$ Stop}}
+\newcommand{\TabAntiprotonResults}{
+\begin{table}[tb]
+\centering
+\begin{tabular}{a|SS|SS|SS|}
+\multicolumn{1}{c|}{Region} & \multicolumn{2}{c|}{Observed Events} & \multicolumn{2}{c|}{Weighted Mean per $\bar{p}$}& \multicolumn{2}{c}{Rate per \ac{POT}}  \\
+\multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & \HeaderPi{r}      & \HeaderPBar{r|}      &\HeaderPi{r}     & \HeaderPBar{r}                  \\
+\hline
+   0-59\degree &&&&& \\
+  59-97\degree &&&&& \\
+ 97-119\degree &&&&& \\
+119-180\degree &&&&& \\
+\hline
+\multicolumn{1}{c|}{Total} & & & & & \\
+\hline
+\end{tabular}
+\caption{\tablabel{bg:antiprotons:results}
+Results of the antiproton simulation.
+`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
+`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
+The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
+Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+}
+\end{table}
+}

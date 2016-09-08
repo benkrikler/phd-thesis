@@ -236,17 +236,33 @@ Antiprotons can be produced when the primary 8~GeV proton beam interacts with th
 \begin{equation}
 p + N(A,Z) \rightarrow p + N^*(A,Z) + p+\bar{p}
 \end{equation}
-Given their relatively large mass, antiprotons travel much more slowly than other products of the same momentum which results in a smearing of the beam's time-structure for antiprotons and their secondaries.
-The pulsed beam and time-gated detector window are therefore not effective at suppressing the induced backgrounds.
+Given their relatively large mass, antiprotons travel much more slowly than other products of the same momentum which results in a smearing of the beam's time structure for antiprotons and their secondaries.
+The pulsed beam and time-gated detector window are, therefore, less effective at suppressing the induced backgrounds.
+
+Secondaries of antiproton interactions with matter include X-rays and pions, though pion production dominates~\cite{BobBernsteinExperimentersGuide,Mishustin:2004xa}.
+
+There is a strong analogy between antiproton stopping in matter and the phenomona around negative muon and pion stopping.
+Once antiprotons reach energies of a few tens of keV --- similar to the energy of atomic electrons --- they can become bound in the Coulomb potential of the atom.
+X-rays emitted in the ensuing electromagnetic cascade are typically not more than a 100~keV~\cite{Aramaki201352}.
+Unlike for muons, the antiproton typically will not reach the atomic ground state, before the interaction with the nucleus takes over.
+This interaction can take the form of an immediate annihilation or the formation a composite nucleus where the antiproton is now bound to the nuclear potential~\cite{Wong:1984fy,Mishustin:2004xa}.
+The binding energy of some of these nuclear levels can reach up to hundreds of MeV, and so in the transition, pions and other hadrons can be readily produced.
+Finally, antiprotons can itself produce large numbers of pions.
+
+As such, although antiprotons themselves are not an immediate source of high energy photons or electrons, they are an additional source of pions, which can produce backgrounds via \acf{RPC}.
 
 \subsection{Antiproton Production Rate and Spectrum}
-There is really very little literature on the production of antiprotons from a tungsten target for a range of angles.
+The literature on antiproton production with 8~GeV protons on a tungsten target and at large angles is somewhat lacking.
+%There is really very little literature on the production of antiprotons from a tungsten target for a range of angles.
 Accordingly most hadron models are particularly under-constrained when it comes to antiproton production.
 The QGSP_BERT_HP model used as the basis for SimG4 is, in fact, completely unable to produce antiprotons.
 
-In the COMET TDR....
+In the COMET TDR~\cite{TDR2016}, the yield of antiprotons per \ac{POT} is given as \num{4e-5}, based on the results of a MARS simulation performed for the MECO experiment~\cite{Meco024}.
+Based on this, simulations of antiprotons showed that absorber foils would be needed along the beamline.  
+Since the \phaseII geometry in ICEDUST re-uses most of the implementation for the Production Target Capture and Torus1 sections, these absorbers are also contained in the geometry used to study antiprotons here.
 
-Although tungsten targets seem not to have been studied at all at the relevant angles and proton energies, a set of papers \cite{Boyarinov:1994tp,Kiselev:2012sj} do exist covering antiproton production up to 2 radians for a tantulum target (which is adjacent to tungsten on the periodic table) and with 10 GeV protons.
+\FigAntiprotonData
+Whilst tungsten targets have not been studied at the relevant angles and proton energies, a set of papers \cite{Boyarinov:1994tp,Kiselev:2012sj} do exist covering antiproton production up to 2 radians for tantulum (which is adjacent to tungsten on the periodic table), copper, aluminium, and beryllium targets and using 10 GeV protons.
 Between them these measurements provide the invariant triple-differential cross section as a function of antiproton momentum for production angles of 10, 59, 97 and 119\degree, defined as:
 \begin{equation}
 	F(p,\theta,\phi)=E \frac{d^3\sigma}{dp^3}=E\frac{d^3\sigma(p,\theta,\phi)}{p^2dpd\Omega}
@@ -256,6 +272,7 @@ where $E$ and $p$ the antiproton energy and momentum.  The earlier Boyarinov pap
 From the measured cross sections, it is clear that as you move to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
 To convert the differential invariant cross sections given in the literature into a differential production rate per \ac{POT}, $d^3R(\theta)/dpd\Omega$, the following formula is used:
 \begin{align}
+	\eqlabel{bg:antiprotons:rate}
 	\frac{d^3R(p,\theta,\phi)}{dp^3}&=\frac{F(p,\theta,\phi)}{E}\frac{\rho N_A l}{m_N}
 \end{align}
 where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_N$ the atomic mass, 183.86~g/mol for tungsten, $l$ the length of the target, and $N_A$ is Avodadro's number.
@@ -309,12 +326,31 @@ This factorisation injects the assumption that the momentum distribution at a gi
 Whilst this should not be the case for a realistic spectrum, to produce limits on the background rate it is a valid assumption.
 The $\phi$ dependence of $\Phi(\theta,\phi)$ is assumed constant.  
 
+\subsection{Results of simulation}
+\FigAntiprotonSimHeightsTwoDPbar
+\FigAntiprotonSimHeightsTwoDPiMin
+\FigAntiprotonSimFluxes
+\begin{easylist}
+# Height 2D of antiprotons and pions
+# Flux of particles
+# Momenta of pions and antiprotons at the Torus1
+# Timing of pions and antiprotons at the Torus1
+# Most antiprotons removed by upstream absorber (vacuum window)
+# Some reach to the stopping target, particularly for the backwards produced antiprotons
+# Background rate assuming RPC values without the timing cut (but duty factor from the delayed time window)
+# Ways to improve this / further optimisations:
+## Antiprotons close to the beam axis after the production target: on-axis blocker (activation?)
+## Absorber material in lower half of TS3
+\end{easylist}
+\TabAntiprotonResults
+
 \subsection{Antiproton Transmission}
 \Fig{bg:antiprotons:transmission} shows how antiprotons are transmitted along the beamline.
 Material at the join between the production target capture region and the first bent muon transport solenoid designed to keep the vacuum seal and cryogenic conditions is also acting to remove antiprotons.
 \Fig{bg:antiprotons:ap-timing-tor1-entrance} shows the timing of antiprotons reaching the entrance of the bent muon transport solenoid.
 
 Based on these simulations, the probability that an antiproton will enter the bent muon transport solenoid is well less than XXXX per POT.
+
 
 \subsection{Delayed Pion Production}
 \sectlabel{bg:rpc}
@@ -334,13 +370,36 @@ Based on these simulations, the probability that an antiproton will enter the be
 
 \section{Direct Beam-Related Backgrounds}
 \sectlabel{bg:beam}
+%\begin{easylist}
+%	# Number of POT simulated
+%	# Number of observed high momentum electrons or muons
+%	# Lifetime of muons at the target (need to smear this a bit ?): Fit the projection of high momentum particles to the time with an exponential and extrapolate
+%	# Survival probability per high momentum particle before the target to reach the straw tracker
+%\end{easylist}
+Although neither a muon or pion in their rest frame can decay to electrons greater than 55~MeV, once these particles are boosted sufficiently the outgoing electron can also become boosted into the signal region.
+For muons, at 78~MeV/c the decay electron could be boosted to 105~MeV/c if it decays in the direction of the muon.
+For pions, the threshold for signal-like electrons to be produced during decay is 58~MeV/c, although the branching rate for this process is helicity suppressed to around \num{1e-4}.
+
+The bent solenoids and the pulsed beam help to suppress this backgrounds as does the beam blocker after the target disks.
+The inner radius of the collimator at the exit of Torus2 is set to 12~cm, whilst the beam blocker has a radius of 25~cm. 
+Even though the beam aperture grows due to the reduction in the field strength between the exit of Torus2 and the beam blocker, these values prevent a direct line of sight between the muon beam and the spectrometer.
+As such, the only way for beam particles to reach the detector are by a hard scatter off the target or beam blocker, or to be produced via decay of another particle close to the target itself.
+
+To check the probability that signal-like electrons are produced in the beam and arrive at the detector in the time window,
+the output of the large production target simulation were resampled five times, so that around \num{1.4e9}~\ac{POT} events were studied, equivalent to 7.5~\phaseII bunches \CHECK{Is this the right number of simulated events?}.
 \begin{easylist}
 	# Number of POT simulated
 	# Number of observed high momentum electrons or muons
-	# Lifetime of muons at the target (need to smear this a bit ?): Fit the projection of high momentum particles to the time with an exponential and extrapolate
-	# Survival probability per high momentum particle before the target to reach the straw tracker
+	# Lifetime of muons at the target (need to smear this a bit ?):
+        ## Fit the projection of high momentum particles to the time with an exponential and extrapolate
+        ## Use a double exponential fit, need to high momentum
+	# Survival probability per high momentum particle before the target to reach the straw tracker (geometric x momentum)
+	# Product of all factors
+	# Statistically limited result
+	# Beamline in Phase-II is about 3 times longer than Phase-I, 
+	# Need to move away from brute-force Monte Carlo and develop reweighted algorithms, such as disabling particle decay and weighting by the rest frame time divide by the lifetime
+	# High energy electron acceptance vs. beamline distance 
 \end{easylist}
-
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
