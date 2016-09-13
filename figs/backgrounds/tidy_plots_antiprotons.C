@@ -27,6 +27,66 @@ void tidy_plots_antiprotons(const TString ext="png"){
 
   TString top_dir;
   top_dir="~/comet/160501_AntiProtonSpectrum/160907_FixThings/simulation_results/";
+  //==================================================== Momentum
+  config.reset();
+  //config.z_axis_range_high=1;
+  //config.z_axis_range_low=1e-18;
+  //config.x_axis_range_low=14700; config.x_axis_range_high=33000;
+  config.stats_force_off=true;
+  config.canvas_ratio=1.4;
+  config.x_axis_title_size=config.y_axis_title_size=0.06;
+  config.x_axis_label_size=config.y_axis_label_size=0.05;
+  //config.shift_plot_y=-0.04;
+  //config.shift_palette_y=0.08;
+  config.canvas_grow=2;
+  config.y_axis_label_offset=0.8;
+  config.title=" ";
+  config.pad_margin_left=0.15;
+  //config.pad_margin_right=0.09;
+  config.line_width=2;
+  config.line_style=9;
+  config.grid_y=config.grid_x=true;
+  config.x_axis_divisions=505;
+  gStyle->SetNdivisions(505);
+  config.shift_plot_x=0.05;
+  config.shift_plot_y=-0.03;
+  config.title=" ";
+
+  config.legend_x1=0.18; config.legend_x2=0.89; 
+  config.legend_y1=0.85; config.legend_y2=0.955; 
+  config.legend_margin=0.5;
+  //config.legend_text_size=0.025;
+  config.legend_columns=5;
+  config.legend_header="Antiproton Production Angle (degrees)";
+
+  config.x_axis_label="Momentum (MeV/c)";
+  config.rebin_x=8;
+  config.x_axis_range_low=0; config.x_axis_range_high=220;
+  config.y_axis_range_low=0; config.y_axis_range_high=6.5e-5;
+  //config.log_y=true;
+  config.y_axis_label="Mean Flux per POT per {x_bin_widths} MeV/c  ";
+  //config.force_draw_option="Lnostack";
+  FixPlot(top_dir+"pionMomentum_wPiFromPOT.root","THStack", config);
+  SavePlot(ext,NULL,"Antiproton_pion_momentum");
+
+  config.legend_columns=2;
+  config.legend_x1=0.52; config.legend_x2=0.89; 
+  config.legend_y1=0.75; config.legend_y2=0.955; 
+  config.x_axis_label="Arrival Time (ns)";
+  config.rebin_x=4;
+  config.x_axis_range_low=0; config.x_axis_range_high=300;
+  config.y_axis_range_low=0; config.y_axis_range_high=0;
+  config.log_y=true;
+  config.y_axis_label="Mean Flux per POT per {x_bin_widths} ns ";
+  //config.force_draw_option="Lnostack";
+  FixPlot(top_dir+"pionTimeTor1Entr.root","THStack", config);
+  SavePlot(ext,NULL,"Antiproton_pion_time");
+  FixPlot(top_dir+"pionTimeTor2Entr.root","THStack", config);
+  SavePlot(ext,NULL,"Antiproton_pion_time_tor2");
+
+
+  return;
+
   //====================================================
   config.reset();
   //config.z_axis_range_high=1;
