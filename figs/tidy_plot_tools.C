@@ -130,10 +130,11 @@ void NormaliseMultiGraph(TMultiGraph* mg,double normalise){
     )
 }
 
-void StackSetLineWidth(THStack* stack,double line_width){
+void StackSetLineAtt(THStack* stack,double line_width,int line_style){
     LOOP_STACK(stack->GetHists(),
         if( object->InheritsFrom("TH1")){
             ((TH1*)object)->SetLineWidth(line_width);
+            ((TH1*)object)->SetLineStyle(line_style);
         }else continue;
     )
 }
@@ -146,10 +147,11 @@ void StackSetFillTransparency(THStack* stack,double fill_transparency){
     )
 }
 
-void MultiGraphSetLineWidth(TMultiGraph* graph, double line_width){
+void MultiGraphSetLineAtt(TMultiGraph* graph, double line_width,int line_style){
     LOOP_STACK(graph->GetListOfGraphs(),
         if( object->InheritsFrom("TGraph")){
             ((TGraph*)object)->SetLineWidth(line_width);
+            ((TGraph*)object)->SetLineStyle(line_style);
 	    cout<<"Changing line width of "<<graph->GetName()<<" to "<<line_width<<endl;
         }else continue;
     )
@@ -395,6 +397,7 @@ struct PlotConfig{
    int marker_color;
    double marker_size;
    double line_width;
+   int line_style;
    double fill_transparency;
 
    int rebin_x;
@@ -476,6 +479,7 @@ struct PlotConfig{
      marker_color=kBlack;
      marker_size=0;
      line_width=1;
+     line_style=0;
      fill_transparency=1;
      ClearLines();
      _legend=NULL;
@@ -488,12 +492,12 @@ struct PlotConfig{
    }
    void ClearLines(){lines.clear();}
    void ApplyFixes(TH1* axes, TLegend* legend,TNamed* hist);
-   void FixCanvas();
+   void FixPad();
    void UpdateEverything(TNamed*);
    void RedrawLegend();
 };
 
-void PlotConfig::FixCanvas(){
+void PlotConfig::FixPad(){
   _legend=NULL;
   if(stats_force_off){
     gStyle->SetOptStat(0);
@@ -554,7 +558,6 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
 		    cout<<"Error: Cannot remove histograms from plot unless object is a THStack"<<endl;
 	    }
     }
-    if(force_draw_option!="") hist->Draw(force_draw_option.Data());
     if(rebin_x!=1 ){
 	    if(hist->InheritsFrom("TH1")){
 	        ((TH1*) hist)->RebinX(rebin_x);
@@ -577,7 +580,7 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(x_axis_divisions!=-1){
         if(hist->InheritsFrom("TH1")){
             ((TH1*) hist)->SetNdivisions(x_axis_divisions,"x");
-	}else if(hist->InheritsFrom("TH1")){
+	}else if(hist->InheritsFrom("THStack")){
             ((THStack*) hist)->GetHistogram()->SetNdivisions(x_axis_divisions,"x");
         }
     }
@@ -631,17 +634,19 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
               cout<<"Error: Cannot set transparency for objects not derived from TH1, THStack, TGraph"<<endl;
       }
     }
-    if(line_width!=1){
+    if(line_width!=1 || line_style!=0){
       if(hist->InheritsFrom("TH1")){
           ((TH1*) hist)->SetLineWidth(line_width);
+          ((TH1*) hist)->SetLineStyle(line_style);
       } else if(hist->InheritsFrom("THStack")){
-              StackSetLineWidth((THStack*) hist,line_width);
+              StackSetLineAtt((THStack*) hist,line_width,line_style);
       }else if(hist->InheritsFrom("TGraph")){
           ((TGraph*) hist)->SetLineWidth(line_width);
+          ((TGraph*) hist)->SetLineStyle(line_style);
       }else if(hist->InheritsFrom("TMultiGraph")){
-              MultiGraphSetLineWidth((TMultiGraph*) hist,line_width);
+              MultiGraphSetLineAtt((TMultiGraph*) hist,line_width,line_style);
       }else{
-              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+              cout<<"Error: Cannot change line widths for plot type: "<<hist->ClassName()<<endl;
       }
     }
     if(y_axis_range_high != y_axis_range_low){
@@ -653,7 +658,7 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       }else if(hist->InheritsFrom("TMultiGraph")){
           ((TMultiGraph*) hist)->GetYaxis()->SetRangeUser(y_axis_range_low,y_axis_range_high);
       }else{
-              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+              cout<<"Error: Cannot change y-axis range for plot type: "<<hist->ClassName()<<endl;
       }
     }
     if(x_axis_range_high != x_axis_range_low){
@@ -663,7 +668,7 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       }else if(hist->InheritsFrom("TMultiGraph")){
           ((TMultiGraph*) hist)->GetXaxis()->SetRangeUser(x_axis_range_low,x_axis_range_high);
       }else{
-              cout<<"Error: Cannot rebin histogram that is not derived from TH1 or THStack"<<endl;
+              cout<<"Error: Cannot change x-axis range for plot type: "<<hist->ClassName()<<endl;
       }
     }
     if(hist->InheritsFrom("TH1")){
@@ -716,13 +721,27 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(y_axis_title_size!=0)   axes->GetYaxis()->SetTitleSize(y_axis_title_size);
     if(x_axis_decimal!=-1)   axes->GetXaxis()->SetDecimals(x_axis_decimal);
     if(y_axis_decimal!=-1)   axes->GetYaxis()->SetDecimals(y_axis_decimal);
-    if(x_axis_label.Length()!=0) axes->GetXaxis()->SetTitle(ParseAxisText(x_axis_label,axes,rebin_x,rebin_y).Data());
-    if(y_axis_label.Length()!=0) axes->GetYaxis()->SetTitle(ParseAxisText(y_axis_label,axes,rebin_x,rebin_y).Data());
-    if(z_axis_label.Length()!=0) axes->GetZaxis()->SetTitle(ParseAxisText(z_axis_label,axes,rebin_x,rebin_y).Data());
+    if(x_axis_label.Length()!=0) {
+	    x_axis_label=ParseAxisText(x_axis_label,axes,rebin_x,rebin_y);
+	    axes->GetXaxis()->SetTitle(x_axis_label.Data());
+    }
+    if(y_axis_label.Length()!=0) {
+	    y_axis_label=ParseAxisText(y_axis_label,axes,rebin_x,rebin_y);
+	    axes->GetYaxis()->SetTitle(y_axis_label.Data());
+    }
+    if(z_axis_label.Length()!=0) {
+	    z_axis_label=ParseAxisText(z_axis_label,axes,rebin_x,rebin_y);
+	    axes->GetZaxis()->SetTitle(z_axis_label.Data());
+    }
     // Need to reset the original histogram title in some cases (eg. THStacks)
     SetHistTitle(hist,title,x_axis_label,y_axis_label,z_axis_label);
     if(axes->GetZaxis())axes->GetZaxis()->CenterTitle(z_axis_label_centred);
+
+  cout<<"Y title: "<<axes->GetYaxis()->GetTitle()<<endl;
+  cout<<"axes title: "<<axes->GetTitle()<<endl;
+  cout<<"hist title: "<<hist->GetTitle()<<endl;
   }
+
 
   if(legend_build_from.Length()!=0){
       if(hist->InheritsFrom("THStack")){
@@ -782,14 +801,17 @@ void PlotConfig::RedrawLegend(){
 void FixCanvas(TCanvas* canvas,
     const TString plot_type,
     PlotConfig& config){
+
   // Get the legend object (if any)
   TLegend* legend=Find<TLegend>(canvas->GetListOfPrimitives());
   if(!legend){
     cout<<"Warning: No legend for plot in file: '"<<gTidyPlotCurrentPlotName<<"'"<<endl;
+  }else{
+	  legend->ls();
   }
 
   // Change the canvas as wanted
-  config.FixCanvas();
+  config.FixPad();
 
   // Get the axis for the histogram
   TH1* axis=NULL;
@@ -820,10 +842,19 @@ void FixCanvas(TCanvas* canvas,
     cout<<"Warning: Cannot find histogram or stack to draw in file: '"<<gTidyPlotCurrentPlotName<<"'"<<endl;
   }
 
+  if(config.force_draw_option!=""){
+	  hist->Draw(config.force_draw_option.Data());
+	  canvas=gPad->GetCanvas();
+	  TString old_draw_opt=config.force_draw_option;
+	  config.force_draw_option="";
+	  FixCanvas(canvas,plot_type,config);
+	  config.force_draw_option=old_draw_opt;
+	  return;
+  }
+
   // Apply the actual fixes
   config.ApplyFixes(axis,legend,hist);
   config.UpdateEverything(hist);
-
 }
 
 TFile* FixPlot(TString filename,
