@@ -259,10 +259,21 @@ The heights of secondary pions passing along the beamline produced from antiprot
 \includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_119.pdf}}
 \caption{\figlabel{bg:antiprotons:sim:fluxes}
 The surivival probability of antiprotons and their secondaries per antiproton produced in the target as a function of distance along the beamline.
+From left to right the vertical magenta lines indicate the production target, Torus1 entrance, and the Torus2 exit.
 }
 \end{figure}
 }
 
+\newcommand{\FigAntiprotonSimPiMom}{
+\begin{figure}[tb]
+\centering 
+%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+\includegraphics[width=0.9\textwidth,trim=2.0cm 0 0 0,clip]{figs/backgrounds/Antiproton_pion_momentum.pdf}
+\caption{\figlabel{bg:antiprotons:sim:piMom}
+Momentum of pions passing the exit of Torus1 (90\degree around the bent muon beam transport solenoid) compared to pions in the main muon beam (which is arbitrarily normalised).
+}
+\end{figure}
+}
 
 \newcommand{\HeaderPi}[1]{\multicolumn{1}{#1}{Torus1 $\pi^-$}}
 \newcommand{\HeaderPBar}[1]{\multicolumn{1}{#1}{$\bar{p}$ Stop}}
@@ -273,10 +284,10 @@ The surivival probability of antiprotons and their secondaries per antiproton pr
 \multicolumn{1}{c|}{Region} & \multicolumn{2}{c|}{Observed Events} & \multicolumn{2}{c|}{Weighted Mean per $\bar{p}$}& \multicolumn{2}{c}{Rate per \ac{POT}}  \\
 \multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & \HeaderPi{r}      & \HeaderPBar{r|}      &\HeaderPi{r}     & \HeaderPBar{r}                  \\
 \hline
-   0-59\degree &&&&& \\
-  59-97\degree &&&&& \\
- 97-119\degree &&&&& \\
-119-180\degree &&&&& \\
+   0-59\degree &50&0&2.5e-4&& \\
+  59-97\degree &31&0&1.6e-4&& \\
+ 97-119\degree &36&0&1.8e-4&& \\
+119-180\degree &64&9&3.2e-4&& \\
 \hline
 \multicolumn{1}{c|}{Total} & & & & & \\
 \hline
@@ -287,6 +298,54 @@ Results of the antiproton simulation.
 `$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
 The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
 Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+}
+\end{table}
+}
+
+\newcommand{\HeaderPi}[1]{\multicolumn{1}{#1}{Torus1 $\pi^-$}}
+\newcommand{\HeaderPBar}[1]{\multicolumn{1}{#1}{$\bar{p}$ Stop}}
+\newcommand{\TabAntiprotonResultsPiSecond}{
+\begin{table}[tb]
+\centering
+\begin{tabular}{a|SSS}
+\multicolumn{1}{c|}{Region} & \multicolumn{1}{c}{Observed Events} & \multicolumn{1}{c}{Weighted Mean per $\bar{p}$}& \multicolumn{1}{c}{Rate per \ac{POT}}  \\
+\hline
+   0-59\degree &50&2.5e-4&& \\
+  59-97\degree &31&1.6e-4&& \\
+ 97-119\degree &36&1.8e-4&& \\
+119-180\degree &64&3.2e-4&& \\
+\hline
+\multicolumn{1}{c|}{Total} & & & & & \\
+\hline
+\end{tabular}
+\caption{\tablabel{bg:antiprotons:results}
+Results of the antiproton simulation.
+`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
+`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
+The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
+Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+}
+\end{table}
+}
+
+
+\newcommand{\TabAntiprotonEstimates}{
+\begin{table}[tb]
+\centering
+\begin{tabular}{a|SS|S}
+\multicolumn{1}{c|}{Region} & \multicolumn{3}{c}{Background Rate per POT} \\
+\multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & Total \\
+\hline
+   0-59\degree &&& \\
+  59-97\degree &&& \\
+ 97-119\degree &&& \\
+119-180\degree &&& \\
+\hline
+\multicolumn{1}{c|}{Total per POT} & & & \\
+\hline
+\end{tabular}
+\caption{\tablabel{bg:antiprotons:predictions}
+Overall predicted background rates per POT due to antiprotons.
 }
 \end{table}
 }
