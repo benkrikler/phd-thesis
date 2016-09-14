@@ -127,18 +127,21 @@ The relation:
 can be used to produce an additional parametric equation for the antiproton's angle of emission in the lab frame as function of its value in the COM frame.
 
 The full set of relevant variables and factors is summarized below, since the fully expanded result is extremely long and harder to implement into any computer code.
+
 \fbox{
 \addtolength{\linewidth}{-2\fboxsep}%
 \addtolength{\linewidth}{-2\fboxrule}%
 \begin{minipage}{\linewidth}
+\vspace{-1ex}
+
 \begin{align*}
 \gamma=&\frac{1}{\sqrt{1-\beta^2}},&
  \beta=&\frac{|\vec{p}_p^\lab|}{E_p^\lab+M_N},&
 E_p^\com=&\gamma(E_p^\lab-\beta{}p_p^\lab),\\
+\Delta{}E=&\frac{2M_p(M_p+M_N)}{\sqrt{s}},&
+ s=&M_p^2+M_N^2+2M_NE_p^\lab,&\quad&\\
 E_{\bar{p}}^\com=&E_{{p}}^\com-\Delta{}E,&
  |\vec{p}_{\bar{p}}^\com|^2=&|\vec{p}_{{p}}^\com|^2-2E_p^\com\Delta{}E+(\Delta{}E)^2,&\quad&\\
-\Delta{}E=&\frac{2M_p(M_p+M_N)}{\sqrt{s}},&\quad
- s=&M_p^2+M_N^2+2M_NE_p^\lab,&\quad&\\
 \quad&\quad&
 \begin{pmatrix}
 E^\lab_{\bar{p}}\\
@@ -147,10 +150,11 @@ p^\lab_{\bar{p},z}
 \end{pmatrix}
 =&\gamma
 \begin{pmatrix}
-E^\com_{\bar{p}}+\beta{}p^\lab_{\bar{p},z}\\
-(1/\gamma)\sin(\theta_\com) |\vec{p}^\lab_{\bar{p}}|\\
-\cos(\theta_\com) |\vec{p}^\lab_{\bar{p}}|+\beta{}E^\com_{\bar{p}}
-\end{pmatrix}&\quad&
+E^\com_{\bar{p}}+\beta{}|\vec{p}^\com_{\bar{p}}|\cos(\theta_\com)\\
+(1/\gamma) |\vec{p}^\com_{\bar{p}}|\sin(\theta_\com)\\
+ |\vec{p}^\com_{\bar{p}}|\cos(\theta_\com)+\beta{}E^\com_{\bar{p}}
+\end{pmatrix},&
+\tan(\theta_\lab)=&\frac{p^\com_{\bar{p},x}}{p^\com_{\bar{p},z}},
 \end{align*}
  \end{minipage}
 }
