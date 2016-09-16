@@ -44,7 +44,7 @@ void SavePlot(const TString extension="",const char* directory=NULL, const TStri
   if(filename.Length()>0) name=filename;
   if(directory) name=Form("%s/%s",directory,name.Data());
 
-  if(extension!=""){
+  if(extension==""){
     gPad->SaveAs(Form("%s.pdf",name.Data()));
     gPad->SaveAs(Form("%s.png",name.Data()));
   } else{
@@ -286,16 +286,18 @@ struct AnnotatedLine{
     cout<<x1<<", "<<y1<<", "<<x2<<", "<<y2<<", "<<plot::kMax<<endl;
     double* vals_x[2]={&x1,&x2};
     for(int i=0; i<2; ++i){
+        bool log=gPad->GetLogx();
         cout<<" value ("<<i<<") = "<<*vals_x[i]<<endl;
-             if(*vals_x[i]==plot::kMax) *vals_x[i]=gPad->GetUxmax();
-        else if(*vals_x[i]==plot::kMin) *vals_x[i]=gPad->GetUxmin();
+             if(*vals_x[i]==plot::kMax) { if(log) *vals_x[i]=TMath::Power(10,gPad->GetUxmax()); else *vals_x[i]=gPad->GetUxmax();}
+        else if(*vals_x[i]==plot::kMin) { if(log) *vals_x[i]=TMath::Power(10,gPad->GetUxmin()); else *vals_x[i]=gPad->GetUxmin();}
         cout<<" value ("<<i<<") = "<<*vals_x[i]<<endl;
     }
     double* vals_y[2]={&y1,&y2};
     for(int i=0; i<2; ++i){
         cout<<" value ("<<i<<") = "<<*vals_y[i]<<endl;
-             if(*vals_y[i]==plot::kMax) *vals_y[i]=gPad->GetUymax();
-        else if(*vals_y[i]==plot::kMin) *vals_y[i]=gPad->GetUymin();
+        bool log=gPad->GetLogy();
+             if(*vals_y[i]==plot::kMax) { if(log) *vals_y[i]=TMath::Power(10,gPad->GetUymax()); else*vals_y[i]=gPad->GetUymax();}
+        else if(*vals_y[i]==plot::kMin) { if(log) *vals_y[i]=TMath::Power(10,gPad->GetUymin()); else*vals_y[i]=gPad->GetUymin(); }
         cout<<" value ("<<i<<") = "<<*vals_y[i]<<endl;
     }
 
@@ -859,7 +861,8 @@ void FixCanvas(TCanvas* canvas,
 
 TFile* FixPlot(TString filename,
     const TString plot_type,
-    PlotConfig& config){
+    PlotConfig& config,
+    const TString canvas_name=""){
   // Get the file
   TFile* file=TFile::Open(filename.Data(),"READ");
   if(!file || file->IsZombie()){
@@ -868,7 +871,7 @@ TFile* FixPlot(TString filename,
   }
 
   // Obtain the canvas
-  TCanvas* canvas=Find<TCanvas>(file->GetListOfKeys());
+  TCanvas* canvas=Find<TCanvas>(file->GetListOfKeys(),canvas_name);
   if(!canvas) {
     std::cout<<"Error: Cannot find TCanvas object in file: '"<<filename<<"'"<<std::endl;
     return NULL;
