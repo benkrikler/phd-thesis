@@ -1,6 +1,8 @@
+%\includeonly{appendix-antiprotonEndpoint}
+%\includeonly{summary}
 %\includeonly{sensitivity,backgrounds}
 %\includeonly{software}
-%\includeonly{theory,mueconv}
+%\includeonly{theory,mueconv,detector}
 \documentclass{thesis}
 \usepackage{dcolumn}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
@@ -39,6 +41,11 @@
 
 \newcolumntype{d}[1]{D{.}{\cdot}{#1} }
 \newcolumntype{a}{D{-}{\le\theta<}{4} }
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\definecolor{lightgray}{gray}{0.8}
+\newcommand\VRule{ \hspace{1pt}\color{lightgray}\vrule width 0.5pt \hspace{1pt}}
 
 \lstdefinestyle{customc}{
   belowcaptionskip=1\baselineskip,
@@ -119,6 +126,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \include{optimisation}
 \include{sensitivity}
 \include{backgrounds}
+\include{summary}
 
   %% To ignore a specific chapter while working on another,
   %% making the build faster, comment it out like this:
