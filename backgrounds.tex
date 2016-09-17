@@ -221,7 +221,7 @@ By fitting the tail of this distribution with a single exponential, the lifetime
         $R_{\pi/p}$                    & \VarPiStopsPerPOT & Pion stopping rate per \ac{POT}  \\ 
         $\mathcal{B}_\textrm{RPC}$     & \num{2.27e-2} & Branching ratio of \ac{RPC} \\ 
 	$f_{e,\textrm{RPC}}$           & \VarDetectedEsPerRPC & Probability of an RPC photon producing signal-like electrons in the detector \\ 
-	$A_\textrm{time}$              & \VarRPCTimingEfficiency & Acceptance of timing window to seondary electrons from RPC \\ 
+	$A_\textrm{time}$              & \VarRPCTimingEfficiency & Acceptance of timing window to secondary electrons from RPC \\ 
         $\epsilon_\textrm{extinction}$ & \VarExtinctionFactor[2] &  Extinction factor\\ 
 	\hline
 \end{tabular}
@@ -286,7 +286,7 @@ The minimum momentum only added the constraint that at zero momentum the cross s
 On the other hand, to calculate the maximum momentum the kinematic end-point was found by considering the entire nucleus and the two out-going protons to recoil directly against the antiproton.
 The value of the end-point kinetic energy and longitudinal and transverse momenta for tungsten and carbon are shown in \fig{bg:antiprotons:end-point} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
 This end-point will be a highly conservative estimate, since in reality not all the nucleus will recoil coherently;  the de Broglie wavelength for a proton with 8~GeV kinetic energy is about 0.15~fm, compared to the 7~fm or so of a tungsten nucleus%
-\footnote{Antiproton production from protons in this energy regime was historically referred to as `sub-threshold production', since it is below the threshold for single nucleon interactions, around 5.6~GeV\CHECK{Is that the single Nucleon threshold}.
+\footnote{Antiproton production from protons in this energy regime was historically referred to as `sub-threshold production', since it is below the threshold for single nucleon interactions, around 5.6~GeV.
 The fact antiprotons are observed is therefore proof that it is not a single, stationary nucleon that interacts with the proton and the nuclear environment as a whole must be considered.
   The older literature on this topic in fact refers to a parameter called the `cumulative number' which was related to the number of nucleons that must be involved to produce secondary hadrons (\eg antiprotons or pions) with such out-going energies, given the incoming proton energy.  
 These sub-threshold secondary particles were themselves sometimes called cumulative particles.}.
@@ -313,7 +313,7 @@ The combined procedure of generating isotropically with a momentum distribution 
 \begin{align}
 \eqlabel{bg:antiprotons:factorisation}
 	F(p,\theta,\phi)=&\left(\frac{E}{p^2}\frac{d\rho(p)}{dp}\right)~\left(\frac{1}{2\pi}\frac{d\Theta(\theta)}{d\theta}\right),\\
-	                =&P(p,\theta_\mathrm{min)}\Phi(\theta),
+	                =&P(p,\theta_\mathrm{min})\Phi(\theta),
 \end{align}
 where $P(p,\theta_\textrm{min})$ is the fitted momentum spectrum for the differential rate at the lower angle of the current region, $\theta_\textrm{min}$.
 $P(p,\theta_\textrm{min})$, therefore, is the probability density function used to generate the momentum for each antiproton in the simulation, and as such the normalisation of $P(p,\theta_\textrm{min})$ is fixed to unity.
@@ -341,10 +341,9 @@ Finally, it should be noted that the factorisation in equation \eq{bg:antiproton
 Whilst this should not be the case for a realistic spectrum, to produce limits on the background rate it is a valid assumption --- the spectrum becomes softer with increasing production angle so the spectrum at the smaller angle should be an overestimate.
 In addition, the $\phi$ dependence of $\Phi(\theta,\phi)$ is assumed constant, since the target and proton beam in COMET are not polarised.
 
-\FigAntiprotonSimHeightsTwoDPbar
-\FigAntiprotonSimHeightsTwoDPiMin
 \subsection{Results of simulation}
-Using the procedures described above, \num{2e5} antiprotons were fed through each angular region.
+\FigAntiprotonSimFluxes
+Using the procedures described above, \num{8e7} antiprotons were fed through each angular region.
 The transport of these antiprotons through the beamline is shown in \fig{bg:antiprotons:sim:2D-antip}.
 The secondary pions produced from antiprotons interacting with the beam pipe and material in the beamline are then shown in \fig{bg:antiprotons:sim:2D-pi}.
 From these it can be seen how antiprotons in the small angle region are not of significant concern, since they nearly all leave the capture solenoids and pass into the beam dump.
@@ -353,15 +352,15 @@ Antiprotons from the two large angles regions, however, penetrate the foil at th
 There are two principle regions of pion production: at the production target itelf, and the foil at the entrance to Torus1.
 Many of the pions produced before the bent solenoids are of high energies and are removed quickly by the magnetic field in the bent solenoid.
 
+\FigAntiprotonSimHeightsTwoDPbar
+\FigAntiprotonSimHeightsTwoDPiMin
 For both particles, there is a finite probability that pions and antiprotons reach the stopping target region although at the present level of simulated statistics none have been seen to pass this point.
 
 \Fig{bg:antiprotons:sim:1D} shows the mean probability per secondary antiproton that a particular particle type passes a given point.
 From this the above conclusions are confirmed: most pions originate from the production target and the foil at the entrance to the Torus1, and antiprotons from the largest angles are able to penetrate this foil.
 It can also be seen that a number of muons are produced and even stop in the stopping target --- antiprotons might produce background events, but at some level they can produce signal events.
-\FigAntiprotonSimFluxes
-\FigAntiprotonSimPiMom
-\TabAntiprotonResults
-\TabAntiprotonEstimates
+\TabAntiprotonResultsAntip
+\TabAntiprotonResultsPiSecond
 
 The number of pions passing the 90\degree point along the bent solenoid and the number of antiprotons stopping in the target are summarised in \tab{bg:antiprotons:results}.
 Since for all regions except for angles larger than 119\degree, only an upper limit can be set on the number of antiprotons that stop in the target.
@@ -374,6 +373,7 @@ Finally, we apply the same TDAQ and reconstruction efficiencies, as well as the 
 Since pions in the main beam simulation originate at the production target, their pitch angles at the entrance of the bent solenoid are relatively small compared to pions produced at the entrance to the vacuum window from antiprotons.  
 Since large pitch angles implies a greater amount of drift, pions coming from antiprotons hitting the vacuum window tend to be lower down in the beampipe. 
 Accordingly the transmission of pions coming from antiprotons is likely smaller than for those coming from normal proton events, and accordingly the above probability of an RPC event being produced from a secondary pion of an antiprotons is probably an overestimate.
+\FigAntiprotonSimTime
 
 To convert the rate of stopped antiprotons into a background rate, we assume every negative pion produced from antiproton capture in the target produces an RPC event.
 Based on branching ratios for pion production from antiproton annihilation reported in \cite{Mishustin:2004xa} (including the probability of subsequent $\pi^-$ production from heavier mesons produced during annihilation), the average multiplicity of negative pions arising from antiproton annihilation is 1.56.
@@ -388,35 +388,14 @@ Although the model that has been developed throughout this section aims to be pa
 # Antiproton transmission per antiproton passing the vacuum flange based on those produced above 119 degrees
 \end{easylist}
 
+\TabAntiprotonEstimates
 \subsection{Reducing Antiproton Backgrounds Further}
 \begin{easylist}
 # Ways to improve this / further optimisations:
 ## Antiprotons close to the beam axis after the production target: on-axis blocker (activation?)
 ## Absorber material in lower half of TS3
-\end{easylist}
-
-\subsection{Antiproton Transmission}
-\Fig{bg:antiprotons:transmission} shows how antiprotons are transmitted along the beamline.
-Material at the join between the production target capture region and the first bent muon transport solenoid designed to keep the vacuum seal and cryogenic conditions is also acting to remove antiprotons.
-\Fig{bg:antiprotons:ap-timing-tor1-entrance} shows the timing of antiprotons reaching the entrance of the bent muon transport solenoid.
-
-Based on these simulations, the probability that an antiproton will enter the bent muon transport solenoid is well less than XXXX per POT.
-
-
-\subsection{Delayed Pion Production}
-\sectlabel{bg:rpc}
-
-\begin{easylist}
-	# Pion stops per pion passing Torus2 monitor = 3.21826657700288808e-04 %based on file: ~/comet/1603w12_Phase-II_estimates/pions_in_beam/160429_Pions-1_BeamTags_analysis.root
-	# RPC background rates:
-	## Prob. of RPC = 2.15\% per stopped pion
-	## Prob. of RPC producing signal-like electron in detector = 1.05e-5 per RPC event
-	# Total probability of RPC event per pion passing Torus2 monitor = 7.26523679758401863e-11
-	# Number of pions at Torus2 monitor: 
-	## For region 1 (0 -- 59\degree): 2.1e-9 pions per antiproton in this range
-	# Total backgrounds from pions from antiprotons:
-	## For region 1: 5.32e-4 * 2.1e-9 * 7.3e-11 = 8.5e-23 per POT
-	# Assumes no timing cut, but actually timing cut will help reduce this
+# Thicker absorber at the muon beamline entrance
+# Need to check the muon beam intensity
 \end{easylist}
 
 \section{Direct Beam-Related Backgrounds}
@@ -428,12 +407,13 @@ Based on these simulations, the probability that an antiproton will enter the be
 %	# Survival probability per high momentum particle before the target to reach the straw tracker
 %\end{easylist}
 Although neither a muon or pion in their rest frame can decay to electrons greater than 55~MeV, once these particles are boosted sufficiently the outgoing electron can also become boosted into the signal region.
-For muons, at 78~MeV/c the decay electron could be boosted to 105~MeV/c if it decays in the direction of the muon.
-For pions, the threshold for signal-like electrons to be produced during decay is 58~MeV/c, although the branching rate for this process is helicity suppressed to around \num{1e-4}.
+For muons, at 78~MeV/c Michel electrons can occur at 105~MeV/c if produced in the direction of the muon's momentum.
+For pions, the threshold for signal-like electrons to be produced during decay is 58~MeV/c, although the branching fraction for this process is helicity suppressed to around \num{1e-4}.
 
-The bent solenoids and the pulsed beam help to suppress this backgrounds as does the beam blocker after the target disks.
+The bent solenoids and the pulsed beam help to suppress these sorts of backgrounds, as does the beam blocker after the target disks.
 The inner radius of the collimator at the exit of Torus2 is set to 12~cm, whilst the beam blocker has a radius of 25~cm. 
-Even though the beam aperture grows due to the reduction in the field strength between the exit of Torus2 and the beam blocker, these values prevent a direct line of sight between the muon beam and the spectrometer.
+As the beam passes along the stopping target region, the beam envelope grows due to the reduction in the solenoidal field strength.
+The radius of the beam blocker, however, is large enough that even with this growth there should be no direct line of sight between the muon beam and the spectrometer.
 As such, the only way for beam particles to reach the detector are by a hard scatter off the target or beam blocker, or to be produced via decay of another particle close to the target itself.
 
 To check the probability that signal-like electrons are produced in the beam and arrive at the detector in the time window,
@@ -460,6 +440,7 @@ the output of the large production target simulation were resampled five times, 
 
 \section{Summary of Background Rates}
 \sectlabel{bg:summary}
+\TabBackgroundFinalVals
 
 \section{Further Studies and Improvements}
 \sectlabel{bg:improvements}
@@ -471,4 +452,5 @@ the output of the large production target simulation were resampled five times, 
 # StrECAL resolution function
 # Improved proton beam timing structure 
 # RMC from Al-26 that is produced from Al27 via neutrons. Photons can be made up to 108 MeV
+# Assumption that the PID abilities of the StrECAL are 100\%, is this true? At what level would muons be reconstructed at electrons?
 \end{easylist}

@@ -223,6 +223,8 @@ The values in the final column are result of converting to rates per POT and int
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_119.png}}
 \caption{\figlabel{bg:antiprotons:sim:2D-antip}
 The heights of antiprotons passing along the beamline for the four different angular regions of productions.
+Each antiproton trajectory is weighted by the probability of producing an antiproton at this angle.
+The colour scale on all these plots is the same.
 }
 \end{figure}
 }
@@ -241,28 +243,62 @@ The heights of antiprotons passing along the beamline for the four different ang
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_119.png}}
 \caption{\figlabel{bg:antiprotons:sim:2D-pi}
 The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.
+Each antiproton trajectory is weighted by the probability of producing the parent antiproton in its initial direction at the target.
 }
 \end{figure}
 }
 
 \newcommand{\FigAntiprotonSimFluxes}{
-\begin{figure}[pH]
+\begin{figure}[b]
 \centering 
 %\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
-\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:10}Production between 0 and 59\degree]{
-\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_10.pdf}}\\
-\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:59}Production between 59 and 97\degree]{
-\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_59.pdf}}\\
-\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:97}Production between 97 and 119\degree]{
-\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_97.pdf}}\\
-\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:119}Production between 119 and 180\degree]{
-\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_119.pdf}}
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:antip}Unweighted Antiproton Survival Probability]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_fluxes.pdf}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:pion}Unweighted Secondary Pion Transport Probability]{
+\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_fluxes-pions.pdf}}
 \caption{\figlabel{bg:antiprotons:sim:fluxes}
-The surivival probability of antiprotons and their secondaries per antiproton produced in the target as a function of distance along the beamline.
-From left to right the vertical magenta lines indicate the production target, Torus1 entrance, and the Torus2 exit.
+The surivival probability of antiprotons and secondaries pions per antiproton produced in the target as a function of distance along the beamline.
+These plots are not weighted by the probability that an antiproton is produced at a particular angle.
+From left to right the vertical gray lines indicate the production target, Torus1 entrance, and the Torus2 exit.
 }
 \end{figure}
 }
+
+\newcommand{\FigAntiprotonSimTime}{
+\begin{figure}[t]
+\centering 
+%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+\subfloat[][\figlabel{bg:antiprotons:sim:time:antip}Timing of Antiprotons]{
+\includegraphics[width=0.45\textwidth,trim=0.7cm 0.5cm 1.3cm 1.7cm,clip]{figs/backgrounds/Antiproton_timing_antiprotons.pdf}}
+\subfloat[][\figlabel{bg:antiprotons:sim:time:pion}Timing of Secondary Pions]{
+\includegraphics[width=0.45\textwidth,trim=0.7cm 0.5cm 1.3cm 1.7cm,clip]{figs/backgrounds/Antiproton_timing_pions.pdf}}
+\caption{\figlabel{bg:antiprotons:sim:time}
+The arrival time of antiprotons and pions at the entrance to the bent solenoids (Torus1 Entrance), at the midpoint (TS3), and at the stopping target.
+Note that the x-axis scales are different.
+Whilst the timing of antiprotons themselves is very delayed, the timing of pions, which are produced predominantly at the production target, is relatively prompt and will be effective at suppressing the induced backgrounds.
+\CHECK{Add pion stopping timing to RPC section to be able to compare to it here}
+}
+\end{figure}
+}
+
+%\newcommand{\FigAntiprotonSimFluxes}{
+%\begin{figure}[pH]
+%\centering 
+%%\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
+%\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:10}Production between 0 and 59\degree]{
+%\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_10.pdf}}\\
+%\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:59}Production between 59 and 97\degree]{
+%\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_59.pdf}}\\
+%\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:97}Production between 97 and 119\degree]{
+%\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_97.pdf}}\\
+%\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:119}Production between 119 and 180\degree]{
+%\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_119.pdf}}
+%\caption{\figlabel{bg:antiprotons:sim:fluxes}
+%The surivival probability of antiprotons and their secondaries per antiproton produced in the target as a function of distance along the beamline.
+%From left to right the vertical magenta lines indicate the production target, Torus1 entrance, and the Torus2 exit.
+%}
+%\end{figure}
+%}
 
 \newcommand{\FigAntiprotonSimPiMom}{
 \begin{figure}[tb]
@@ -277,73 +313,187 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
 
 \newcommand{\HeaderPi}[1]{\multicolumn{1}{#1}{Torus1 $\pi^-$}}
 \newcommand{\HeaderPBar}[1]{\multicolumn{1}{#1}{$\bar{p}$ Stop}}
-\newcommand{\TabAntiprotonResults}{
-\begin{table}[tb]
+%\newcommand{\TabAntiprotonResults}{
+%\begin{table}[tb]
+%\centering
+%\begin{tabular}{a|SS|SS|SS|}
+%\multicolumn{1}{c|}{Region} & \multicolumn{2}{c|}{Observed Events} & \multicolumn{2}{c|}{Weighted Mean per $\bar{p}$}& \multicolumn{2}{c}{Rate per \ac{POT}}  \\
+%\multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & \HeaderPi{r}      & \HeaderPBar{r|}      &\HeaderPi{r}     & \HeaderPBar{r}                  \\
+%\hline
+%   0-59\degree &50&0&2.5e-4&& \\
+%  59-97\degree &31&0&1.6e-4&& \\
+% 97-119\degree &36&0&1.8e-4&& \\
+%119-180\degree &64&9&3.2e-4&& \\
+%\hline
+%\multicolumn{1}{c|}{Total} & & & & & \\
+%\hline
+%\end{tabular}
+%\caption{\tablabel{bg:antiprotons:results}
+%Results of the antiproton simulation.
+%`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
+%`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
+%The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
+%Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+%}
+%\end{table}
+%}
+
+%\newcommand{\TabAntiprotonResultsPiSecond}{
+%\begin{table}[tb]
+%\centering
+%\begin{tabular}{a|SSS}
+%\multicolumn{1}{c|}{Region} & \multicolumn{1}{c}{Observed Events} & \multicolumn{1}{c}{Weighted Mean per $\bar{p}$}& \multicolumn{1}{c}{Rate per \ac{POT}}  \\
+%\hline
+%   0-59\degree &50&2.5e-4&& \\
+%  59-97\degree &31&1.6e-4&& \\
+% 97-119\degree &36&1.8e-4&& \\
+%119-180\degree &64&3.2e-4&& \\
+%\hline
+%\multicolumn{1}{c|}{Total} & & & & & \\
+%\hline
+%\end{tabular}
+%\caption{\tablabel{bg:antiprotons:results}
+%Results of the antiproton simulation.
+%`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
+%`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
+%The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
+%Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+%}
+%\end{table}
+%}
+
+\newcommand{\TabAntiprotonResultsTrans}{
+\begin{table}[p]
 \centering
-\begin{tabular}{a|SS|SS|SS|}
-\multicolumn{1}{c|}{Region} & \multicolumn{2}{c|}{Observed Events} & \multicolumn{2}{c|}{Weighted Mean per $\bar{p}$}& \multicolumn{2}{c}{Rate per \ac{POT}}  \\
-\multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & \HeaderPi{r}      & \HeaderPBar{r|}      &\HeaderPi{r}     & \HeaderPBar{r}                  \\
+\begin{tabular}{a|SSS|SSS|S|}
+ &\multicolumn{3|}{c}{Raw count} &\multicolumn{3|}{c}{Weighted Probability} & \\
+ &\multicolumn{1}{p{0.6cm}}{Entr.}&\multicolumn{1}{p{0.6cm}}{Mid.}&\multicolumn{1}{p{0.6cm}|}{Target}&\multicolumn{1}{p{0.6cm}}{Entr.}&\multicolumn{1}{p{0.6cm}}{Mid.}&\multicolumn{1}{p{0.6cm}}{Target}&\multicolumn{1}{p{0.6cm}}{$P(\textrm{Target}|\textrm{Entr.}$}\\
 \hline
-   0-59\degree &50&0&2.5e-4&& \\
-  59-97\degree &31&0&1.6e-4&& \\
- 97-119\degree &36&0&1.8e-4&& \\
-119-180\degree &64&9&3.2e-4&& \\
+\multicolumn{1}{l}{Pions} & \multicolumn{7}{p{6cm}}{}\\
+   0-59\degree    & 16943  & 1452  & 1  & 5.77E-06 & 5.10E-07 & 9.98E-11 & 1.73E-05 \\ 
+   59-97\degree   & 87230  & 7157  & 18 & 4.64E-09 & 4.06E-10 & 2.99E-13 & 6.45E-05 \\ 
+   97-119\degree  & 157385 & 13041 & 25 & 4.10E-14 & 3.59E-15 & 5.02E-18 & 1.22E-04 \\ 
+   119-180\degree & 222486 & 12997 & 30 & 1.25E-17 & 9.59E-19 & 1.91E-21 & 1.53E-04 \\ 
 \hline
-\multicolumn{1}{c|}{Total} & & & & & \\
-\hline
+\multicolumn{1}{l}{Antiprotons} & \multicolumn{7}{p{6cm}}{}\\
+0-59\degree    & 7      & 3     & 0    & 1.40E-09 & 5.14E-11 & 3.23E-12                  &          \\ 
+59-97\degree   & 270    & 58    & 8    & 1.70E-12 & 4.81E-13 & 1.16E-14                  & 2.41E-02 \\ 
+97-119\degree  & 2907   & 830   & 114  & 1.10E-16 & 3.31E-17 & 5.17E-19                  & 1.56E-02 \\ 
+119-180\degree & 278105 & 20787 & 2237 & 2.27E-19 & 5.20E-20 & 7.74E-21                  & 1.49E-01 \\ 
+               &        &       &      &          &          & \multicolumn{1}{c}{Mean=} & 6.29E-02 \\ 
+%\hline
 \end{tabular}
-\caption{\tablabel{bg:antiprotons:results}
-Results of the antiproton simulation.
-`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
-`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
-The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
-Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
-}
 \end{table}
 }
 
 \newcommand{\TabAntiprotonResultsPiSecond}{
-\begin{table}[tb]
+\sisetup{table-number-alignment=right, table-format=2.2e2}
+\begin{table}[p]
 \centering
-\begin{tabular}{a|SSS}
-\multicolumn{1}{c|}{Region} & \multicolumn{1}{c}{Observed Events} & \multicolumn{1}{c}{Weighted Mean per $\bar{p}$}& \multicolumn{1}{c}{Rate per \ac{POT}}  \\
+\begin{adjustwidth}{-0.7cm}{}
+\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}
+\multicolumn{2}{c|}{\multirow{2}{*}{Rates for Secondary $\pi^-$}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
+                              &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
 \hline
-   0-59\degree &50&2.5e-4&& \\
-  59-97\degree &31&1.6e-4&& \\
- 97-119\degree &36&1.8e-4&& \\
-119-180\degree &64&3.2e-4&& \\
+\multirow{3}{1.6cm}{Raw Counts} & Torus1 Entrance & \multicolumn{1}{r!{\VRule}}{16943} & \multicolumn{1}{r!{\VRule}}{87230} & \multicolumn{1}{r!{\VRule}}{157385} & \multicolumn{1}{r|}{222486} \\ 
+                            %& TS3                 & \multicolumn{1}{r!{\VRule}}{1452}  & \multicolumn{1}{r!{\VRule}}{7157}  & \multicolumn{1}{r!{\VRule}}{13041}  & \multicolumn{1}{r|}{12997}  \\ 
+                            & Before Torus2 Coll. & \multicolumn{1}{r!{\VRule}}{208}   & \multicolumn{1}{r!{\VRule}}{1106}  & \multicolumn{1}{r!{\VRule}}{1995}   & \multicolumn{1}{r|}{1847}   \\ 
+                            & Before Target       & \multicolumn{1}{r!{\VRule}}{1}     & \multicolumn{1}{r!{\VRule}}{18}    & \multicolumn{1}{r!{\VRule}}{25}     & \multicolumn{1}{r|}{30}     \\ 
 \hline
-\multicolumn{1}{c|}{Total} & & & & & \\
+\multirow{3}{1.6cm}{Weighted Sum} & Torus1 Entrance     & 5.77e-6  & 4.64E-09 & 4.10E-14 & 1.25E-17 \\ 
+                                  %& TS3                 & 5.10e-7  & 4.06E-10 & 3.59E-15 & 9.59E-19 \\ 
+                                  & Before Torus2 Coll. & 8.59e-8  & 5.93E-11 & 5.79E-16 & 1.23E-19 \\ 
+                                  & Before Target       & 9.98e-11 & 2.99E-13 & 5.02E-18 & 1.91E-21 \\ 
+\hline
+\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2 Coll.})$}  & 3.85E-02 & 4.01E-02 &  2.22E-02 & 1.74E-02 \\
 \hline
 \end{tabular}
-\caption{\tablabel{bg:antiprotons:results}
-Results of the antiproton simulation.
-`Torus1 $\pi^-$' are the pions that pass the exit of Torus1, which is 90\degree round the muon beamline.
-`$\bar{p}$ Stop' refers to the number of antiprotons that stop in the muon Stopping Target.
-The weighted mean is the sum of the observed events weighted by the production probability given the initial antiproton direction, divided by the total number of input antiprotons.
-Finally the Rate per \ac{POT} is weighted mean scaled by the number of antiprotons produced for this region per POT (last column of \tab{bg:antiprotons:regions}).
+\end{adjustwidth}
+\caption{\tablabel{bg:antiprotons:sim:pi}
+The simulated number of secondary pions from antiprotons observed at key points along the beamline.
+The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
+The weighted sum then shows the weighted sum over every particle passing the point, where the weight is determined as described by equation~\eq{bg:antiprotons:factorisation}.
+The final row, $P(\textrm{Target}|\textrm{Torus2 Coll.})$, gives the survival probability for a pion to reach the target, given that it passed the Torus1 Entrance, \ie it is the ratio between the Target and Torus1 Entrance rates.
 }
 \end{table}
 }
 
+\newcommand{\TabAntiprotonResultsAntip}{
+\sisetup{table-number-alignment=right, table-format=2.2e2}
+\begin{table}[p]
+\begin{adjustwidth}{-0.7cm}{}
+\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}
+\multicolumn{2}{c|}{\multirow{2}{*}{Rates for $\bar{p}$ Transport}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
+                              &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
+\hline
+\multirow{3}{1.6cm}{Raw Counts} & Torus1 Entrance     & \multicolumn{1}{r!{\VRule}}{7} & \multicolumn{1}{r!{\VRule}}{270} & \multicolumn{1}{r!{\VRule}}{2907} & \multicolumn{1}{r|}{278105} \\ 
+                                %& TS3                 & \multicolumn{1}{r!{\VRule}}{3} & \multicolumn{1}{r!{\VRule}}{58 } & \multicolumn{1}{r!{\VRule}}{830 } & \multicolumn{1}{r|}{20787 } \\ 
+                                & Before Torus2 Coll. & \multicolumn{1}{r!{\VRule}}{1} & \multicolumn{1}{r!{\VRule}}{39 } & \multicolumn{1}{r!{\VRule}}{431 } & \multicolumn{1}{r|}{9024  } \\ 
+                                & Before Target       & \multicolumn{1}{r!{\VRule}}{0} & \multicolumn{1}{r!{\VRule}}{8  } & \multicolumn{1}{r!{\VRule}}{114 } & \multicolumn{1}{r|}{2237  } \\ 
+\hline
+\multirow{3}{1.6cm}{Weighted Sum} & Torus1 Entrance     & 1.40E-09 & 1.70E-12&1.10E-16 & 2.27E-19\\ 
+                                  %& TS3                 & 5.14E-11 & 4.81E-13&3.31E-17 & 5.20E-20\\ 
+                                  & Before Torus2 Coll. & 1.62E-14 & 5.15E-14&1.54E-17 & 2.63E-20\\ 
+                                  & Before Target       & {*}4.79E-15 & 1.16E-14&5.17E-19 & 7.74E-21\\ 
+\hline                                                           
+\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2 Coll.})$} &{*}2.95E-01& 2.25E-01  & 3.36E-02  & 2.95E-01\\
+\hline
+\end{tabular}
+\end{adjustwidth}
+\caption{\tablabel{bg:antiprotons:sim:pi}
+Antiproton stopping rates and fluxes at key points.
+Since no antiprotons were seen stopping for the angular region from 0 to 59\degree, the value for the final two entries in that column --- indicated with an asterisk (*) ---  are obtained by multiplying the antiproton rate expected  the Torus2 collimator and applying the largest of the collimator acceptances from the other three angular regions.
+The mean acceptance of the Torus2 collimator is 0.185.
+For each of the angular regions, 80 million antiprotons were simulated.
+}
+\end{table}
+}
 
 \newcommand{\TabAntiprotonEstimates}{
-\begin{table}[tb]
-\centering
-\begin{tabular}{a|SS|S}
-\multicolumn{1}{c|}{Region} & \multicolumn{3}{c}{Background Rate per POT} \\
-\multicolumn{1}{c|}{}       & \HeaderPi{r}    & \HeaderPBar{r|}    & Total \\
+\sisetup{table-number-alignment=right, table-format=2.2e3, table-comparator=true}
+\begin{table}[tbp]
+%\begin{adjustwidth}{-0.9cm}{}
+\begin{tabular}{la|SS|SS|}
+            &         & \multicolumn{2}{c|}{Stopping Rates} & \multicolumn{2}{c|}{Background Rate per POT} \\ 
+            &         & {Unweighted} & {Weighted} & {No Timing} & {With Timing}  \\
 \hline
-   0-59\degree &&& \\
-  59-97\degree &&& \\
- 97-119\degree &&& \\
-119-180\degree &&& \\
+\multirow{4}{*}{$\bar{p}$} & 0-59    & <6.58E-13              & <4.79E-15   & 2.21E-21      & 1.14E-21    \\ 
+            & 59-97   & 4.17E-16              & 1.16E-14   & 5.36E-21      & 2.75E-21    \\ 
+            & 97-119  & 2.48E-18              & 5.17E-19   & 2.39E-25      & 1.23E-25    \\ 
+            & 119-180 & 1.60E-17              & 7.74E-21   & 3.58E-27      & 1.84E-27    \\ 
 \hline
-\multicolumn{1}{c|}{Total per POT} & & & \\
+\multirow{4}{*}{$\pi^-$}       & 0-59    & 6.58E-13              & 9.98E-11   & 2.95E-17      & 1.62E-29    \\ 
+            & 59-97   & 9.38E-16              & 2.99E-13   & 8.86E-20      & 4.86E-32    \\ 
+            & 97-119  & 5.44E-19              & 5.02E-18   & 1.49E-24      & 8.15E-37    \\ 
+            & 119-180 & 2.14E-19              & 1.91E-21   & 5.65E-28      & 3.10E-40    \\ 
+\hline
+ \multicolumn{4}{r|}{Sum (per POT)}                         & 2.96E-17      & 3.88E-21    \\ 
 \hline
 \end{tabular}
-\caption{\tablabel{bg:antiprotons:predictions}
-Overall predicted background rates per POT due to antiprotons.
+%\end{adjustwidth}
+\caption{\tablabel{bg:antiprotons:estimates}
+Final estimated background rates.
+See text for column definitions.
 }
 \end{table}
 }
+
+\newcommand{\TabBackgroundFinalVals}{
+\begin{table}
+\centering
+%	\renewcommand{\arraystretch}{1} % Default value: 1
+\begin{tabular}{ll|SSS|S}
+Type & Source & \multicolumn{3}{c|}{Background Rate}       & {Total Events} \\ 
+     &        & {per Stopping $\mu^-$}  & {per POT}  &  {per \si{s}} &              \\ 
+\hline
+\hline
+Total & & & & & \\
+\hline
+\end{tabular}
+\caption{ \tablabel{bg:summary}%
+Final predicted background rates and events.
+Assumes....
+}
+\end{table}%
+}
+
