@@ -347,51 +347,54 @@ Using the procedures described above, a separate simulation was performed for ea
 Within the region, events were generated isotropically and according to the momentum distribution for that region.
 The beamline's acceptance to antiprotons and the secondary pions that they produce is shown in \fig{bg:antiprotons:sim:1D}.
 The events in this plot are unweighted by the antiproton angle.
-From these plots, it is clear how the rate of antiprotons passing the entrance to the Torus1 solenoid are massively reduced.
-
-The transport of these antiprotons through the beamline is shown in \fig{bg:antiprotons:sim:2D-antip}.
-The secondary pions produced from antiprotons interacting with the beam pipe and material in the beamline are then shown in \fig{bg:antiprotons:sim:2D-pi}.
-From these it can be seen how antiprotons in the small angle region are not of significant concern, since they nearly all leave the capture solenoids and pass into the beam dump.
-Antiprotons from the two large angles regions, however, penetrate the foil at the entrance to the Torus1 region (which is indicated by the vertical magenta line second from the left).
-
-There are two principle regions of pion production: at the production target itelf, and the foil at the entrance to Torus1.
-Many of the pions produced before the bent solenoids are of high energies and are removed quickly by the magnetic field in the bent solenoid.
+From these plots, it is clear that the material at the entrance to the Torus1 solenoid removes a large fraction of the antiprotons --- about 99\% of the antiprotons produced between 97 and 119\degree.
+It can also be seen that the acceptance in the bent solenoids for antiprotons is about two orders of magnitude greater for antiprotons produced above 119\degree, compared to those produced between 97 and 119\degree.
+For pion production and acceptance, however, the unweighted rate for the four angular regions is very similar, particularly towards the end of Torus2.
+It is also clear, given that the transmission probability has a negative gradient for each angular region along the whole beamline, that the main source for pions is the interaction of antiprotons with the primary target.
+Pions produced by antiprotons hitting collimators or the beampipe will be quickly removed themselves since they will tend to stay close to this material.
+That would not be true if produced at the foil at the Torus1 entrance, but from this work it does not appear to be a major source.  
 
 \FigAntiprotonSimHeightsTwoDPbar
 \FigAntiprotonSimHeightsTwoDPiMin
-For both particles, there is a finite probability that pions and antiprotons reach the stopping target region although at the present level of simulated statistics none have been seen to pass this point.
 
-\Fig{bg:antiprotons:sim:1D} shows the mean probability per secondary antiproton that a particular particle type passes a given point.
-From this the above conclusions are confirmed: most pions originate from the production target and the foil at the entrance to the Torus1, and antiprotons from the largest angles are able to penetrate this foil.
-It can also be seen that a number of muons are produced and even stop in the stopping target --- antiprotons might produce background events, but at some level they can produce signal events.
+\Fig{bg:antiprotons:sim:2D-antip} shows the trajectories of antiprotons along the beamline, where each trajectory has been weighted according to the antiproton's production direction with respect to the proton beam axis.
+Similarly, \fig{bg:antiprotons:sim:2D-pi} shows the same information but for pions instead.
+The colour scale and range in each of these four plots is the same between all plots.  
+One can see then, that although the acceptance per antiproton is considerably lower for small angle production (0--59\degree), the production rate is large enough to offset this.
+As such, it is the antiprotons produced in the forwards direction, followed by a hard scatter within the production target, that will dominate the background rate.
+
 \TabAntiprotonResultsAntip
 \TabAntiprotonResultsPiSecond
 
-The number of pions passing the 90\degree point along the bent solenoid and the number of antiprotons stopping in the target are summarised in \tab{bg:antiprotons:results}.
-Since for all regions except for angles larger than 119\degree, only an upper limit can be set on the number of antiprotons that stop in the target.
+\Tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} show the number of antiprotons and pions that passed into the Torus1 (`Torus1 Entrance'), reached the final collimator (`Before Torus2 Coll.'), and arrived at the target (`Before Target').
+Also shown is the sum over all events with each event weighted by the initial antiproton direction, and normalised to the number of antiprotons introduced into the simulation.
+Since no antiprotons are seen stopping in the target for the angular region from 0 to 59\degree, to estimate the stopping rate for antiprotons produced in this direction, 
+the probability that antiprotons would reach the stopping target is made by finding the median acceptance of the collimator (which occurs for the region from 59\degree to 97\degree) and multiplying the observed weighted sum for antiprotons just before the collimator.
 
-To convert these numbers into estimates for the background rates, we use the study for \acf{RPC}.
-\Fig{bg:antiprotons:sim:piMom} shows the momenta of pions that pass the 90\degree point and the momentum distribution from the \ac{RPC} study. 
-Since the momentum distributions are approximately similar (albeit with different statistical significance), we use the rate of \ac{RPC} backgrounds per pion passing this point based on the RPC study in section~\sect{bg:rpc}.
-The probability that a pion stops in the target given that it reached the 90\degree point is \num{3.22e-4}, whilst the probability that a stopped pion produces a signal-like electron in the detector (without any cut on the timing) is \num{4.20e-7}.
-Finally, we apply the same TDAQ and reconstruction efficiencies, as well as the fraction of time occupied by the gated-time detector window, amounting to a combined factor of 0.36.
-Since pions in the main beam simulation originate at the production target, their pitch angles at the entrance of the bent solenoid are relatively small compared to pions produced at the entrance to the vacuum window from antiprotons.  
-Since large pitch angles implies a greater amount of drift, pions coming from antiprotons hitting the vacuum window tend to be lower down in the beampipe. 
-Accordingly the transmission of pions coming from antiprotons is likely smaller than for those coming from normal proton events, and accordingly the above probability of an RPC event being produced from a secondary pion of an antiprotons is probably an overestimate.
-\FigAntiprotonSimTime
+The timing distributions for antiprotons and pions is shown in \fig{bg:antiprotons:sim:time}, from where it is clear that timing information from the pulsed proton beam is not meaningful for antiprotons.
+However, since the majority of secondary pions that are succesfully transported to the target originate in the production target, the pulsed beam timing is a strong way to suppress the backgrounds these can produce via \ac{RPC}.
+In fact, given that these pions originate in the production target, the background rate due to RPC of pions directly produced by the proton beam can be reused, including the timing cut.
+For antiprotons, the rate of RPC backgrounds per pion stop is also used, however the mean number of negative pions produced per antiproton stop is included, as well as the overall efficiency of the timing window, assuming a flat timing distribution.
+All of these factors are summarised in \tab{bg:antiprotons:factors}.
+For both pions and antiprotons, the efficiency of the TDAQ and reconstruction are also included, with the same values as for signal.
+Based on these factors, the numbers in \tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} can be converted to background estimates, which are shown in \tab{bg:antiprotons:estimates}.
 
-To convert the rate of stopped antiprotons into a background rate, we assume every negative pion produced from antiproton capture in the target produces an RPC event.
-Based on branching ratios for pion production from antiproton annihilation reported in \cite{Mishustin:2004xa} (including the probability of subsequent $\pi^-$ production from heavier mesons produced during annihilation), the average multiplicity of negative pions arising from antiproton annihilation is 1.56.
-These pions are assumed to stop immediately in the target and the additional factors for RPC backgrounds described above are then also applied.
+The total predicted antiproton rate per \ac{POT} is therefore XXX, which is completely dominated by antiprotons that are produced in the forward direction, but scatter within the target.
+This number is considerably larger than would be desirable for the COMET experiment.
+It is important, therefore, to remember that this is an especially conservative estimate:
+\begin{itemize}
+\item The kinematic end-point is a large overestimate for the true end-point of the spectrum since the incoming proton will never interact with the entire nucleus.  
+\item The straight line fit to the tail, that was used to simulate antiprotons will produce higher momentum antiprotons than are likely to occur, which changes the penetration depth.
+      There are up to two orders of magnitude difference on the predicted antiproton yield depending on the high-energy description, in particular for the distribution at 59\degree.
+      \CHECKmargin{Add to the first table the integrals with the other tail descriptions.}
+\item The data this model is based on uses 10~GeV initial protons. The antiproton yield is expected to grow rapidly at these sorts of energies.
+      According to the model in~\cite{Meco024}, an increase in the yield of at least an order of magnitude should be seen when one goes from 8~GeV protons to 10~GeV.
+\item The final value assumes that all negative pions produced from antiprotons that stop are captured by nuclei in the target.  In reality, many of these will escape from the target and decay in flight or be stopped and captured elsewhere.  The pion multiplicity factor used here, is likely an overestimate, therefore.
+\end{itemize}
+At the same time, the fact that these results are somewhat statistically limited, given the small number of antiproton stops seen from the forward going antiprotons, one can expect a sizeable uncertainty on this value.
+In addition, some of the other factors that have been included, such as from the RPC background estimation, should be reconsidered.
 
-Finally, pulling all of these numbers together, the total predicted background rate due to antiprotons produced in the production target is found, and the values are summarised in \tab{bg:antiprotons:predictions}.
-The total background rate, summed over all four angular regions, is estimated to be less than XXXX.  
-Although the model that has been developed throughout this section aims to be particularly conservative, the final results are statistically limited, particularly for the small angle regions, where most of the antiprotons are produced.
-
-\begin{easylist}
-# Timing cut on pions
-# Antiproton transmission per antiproton passing the vacuum flange based on those produced above 119 degrees
-\end{easylist}
+On the other hand, the fact that it is scattering from forward produced antiprotons has some advantage, since there is experimental data in the forward region---admittedly with materials other than tungsten or with proton energies other than 8~GeV---that could be used to develop further understanding of this background.
 
 \TabAntiprotonEstimates
 \subsection{Reducing Antiproton Backgrounds Further}
@@ -458,4 +461,5 @@ the output of the large production target simulation were resampled five times, 
 # Improved proton beam timing structure 
 # RMC from Al-26 that is produced from Al27 via neutrons. Photons can be made up to 108 MeV
 # Assumption that the PID abilities of the StrECAL are 100\%, is this true? At what level would muons be reconstructed at electrons?
+# RPC from pions stopping elsewhere in the beam -> Map of acceptance to RPC electrons vs. position of pion stop in the beamline
 \end{easylist}
