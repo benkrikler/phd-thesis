@@ -386,71 +386,88 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
 %\end{table}
 %}
 
-\newcommand{\TabAntiprotonResultsPiSecond}{
-\sisetup{table-number-alignment=right, table-format=2.2e2}
-\begin{table}[p]
-\centering
-\begin{adjustwidth}{-0.7cm}{}
-\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}
-\multicolumn{2}{c|}{\multirow{2}{*}{Rates for Secondary $\pi^-$}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
+\newcommand{\TabAntiprotonResultsPiSecond}{%
+\begin{table}[p]%
+\sisetup{table-number-alignment=right, table-format=2.2e2}%
+\centering%
+%\begin{adjustwidth}{-0.7cm}{}%
+\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}%
+\multicolumn{2}{c|}{\multirow{2}{3cm}{Rates for Secondary $\pi^-$}} & \multicolumn{4}{c|}{Secondary $\pi^-$ from Angular Region for Antiproton Production} \\ 
                               &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
 \hline
-\multirow{3}{1.6cm}{Raw Counts} & Torus1 Entrance & \multicolumn{1}{r!{\VRule}}{16943} & \multicolumn{1}{r!{\VRule}}{87230} & \multicolumn{1}{r!{\VRule}}{157385} & \multicolumn{1}{r|}{222486} \\ 
-                            %& TS3                 & \multicolumn{1}{r!{\VRule}}{1452}  & \multicolumn{1}{r!{\VRule}}{7157}  & \multicolumn{1}{r!{\VRule}}{13041}  & \multicolumn{1}{r|}{12997}  \\ 
-                            & Before Torus2 Coll. & \multicolumn{1}{r!{\VRule}}{208}   & \multicolumn{1}{r!{\VRule}}{1106}  & \multicolumn{1}{r!{\VRule}}{1995}   & \multicolumn{1}{r|}{1847}   \\ 
-                            & Before Target       & \multicolumn{1}{r!{\VRule}}{1}     & \multicolumn{1}{r!{\VRule}}{18}    & \multicolumn{1}{r!{\VRule}}{25}     & \multicolumn{1}{r|}{30}     \\ 
+\multirow{3}{1.6cm}{Raw Counts} & Torus1 & \multicolumn{1}{r!{\VRule}}{16943} & \multicolumn{1}{r!{\VRule}}{87230} & \multicolumn{1}{r!{\VRule}}{157385} & \multicolumn{1}{r|}{222486} \\ 
+                               %& TS3    & \multicolumn{1}{r!{\VRule}}{1452}  & \multicolumn{1}{r!{\VRule}}{7157}  & \multicolumn{1}{r!{\VRule}}{13041}  & \multicolumn{1}{r|}{12997}  \\ 
+                                & Torus2 & \multicolumn{1}{r!{\VRule}}{208}   & \multicolumn{1}{r!{\VRule}}{1106}  & \multicolumn{1}{r!{\VRule}}{1995}   & \multicolumn{1}{r|}{1847}   \\ 
+                                & Target & \multicolumn{1}{r!{\VRule}}{1}     & \multicolumn{1}{r!{\VRule}}{18}    & \multicolumn{1}{r!{\VRule}}{25}     & \multicolumn{1}{r|}{30}     \\ 
 \hline
-\multirow{3}{1.6cm}{Weighted Sum} & Torus1 Entrance     & 5.77e-6  & 4.64E-09 & 4.10E-14 & 1.25E-17 \\ 
-                                  %& TS3                 & 5.10e-7  & 4.06E-10 & 3.59E-15 & 9.59E-19 \\ 
-                                  & Before Torus2 Coll. & 8.59e-8  & 5.93E-11 & 5.79E-16 & 1.23E-19 \\ 
-                                  & Before Target       & 9.98e-11 & 2.99E-13 & 5.02E-18 & 1.91E-21 \\ 
+\multirow{3}{1.6cm}{Weighted Sum} & Torus1  & 5.77e-6  & 4.64E-09 & 4.10E-14 & 1.25E-17 \\ 
+                                  %& TS3    & 5.10e-7  & 4.06E-10 & 3.59E-15 & 9.59E-19 \\ 
+                                  & Torus2  & 8.59e-8  & 5.93E-11 & 5.79E-16 & 1.23E-19 \\ 
+                                  & Target  & 9.98e-11 & 2.99E-13 & 5.02E-18 & 1.91E-21 \\ 
 \hline
-\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2 Coll.})$}  & 0.039 & 0.040 &  0.022 & 0.017 \\
+\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2})$}  & 0.039 & 0.040 &  0.022 & 0.017 \\
 \hline
-\end{tabular}
-\end{adjustwidth}
-\caption{\tablabel{bg:antiprotons:sim:pi}
+\end{tabular}%
+%\end{adjustwidth}%
+\caption{\tablabel{bg:antiprotons:sim:pi}%
 The simulated number of secondary pions from antiprotons observed at key points along the beamline.
 The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
 The weighted sum then shows the weighted sum over every particle passing the point, where the weight is determined as described by equation~\eq{bg:antiprotons:factorisation}.
 The final row, $P(\textrm{Target}|\textrm{Torus2 Coll.})$, gives the survival probability for a pion to reach the target, given that it passed the Torus1 Entrance, \ie it is the ratio between the Target and Torus1 Entrance rates.
-}
-\end{table}
-}
+}\end{table}\xspace}
 
 \newcommand{\TabAntiprotonResultsAntip}{
-\sisetup{table-number-alignment=right, table-format=2.2e2}
-\begin{table}[p]
-\begin{adjustwidth}{-0.7cm}{}
-\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}
-\multicolumn{2}{c|}{\multirow{2}{*}{Rates for $\bar{p}$ Transport}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
+\begin{table}[p]%
+\sisetup{table-number-alignment=right, table-format=2.2e2}%
+%\begin{adjustwidth}{-0.7cm}{}%
+\begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}%
+\multicolumn{2}{c|}{\multirow{2}{3cm}{Rates for $\bar{p}$ Transport}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
                               &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
 \hline
-\multirow{3}{1.6cm}{Raw Counts} & Torus1 Entrance     & \multicolumn{1}{r!{\VRule}}{7} & \multicolumn{1}{r!{\VRule}}{270} & \multicolumn{1}{r!{\VRule}}{2907} & \multicolumn{1}{r|}{278105} \\ 
+\multirow{3}{1.6cm}{Raw Counts} & Torus1 &\multicolumn{1}{r!{\VRule}}{7} & \multicolumn{1}{r!{\VRule}}{270} & \multicolumn{1}{r!{\VRule}}{2907} & \multicolumn{1}{r|}{278105} \\ 
                                 %& TS3                 & \multicolumn{1}{r!{\VRule}}{3} & \multicolumn{1}{r!{\VRule}}{58 } & \multicolumn{1}{r!{\VRule}}{830 } & \multicolumn{1}{r|}{20787 } \\ 
-                                & Before Torus2 Coll. & \multicolumn{1}{r!{\VRule}}{1} & \multicolumn{1}{r!{\VRule}}{39 } & \multicolumn{1}{r!{\VRule}}{431 } & \multicolumn{1}{r|}{9024  } \\ 
-                                & Before Target       & \multicolumn{1}{r!{\VRule}}{0} & \multicolumn{1}{r!{\VRule}}{8  } & \multicolumn{1}{r!{\VRule}}{114 } & \multicolumn{1}{r|}{2237  } \\ 
+                                & Torus2 & \multicolumn{1}{r!{\VRule}}{1} & \multicolumn{1}{r!{\VRule}}{39 } & \multicolumn{1}{r!{\VRule}}{431 } & \multicolumn{1}{r|}{9024  } \\ 
+                                & Target &\multicolumn{1}{r!{\VRule}}{0} & \multicolumn{1}{r!{\VRule}}{8  } & \multicolumn{1}{r!{\VRule}}{114 } & \multicolumn{1}{r|}{2237  } \\ 
 \hline
-\multirow{3}{1.6cm}{Weighted Sum} & Torus1 Entrance     & 1.40E-09 & 1.70E-12&1.10E-16 & 2.27E-19\\ 
+\multirow{3}{1.6cm}{Weighted Sum} & Torus1 & 1.40E-09 & 1.70E-12&1.10E-16 & 2.27E-19\\ 
                                   %& TS3                 & 5.14E-11 & 4.81E-13&3.31E-17 & 5.20E-20\\ 
-                                  & Before Torus2 Coll. & 1.62E-14 & 5.15E-14&1.54E-17 & 2.63E-20\\ 
-                                  & Before Target       & {*}3.65E-15 & 1.16E-14&5.17E-19 & 7.74E-21\\ 
+                                  & Torus2 & 1.62E-14 & 5.15E-14&1.54E-17 & 2.63E-20\\ 
+                                  & Target & {*}3.65E-15 & 1.16E-14&5.17E-19 & 7.74E-21\\ 
 \hline                                                           
-\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2 Coll.})$} &{*}0.225& 0.225  & 0.034  & 0.295\\
+\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2})$} &{*}0.225& 0.225  & 0.034  & 0.295\\
 \hline
-\end{tabular}
-\end{adjustwidth}
-\caption{\tablabel{bg:antiprotons:sim:antip}
-Antiproton stopping rates and fluxes at key points.
-Since no antiprotons were seen stopping for the angular region from 0 to 59\degree, the value for the final two entries in that column --- indicated with an asterisk (*) ---  are obtained by multiplying the antiproton rate expected at the Torus2 collimator with the median collimator acceptance from the other three angular regions, 0.225.
-%The mean acceptance of the Torus2 collimator is 0.185.
-For each of the angular regions, 80 million antiprotons were simulated.
-}
-\end{table}\xspace}
+\end{tabular}%
+%\end{adjustwidth}%
+\caption{\tablabel{bg:antiprotons:sim:antip}%
+Antiproton stopping rates and fluxes at key points.%
+Since no antiprotons were seen stopping for the angular region from 0 to 59\degree, the value for the final two entries in that column --- indicated with an asterisk (*) ---  are obtained by multiplying the antiproton rate expected at the Torus2 collimator with the median collimator acceptance from the other three angular regions.%
+%The mean acceptance of the Torus2 collimator is 0.185.%
+For each of the angular regions, 80 million antiprotons were simulated.%
+}\end{table}\xspace}
+
+%\newcommand{\TabAntiprotonFactors}{
+%\begin{table}[tb]
+%\centering
+%        \begin{tabular}{llm{0.5\textwidth}}
+%	\hline
+%        Parameter & \multicolumn{1}{l}{Value} & Description \\
+%	\hline
+%        $R_{\pi/p}$                & \VarPiStopsPerPOT & Pion stopping rate per \ac{POT}  \\ 
+%        $\mathcal{B}_\textrm{RPC}$ & \num{2.27e-2} & Branching ratio of \ac{RPC} \\ 
+%	$f_{e,\textrm{RPC}}$           & \VarDetectedEsPerRPC & Probability of an RPC photon producing signal-like electrons in the detector \\ 
+%	$A_\textrm{time}$              & \VarRPCTimingEfficiency & Acceptance of timing window to secondary electrons from RPC \\ 
+%        $\epsilon_\textrm{extinction}$ & \VarExtinctionFactor[2] &  Extinction factor\\ 
+%	\hline
+%\end{tabular}
+%\caption{\tablabel{bg:antiprotons:factors}
+%Parameters and their values in the determination of the \ac{RPC} background rate.
+%}
+%\end{table}
+%}
 
 \newcommand{\TabAntiprotonEstimates}{
-\sisetup{table-number-alignment=right, table-format=2.2e3, table-comparator=true}
 \begin{table}[tbp]
+\sisetup{table-number-alignment=right, table-format=2.2e3, table-comparator=true}
 %\begin{adjustwidth}{-0.9cm}{}
 \begin{tabular}{la|SS|SS|}
             &         & \multicolumn{2}{c|}{Stopping Rates} & \multicolumn{2}{c|}{Background Rate per POT} \\ 
@@ -466,7 +483,7 @@ For each of the angular regions, 80 million antiprotons were simulated.
             & 97-119  & 5.44E-19              & 5.02E-18   & 1.49E-24      & 8.15E-37    \\ 
             & 119-180 & 2.14E-19              & 1.91E-21   & 5.65E-28      & 3.10E-40    \\ 
 \hline
- \multicolumn{4}{r|}{Sum (per POT)}                         & 2.96E-17      & 3.88E-21    \\ 
+ \multicolumn{4}{r|}{Sum (per POT)}                         & 2.96E-17      & 3.62e-21    \\ 
 \hline
 \end{tabular}
 %\end{adjustwidth}
