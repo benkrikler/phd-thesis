@@ -493,9 +493,43 @@ In addition these neutrons should be studied carefully using multiple hadron pro
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
+Cosmic rays at sea level consist primarily of positive and negative muons, produced from high-energy particles originating in the sun or beyond the solar system strike the upper atmosphere and produce a particle shower.
+About one muon per square cm per minute is expected at sea level, with the average muon energy around 4~GeV~\cite{PDG2014}.
+At these energies, not only can they readily produce high-momentum electrons, but they are weakly ionising and therefore penetrate material relatively easily.
 
-\section{Neutrons from the Production Target}
-\sectlabel{bg:neutrons}
+This makes cosmic muons a potential source of backgrounds, as the high energy muons can pass through the experiment hall to the beamline where upon, if they decay, may produce signal-like electrons.
+In addition, this background would lack any timing structure.
+As a result, a  \ac{CRV} is included in both \phaseI and \phaseII made with four layers of scintillator bars as the active material.
+When a cosmic ray passes this, events in the detector can either be tagged, or any trigger on this event vetoed and not read out, such that signal-like electrons produced from cosmic rays should not be included in the analysis.
+
+At the time of writing, the \ac{CRV} has been optimised and studied for \phaseI~\cite{TDR2016,MeCM18Cosmics,DrutskoyCM20}.
+These studies suggest that a miss-rate of less than 1 in $10^4$ events is achievable.
+For \phaseII however, given the different experiment geometry, the situation is a little different.
+If the muon penetrates into the detector and decays from there, or if a high energy electron produced outside of the detector but close to it, is 
+Principally, the stopping target in \phaseI is surrounded by the \ac{CDC}, such that cosmic muons must escape detection in both the \ac{CRV} and \ac{CDC}, and then decay close to the target.
+In \phaseII, the stopping target is located well away from the detector, which means cosmic muons must only penetrate the \ac{CRV}.
+Furthermore, the \ac{CRV} geometry in \phaseII should cover at least the target and intermediate beamline in addition to the detector solenoid itself.
+
+\phaseII is expected to run about \VarRunTime~s as suggested in section~\sec{sensitivity}.
+During COMET operation, a single accelerator cycle is expected to last 2.48~s, with about 0.7~s for extraction, giving a duty factor of 0.28.
+In addition, with a time-gated window lasting 600~ns and bunches separated by 1.170~$\mu$s, the overall duty factor drops to about 0.14.
+As such, during \phaseII running there are really only about \num{2.9e6}~s when a cosmic muon can produce backgrounds.
+During this time then, \num{4.8e4} cosmic muons should pass through each horizontal square centimetre of the COMET hall.
+If we assume the miss-rate for the \phaseII will be no worse than for \phaseI, \ie \num{1e-4}, then for each for each square centimetre of the experiment, more than 48 muons should be studied.
+
+To simulate the cosmic ray background, input muon events were provided by the ND280 experiment~\cite{George:2010aca}.
+These contained positive and negative muons that had been produced in an air shower simulation using the CORSIKA simulation package~\cite{Corsika}, for the atmosphere above J-PARC.
+\Fig{bg:cosmic:input} shows the distributions of momentum and directions that these files contained.
+
+Muons were generated in a horizontal plane directly above the experiment hall (and centred on the origin of the ICEDUST coordinate system, the production target).
+A 50$\times$50~m${}^2$ square within in this plane was used to generate the events.
+This immediately adds a limitation to this simulation that very horizontally-moving muons cannot be studied, but it is needed to increase the simulation efficiency.
+About \num{1.76e8} cosmic events were generated in this way; for the 2500~m${}^2$ region above the experiment where the simulation was started, more than \num{1.2e8} events should be studied, according to the above calculations.
+
+Of these events, about XXX electrons with signal-like momenta were observed to hit a straw tracker plane, which are shown in the event display in \fig{bg:cosmic:eventDisplay}.
+No events were observed hitting more than one of the straw planes with the necessary momentum to be considered a background, and as such no events would have been reconstructed.
+Accordingly, we can only set a limit on the rate of backgrounds due to cosmic events coming from overhead muons.
+At 90\% C.L.\ the rate must be smaller than XXX to expect to see no background events in \num{1.7e8}
 
 \section{Summary of Background Rates}
 \sectlabel{bg:summary}
