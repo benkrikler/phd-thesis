@@ -426,31 +426,70 @@ Additionally, material close to the production target would need to be considere
 %	# Lifetime of muons at the target (need to smear this a bit ?): Fit the projection of high momentum particles to the time with an exponential and extrapolate
 %	# Survival probability per high momentum particle before the target to reach the straw tracker
 %\end{easylist}
-Although neither a muon or pion in their rest frame can decay to electrons greater than 55~MeV, once these particles are boosted sufficiently the outgoing electron can also become boosted into the signal region.
-For muons, at 78~MeV/c Michel electrons can occur at 105~MeV/c if produced in the direction of the muon's momentum.
+Although neither a muon or pion in their rest frame can decay to electrons greater than 55~MeV, if these particles are boosted sufficiently the resulting electron can be produced with signal-like momentum.
+For muons at 78~MeV/c Michel electrons can occur at 105~MeV/c if produced in the direction of the muon's momentum.
 For pions, the threshold for signal-like electrons to be produced during decay is 58~MeV/c, although the branching fraction for this process is helicity suppressed to around \num{1e-4}.
 
-The bent solenoids and the pulsed beam help to suppress these sorts of backgrounds, as does the beam blocker after the target disks.
+The bent solenoids and the pulsed beam help to suppress these sorts of backgrounds, whilst the beam blocker, downstream of the target disks, reduces the geometric acceptance.
 The inner radius of the collimator at the exit of Torus2 is set to 12~cm, whilst the beam blocker has a radius of 25~cm. 
 As the beam passes along the stopping target region, the beam envelope grows due to the reduction in the solenoidal field strength.
 The radius of the beam blocker, however, is large enough that even with this growth there should be no direct line of sight between the muon beam and the spectrometer.
 As such, the only way for beam particles to reach the detector are by a hard scatter off the target or beam blocker, or to be produced via decay of another particle close to the target itself.
 
 To check the probability that signal-like electrons are produced in the beam and arrive at the detector in the time window,
-the output of the large production target simulation were resampled five times, so that around \num{1.4e9}~\ac{POT} events were studied, equivalent to 7.5~\phaseII bunches \CHECK{Is this the right number of simulated events?}.
-\begin{easylist}
-	# Number of POT simulated
-	# Number of observed high momentum electrons or muons
-	# Lifetime of muons at the target (need to smear this a bit ?):
-        ## Fit the projection of high momentum particles to the time with an exponential and extrapolate
-        ## Use a double exponential fit, need to high momentum
-	# Survival probability per high momentum particle before the target to reach the straw tracker (geometric x momentum)
-	# Product of all factors
-	# Statistically limited result
-	# Beamline in Phase-II is about 3 times longer than Phase-I, 
-	# Need to move away from brute-force Monte Carlo and develop reweighted algorithms, such as disabling particle decay and weighting by the rest frame time divide by the lifetime
-	# High energy electron acceptance vs. beamline distance 
-\end{easylist}
+the output of the large production target simulation was resampled five times, so that around \num{1.4e9}~\ac{POT} events were studied, equivalent to 7.5~\phaseII bunches \CHECK{Is this the right number of simulated events?}.
+\Fig{bg:beam:MomVsTime:strawTrk} shows the momentum and timing of electrons at the straw tracker, from which it is clear that no background events were observed within the gated-time detector window.
+One electron is observed at 98~MeV/c, but this occurs around 100~ns after the proton bunch.
+This immediately sets a limit on the background rate---less than 1 in \num{1.4e9} per POT.
+\FigBgBeamMomVsTime
+
+Clearly then it is necessary to apply some extrapolation to understand this background better.
+Indeed, it will never be feasible to directly simulate the $10^{21}$ or so POT that would be necessary to infer the background rate without some extrapolation.
+To make this extrapolation, we look at the same distribution immediately after the beam blocker.  
+At this point there are far more electrons so it is easier to fit and model the distributions.
+\Fig{bg:beam:MomVsTime:stopTgt} shows the momentum vs.\ time plot for electrons immediately after the beam blocker.
+
+The rate of observing signal-like electrons due to high-energy beam particles is modelled by factorisation of the acceptances:
+\begin{align}
+R_\mathrm{beam}=&A_\textrm{geom}A_\textrm{mom}A_\textrm{time},\\
+=&\left(\frac{N_\textrm{obs}}{N_\textrm{POT}}\right)\left(\frac{\int\limits_{104.2}^{105.5}f(p)dp}{\int\limits_{p_\textrm{low}}^{105.5}f(p)dp}\right)\left(\frac{\int\limits_{600}^{1200}g(t)dt}{\int\limits_{30}^{1200}g(t)dt}\right),
+\eqlabel{bg:beam:factors}
+\end{align}
+where $A_\textrm{geom}$,$A_\textrm{mom}$, and $A_\textrm{time}$ are geometric acceptance and efficiencies of the momentum and timing thresholds, respectively.
+$N_\textrm{obs}$ is the number of events actually seen at the straw tracker, whilst $N_\textrm{POT}$ is the number of simulated \ac{POT} events.
+\FigBgBeamExtrapolate
+
+The functions $f(p)$ and $g(t)$ represent the momentum and time projections of electrons after the beam blocker. 
+Their factorisation in this manner is valid due to the lack of strong correlation visible in \fig{bg:beam:MomVsTime:stopTgt}.
+It is reasonable to assume that, close to the signal region, the momentum distribution observed immediately after the beam blocker will have the same shape as the momentum distribution at the straw target.
+Since the acceptance function is essentially flat at the high energy limit (see \sect{optim:stopTgtPos} and \sect{sense:momentum}), only the normalisation of the spectrum should change, and this we have encapsulated already in the geometric acceptance.
+
+Finally, the timing distribution, $g(t)$, is also taken by fitting the observed electron distribution after the beam blocker.
+Here, however, one needs to be careful about extrapolating the distribution from after the beam blocker to the straw tracker.
+The extrapolation can be imagined as two effects: an overall translation of the distribution to later times, and a broadening of the distribution (an increase in the fitted lifetime).
+Both effects are determined by the time needed for particles at the beam blocker to propagate through the spectrometer.
+With a radius of 2~m, the typical distance travelled along the beamline will be at least about 6~m, and since the electrons are relativistic and travelling at close to the speed of light, transport through the spectrometer can be expected to add about 20~ns.
+This assumes particles follow the beam axis perfectly, so that their pitch angle is equal to zero.
+With a large pitch angle the distance travelled, and therefore transportation time, will be longer, although since larger pitch angles drift more in the bent solenoids, these particles will tend to be removed more effectively.
+The effect of broadening on the distribution arises from lower energy electrons moving more slowly, however for the relativistic signal-energy electrons this effect will be negligible.
+
+\Fig{bg:beam:acceptance} show the momentum and time functions based on the distribution of electrons after the stopping target.
+The equations for the lines of best fit are also shown, and the region used to fit indicated by the solid black fitted line.
+The low momentum threshold for this study, $p_\textrm{low}$, is set to 65~MeV/c, since this removes electrons from \ac{DIO} of muons along the beamline, which have relatively long life-times but cannot be produced at signal energies.
+Above this threshold, there are 65 events at the straw tracker, giving a geometric acceptance of \VarBeamBgGeometric.
+For the efficiency of the momentum cut, using the fit to the projection shown in \fig{bg:beam:acceptance:momentum}, the ratio of events expected between 104.2 and 105.5~MeV/c compared to the integrated rate from 65 to 105.5~MeV/c is \VarBeamBgMomentum.
+For the timing efficiency, the fit given in \fig{bg:beam:acceptance:time} is first shifted so that the mean of timing distribution at the beam blocker sits at the time of the latest arriving electron above 65~MeV/c, as indicated
+by the vertical magenta lines. 
+This amounts to a shift of 110.5~ns, which is about twice as large as if one were to use the mean of the straw tracker electrons.
+Having applied this shift (which we implement as a shift in the start and stop time for the integration), we find the suppression of electrons due to the time-gated window gives a factor \VarBeamBgTiming.
+
+Finally, then, we can pull all these factors together using \eq{bg:beam:factors}, from which we find that the predicted beam-related background rate per POT is~\VarBeamBgPerPOT, such that we can expect about \VarBeamBgTotal background events during \phaseII due to these processes.
+
+Given the extrapolation that has been necessary, this result comes with a degree of statistical uncertainty.
+However, in principle this includes all sources of electrons in the beam: high energy muons, pions, and electrons coming directly from the production target with high energy.
+This also includes electrons produced from neutron capture, provided the neutron itself originated downstream of the production target section, which were not included here in order to accelerate the simulation speed.
+In addition these neutrons should be studied carefully using multiple hadron production models.
+\CHECKmargin{Add at least a comment or subsection  on these neutrons and reference it here.}
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
