@@ -47,7 +47,9 @@
 \newcommand\Var[2]{%
 \expandafter\newcommand\csname Var#1\endcsname{#2\xspace}}
 \newcommand\VarNum[2]{%
-\expandafter\newcommand\csname Var#1\endcsname{\num{#2}\xspace}}
+\expandafter\newcommand\csname Var#1\endcsname{\num{#2}\xspace}
+\expandafter\newcommand\csname Num#1\endcsname{#2\xspace}
+}
 \newcommand\VarUnits[3]{%
 \expandafter\newcommand\csname Var#1\endcsname{\SI{#2}{#3}\xspace}}
 
