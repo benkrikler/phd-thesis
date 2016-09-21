@@ -519,18 +519,86 @@ The black line is an exponential fit to the momentum and time of electrons after
 \end{figure}
 }
 
+\newcommand{\FigBgCosmicPrimary}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{bg:cosmics:primary:momentum}Momentum]{
+\includegraphics[width=0.47\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/Cosmics_primary_momentum.pdf}}
+\subfloat[][\figlabel{bg:cosmics:primary:transverse}Transverse Direction Cosine]{
+\includegraphics[width=0.47\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/Cosmics_primary_transverse.pdf}}
+\caption{\figlabel{bg:cosmics:primary}
+Distributions of momenta and the transverse direction for the muons and antimuons provided by the ND280 collaboration.
+}\end{figure}\xspace}
+
+\newcommand{\FigBgCosmicBeam}{
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.98\textwidth,trim=2.5cm 0 2.3cm 0,clip]{figs/backgrounds/Cosmics_highP_electrons.png}
+\caption{\figlabel{bg:cosmics:beam}
+Projection onto beamline coordinate system of electrons from cosmic rays with momenta greater than 100~MeV/c, from a simulation of about 170 million cosmic muons.
+Three tracks can be seen to enter the electron spectrometer and pass along, although their momenta are all above 105~MeV/c as visible from the upwards drift of the trajectories.
+}\end{figure}\xspace}
+
+\newcommand{\FigBgCosmicMomenta}{
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth,trim=0 0 1.6cm 0,clip]{figs/backgrounds/Cosmics_strawTrackHits.pdf}
+\caption{\figlabel{bg:cosmics:momenta}
+Momentum of electrons that hit one and two layers (planes) of the straw tracker.
+The vertical axis shows the raw number of observed events based on the simulation of 170 million cosmic muons described in the text.
+}\end{figure}\xspace}
+
+\newcommand{\TabBgCosmicParameters}{
+\begin{table}[tb]
+\centering
+\begin{tabular}{llm{0.7\textwidth}}
+	\hline
+        Parameter & \multicolumn{1}{l}{Value} & Description \\
+	\hline
+        $R_\mu$                     & \num{4.17e5} & Cosmic ray flux through entire hall per second         \\ 
+        $n_e^\textrm{obs}$          & 0.46         & Observed electrons per MeV/c                           \\ 
+        $N_\textrm{sim}$            & \num{1.76e8} & Number of simulated events                             \\ 
+        $(1-\epsilon_\textrm{CRV})$ & \num{1e-4}   & Miss rate of the \ac{CRV}                              \\ 
+        $A_\textrm{duty}$           & 0.36         & Accelerator duty factor                                \\ 
+        $A_\textrm{timing}$         & 0.51         & Fraction of time within gated-time detection window \\ 
+        $A_\textrm{TDAQ,Recon}$     & 0.70         & Combined acceptance of TDAQ and Reconstruction         \\ 
+	\hline
+\end{tabular}
+\caption{\tablabel{bg:cosmics:params}
+Parameters and their values for the determination of the cosmic ray background rate.
+}
+\end{table}
+}
+
 \newcommand{\TabBackgroundFinalVals}{
 \begin{table}
 \centering
+\begin{adjustwidth}{-0.7cm}{}%
 %	\renewcommand{\arraystretch}{1} % Default value: 1
-\begin{tabular}{ll|SSS|S}
-Type & Source & \multicolumn{3}{c|}{Background Rate}       & {Total Events} \\ 
-     &        & {per Stopping $\mu^-$}  & {per POT}  &  {per \si{s}} &              \\ 
+\begin{tabular}{ll|SSS|SS}
+Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                             & \multicolumn{2}{c}{Total Events} \\ 
+                             &                          & {per Stopping $\mu^-$} & {per POT}     & {per \si{s}}            & {This Study} & {CDR~\cite{CDRphase2}} \\ 
 \hline
 \hline
-Total & & & & & \\
+\multirow{2}{*}{Intrinsic}   & DIO                      & \VarDIOPerMuStop       & \VarDIOPerPOT & \VarDIOPerSecond        & \VarDIOTotal &                       \\ 
+                             & RMC                      & \VarRMCPerMuStop       & \VarRMCPerPOT & \VarRMCPerSecond        & \VarRMCTotal &                       \\ 
+\hline
+\multirow{3}{*}{Delayed}     & RPC                      & {--}                   &               & \VarRPCDelayedPerPOT    &              &                       \\ 
+                             & Beam $e^-$               & {--}                   &               &                         &              &                       \\ 
+                             & Stopped $\bar{p}$        & {--}                   &               &                         &              &                       \\ 
+\hline
+\multirow{3}{*}{Prompt}      & RPC                      & {--}                   &               & \VarRPCPromptPerPOT     &              &                       \\ 
+                             & Beam $e^-$               & {--}                   &               &                         &              &                       \\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}                   &               &                         &              &                       \\ 
+\hline
+\multicolumn{2}{c|}{Cosmics}                            & {--}                   & {--}          & \VarCosmicRatePerSecond &              &                       \\ 
+\hline
+\hline
+\multicolumn{2}{c|}{Total}                              &                        &               &                         &              &                       \\ 
+\hline
 \hline
 \end{tabular}
+\end{adjustwidth}
 \caption{ \tablabel{bg:summary}%
 Final predicted background rates and events.
 Assumes....

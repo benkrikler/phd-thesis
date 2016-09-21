@@ -387,6 +387,7 @@ It is important, therefore, to remember that this is an especially conservative 
       In addition, the straight-line-fit increases the integrated yield of antiprotons significantly, which impacts on the event-by-event weight.
       For example, for the region from  59--97\degree, there are up to two orders of magnitude difference on the predicted antiproton yield depending on the high-energy description.
       \CHECKmargin{Add to the first table the integrals with the other tail descriptions.}
+\item Antiproton events were generated with a uniform distribution in the production target. Given that the proton beam profile will be close to a double Gaussian, with most of the probability concentrated in the centre of the target, there will typically be more material for the antiprotons to pass through as they leave the target.  This will increase the rate of absorption and thus reduce the antiproton rate further.
 \item The data this model is based on uses 10~GeV initial protons. The antiproton yield is expected to grow rapidly at these sorts of energies.
       According to the model in~\cite{Meco024}, the cross section at 8~GeV is at least an order of magnitude lower than for incident protons with 10~GeV.
 \item The final value assumes that all the negative pions produced from stopping antiprotons are captured by nuclei in the target.  In reality, many of these will escape from the target and decay in flight or be stopped and captured elsewhere.  The pion multiplicity factor used here is likely an overestimate, therefore.
@@ -493,6 +494,7 @@ In addition these neutrons should be studied carefully using multiple hadron pro
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
+\FigBgCosmicPrimary
 Cosmic rays at sea level consist primarily of positive and negative muons, produced from high-energy particles originating in the sun or beyond the solar system strike the upper atmosphere and produce a particle shower.
 About one muon per square cm per minute is expected at sea level, with the average muon energy around 4~GeV~\cite{PDG2014}.
 At these energies, not only can they readily produce high-momentum electrons, but they are weakly ionising and therefore penetrate material relatively easily.
@@ -510,33 +512,120 @@ Principally, the stopping target in \phaseI is surrounded by the \ac{CDC}, such 
 In \phaseII, the stopping target is located well away from the detector, which means cosmic muons must only penetrate the \ac{CRV}.
 Furthermore, the \ac{CRV} geometry in \phaseII should cover at least the target and intermediate beamline in addition to the detector solenoid itself.
 
-\phaseII is expected to run about \VarRunTime~s as suggested in section~\sec{sensitivity}.
+\phaseII is expected to run about \VarRunTime~s as suggested in section~\sect{sensitivity}.
 During COMET operation, a single accelerator cycle is expected to last 2.48~s, with about 0.7~s for extraction, giving a duty factor of 0.28.
 In addition, with a time-gated window lasting 600~ns and bunches separated by 1.170~$\mu$s, the overall duty factor drops to about 0.14.
 As such, during \phaseII running there are really only about \num{2.9e6}~s when a cosmic muon can produce backgrounds.
 During this time then, \num{4.8e4} cosmic muons should pass through each horizontal square centimetre of the COMET hall.
 If we assume the miss-rate for the \phaseII will be no worse than for \phaseI, \ie \num{1e-4}, then for each for each square centimetre of the experiment, more than 48 muons should be studied.
 
+\FigBgCosmicBeam
+\FigBgCosmicMomenta
 To simulate the cosmic ray background, input muon events were provided by the ND280 experiment~\cite{George:2010aca}.
 These contained positive and negative muons that had been produced in an air shower simulation using the CORSIKA simulation package~\cite{Corsika}, for the atmosphere above J-PARC.
-\Fig{bg:cosmic:input} shows the distributions of momentum and directions that these files contained.
+\Fig{bg:cosmic:primary} shows the distributions of momentum and directions that these files contained.
 
 Muons were generated in a horizontal plane directly above the experiment hall (and centred on the origin of the ICEDUST coordinate system, the production target).
 A 50$\times$50~m${}^2$ square within in this plane was used to generate the events.
 This immediately adds a limitation to this simulation that very horizontally-moving muons cannot be studied, but it is needed to increase the simulation efficiency.
+Given the angular distribution shown in \fig{bg:cosmics:primary} and the offset of the detector solenoid with respect to the production target, between XX and XX of all cosmic events can be simulated this way.
 About \num{1.76e8} cosmic events were generated in this way; for the 2500~m${}^2$ region above the experiment where the simulation was started, more than \num{1.2e8} events should be studied, according to the above calculations.
 
-Of these events, about XXX electrons with signal-like momenta were observed to hit a straw tracker plane, which are shown in the event display in \fig{bg:cosmic:eventDisplay}.
-No events were observed hitting more than one of the straw planes with the necessary momentum to be considered a background, and as such no events would have been reconstructed.
-Accordingly, we can only set a limit on the rate of backgrounds due to cosmic events coming from overhead muons.
-At 90\% C.L.\ the rate must be smaller than XXX to expect to see no background events in \num{1.7e8}
+Material above the beamline can degrade and stop cosmic muons so it is important this is modelled well.
+The concrete and iron shielding for the entire experimental hall is implemented, as well as the shielding necessary for the \ac{CRV}.
+However, at this stage the geometry in the simulation only has the CRV design intended for \phaseI around the detector solenoid (in its \phaseII position).
+Since the CRV will need to be extended to include all the way up to the stoping target in \phaseII, there will likely be more shielding material inserted above the beamline.
+
+\Fig{bg:cosmic:momenta} shows the momentum distribution of observed electrons.  
+There are large fluctuations across the momentum distribution, but this is most likely due to statistical fluctuations rather than truely physical.
+From 80 to 120 MeV/c, 140 electrons hit at least one layer in the straw tracker, although only 19 of these hit a second plane.
+The number of background events due to cosmic rays can therefore be estimated as:
+\begin{align}
+	R_\textrm{cosmics}=R_\mu\frac{n_e^\textrm{obs}}{N_\textrm{sim}} \Delta{}p (1-\epsilon_\textrm{CRV}) A_\textrm{duty}A_\textrm{timing}A_\textrm{TDAQ,Recon}
+\end{align}
+where $R_\mu$ is the rate of cosmic muons expected through the experiment hall per second, $n_e^\textrm{obs}$ is the observed number of events per MeV/c, $N_\textrm{sim}$ is the number of simulated cosmic ray muons, and $\Delta{}M$ is the width of momentum thresholds, from \VarMomThreshold to 105.5~MeV/c.
+$\epsilon_\textrm{CRV}$ is the \ac{CRV} efficiency, such that $(1-\epsilon_\textrm{CRV})$ is the expected miss-rate. 
+The factors $A_\textrm{duty}$,$A_\textrm{timing}$, and $A_\textrm{TDAQ,Recon}$ represent the accelerator duty factor, fraction of time spent during the time-gated detection window, and the combined TDAQ and reconstruction effiency, respectively.  
+The values for each of these parameters are given in \tab{bg:cosmics:params}.
+From this we can estimate that there will be \VarCosmicRatePerSecond backgrounds per second due to cosmic rays.
+\TabBgCosmicParameters
+
+To reduce the cosmic ray background further, the most important parameter is the \ac{CRV} efficiency, the complement of which multiplies the entire background rate.
+Since this background is completely uncorellated with the beam, the shorter the running time, the lower this background rate will be.
+If this cannot be reduced further, then it might be necessary to add more material above the beamline or above the experiment hall.
+Fortunately, rather than depend on simulation for this, \phaseII has the benefit of \phaseI, which will have measured and characterised the cosmic ray flux on the experiment hall floor.
+
+%%Since all previous studies have only required a hit in one or more straw tracker planes for a track to be `accepted', in the interest of consistency we shall do the same here.
+%The 19 events between 80 and 120 MeV/c coming from 176 million cosmic ray simulated events imply \VarCosmicRatePerMuPerMeV signal-like electrons per primary muon per MeV/c, or \VarCosmicRatePerMu within the momentum thresholds.
+%As such, for the rate of cosmic rays passing through the 50$\times$50 m${}^2$ patch of sky above the hall, we can expect to be 
+%With the signal momentum range of \VarMomThreshold to 105.5~MeV/c, and assuming 1 muon per minute per cm${}^2$, 
+%
+%Of these events, about XXX electrons with signal-like momenta were observed to hit a straw tracker plane, which are shown in the event display in \fig{bg:cosmic:eventDisplay}.
+%No events were observed hitting more than one of the straw planes with the necessary momentum to be considered a background, and as such no events would have been reconstructed.
+%Accordingly, we can only set a limit on the rate of backgrounds due to cosmic events coming from overhead muons.
+%At 90\% C.L.\ the rate must be smaller than XXX to expect to see no background events in \num{1.7e8}
 
 \section{Summary of Background Rates}
 \sectlabel{bg:summary}
 \TabBackgroundFinalVals
+\Tab{bg:summar} gives an overview of the predict rates.
+The final prediction is below 1 but very close to it, and it is therefore important that these studies be continued and developed further.
+The dominant backgrounds come from antiprotons and cosmic rays, with radiative muon capture similarly high.
+
+\subsection{Backgrounds Not Considered}
+Although some of the methods above are different, compared to the \phaseI TDR and \phaseII CDR, there is only one source of backrounds that has not been included:
+the production of high-energy electrons from the capture of neutrons that originate in the production target.
+These neutrons were killed in order to reach a large number of muons and pions in the simulation, although neutrons produced along the muon beam (from the collimators, stopping target, \etc) have been included with the beam background.
+Whilst there is a large amount of concrete and iron material in between the production target and the detector, the production target is likely a major source of neutrons in the experiment, and this needs to be studied rigorously using multiple hadron production and neutron transport codes.
+
+Such studies have advanced for \phaseI, with the background rate from neutrons estimated to be about \num{3.1e-29a}~per POT.
+With a different experiment layout, production target material and higher proton beam power, separate studies should be performed  for \phaseII.
+A naive scaling of this to the \phaseII number of protons on target would suggest that \num{2.7e-8} events can be expected in \phaseII.
+Since the detector sits further away from the production target and since there is additional beamline then it is likely that the neutron rate is lower still.
+The increased proton power would already be included in the naive scaling applied above to first order.
+The different target material will change the neutron production cross section, but since the target is also made longer to maximize the muon stopping rate the increase in neutron yield might also be compensated for.
+
+%Other sources of background might exist---putting a limit on all processes that produce fewer than a single electron from $10^{21}$~POT is no easy feat---and it 
+
+\subsection{Principal Uncertainties}
+Whilst it is not possible to make a quantitative estimate of the uncertainty at this time, it is clear that for some backgrounds the uncertainty is large.
+
+\begin{description}
+\item[StrECAL Reconstruction and Resolution]
+In the case of \ac{DIO} and \ac{RMC}, the two intrinsic sources of background, the main source of uncertainty is in the resolution function.
+The exact the distribution for the residuals after reconstruction is not well known, especially for \phaseII.
+In particular, for \ac{RMC}, the high energy tail needs to be studied better. 
+It has been assumed that fewer than 1 in \num{1e4} events will be reconstructed with momentum larger by 2.4~MeV/c or more than the true value.
+This assumption must be confirmed, and if possible improved.
+RMC on Al-26 was also discussed as a potential concern, however Al-26 has a tiny abundance in natural aluminium, whilst the rate of production in the COMET muon beam is difficult to predict.
+
+\item[RPC Spectrum]
+In the case of \acf{RPC}, the dominant uncertainty comes from the spectrum of photons produced during RPC.
+The study here and in the \phaseI TDR depend entirely on a single set of experiments, which do not cover RPC from aluminium, only on magnesium and calcium
+This will be difficult to improve further without additional observations, and it would be useful to study this at \phaseI if possible, perhaps by changing the Torus1's dipole field to improve pion acceptance.
+
+\item[Antiproton Production]
+Given the lack of experimental evidence for antiproton production in the `sub-threshold' regime and in the backwards direction, there is large uncertainty over the expected rate.
+Whilst the model developed here was kept conservative, as one of the dominant backgrounds it is important to study this further.
+A dedicated study comparing multiple different hadron production codes to all the possible experimental datasets (including forward and backward produced antiprotons from the different targets with different proton momentum) could reduce our uncertainty if now new experimental data is forthcoming.
+Such a study would then be able to extrapolate better for the target material, proton energy and production direction used in COMET.
+
+In addition to the production rates, there is reasonable uncertainty on the mechanisms by which antiprotons can produce background electrons.
+Here it has been assumed that the primary mechanism is via pion production, but the rates for such production in aluminium is also not well known.
+Such an assumption must also be confirmed.
+%Direct emission of high-energy electrons is supposed to be relatively small~\cite{}, but it has not been rig
+
+\item[Cosmic Ray Veto Geometry and Shielding]
+Without a complete \ac{CRV} design, it is tough to be confident that the energy loss of cosmic muons is well captured in the \phaseII simulation.
+In addition, the miss-rate of \num{1e-4} should be experimentally confirmed and ideally improved.
+\end{description}
 
 \section{Further Studies and Improvements}
 \sectlabel{bg:improvements}
+This chapter has presented an almost comprehensive set of estimates for background sources in \phaseII.
+It should not, however, be treated as the final set of predictions, but rather as an initial set of studies that should be developed further.
+The following list, therefore, is a summary of methods that can be pursued to improve and expand the preceding set of estimates.
+
 \begin{easylist}
 # Neutron background with different hadron codes and \alcap neutron spectrum from mu capture
 # Improved cosmic ray veto geometry
