@@ -236,8 +236,8 @@ Antiprotons can be produced when the primary 8~GeV proton beam interacts with th
 \begin{equation}
 p + N(A,Z) \rightarrow p + N^*(A,Z) + p+\bar{p}
 \end{equation}
-Given their relatively large mass, antiprotons travel much more slowly than other products of the same momentum which results in a smearing of the beam's time structure for antiprotons and their secondaries.
-The pulsed beam and time-gated detector window are, therefore, less effective at suppressing the induced backgrounds.
+Given their relatively large mass, antiprotons travel much more slowly than other products of the same momentum, causing the beam's time structure to be smeared for antiprotons and their secondaries.
+The pulsed beam and time-gated detector window are, therefore, not effective at suppressing backgrounds created by antiprotons in the beam.
 
 %Secondaries of antiproton interactions with matter include X-rays and pions, though pion production dominates~\cite{BobBernsteinExperimentersGuide,Mishustin:2004xa}.
 %
@@ -245,8 +245,8 @@ The interaction of antiprotons with matter has a strong analogy with muons and n
 %There is a strong analogy between antiproton stopping in matter and the phenomona around negative muon and pion stopping.
 In matter, antiprotons with energies of a few tens of keV --- similar to that of atomic electrons --- can become bound in the Coulomb potential of the atom's nucleus.
 X-rays emitted in the ensuing electromagnetic cascade are typically not more than a 100~keV~\cite{Aramaki201352}.
-Unlike for muons, the antiproton will only rarely reach the atomic ground state, before the interaction with the nucleus takes over.
-This interaction can take the form of an immediate annihilation or the formation of a composite nucleus where the antiproton is now bound within the nuclear potential~\cite{Wong:1984fy,Mishustin:2004xa}.
+Unlike for muons, the antiproton will only rarely reach the atomic ground state, with interactions with the nucleus becoming dominant before this is possible.
+Such interactions can take the form of an immediate annihilation or the formation of a composite nucleus where the antiproton becomes bound within the nuclear potential~\cite{Wong:1984fy,Mishustin:2004xa}.
 The binding energy of some of these nuclear levels can reach up to hundreds of MeV, and so in the transition, pions and other hadrons can be readily produced.
 Eventually though the antiproton will annihilate in the nucleus, producing large multiplicities of pions and other mesons.
 
@@ -258,27 +258,31 @@ The literature on antiproton production with 8~GeV protons on a tungsten target 
 Accordingly most hadron models are particularly under-constrained when it comes to antiproton production.
 The QGSP_BERT_HP model used as the basis for SimG4 is, in fact, completely unable to produce antiprotons.
 
-In the COMET TDR~\cite{TDR2016}, the yield of antiprotons per \ac{POT} is given as \num{4e-5}, based on the results of a MARS simulation performed for the MECO experiment~\cite{Meco024}.
-Based on this, simulations of antiprotons showed that absorber foils would be needed along the beamline.  
+\FigAntiprotonMeco
+In the COMET TDR~\cite{TDR2016}, the yield of antiprotons per \ac{POT} is given as \num{4e-5}, based on the findings of a literature review and simulations undertaken for the MECO experiment~\cite{Meco024}.
+The dependence of the antiproton production cross section on incident proton momentum based on that study is shown in \fig{bg:antiprotons:meco24}.
+
+Simulations of antiprotons for \phaseI have used this information and shown that absorber foils would be needed along the beamline.  
 Since the \phaseII geometry in ICEDUST re-uses most of the implementation for the Production Target Capture and Torus1 sections, the upstream absorbers are also contained in the geometry used to study antiprotons here,
 although the absorber near 90\degree has been removed.
 
 \FigAntiprotonData
-Whilst tungsten targets have not been studied at the relevant angles and proton energies, a set of papers \cite{Boyarinov:1994tp,Kiselev:2012sj} do exist covering antiproton production up to 2 radians for tantulum (which is adjacent to tungsten on the periodic table), copper, aluminium, and beryllium targets and using 10 GeV protons.
+Whilst tungsten targets have not been studied at the relevant angles and proton energies, a set of papers \cite{Boyarinov:1994tp,Kiselev:2012sj} do exist covering antiproton production up to 2 radians for tantulum (which is adjacent to tungsten on the periodic table), copper, aluminium, and beryllium targets and using protons with 10.14~GeV kinetic energy.
 Between them, these two papers provide the invariant triple-differential cross section as a function of antiproton momentum for production angles of 10, 59, 97 and 119\degree, defined as:
 \begin{equation}
 \eqlabel{bg:antiprotons:lit}
 	F(p,\theta,\phi)=E \frac{d^3\sigma}{dp^3}=E\frac{d^3\sigma(p,\theta,\phi)}{p^2dpd\Omega}
 \end{equation}
 where $E$ and $p$ are the antiproton energy and momentum.  The earlier Boyarinov paper actually reports $f=F/A$, where $A$ is the relative atomic mass of the nucleus.
-\Fig{bg:antiprotons:data} sHows the data from these papers converted to the relative rate such a cross section would imply for the \phaseII tungsten target.
-From the measured cross sections, it is clear that as you move to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
 To convert the differential invariant cross sections given in the literature (equation~\eq{bg:antiprotons:lit}) into a differential production rate per \ac{POT}, $d^3R(\theta)/dpd\Omega$, the following formula is used:
 \begin{align}
 	\eqlabel{bg:antiprotons:rate}
 	\frac{d^3R(p,\theta,\phi)}{dp^3}&=\frac{F(p,\theta,\phi)}{E}\frac{\rho N_A l}{m_N}
 \end{align}
 where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_N$ the atomic mass, 183.86~g/mol for tungsten, $l$ the length of the target, and $N_A$ is Avodadro's number.
+\Fig{bg:antiprotons:data} shows the data from these papers, after scaling the cross sections for each material to the number of nucleons in tungsten.
+The data has also been converted to a differential rate of production, given the \phaseII production target dimensions, using equation~\eq{bg:antiproton:rate}.
+From this data, it is clear that as you move to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
 
 \FigAntiprotonEndpoint
 To build the limited number of data-points from this paper into a complete but conservative spectrum, empirical fits to the data were performed after adding two data points for the minimum and maximum momentum.
