@@ -31,3 +31,14 @@
 
 %% TikZ is a marvellous drawing package
 \RequirePackage{tikz}
+
+%% BEK: Remove extra vspace inserted when a table float is created
+%% Table environment
+\renewenvironment{table}[1][tbp]{%
+  \@oldtable[#1]%
+  \begin{center}%
+}{%
+  \end{center}%
+  \@oldendtable%
+  \ignorespacesafterend%
+}
