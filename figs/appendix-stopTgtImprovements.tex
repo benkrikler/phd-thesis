@@ -56,3 +56,104 @@ Since the beamline axis is parallel to the $-z$ direction in the stopping target
 }
 \end{table}
 }
+
+\newcommand{\FigTgtImprovFieldVsBeamline}{
+\begin{figure}[tb]
+\includegraphics[width=0.9\textwidth,trim=1.0cm 0cm 0.8cm 0,clip]{figs/appendixStopTgtImprov/Plot_FieldMagnitude.pdf}
+\caption{\figlabel{app:tgtImprov:field}
+The magnitude of the magnetic field around the stopping target.
+The vertical grey lines indicate the position of the stopping target disks and beam blocker in the target design used in chapter~\sect{sense}.
+The muon beam arrives from the left, and signal electrons should leave to the right.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovMirrorVsBeamline}{
+\begin{figure}[tb]
+\subfloat[][\figlabel{app:tgtImprov:mirror:thetaMin}Minimum Pitch Angle]{%
+\includegraphics[width=0.9\textwidth,trim=1.5cm 0 0.8cm 0,clip]{figs/appendixStopTgtImprov/Plot_ThetaMin.pdf}}\\
+\subfloat[][\figlabel{app:tgtImprov:mirror:phaseSpace}Fraction of Space Which Can be Mirrored]{%
+\includegraphics[width=0.9\textwidth,trim=1.5cm 0 0.8cm 0,clip]{figs/appendixStopTgtImprov/Plot_PhaseSpaceFraction.pdf}}
+\caption{\figlabel{app:tgtImprov:mirror}
+The ability for a particle to be mirrored downstream, if it is initially heading upstream at this point.
+For an electron produced at a given point along the beamline, if its pitch angle is too small it will not be mirrored.
+The minimum pitch angle is shown in \protect\subref{fig:app:tgtImprov:mirror:thetaMin}.
+Since electrons are produced isotropically, this minimum pitch angle can be used to define the fraction of phase space that will be mirrored back, \protect\subref{fig:app:tgtImprov:mirror:phaseSpace}.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovGyroradiusVsBeamline}{
+\begin{figure}[tb]
+\includegraphics[width=0.9\textwidth,trim=1.2cm 0.2cm 0.8cm 0.2cm,clip]{figs/appendixStopTgtImprov/Plot_GyroradiusGrowth.pdf}
+\caption{\figlabel{app:tgtImprov:gyroradius}
+As the muon beam progresses along the beamline, the beam envelope varies proportional to the square root of the field strength.
+The maximum field occurs at the exit of the Torus2 solenoid, with a field strength of about 2.88~T, and this plot shows the relative change in the beam envelope compared to that point.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovSenseVsBeamline}{
+\begin{figure}[tb]
+\includegraphics[width=0.9\textwidth,trim=1.1cm 0.3cm 0.8cm 0.3cm,clip]{figs/appendixStopTgtImprov/Plot_ApproxEfficiency.pdf}
+\caption{\figlabel{app:tgtImprov:senseVsBeamline}
+The effective signal sensitivity achieved by placing a disk of fixed radius at a given location along the beamline.
+It suggests an optimal target position slightly upstream of the location found in the optimisation chapter, but the difference is easily explained by simplifications in this model.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovNewGeom}{
+\begin{figure}[tb]
+\includegraphics[width=0.7\textwidth]{figs/appendixStopTgtImprov/NewGeometry.png}
+\caption{\figlabel{app:tgtImprov:newGeom}
+The new geometry of the stopping target, with the beam blocker removed.
+The blue vertical planes are the virtual monitors used in the simulation and not a physical piece of material.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovMuStops}{
+\begin{figure}[ptb]
+\begin{minipage}[b]{0.35\textwidth}
+\subfloat[][\figlabel{app:tgtImprov:muStops:XZ}Above Target (X-Z)]{%
+\includegraphics[width=\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_Mu_StopPosition_XZ.png}}\\
+\subfloat[][\figlabel{app:tgtImprov:muStops:YZ}Side View (Z-Y)]{%
+\includegraphics[width=\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_Mu_StopPosition_ZY.png}}
+\end{minipage}
+\subfloat[][\figlabel{app:tgtImprov:muStops:Z}Z Projection]{%
+\includegraphics[width=0.5\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_Mu_StopPosition_Z.png}}
+\caption{\figlabel{app:tgtImprov:muStops}
+Projections of the muon stopping distribution with the improved target design, to be compared to \fig{sense:stops2D}.
+Although the disks are symmetric, it is clear from \protect\subref{fig:app:tgtImprov:muStops:YZ} how there are fewer muon stops in the upper parts of the disks.
+Removing the material there will improve the signal acceptance further.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovMuMomentum}{
+\begin{figure}[ptb]
+\subfloat[][\figlabel{app:tgtImprov:muMomentum:lin}Linear Scale]{%
+\includegraphics[width=0.49\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_muon_momentum_withDetectedMuons_lin.png}}
+\subfloat[][\figlabel{app:tgtImprov:muMomentum:log}Logarithmic Scale]{%
+\includegraphics[width=0.49\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_muon_momentum_withDetectedMuons_log.png}}
+\caption{\figlabel{app:tgtImprov:muMomentum}
+The momentum of muons that reach the stopping target and eventually stop.
+By comparison with \fig{sense:muMomenta}, the new target design is clearly able to stop much higher momentum muons, although without the beam blocker
+it is also clear that high energy muons reach the detector.
+}
+\end{figure}
+}
+
+\newcommand{\FigTgtImprovSignalDistribution}{
+\begin{figure}[tb]
+\subfloat[][\figlabel{app:tgtImprov:signalMom:lin}Linear Scale]{%
+\includegraphics[width=0.49\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_StrawTrk_DetectedSignal.png}}
+\subfloat[][\figlabel{app:tgtImprov:signalMom:log}Logarithmic Scale]{%
+\includegraphics[width=0.49\textwidth,trim=0 0 0 0,clip]{figs/appendixStopTgtImprov/Tidied_StrawTrk_DetectedSignal_log.png}}
+\caption{\figlabel{app:tgtImprov:signalMom}
+The observed  momentum distribution and acceptance for signal electrons.
+Given the extra material, the energy losses in the target are larger than the previous design, although the overall geometric acceptance is significantly increased.
+}
+\end{figure}
+}

@@ -3,15 +3,19 @@
 \sectlabel{appendix:stopTgtImprove}
 Of the various optimisations presented in chapter~\sect{phaseII-optimisation}, the stopping target was only optimised for its position, keeping the shape, thickness and size as in the CDR.
 It was also observed in that chapter that the beam blocker had a large impact on the signal acceptance.
-To investigate ways in which the sensitivity of \phaseII can be further improved we develop here the idea of beam blocker-free stopping target as well as investigate the impact of changing the target shape.
+To investigate ways in which the sensitivity of \phaseII can be further improved we develop here the idea of a beam blocker-free stopping target design, as well as investigate the impact of changing the target shape.
 
-The overall result of this study suggests an improvement in the signal sensitivity of \phaseII, equivalent to a factor of 2.5.
+The overall result of this study suggests an improvement in the signal sensitivity of \phaseII of a factor of 2.5 should be achievable.
 
 \section{Understanding the Stopping Target Region}
+\FigTgtImprovFieldVsBeamline
+\FigTgtImprovMirrorVsBeamline
+\FigTgtImprovGyroradiusVsBeamline
+\FigTgtImprovSenseVsBeamline
 One of the challenges when optimising the stopping target is the complexity of the region, and correlations between the various parameters.
 
 The magnetic field around the stopping target, for example, is not a simple solenoidal field.
-\Fig{app:tgtImprov:fieldOnAxis} shows the magnitude of the field along the beamline axis in the stopping target region.
+\Fig{app:tgtImprov:field} shows the magnitude of the field along the beamline axis in the stopping target region.
 At the exit of the bent solenoids and for the first straight section immediately downstream, the field is kept close to 3~T.
 By the entrance of the electron spectrometer, the field on axis is closer to 1~T, although a transverse gradient is introduced from the bent solenoids.
 The transition from 3 to 1~T happens over 1.5~m across three solenoid sections.
@@ -32,8 +36,8 @@ where $B_\textrm{max}$ and $B$ are the maximum field strength and current field 
 $v_\textrm{L}$ and $v_\textrm{T}$ are the longitudinal and transverse velocity of the particle at this point, the ratio of which is the arctangent of the pitch angle, $\theta$, between the particle's velocity and the solenoidal axis.
 
 Given that the maximum field strength occurs at the exit of the Torus2, with a magnitude of $B_\textrm{max}=2.88$~T, one can calculate the minimum pitch angle an upstream-heading particle must have in order for it to be mirrored back downstream.
-This is shown in \fig{app:tgtImprov:minAngle} where the minimum pitch angle varies from around 85\degree to about 43\degree at the end of Stopping Target Section.
-Since signal electrons are produced isotropically, this limit can be turned into the fraction of phase space for signal electrons produced at a point along the beamline that will be mirrored back, and this is shown in \fig{app:tgtImprov:phaseSpace}.
+This is shown in \fig{app:tgtImprov:mirror:thetaMin} where the minimum pitch angle varies from around 85\degree to about 43\degree at the end of Stopping Target Section.
+Since signal electrons are produced isotropically, this limit can be turned into the fraction of phase space for signal electrons produced at a point along the beamline that will be mirrored back, and this is shown in \fig{app:tgtImprov:mirror:phaseSpace}.
 This clearly motivates putting the stopping target further downstream in order to maximize the mirroring effect.
 
 On the other hand, if the target is located downstream, the muon beam is required to traverse the tapered field.
@@ -45,7 +49,7 @@ Ba^2=\textrm{const}
 \end{equation}
 where $B$ is the field strength at a given point, and $a$ the radius of gyration. \CHECKmargin{Is it really $a^2$ in this equation?}
 Thus if the field strength reduced by a factor of 4, for example, the beam envelope can be expected to grow by a factor of 2.
-The radius of gyration is shown in \fig{app:tgtImprov:radius}, relative to the radius at the exit of the Torus2, as a function of the distance along the beamline.
+The radius of gyration is shown in \fig{app:tgtImprov:gyroradius}, relative to the radius at the exit of the Torus2, as a function of the distance along the beamline.
 
 The position optimisation of the stopping target shown in chapter~\sect{phaseII-optimisation} kept the target disks at a fixed radius and moved the whole set of target disks (and beam blocker) upstream and downstream.
 With a fixed radius set of disks, as the target was moved downstream, the fraction of the muon beam expected to hit the target was reduced.
@@ -56,7 +60,7 @@ Thus there were two competing effects: move the target downstream and the mirror
 These factors can be combined to give a proxy for the expected signal sensitivity for a target disk of fixed radius placed at one point along the beamline.
 The muon stopping rate will be proportional to the fraction of the beam profile that overlaps with the target.
 Meanwhile, the fraction of upstream-pointing phase space that would be mirrored downstream, plus the fraction of phase space pointing downstream in the first place (half of it), should be proportional to the signal acceptance.
-This combination is shown in \fig{app:tgtImprov:proxy}.
+This combination is shown in \fig{app:tgtImprov:senseVsBeamline}.
 
 Indeed, the maxima of this function, at 19700 mm in beamline coordinates, is very close to the optimal location found during the position scan.
 This neglects many factors, such as the fact that disks upstream will remove muons from the disks downstream, and that not all electrons that head downstream will be accepted into the detector.
@@ -70,26 +74,30 @@ Finally, to compensate for the missing beam blocker, and to increase the number 
 From \fig{sense:stops2D} in section~\sect{sense:stops} it can be seen that the muon stopping rate per disk has not reached zero by the last disk, which implies more muons could be stopped.
 In addition, the increasing target radius can be used to remove the line of sight between the Torus2 exit and the electron spectrometer that the beam blocker previously provided to remove beam particles.
 
+\FigTgtImprovNewGeom
 \TabTgtImprovDiskParams
 Although each of these changes should each be studied carefully, as a proof of principle the design shown in the event display in \fig{app:tgtImprov:newGeom} was tested in a simulation.
 The disk radii and positions are given in \tab{app:tgtImprov:diskParams}.
 
-To check the sensitivity and stopping rates with this configuration, 75~million POT events were fed in to a simulation that had muon \acf{dio} and nuclear capture disabled, to be able to study the sensitivity in a single simulation.
+To check the sensitivity and stopping rates with this configuration, 75~million POT events were fed in to a simulation that had muon \acf{DIO} and nuclear capture disabled, to be able to study the sensitivity in a single simulation.
 
 \subsection{Muon Stopping Rate}
+\FigTgtImprovMuStops
+\FigTgtImprovMuMomentum
+\FigTgtImprovSignalDistribution
 From this simulation, the muon stopping rate was found to be \num{2.8e-3}~per POT, and increase of 1.75 times compared to the stopping rate described in chapter~\sect{sense}.
-The stopping distributions in the target are shown in \fig{app:tgtImprov:stoppingDist}.
+The stopping distributions in the target are shown in \fig{app:tgtImprov:muStops}.
 It can be seen from the projection to the Z-axis that we catch much more of the tail of the distribution.
 It can also be seen from the YZ projection how there are very few muons stopping in the upper half of the target. 
 This suggests one would really be able to remove this material which would give an additional increase to the signal acceptance.
 
 The extra disks and the enlarged radius also mean that the higher energy muons sitting lower down in the beam are more effectively stopped.
 Being at the bottom of the beam these muons were more likely to miss the old target design, but also penetrated further, requiring more target material to be stopped.
-This can be seen by comparison of the muon momentum distribution shown in \fig{app:tgtImprov:muMomenta} and comparing this with the momenta shown in \fig{sense:muMomenta}.
+This can be seen by comparison of the muon momentum distribution shown in \fig{app:tgtImprov:muMomentum} and comparing this with the momenta shown in \fig{sense:muMomenta}.
 Whereas before we only stopped muons up to around 50~MeV/c, now muons up to 60~MeV/c are consistently stopped.
 As a result of all of these changes, the stopping efficiency for muons that reach the target has increased from 43\% to about 77\%.
 
-Unfortunately, it can also be seen from \fig{app:tgtImprov:muMomenta} that some of the high momentum muons that do not stop in the target reach through to the detector.
+Unfortunately, it can also be seen from \fig{app:tgtImprov:muMomentum} that some of the high momentum muons that do not stop in the target reach through to the detector.
 This means the background rate with the design shown here from beam backgrounds would be significantly larger.
 However, further optimisations of the target based on this concept might be able to remove these high momentum muons using additional disks or adjusting the upstream collimators.
 
