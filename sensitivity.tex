@@ -172,17 +172,16 @@ In this study such cuts are not applied, and so the efficiency of these values i
 %# Plot of sensitivity vs. time ?
 %\end{easylist}
 Finally, it remains to pull all these numbers together into equation \eq{det:ses}.
-Since our target \ac{ses} is fixed we instead tune the amount of running time needed to stop sufficient muons to achieve this goal. Hence by the inversion of \eq{det:ses}, the necessary run time is fixed to:
-\begin{equation}
+By expanding $N_\mu$ in that equation as product of the number of protons per second, $I_p/e$, the muon stopping rate per \ac{POT}, $R_{\mu/p}$, and the running time, $t_\textrm{run}$ we find the predicted \ac{ses} and run time related by:
+\begin{align}
 %\mathrm{S.E.S}(\muec)=\frac{1}{N_\mu \mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}
-	t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}\mathrm{S.E.S}},
 	\eqlabel{sense:runtime}
-\end{equation}
-where $N_\mu$ has been expanded to the proton beam current divided by the proton charge, $I_p/e$, times the muon stopping rate per \ac{POT}, $R_{\mu/p}$.
-\Tab{sense:ses} lists the values of these parameters, from which we can see that a single signal event sensitivity of \sensePII can be achieved in around \VarPredictedSES seconds or about 180 days.
-Alternatively, if we ran for some \num{2e7} seconds, an \acf{ses} of \VarPredictedSESCDRRunTime would be possible.
-\Tab{sense:comparisons} compares this to the CDR estimate, which expected to achieve a \ac{ses} of \sci{2.6}{-16} in a run time of \sci{2}{7}~s, and \phaseI which is expected to reach its goal of \sensePI in about 140 days of running.
-On a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}. 
+	\mathrm{S.E.S}\cdot{}t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}=\VarPredictedSESPerSecond
+\end{align}
+Thus, if the run time were fixed to the value of the CDR, \VarCDRRunTime[2], an \ac{ses} of \VarPredictedSESCDRRunTime would be achievable.
+Alternatively, the CDR sensitivity, \VarPredictedSES, would be achievable in \VarRunTime[2]s.  
+In that time, COMET \phaseII would impinge \VarTotalPOT protons on the production target, resulting in \VarTotalMuStops negative muon stops in the stopping target.
+On a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}, and about 92 times better than COMET \phaseI.
 
 \subsection{Fraction of Conversion Events That Excite the Nucleus}
 In the COMET \phaseI TDR, an additional factor, $f_\textrm{gnd}$, is included in the denominator of \eq{sense:runtime}.
@@ -192,9 +191,9 @@ Whatever the outcome of COMET, whether a signal is observed or not, adapting the
 However, this factor is not constant and depends on the exact model producing the conversion.  
 It is typically larger than 90\%, but can be as low as 57\% in the case of SUSY Z-penguin models~\cite{Siiskonen:1999pj}.
 Given this model dependence, it has been decided not to include this factor in the above estimate, however it must be emphasized then that the sensitivity expressed here is the single-event sensitivity for \emph{conversion that leaves the nucleus unexcited}.
-Theorists and model builders need to ensure they consider the probability of coherent conversion (and the incoherent probability, if it leaves the nucleus unchanged) that a given New Physics model predicts.
+Theorists and model builders need to ensure they predict the probability of coherent conversion (and the incoherent probability, if it leaves the nucleus unchanged) that a given New Physics model would present, and then scale the experiment's final rate or limit accordingly.
 
 It is interesting to note that models with larger coherent branching ratios favour long-range forces and, therefore, massless propagators.
 If the process does excite the nucleus, the energy of the electron will be lower than for coherent \mueconv.
 If there are nuclear resonances being excited one might see a spike or kink in the electron spectrum at lower energies.
-To be able understand such features (either observed or constrained), as well as excellent experimental momentum resolution, the theoretical certainty on the \ac{DIO} spectrum is, again, especially important.
+To be able to understand such features (either observed or constrained), as well as excellent experimental momentum resolution, the theoretical certainty on the \ac{DIO} and \ac{RMC} spectra is, again, especially important.

@@ -33,7 +33,7 @@
   round-precision=#1,% Round-precision is 3
   output-decimal-marker={.},% Use , as decimal marker
   round-integer-to-decimal,
-  ]{\eval{#2}}}
+  ]{\eval{#2}}\xspace}
 
 %\newcommand*{\int}[1]{\decimals[0]{#1}}
 
@@ -42,7 +42,15 @@
   round-precision=#1,% Round-precision is 3
   output-decimal-marker={.},% Use , as decimal marker
   add-decimal-zero=true,
-  ]{\eval{#2}}}
+  ]{\eval{#2}}\xspace}
+
+\newcommand*{\scinot}[2][2]{\num[%
+  round-mode=figures,% Round output to specified number of places
+  round-precision=#1,% Round-precision is 3
+  output-decimal-marker={.},% Use , as decimal marker
+  add-decimal-zero=true,
+  scientific-notation=true
+  ]{\eval{#2}}\xspace}
 
 \newcommand\Var[2]{%
 \expandafter\newcommand\csname Var#1\endcsname{#2\xspace}}
