@@ -22,35 +22,59 @@
 
 %%%%%%% BACKGROUNDS
 %\VarNum{ExtinctionFactor}{1e-12}
-\newcommand{\VarExtinctionFactor}[1][0]{\sci{\decimals[#1]{1.00}}{-12}\xspace}
+\newcommand{\VarExtinctionFactor}[1][0]{\sci{\decimals[#1]{1.00}}{-11}\xspace}
 % DIO
-\VarNum{DIOPerMuStop}{6.2e-20}
-\VarNum{DIOPerPOT}{00e0}
-\VarNum{DIOPerSecond}{00e0}
+\VarNum{DIOPerMuStop}{6.20e-20}
+\VarNum{DIOPerPOT}{9.92E-23}
+\VarNum{DIOPerSecond}{4.31E-09}
 \VarNum{DIOTotal}{0.086}
 
 %RMC
-\VarNum{RMCPerMuStop}{00e0}
-\VarNum{RMCPerPOT}{00e0}
-\VarNum{RMCPerSecond}{00e0}
-\VarNum{RMCTotal}{00e0}
+\VarNum{RMCPerMuStop}{1.05E-19}
+\VarNum{RMCPerPOT}{1.70E-22}
+\VarNum{RMCPerSecond}{7.37E-09}
+\VarNum{RMCTotal}{0.147}
 
 % RPC
 \VarNum{PiStopsPerPOT}{4.33e-7}
 \VarNum{DetectedEsPerRPC}{1.05e-5}
-\VarNum{RPCTimingEfficiency}{9.51e-15}
-\VarNum{RPCDelayedPerPOT}{1.82E-25}
-\VarNum{RPCPromptPerPOT}{1.73E-27}
+\VarUnits{RPCLifetime}{21.3}{ns}
+\VarNum{RPCTimingEfficiency}{5.49E-13}
+\VarNum{RPCPromptPerPOT}{1.82E-24}
+\VarNum{RPCDelayedPerPOT}{9.98E-26}
+\VarNum{RPCPromptPerSec} {7.91E-11}
+\VarNum{RPCDelayedPerSec}{4.34E-12}
+\VarNum{RPCPromptTotal} {1.58E-03}
+\VarNum{RPCDelayedTotal}{8.68E-05}
 
 % Antiprotons
-\VarNum{AntiprotonsPerPOT}{3.62e-21}
+\VarNum{BgAntiprotonsPerPOT}{4.34e-22}
+\VarNum{BgAntiprotonsPiDelayedPerPOT}{1.95E-30}
+\VarNum{BgAntiprotonsPiPromptPerPOT}{3.56E-29}
 
+\VarNum{BgAntiprotonsPerSec}         {1.89E-08}
+\VarNum{BgAntiprotonsPiDelayedPerSec}{8.49E-17}
+\VarNum{BgAntiprotonsPiPromptPerSec} {1.55E-15}
+
+\VarNum{BgAntiprotonsTotal}         {0.377}
+\VarNum{BgAntiprotonsPiDelayedTotal}{1.70E-09}
+\VarNum{BgAntiprotonsPiPromptTotal} {3.09E-08}
+	
 % Beam backgrounds
 \VarNum{BeamBgGeometric}{8.93e-09}
 \VarNum{BeamBgMomentum}{3.13e-05}
 \VarNum{BeamBgTiming}{5.25e-12}
-\VarNum{BeamBgPerPOT}{1.47E-24}
-\VarNum{BeamBgTotal}{1.28E-03}
+\VarNum{BeamBgPromptPerPOT}{2.80E-24}
+\VarNum{BeamBgPromptPerSec}{1.22e-10}
+\VarNum{BeamBgPromptTotal}{2.43E-03}
+\VarNum{BeamBgDelayedPerPOT}{1.47E-24}
+\VarNum{BeamBgDelayedPerSec}{6.39E-11}
+\VarNum{BeamBgDelayedTotal}{1.28E-03}
 
 % cosmics
-\VarNum{CosmicRatePerSecond}{1.89e-8}
+\VarNum{CosmicRatePerSecond}{1.87e-8}
+\VarNum{CosmicRateTotal}{0.375}
+
+%% Total rates
+\VarNum{TotalBgPerPOT}{4.95E-08}
+\VarNum{TotalBgPhasII}{0.99}

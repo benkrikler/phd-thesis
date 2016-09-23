@@ -204,18 +204,23 @@ For reweighting events the interpolated (straight solid) lines were used to be c
 \newcommand{\TabAntiprotonRegions}{
 \begin{table}[bp]
 \centering
-	\begin{tabular}{rclrS}
-		\multicolumn{3}{c}{Region} & Data source & \multicolumn{1}{r}{Total $\bar{p}$ per POT} \\
+\sisetup{table-number-alignment=right,table-format=1.2e3}%
+\begin{tabular}{rcl|r|SS}
+\multicolumn{3}{c|}{\multirow{2}{*}{Region}} & \multirow{2}{*}{Data Source} & \multicolumn{2}{c}{Total $\bar{p}$ per POT} \\ 
+& &                                          &                              & {Linear Tail}       &  {Exponential Tail} \\ 
 \hline
-                  $0 \le$&$\theta<$&$59\degree$ & 10\degree \cite{Kiselev:2012sj}          & 5.26e-05\\
-                 $59 \le$&$\theta<$&$97\degree$ & 59\degree \cite{Kiselev:2012sj}         & 4.17e-09\\
-                 $97 \le$&$\theta<$&$119\degree$ & 97\degree \cite{Boyarinov:1994tp}      & 1.74e-12\\
-                $119 \le$&$\theta<$&$180\degree$ & 119\degree \cite{Boyarinov:1994tp}   & 5.71e-13\\
+                  $0 \le$   & $\theta<$ & $59\degree$  & 10\degree \cite{Kiselev:2012sj}    & 9.13e-05 & 5.26e-05 \\ 
+                  $59 \le$  & $\theta<$ & $97\degree$  & 59\degree \cite{Kiselev:2012sj}    & 2.64e-08 & 4.17e-09 \\ 
+                  $97 \le$  & $\theta<$ & $119\degree$ & 97\degree \cite{Boyarinov:1994tp}  & 3.40e-12 & 1.74e-12 \\ 
+                  $119 \le$ & $\theta<$ & $180\degree$ & 119\degree \cite{Boyarinov:1994tp} & 2.58e-12 & 5.71e-13 \\ 
 \hline
 \end{tabular}
 \caption{\tablabel{bg:antiprotons:regions}
-Regions and fits used to simulate antiproton production.  
-The values in the final column are result of converting to rates per POT and integrating the differential cross-sections measured in \cite{Boyarinov:1994tp,Kiselev:2012sj}.
+Angular regions and the source of the data used to build the momentum spectrum for that region.
+The integrated rate for the two different high-momentum tail descriptions are also given.
+Note that these values do \emph{not} contain the correction for the different incident proton energies;
+for the COMET proton beam the antiproton yield is expected to be a factor 0.12 times those given here.
+%The values in the final column are result of converting to rates per POT and integrating the differential cross-sections measured in \cite{Boyarinov:1994tp,Kiselev:2012sj}.
 %integrated the fitted and extrapolated spectra and then integrates over the fitted angular dependence.
 }
 \end{table}
@@ -274,7 +279,7 @@ From left to right the vertical gray lines indicate the production target, Torus
 }
 
 \newcommand{\FigAntiprotonSimTime}{
-\begin{figure}[t]
+\begin{figure}[t!]
 \centering 
 \subfloat[][\figlabel{bg:antiprotons:sim:time:antip}Timing of Antiprotons]{
 \includegraphics[width=0.45\textwidth,trim=0.7cm 0.5cm 1.3cm 1.7cm,clip]{figs/backgrounds/Antiproton_timing_antiprotons.pdf}}
@@ -393,8 +398,8 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
 %}
 
 \newcommand{\TabAntiprotonResultsPiSecond}{%
-\begin{table}[p]%
 \sisetup{table-number-alignment=right, table-format=2.2e2}%
+\begin{table}[p]%
 \centering%
 %\begin{adjustwidth}{-0.7cm}{}%
 \begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}%
@@ -402,54 +407,65 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
                               &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
 \hline
 \multirow{3}{1.6cm}{Raw Counts} & Torus1 & \multicolumn{1}{r!{\VRule}}{16943} & \multicolumn{1}{r!{\VRule}}{87230} & \multicolumn{1}{r!{\VRule}}{157385} & \multicolumn{1}{r|}{222486} \\ 
-                               %& TS3    & \multicolumn{1}{r!{\VRule}}{1452}  & \multicolumn{1}{r!{\VRule}}{7157}  & \multicolumn{1}{r!{\VRule}}{13041}  & \multicolumn{1}{r|}{12997}  \\ 
+                               % & TS3 & \multicolumn{1}{r!{\VRule}}{1452}  & \multicolumn{1}{r!{\VRule}}{7157}  & \multicolumn{1}{r!{\VRule}}{13041}  & \multicolumn{1}{r|}{12997}  \\ 
                                 & Torus2 & \multicolumn{1}{r!{\VRule}}{208}   & \multicolumn{1}{r!{\VRule}}{1106}  & \multicolumn{1}{r!{\VRule}}{1995}   & \multicolumn{1}{r|}{1847}   \\ 
                                 & Target & \multicolumn{1}{r!{\VRule}}{1}     & \multicolumn{1}{r!{\VRule}}{18}    & \multicolumn{1}{r!{\VRule}}{25}     & \multicolumn{1}{r|}{30}     \\ 
 \hline
-\multirow{3}{1.6cm}{Weighted Sum} & Torus1  & 5.77e-6  & 4.64E-09 & 4.10E-14 & 1.25E-17 \\ 
-                                  %& TS3    & 5.10e-7  & 4.06E-10 & 3.59E-15 & 9.59E-19 \\ 
-                                  & Torus2  & 8.59e-8  & 5.93E-11 & 5.79E-16 & 1.23E-19 \\ 
-                                  & Target  & 9.98e-11 & 2.99E-13 & 5.02E-18 & 1.91E-21 \\ 
-\hline
-\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2})$}  & 0.039 & 0.040 &  0.022 & 0.017 \\
+\multirow{3}{1.6cm}{Weighted Mean} & Torus1  &6.93E-07 & 5.57E-10 & 4.92E-15 & 1.50E-18\\ 
+                                %  & TS3  &6.12E-08 & 4.87E-11 & 4.31E-16 & 1.15E-19 \\
+                                  & Torus2  &1.03E-08 & 7.11E-12 & 6.95E-17 & 1.47E-20\\ 
+                                  & Target  &1.20E-11 & 3.59E-14 & 6.02E-19 & 2.29E-22\\ 
+%\hline
+%\multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2})$}  & 0.039 & 0.040 &  0.022 & 0.017 \\
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
 \caption{\tablabel{bg:antiprotons:sim:pi}%
-The simulated number of secondary pions from antiprotons observed at key points along the beamline.
-The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
-The weighted sum then shows the weighted sum over every particle passing the point, where the weight is determined as described by equation~\eq{bg:antiprotons:factorisation}.
-The final row, $P(\textrm{Target}|\textrm{Torus2 Coll.})$, gives the survival probability for a pion to reach the target, given that it passed the Torus1 Entrance, \ie it is the ratio between the Target and Torus1 Entrance rates.
+Secondary pion fluxes from antiprotons observed at key points along the beamline.
+See caption to \tab{bg:antiprotons:sim:antip} for a description of the column and row contents.
+%The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
+%The weighted sum then shows the weighted sum over every particle passing the point, where the weight is determined as described by equation~\eq{bg:antiprotons:factorisation}.
 }\end{table}\xspace}
 
-\newcommand{\TabAntiprotonResultsAntip}{
-\begin{table}[p]%
+\newcommand{\TabAntiprotonResultsAntip}{%
 \sisetup{table-number-alignment=right, table-format=2.2e2}%
+\begin{table}[p]%
 %\begin{adjustwidth}{-0.7cm}{}%
 \begin{tabular}{lr|S!{\VRule}S!{\VRule}S!{\VRule}S|}%
 \multicolumn{2}{c|}{\multirow{2}{3cm}{Rates for $\bar{p}$ Transport}} & \multicolumn{4}{c|}{Angular Region for Antiproton Production} \\ 
                               &  & \multicolumn{1}{a!{\VRule}}{0-59\degree} & \multicolumn{1}{a!{\VRule}}{59-97\degree} & \multicolumn{1}{a!{\VRule}}{97-119\degree} & \multicolumn{1}{a|}{119-180\degree} \\ 
 \hline
 \multirow{3}{1.6cm}{Raw Counts} & Torus1 &\multicolumn{1}{r!{\VRule}}{7} & \multicolumn{1}{r!{\VRule}}{270} & \multicolumn{1}{r!{\VRule}}{2907} & \multicolumn{1}{r|}{278105} \\ 
-                                %& TS3                 & \multicolumn{1}{r!{\VRule}}{3} & \multicolumn{1}{r!{\VRule}}{58 } & \multicolumn{1}{r!{\VRule}}{830 } & \multicolumn{1}{r|}{20787 } \\ 
-                                & Torus2 & \multicolumn{1}{r!{\VRule}}{1} & \multicolumn{1}{r!{\VRule}}{39 } & \multicolumn{1}{r!{\VRule}}{431 } & \multicolumn{1}{r|}{9024  } \\ 
+                                & Torus2 &\multicolumn{1}{r!{\VRule}}{3} & \multicolumn{1}{r!{\VRule}}{58 } & \multicolumn{1}{r!{\VRule}}{830 } & \multicolumn{1}{r|}{20787 } \\ 
+                                %& Torus2 Collim. & \multicolumn{1}{r!{\VRule}}{1} & \multicolumn{1}{r!{\VRule}}{39 } & \multicolumn{1}{r!{\VRule}}{431 } & \multicolumn{1}{r|}{9024  } \\ 
                                 & Target &\multicolumn{1}{r!{\VRule}}{0} & \multicolumn{1}{r!{\VRule}}{8  } & \multicolumn{1}{r!{\VRule}}{114 } & \multicolumn{1}{r|}{2237  } \\ 
 \hline
-\multirow{3}{1.6cm}{Weighted Sum} & Torus1 & 1.40E-09 & 1.70E-12&1.10E-16 & 2.27E-19\\ 
-                                  %& TS3                 & 5.14E-11 & 4.81E-13&3.31E-17 & 5.20E-20\\ 
-                                  & Torus2 & 1.62E-14 & 5.15E-14&1.54E-17 & 2.63E-20\\ 
-                                  & Target & {*}3.65E-15 & 1.16E-14&5.17E-19 & 7.74E-21\\ 
+\multirow{3}{1.6cm}{Weighted Mean} & Torus1 & 1.68E-10    & 2.04E-13 & 1.32E-17 & 2.72E-20 \\ 
+                                   & Torus2 & 6.16E-12 & 5.77E-14 & 3.97E-18 & 6.23E-21\\
+                                   %& Torus2 Collim. & 1.95E-15    & 6.18E-15 & 1.85E-18 & 3.15E-21 \\ 
+                                   & Target & {*}4.39E-16 & 1.39E-15 & 6.20E-20 & 9.29E-22 \\ 
 \hline                                                           
 \multicolumn{2}{r|}{$P(\textrm{Target}|\textrm{Torus2})$} &{*}0.225& 0.225  & 0.034  & 0.295\\
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
-\caption{\tablabel{bg:antiprotons:sim:antip}%
-Antiproton stopping rates and fluxes at key points.%
-Since no antiprotons were seen stopping for the angular region from 0 to 59\degree, the value for the final two entries in that column --- indicated with an asterisk (*) ---  are obtained by multiplying the antiproton rate expected at the Torus2 collimator with the median collimator acceptance from the other three angular regions.%
-%The mean acceptance of the Torus2 collimator is 0.185.%
-For each of the angular regions, 80 million antiprotons were simulated.%
-}\end{table}\xspace}
+\caption{\tablabel{bg:antiprotons:sim:antip}
+Antiproton stopping rates and fluxes at key points: at the entrance to the bent
+solenoids (Torus1), just before the final beam collimator (Torus2), and at the
+stopping target (Target).
+Raw counts are the total number of particles seen in each simulation of 80
+million antiprotons. The weighted mean is the average of all particle
+weights, given by the energy correction factor $\xi$
+and the antiproton production angle, $\Phi(\theta,\phi)$.
+$P(\textrm{Target}|\textrm{Torus2})$, gives the survival
+probability for an antiproton to reach the target, given that it reached the Torus2 collimator.
+Since no antiprotons were seen stopping for the angular region from 0 to
+59\degree, the value for the final entry in that column---indicated
+with an asterisk (*)---are obtained by multiplying the antiproton rate
+expected at the Torus2 collimator with the median collimator acceptance from
+the other three angular regions.%
+}
+\end{table}\xspace}
 
 %\newcommand{\TabAntiprotonFactors}{
 %\begin{table}[tb]
@@ -472,24 +488,24 @@ For each of the angular regions, 80 million antiprotons were simulated.%
 %}
 
 \newcommand{\TabAntiprotonEstimates}{
-\begin{table}[tbp]
-\sisetup{table-number-alignment=right, table-format=2.2e3, table-comparator=true}
+\sisetup{table-number-alignment=right,table-format=2.2e3,table-comparator=true}%
+\begin{table}[b]
 %\begin{adjustwidth}{-0.9cm}{}
-\begin{tabular}{la|SS|SS|}
-            &         & \multicolumn{2}{c|}{Stopping Rates} & \multicolumn{2}{c|}{Background Rate per POT} \\ 
-            &         & {Unweighted} & {Weighted} & {No Timing} & {With Timing}  \\
+\begin{tabular}{la|S|SSS|}
+            &         & \multicolumn{1}{c|}{Stopping Rates} & \multicolumn{3}{c|}{Background Rate per POT} \\ 
+                           &          &            & {No Timing} & {Prompt} & {Delayed} \\%& {Unweighted}
+\hline                                                                              %              
+\multirow{4}{*}{$\bar{p}$} & 0-59    & 4.39E-16 & 2.03E-22 & {-}      & 1.04E-22 \\ % & <6.58E-13
+                           & 59-97   & 1.39E-15 & 6.43E-22 & {-}      & 3.30E-22 \\ % & 4.17E-16
+                           & 97-119  & 6.20E-20 & 2.87E-26 & {-}      & 1.47E-26 \\ % & 2.48E-18
+                           & 119-180 & 9.29E-22 & 4.29E-28 & {-}      & 2.20E-28 \\ % & 1.60E-17
 \hline
-\multirow{4}{*}{$\bar{p}$} & 0-59    & <6.58E-13              & <3.65E-15   & 1.69E-21      & 8.66E-22    \\ 
-            & 59-97   & 4.17E-16              & 1.16E-14   & 5.36E-21      & 2.75E-21    \\ 
-            & 97-119  & 2.48E-18              & 5.17E-19   & 2.39E-25      & 1.23E-25    \\ 
-            & 119-180 & 1.60E-17              & 7.74E-21   & 3.58E-27      & 1.84E-27    \\ 
-\hline
-\multirow{4}{*}{$\pi^-$}       & 0-59    & 6.58E-13              & 9.98E-11   & 2.95E-17      & 1.62E-29    \\ 
-            & 59-97   & 9.38E-16              & 2.99E-13   & 8.86E-20      & 4.86E-32    \\ 
-            & 97-119  & 5.44E-19              & 5.02E-18   & 1.49E-24      & 8.15E-37    \\ 
-            & 119-180 & 2.14E-19              & 1.91E-21   & 5.65E-28      & 3.10E-40    \\ 
-\hline
- \multicolumn{4}{r|}{Sum (per POT)}                         & 2.96E-17      & 3.62e-21    \\ 
+\multirow{4}{*}{$\pi^-$}   & 0-59    & 1.20E-11 & 3.54E-18 & 3.54E-29 & 1.95E-30 \\ % & 6.58E-13
+                           & 59-97   & 3.59E-14 & 1.06E-20 & 1.06E-31 & 5.83E-33 \\ % & 9.38E-16
+                           & 97-119  & 6.02E-19 & 1.78E-25 & 1.78E-36 & 9.78E-38 \\ % & 5.44E-19
+                           & 119-180 & 2.29E-22 & 6.78E-29 & 6.78E-40 & 3.72E-41 \\ % & 2.14E-19
+\hline                                            
+ \multicolumn{3}{r|}{Sum (per POT)}              & 3.56E-18 & 3.56E-29 & 4.34E-22\\           
 \hline
 \end{tabular}
 %\end{adjustwidth}
@@ -510,6 +526,24 @@ See text for column definitions.
 The timing and momentum of electrons detected at the straw tracker and passing a plane immediately after the beam blocker.
 }
 \end{figure}
+}
+
+\newcommand{\TabBgBeamFactors}{
+\begin{table}[tb]
+\centering
+        \begin{tabular}{llm{0.5\textwidth}}
+	\hline
+        Parameter & \multicolumn{1}{l}{Value} & Description \\
+	\hline
+        $A_\textrm{geom}$ & \VarBeamBgGeometric &  Geometric Acceptance to High-momentum Electrons per POT\\ 
+        $A_\textrm{mom}$ & \VarBeamBgMomentum &  Fraction of beam electrons within the signal momentum cuts \\ 
+        $A_\textrm{time}^\textrm{delayed}$ & \VarBeamBgTiming &  Fraction of beam electrons delayed until the detector window \\ 
+	\hline
+\end{tabular}
+\caption{\tablabel{bg:beam:factors}
+Parameters and their values in the determination of the background rate due to high-energy particles in the beam.
+}
+\end{table}
 }
 
 \newcommand{\FigBgBeamExtrapolate}{
@@ -585,35 +619,37 @@ Parameters and their values for the determination of the cosmic ray background r
 \newcommand{\TabBackgroundFinalVals}{
 \begin{table}
 \centering
+\sisetup{table-number-alignment=right,table-format=1.2e3}%
 \begin{adjustwidth}{-0.7cm}{}%
 %	\renewcommand{\arraystretch}{1} % Default value: 1
-\begin{tabular}{ll|SSS|SS}
-Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                             & \multicolumn{2}{c}{Total Events} \\ 
-                             &                          & {per Stopping $\mu^-$} & {per POT}     & {per \si{s}}            & {This Study} & {CDR~\cite{CDRphase2}} \\ 
-\hline
-\hline
-\multirow{2}{*}{Intrinsic}   & DIO                      & \VarDIOPerMuStop       & \VarDIOPerPOT & \VarDIOPerSecond        & \VarDIOTotal &                       \\ 
-                             & RMC                      & \VarRMCPerMuStop       & \VarRMCPerPOT & \VarRMCPerSecond        & \VarRMCTotal &                       \\ 
-\hline
-\multirow{3}{*}{Delayed}     & RPC                      & {--}                   &               & \VarRPCDelayedPerPOT    &              &                       \\ 
-                             & Beam $e^-$               & {--}                   &               &                         &              &                       \\ 
-                             & Stopped $\bar{p}$        & {--}                   &               &                         &              &                       \\ 
-\hline
-\multirow{3}{*}{Prompt}      & RPC                      & {--}                   &               & \VarRPCPromptPerPOT     &              &                       \\ 
-                             & Beam $e^-$               & {--}                   &               &                         &              &                       \\ 
-                             & $\pi^{-}$ from $\bar{p}$ & {--}                   &               &                         &              &                       \\ 
-\hline
-\multicolumn{2}{c|}{Cosmics}                            & {--}                   & {--}          & \VarCosmicRatePerSecond &              &                       \\ 
-\hline
-\hline
-\multicolumn{2}{c|}{Total}                              &                        &               &                         &              &                       \\ 
-\hline
-\hline
+\begin{tabular}{ll|SSS|S}
+\toprule
+Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                                       & \multicolumn{1}{c}{Total Events} \\ 
+                             &                          & {per $\mu^-$ stop} & {per POT}              & {per second}            & {This Study}           \\ 
+\toprule
+\multirow{2}{*}{Intrinsic}   & DIO                      & \NumDIOPerMuStop & \NumDIOPerPOT                    & \NumDIOPerSecond                 & \NumDIOTotal                      \\ 
+                             & RMC                      & \NumRMCPerMuStop & \NumRMCPerPOT                    & \NumRMCPerSecond                 & \NumRMCTotal                      \\ 
+\cmidrule{2-6}
+\multirow{4}{*}{Delayed}     & RPC                      & {--}             & \NumRPCDelayedPerPOT             & \NumRPCDelayedPerSec             & \NumRPCDelayedTotal               \\ 
+                             & Beam                     & {--}             & \NumBeamBgDelayedPerPOT           & \NumBeamBgDelayedPerSec           & \NumBeamBgDelayedTotal          \\ 
+                             & Stopped $\bar{p}$        & {--}             & \NumBgAntiprotonsPerPOT          & \NumBgAntiprotonsPerSec          & \NumBgAntiprotonsTotal            \\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiDelayedPerPOT & \NumBgAntiprotonsPiDelayedPerSec & \NumBgAntiprotonsPiDelayedTotal   \\ 
+\cmidrule{2-6}
+\multirow{3}{*}{Prompt}      & RPC                      & {--}             & \NumRPCPromptPerPOT              & \NumRPCPromptPerSec              & \NumRPCPromptTotal                \\ 
+                             & Beam                     & {--}             & \NumBeamBgPromptPerPOT           & \NumBeamBgPromptPerSec           & \NumBeamBgPromptTotal             \\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiPromptPerPOT  & \NumBgAntiprotonsPiPromptPerSec  & \NumBgAntiprotonsPiPromptTotal    \\ 
+\cmidrule{2-6}
+\multicolumn{2}{c|}{Cosmics}                            & {--}             & {--}                             & \NumCosmicRatePerSecond          & \NumCosmicRateTotal               \\ 
+\bottomrule                                                                                                   
+\multicolumn{2}{c|}{Total}                              & {--}             & {--}                             & \NumTotalBgPerPOT                & \NumTotalBgPhasII                 \\ 
+\bottomrule
 \end{tabular}
 \end{adjustwidth}
 \caption{ \tablabel{bg:summary}%
 Final predicted background rates and events.
-Assumes....
+The dominant backgrounds are cosmic ray electrons and stopping antiprotons, which are predicted to have produce almost equal rates.
+Assumes an extinction factor of \VarExtinctionFactor, a momentum resolution with $\sigma=200$~keV/c and a probability of \num{1e-4} that events are misreconstructed with at least an additional 2.4~MeV/c. 
+All other parameters are the same as stated in chapter~\sect{sense}.
 }
 \end{table}%
 }

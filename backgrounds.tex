@@ -209,7 +209,7 @@ The timing and momentum of such electrons is shown in \fig{bg:rpc:sim}, where it
 The probability of an \ac{RPC} photon producing an electron that reaches the detector with momentum between \VarMomThreshold and 105~MeV/c is: $f_{e,\textrm{RMC}}=$\VarDetectedEsPerRPC.
 To estimate the rate of delayed \ac{RPC} backgrounds, we also need to know the value of $A_\textrm{time}$.
 As can be seen in \fig{bg:rpc:sim:momVtime}, the timing for electrons originating from RPC photons and detected with momentum greater than 30~MeV/c is independent of the momentum.
-By fitting the tail of this distribution with a single exponential, the lifetime of the high energy electrons is found to be 18.6~ns, such that with the timing window between 600 and 1200~ns we find the acceptance of the timing window to be: $A_\textrm{time}=\VarRPCTimingEfficiency$.
+By fitting the tail of this distribution with a single exponential, the lifetime of the high energy electrons is found to be \VarRPCLifetime, such that with the timing window between 600 and 1200~ns we find the acceptance of the timing window to be: $A_\textrm{time}=\VarRPCTimingEfficiency$.
 
 \Tab{bg:rpc:estimates} summarizes these numbers, from which we find that the rate of backgrounds for delayed \ac{RPC} is \VarRPCDelayedPerPOT per POT, whilst the prompt form occurs at \VarRPCPromptPerPOT.
 \begin{table}[tb]
@@ -284,11 +284,43 @@ where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_
 The data has also been converted to a differential rate of production, given the \phaseII production target dimensions, using equation~\eq{bg:antiproton:rate}.
 From this data, it is clear that as you move to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
 
+\subsection{Modelling Antiproton Production}
+To develop the data in the Boyarinov~\etal papers into a model for antiproton production, three dependencies must be considered:
+the incident proton's momentum, the outgoing antiproton's momentum, and the outgoing antiproton's direction with respect to the incident proton.
+
+To account for these dependencies, the cross section was factorised according to the equation:
+\begin{align}
+\eqlabel{bg:antiprotons:factorisation}
+	\frac{d^3R(p,\theta,\phi)}{dp^3}=&\xi{}P(p,\theta_\mathrm{min})\Phi(\theta,\phi),
+\end{align}
+where $\xi$ is a scale factor to correct for the different incoming proton energy, $P(p,\theta_\textrm{min})$ models the momentum distribution at a given angle and is normalised to unity, and $\Phi(\theta,\phi)$ encapsulates the dependence on the antiproton's direction.
+
+\subsubsection*{Dependence on the Incident Proton's Momentum: $\xi$}
+The data in the Boyarinov papers was taken using protons with kinetic energies of 10.14~GeV.
+The threshold for antiproton production against a single, free nucleon is 5.6~GeV; the cross-section increases rapidly above this energy, as indicated in \fig{bg:antiprotons:meco24}.
+Because of this, COMET has chosen to use an 8~GeV (kinetic energy) beam, and accordingly it is important to scale the antiproton cross sections from the Boyarinov~\etal papers to account for this.
+
+\Fig{bg:antiprotons:meco24} suggests that the cross section at 8~GeV is about one order of magnitude smaller than at 10.14~GeV, although the data and models included in that plot are for a lead target as opposed to tungsten.
+
+In a paper by Danielewicz~\cite{PhysRevC.42.1564}, a theoretical calculation is performed to estimate the rate of antiproton production.
+Equation (4.3) of that paper gives the antiproton production cross section for nucleon-proton interactions as:
+\begin{equation}
+\sigma_{NN}^{\bar{p}}=C(\sqrt{s}-4m)^{7/2}
+\end{equation}
+where $\sqrt{s}$ is the Mandelstam variable for the total invariant incoming energy, and $m$ the mass of a nucleon.
+$C$ depends on properties of the nucleus and is fixed in that paper using experimental data.
+Based on this equation, the cross section for antiproton production at 8~GeV should be a factor of 0.12 times that at 10.14~GeV.
+Since this agrees well with \Fig{bg:antiprotons:meco24}, we take $\xi=0.12$.
+
+\subsubsection*{Dependence on the Outgoing Antiproton's Momentum: $P(p,\theta_\textrm{min})$}
+The momentum spectrum of antiprotons at a given angle is captured in the factor $P(p,\theta_\textrm{min})$.
+We base the shape of this spectrum on the data from the Boyarinov papers.
+
 \FigAntiprotonEndpoint
-To build the limited number of data-points from this paper into a complete but conservative spectrum, empirical fits to the data were performed after adding two data points for the minimum and maximum momentum.
-The minimum momentum only added the constraint that at zero momentum the cross section also be zero.
-On the other hand, to calculate the maximum momentum the kinematic end-point was found by considering the entire nucleus and the two out-going protons to recoil directly against the antiproton.
-The value of the end-point kinetic energy and longitudinal and transverse momenta for tungsten and carbon are shown in \fig{bg:antiprotons:end-point} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
+In order to complete the data and cover the full range of energies at which antiprotons might be produced, we add two additional points to the experimental data for the maximum and minimum momentum.
+Including the minimum momentum only adds the constraint that at zero momentum the cross section also be zero.
+On the other hand, to calculate the maximum momentum, the kinematic end-point was found by considering the entire nucleus and the two out-going protons to recoil coherently against the antiproton.
+The value of the end-point kinetic energy and longitudinal and transverse momenta for both tungsten and carbon are shown in \fig{bg:antiprotons:end-point} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
 This end-point will be a highly conservative estimate, since in reality not all the nucleus will recoil coherently;  the de Broglie wavelength for a proton with 8~GeV kinetic energy is about 0.15~fm, compared to the 7~fm or so of a tungsten nucleus%
 \footnote{Antiproton production from protons in this energy regime was historically referred to as `sub-threshold production', since it is below the threshold for single nucleon interactions, around 5.6~GeV.
 The fact antiprotons are observed is therefore proof that it is not a single, stationary nucleon that interacts with the proton and the nuclear environment as a whole must be considered.
@@ -298,34 +330,26 @@ Additionally, achieving this end-point configuration would be highly phase-space
 
 \FigAntiprotonFits
 With the addition of these two end-points, to interpolate and extrapolate the data, a polynomial of order 4 to 6 (depending on the number of available data points) was used to fit from zero up to the last experimental datum.
-For the high-momentum tails of each spectrum, two fits were tried: a straight line fit between the last experimental datum and the kinematic end-point described above; and an exponential fitted to the kinematic end-point and the last two experimental data points.  
+For the high-momentum tails of each spectrum, three fits were tried: a straight line fit between the last experimental datum and the kinematic end-point described above; an exponential fitted to the kinematic end-point and the last two experimental data points; and an average of both of these fits.
 \Fig{bg:antiprotons:fits} shows the results of this fitting procedure, where it can be seen that a low momentum peak is visible and a high momentum tail well described.
 Whilst these spectra are likely a poor representation of the true production spectrum, they serve as useful upper bounds which can be used as inputs for the antiproton background rate estimation.
 
+The momentum distribution will, of course, depend on the angle of production relative to the proton beam.
+With only four production angles available in the experimental data, however, for a given angle, $\theta$, we assign the momentum distribution based on the data at the next smallest production angle, $\theta_\textrm{min}$.
+Since the spectrum becomes softer at larger values of $\theta$, this will tend to further overestimate the high energy tail of the momentum distribution.
+In the case of angles smaller than 10\degree, given the lack of other data, we fix the  shape of the momentum distribution to be the same as that at 10\degree.
+
+The function $P(p,\theta_\textrm{min})$ is the piecewise function that is fit to the data and kinematic end-points and then normalised so that the integral is one.
+The overall normalisation is instead absorbed into the angular dependence factor.
+
+\subsubsection*{Dependence on the Outgoing Antiproton's Direction: $\Phi(\theta,\phi)$}
 \TabAntiprotonRegions
-\subsection{Simulating Antiprotons}
-To study the resultant backgrounds, antiprotons were generated uniformly in the production target.
-Four separate simulations were run, corresponding to the four angular regions provided by the data, as shown in \tab{bg:antiprotons:regions}.
-For each simulation, antiprotons were generated isotropically within a cone parallel to the incoming proton beam, with minimum and maximum values of theta defined by the angular region being studied.
-The momentum distribution for each simulation used the fit to the data for the angle at the lower edge of the region, $\theta_\textrm{min}$ (and for the region from 0 -- 59\degree, the fit to the 10\degree data was used).
-
 \FigAntiprotonAngularDependence
-To account for the strong angular dependence visible from the measurements, each input antiproton event was reweighted during analysis based on the angle between the initial antiproton direction and the proton beam.
-The combined procedure of generating isotropically with a momentum distribution based on the fit to the data, then reweighting based on the angle, amounts to the following factorisation of the measured differential cross section:
-%It is clear from the four measured directions that the cross section for antiproton prodcution has a strong dependence on the angle of production.
-%To extrapolate this dependence to angles other than those measured, the differential cross section was factorised into a momentum and angular dependence:
-\begin{align}
-\eqlabel{bg:antiprotons:factorisation}
-	F(p,\theta,\phi)=&\left(\frac{E}{p^2}\frac{d\rho(p)}{dp}\right)~\left(\frac{1}{2\pi}\frac{d\Theta(\theta)}{d\theta}\right),\\
-	                =&P(p,\theta_\mathrm{min})\Phi(\theta),
-\end{align}
-where $P(p,\theta_\textrm{min})$ is the fitted momentum spectrum for the differential rate at the lower angle of the current region, $\theta_\textrm{min}$.
-$P(p,\theta_\textrm{min})$, therefore, is the probability density function used to generate the momentum for each antiproton in the simulation, and as such the normalisation of $P(p,\theta_\textrm{min})$ is fixed to unity.
+$\Phi(\theta,\phi)$ accounts for the variation of the cross section as the angle between the incoming proton and outgoing antiproton changes.
+Clearly, by symmetry, there should be no dependence on $\phi$.
 
-Instead, $\Phi(\theta)$ is used to provide the event weight.
-It encapsulates the total probability of an antiproton being produced at the given angle with respect to the incident proton, and is found by integrating the fits shown in \fig{bg:antiprotons:fits}.
-
-The results of these integrations is shown in \fig{bg:antiprotons:angular}.
+To estimate the cross section at a given angle, the fitted distributions described in the last section were integrated.
+The results of these integrations is given in \tab{bg:antiprotons:regions} and shown graphically in \fig{bg:antiprotons:angular}.
 %When these distributions are used to generate particles they are essentially normalised so their integral is unity.
 %For a given value of $\theta$ the momentum distribution $dP/dp$ is chosen to match the first spectrum measured at a larger value of $\theta$.
 %This keeps the model conservative since the true momentum spectrum should soften as one moves to higher angles which this will not do.
@@ -336,43 +360,108 @@ Boyarinov \etal state~\cite{Boyarinov:1994tp} that the angular dependence of ant
 \Phi(\theta)=\alpha e^{\beta\cos\theta}
 \end{equation}
 where $\alpha$ and $\beta$ are constants. 
+
 It is for this reason that the axes of \fig{bg:antiprotons:angular} are $\cos\theta$ and $\ln(R)$: if such a function were valid, the points would form a straight line.
-In fact it seems like a quadratic function might be more appropriate, although the fitted quadratic functions all reach a minimum above $\cos\theta=-1$.
-To keep things conservative then, instead of a linear or quadratic function fitted to all data points, we use the linear interpolation between each adjacent datum to provide the function, $\Phi(\theta)$.
-Of the three possible fits to the high momentum tail, the angular dependence obtained by the linear tail is used for the reweighting, again to ensure this simulation be conservative.
+In fact it seems the variation in these parameters are better described by a quadratic function, although the fitted quadratic functions all reach a minimum above $\cos\theta=-1$, which seems unphysical.
 
-Finally, it should be noted that the factorisation in equation \eq{bg:antiprotons:factorisation} injects the assumption that the momentum distribution at a given angle is independent of the angle.
-Whilst this should not be the case for a realistic spectrum, to produce limits on the background rate it is a valid assumption --- the spectrum becomes softer with increasing production angle so the spectrum at the smaller angle should be an overestimate.
-In addition, the $\phi$ dependence of $\Phi(\theta,\phi)$ is assumed constant, since the target and proton beam in COMET are not polarised.
+However, to keep things conservative, rather than use  a linear or quadratic fit to the integrated data, we use the linear interpolation between each adjacent datum to provide the function, $\Phi(\theta,\phi)$.
+For the same reason, we use the integrated cross sections obtained for the fits that use a linear function for the high-momentum tail.
 
-\subsection{Results of simulation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\FigAntiprotonEndpoint
+%To build the limited number of data-points from this paper into a complete but conservative spectrum, empirical fits to the data were performed after adding two data points for the minimum and maximum momentum.
+%The minimum momentum only added the constraint that at zero momentum the cross section also be zero.
+%On the other hand, to calculate the maximum momentum the kinematic end-point was found by considering the entire nucleus and the two out-going protons to recoil directly against the antiproton.
+%The value of the end-point kinetic energy and longitudinal and transverse momenta for tungsten and carbon are shown in \fig{bg:antiprotons:end-point} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
+%This end-point will be a highly conservative estimate, since in reality not all the nucleus will recoil coherently;  the de Broglie wavelength for a proton with 8~GeV kinetic energy is about 0.15~fm, compared to the 7~fm or so of a tungsten nucleus%
+%\footnote{Antiproton production from protons in this energy regime was historically referred to as `sub-threshold production', since it is below the threshold for single nucleon interactions, around 5.6~GeV.
+%The fact antiprotons are observed is therefore proof that it is not a single, stationary nucleon that interacts with the proton and the nuclear environment as a whole must be considered.
+%  The older literature on this topic in fact refers to a parameter called the `cumulative number' which was related to the number of nucleons that must be involved to produce secondary hadrons (\eg antiprotons or pions) with such out-going energies, given the incoming proton energy.  
+%These sub-threshold secondary particles were themselves sometimes called cumulative particles.}.
+%Additionally, achieving this end-point configuration would be highly phase-space suppressed.
+%
+%\FigAntiprotonFits
+%With the addition of these two end-points, to interpolate and extrapolate the data, a polynomial of order 4 to 6 (depending on the number of available data points) was used to fit from zero up to the last experimental datum.
+%For the high-momentum tails of each spectrum, two fits were tried: a straight line fit between the last experimental datum and the kinematic end-point described above; and an exponential fitted to the kinematic end-point and the last two experimental data points.  
+%\Fig{bg:antiprotons:fits} shows the results of this fitting procedure, where it can be seen that a low momentum peak is visible and a high momentum tail well described.
+%Whilst these spectra are likely a poor representation of the true production spectrum, they serve as useful upper bounds which can be used as inputs for the antiproton background rate estimation.
+%
+%\TabAntiprotonRegions
+%\subsection{Simulating Antiprotons}
+%To study the resultant backgrounds, antiprotons were generated uniformly in the production target.
+%Four separate simulations were run, corresponding to the four angular regions provided by the data, as shown in \tab{bg:antiprotons:regions}.
+%For each simulation, antiprotons were generated isotropically within a cone parallel to the incoming proton beam, with minimum and maximum values of theta defined by the angular region being studied.
+%The momentum distribution for each simulation used the fit to the data for the angle at the lower edge of the region, $\theta_\textrm{min}$ (and for the region from 0 -- 59\degree, the fit to the 10\degree data was used).
+%
+%\FigAntiprotonAngularDependence
+%To account for the strong angular dependence visible from the measurements, each input antiproton event was reweighted during analysis based on the angle between the initial antiproton direction and the proton beam.
+%The combined procedure of generating isotropically with a momentum distribution based on the fit to the data, then reweighting based on the angle, amounts to the following factorisation of the measured differential cross section:
+%%It is clear from the four measured directions that the cross section for antiproton prodcution has a strong dependence on the angle of production.
+%%To extrapolate this dependence to angles other than those measured, the differential cross section was factorised into a momentum and angular dependence:
+%\begin{align}
+%\eqlabel{bg:antiprotons:factorisation}
+%	F(p,\theta,\phi)=&\left(\frac{E}{p^2}\frac{d\rho(p)}{dp}\right)~\left(\frac{1}{2\pi}\frac{d\Theta(\theta)}{d\theta}\right),\\
+%	                =&P(p,\theta_\mathrm{min})\Phi(\theta),
+%\end{align}
+%where $P(p,\theta_\textrm{min})$ is the fitted momentum spectrum for the differential rate at the lower angle of the current region, $\theta_\textrm{min}$.
+%$P(p,\theta_\textrm{min})$, therefore, is the probability density function used to generate the momentum for each antiproton in the simulation, and as such the normalisation of $P(p,\theta_\textrm{min})$ is fixed to unity.
+%
+%Instead, $\Phi(\theta)$ is used to provide the event weight.
+%It encapsulates the total probability of an antiproton being produced at the given angle with respect to the incident proton, and is found by integrating the fits shown in \fig{bg:antiprotons:fits}.
+%
+%The results of these integrations is shown in \fig{bg:antiprotons:angular}.
+%%When these distributions are used to generate particles they are essentially normalised so their integral is unity.
+%%For a given value of $\theta$ the momentum distribution $dP/dp$ is chosen to match the first spectrum measured at a larger value of $\theta$.
+%%This keeps the model conservative since the true momentum spectrum should soften as one moves to higher angles which this will not do.
+%%$d\Phi/d\theta$ is then used to vary the overall normalisation as a function of theta.
+%Boyarinov \etal state~\cite{Boyarinov:1994tp} that the angular dependence of antiproton production should take the form:
+%\begin{equation}
+%%\frac{d\Phi(\theta)}{d\theta}
+%\Phi(\theta)=\alpha e^{\beta\cos\theta}
+%\end{equation}
+%where $\alpha$ and $\beta$ are constants. 
+%It is for this reason that the axes of \fig{bg:antiprotons:angular} are $\cos\theta$ and $\ln(R)$: if such a function were valid, the points would form a straight line.
+%In fact it seems like a quadratic function might be more appropriate, although the fitted quadratic functions all reach a minimum above $\cos\theta=-1$.
+%To keep things conservative then, instead of a linear or quadratic function fitted to all data points, we use the linear interpolation between each adjacent datum to provide the function, $\Phi(\theta)$.
+%Of the three possible fits to the high momentum tail, the angular dependence obtained by the linear tail is used for the reweighting, again to ensure this simulation be conservative.
+%
+%Finally, it should be noted that the factorisation in equation \eq{bg:antiprotons:factorisation} injects the assumption that the momentum distribution at a given angle is independent of the angle.
+%Whilst this should not be the case for a realistic spectrum, to produce limits on the background rate it is a valid assumption --- the spectrum becomes softer with increasing production angle so the spectrum at the smaller angle should be an overestimate.
+%In addition, the $\phi$ dependence of $\Phi(\theta,\phi)$ is assumed constant, since the target and proton beam in COMET are not polarised.
+
+\subsection{Simulating Antiproton Backgrounds}
 \FigAntiprotonSimFluxes
-Using the procedures described above, a separate simulation was performed for each of the four angular regions listed in \tab{bg:antiprotons:regions}, with \num{8e7} antiprotons fed in to each simulation.
-Within each region, events were generated isotropically and according to the momentum distribution for that region.
-The beamline's acceptance to antiprotons and the secondary pions that they produce is shown in \fig{bg:antiprotons:sim:fluxes}.
+To study backgrounds from antiprotons, four separate simulations were performed, one for each of the angular region described in \tab{bg:antiprotons:regions}, with \num{8e7} antiprotons fed in to each simulation.
+Within each angular region, antiprotons were generated uniformly across the production target, with momenta distributed according to $P(p,\theta_\textrm{min})$.
+Given how steeply the angular distribution tails off, in order to check the acceptance of antiprotons produced at large angles, events were generated isotropically within the angular region, and then reweighted during analysis based on $\xi\Phi(\theta,\phi)$, ie. the probability that an antiproton is produced in this direction.
+
+The beamline's acceptance to antiprotons and the secondary pions that they produce are shown in \fig{bg:antiprotons:sim:fluxes}.
 The events in this plot are unweighted by the antiproton angle.
 From these plots, it is clear that the material at the entrance to the Torus1 solenoid removes a large fraction of the antiprotons---about 99\% of the antiprotons produced between 97 and 119\degree.
 It can also be seen that the acceptance in the bent solenoids for antiprotons is about two orders of magnitude greater for antiprotons produced at angles greater than 119\degree, compared to those produced between 97 and 119\degree.
+
 For pion production and acceptance, however, the unweighted rate for the four angular regions is very similar, particularly towards the end of Torus2.
-It is also clear, given that the transmission probability has a negative gradient for each angular region along the whole beamline, that the main source for pions is the interaction of antiprotons with the primary target.
-Pions produced by antiprotons hitting collimators or the beampipe will be quickly removed themselves since they will tend to stay close to this material.
-If pions were produced at the foil at the entrance to the Torus1 then they would be in the centre of the beampipe and have a greater chance of being transported.
-However, since the pion rate at that point does not seem to increase, based on this work, it does not appear that this is a significant source of pions.
+This, and the fact that the transmission probability has a negative gradient for each angular region along the whole beamline, implies that the main source for pions is the interaction of antiprotons in the primary target.
+Pions produced by antiprotons hitting collimators or the beampipe will quickly be removed since they will tend to stay close to this material.
+If pions were produced at the foil at the entrance to the Torus1 then they would be in the centre of the beampipe and have a greater chance of being transported, although this does not seem to be a major source.
 
 \FigAntiprotonSimHeightsTwoDPbar
 \FigAntiprotonSimHeightsTwoDPiMin
+\TabAntiprotonResultsAntip
+\TabAntiprotonResultsPiSecond
+\afterpage{\clearpage}
 
 \Fig{bg:antiprotons:sim:2D-antip} shows the trajectories of antiprotons along the beamline, where each trajectory has been weighted according to the antiproton's production direction with respect to the proton beam axis.
 Similarly, \fig{bg:antiprotons:sim:2D-pi} shows the same information but for pions instead.
 The colour scale and range in each of these four plots is the same between all plots.  
-One can see then, that although the acceptance per antiproton is considerably lower for small angle production (0--59\degree), the production rate is large enough to offset this.
-As such, it is the antiprotons produced in the forwards direction, followed by a hard scatter within the production target, that will dominate the background rate.
-\TabAntiprotonResultsAntip
+One can see, then, that although the acceptance per antiproton is considerably larger for larger angle production (119--180\degree), the production rate is so small that the final probability of observing an antiproton is quite low.
+As such, it is the antiprotons produced in the forwards direction and scattered backwards by the production target that will dominate the antiproton background rate.
+
 \Tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} show the number of antiprotons and pions that enter the Torus1 (`Torus1 Entrance'), reached the final collimator (`Before Torus2 Coll.'), and arrived at the target (`Before Target').
-Also shown is the sum over all events with each event weighted by the initial antiproton direction, and normalised to the number of antiprotons introduced into the simulation.
+Also shown is the sum over all events with each event weighted by the initial antiproton direction and proton energy scale correction ($\xi\cdot\Phi(\theta,\phi)$), and normalised to the number of antiprotons introduced into the simulation.
 Since no antiprotons are seen stopping in the target for the angular region from 0 to 59\degree, to estimate the stopping rate for antiprotons produced in this direction, 
 the probability that antiprotons would reach the stopping target is made by finding the median acceptance of the collimator (which occurs for the region from 59\degree to 97\degree) and multiplying the observed weighted sum for antiprotons just before the collimator.
-\TabAntiprotonResultsPiSecond
 The timing distributions for antiprotons and pions is shown in \fig{bg:antiprotons:sim:time}, from where it is clear that timing information from the pulsed proton beam is not meaningful for antiprotons.
 However, since the majority of secondary pions that are successfully transported to the target originate in the production target, the pulsed beam timing is a strong way to suppress the backgrounds these can produce via \ac{RPC}.
 In fact, given that these pions originate in the production target, the background rate due to RPC of pions directly produced by the proton beam can be reused, including the timing cut.
@@ -380,9 +469,10 @@ For antiprotons, the rate of RPC backgrounds per pion stop is also used, however
 %All of these factors are summarised in \tab{bg:antiprotons:factors}.
 For both pions and antiprotons, the efficiency of the TDAQ and reconstruction are also included, with the same values as for signal.
 Based on these factors, the numbers in \tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} can be converted to background estimates, which are shown in \tab{bg:antiprotons:estimates}.
+\FigAntiprotonSimTime
 \TabAntiprotonEstimates
 
-The total predicted antiproton rate per \ac{POT} is therefore \VarAntiprotonsPerPOT, which is completely dominated by antiprotons produced in the forward direction but scatter within the production target and are successfully transported to the stopping target.
+The total predicted antiproton rate per \ac{POT} is therefore \VarBgAntiprotonsPerPOT, which is completely dominated by antiprotons produced in the forward direction but scatter within the production target and are successfully transported to the stopping target.
 This number is considerably larger than would be desirable for the COMET experiment.
 It is important, therefore, to remember that this is an especially conservative estimate:
 \begin{itemize}
@@ -454,7 +544,7 @@ To make this extrapolation, we look at the same distribution immediately after t
 At this point there are far more electrons so it is easier to fit and model the distributions.
 \Fig{bg:beam:MomVsTime:stopTgt} shows the momentum vs.\ time plot for electrons immediately after the beam blocker.
 
-The rate of observing signal-like electrons due to high-energy beam particles is modelled by factorisation of the acceptances:
+The rate of observing delayed, signal-like electrons due to high-energy beam particles is modelled by factorisation of the acceptances:
 \begin{align}
 R_\mathrm{beam}=&A_\textrm{geom}A_\textrm{mom}A_\textrm{time},\\
 =&\left(\frac{N_\textrm{obs}}{N_\textrm{POT}}\right)\left(\frac{\int\limits_{104.2}^{105.5}f(p)dp}{\int\limits_{p_\textrm{low}}^{105.5}f(p)dp}\right)\left(\frac{\int\limits_{600}^{1200}g(t)dt}{\int\limits_{30}^{1200}g(t)dt}\right),
@@ -462,6 +552,7 @@ R_\mathrm{beam}=&A_\textrm{geom}A_\textrm{mom}A_\textrm{time},\\
 \end{align}
 where $A_\textrm{geom}$,$A_\textrm{mom}$, and $A_\textrm{time}$ are geometric acceptance and efficiencies of the momentum and timing thresholds, respectively.
 $N_\textrm{obs}$ is the number of events actually seen at the straw tracker, whilst $N_\textrm{POT}$ is the number of simulated \ac{POT} events.
+In the case of prompt beam electrons, the above equations are the same, except that $A_\textrm{time}$ becomes the extinction factor multiplied by the fraction of time spent in the gated-time detection window.
 \FigBgBeamExtrapolate
 
 The functions $f(p)$ and $g(t)$ represent the momentum and time projections of electrons after the beam blocker. 
@@ -488,13 +579,14 @@ by the vertical magenta lines.
 This amounts to a shift of 110.5~ns, which is about twice as large as if one were to use the mean of the straw tracker electrons.
 Having applied this shift (which we implement as a shift in the start and stop time for the integration), we find the suppression of electrons due to the time-gated window gives a factor \VarBeamBgTiming.
 
-Finally, then, we can pull all these factors together using \eq{bg:beam:factors}, from which we find that the predicted beam-related background rate per POT is~\VarBeamBgPerPOT, such that we can expect about \VarBeamBgTotal background events during \phaseII due to these processes.
+\TabBgBeamFactors
+All of these factors are summarised in \tab{bg:beam:factors}.
+Finally, then, we can pull all these factors together using \eq{bg:beam:factors}, from which we find that the predicted prompt beam-related background rate per POT is~\VarBeamBgPromptPerPOT, whilst the delayed background rate due to beam particles is \VarBeamBgDelayedPerPOT.
 
-Given the extrapolation that has been necessary, this result comes with a degree of statistical uncertainty.
+Given the extrapolation that has been necessary, this result comes with a large degree of uncertainty.
 However, in principle this includes all sources of electrons in the beam: high energy muons, pions, and electrons coming directly from the production target with high energy.
 This also includes electrons produced from neutron capture, provided the neutron itself originated downstream of the production target section, which were not included here in order to accelerate the simulation speed.
-In addition these neutrons should be studied carefully using multiple hadron production models.
-\CHECKmargin{Add at least a comment or subsection  on these neutrons and reference it here.}
+In addition these neutrons should be studied carefully using multiple hadron production models but, as discussed in \sect{bg:notCovered}, these neutrons are left to future studies.
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
@@ -577,6 +669,7 @@ The final prediction is below 1 but very close to it, and it is therefore import
 The dominant backgrounds come from antiprotons and cosmic rays, with radiative muon capture similarly high.
 
 \subsection{Backgrounds Not Considered}
+\sectlabel{bg:notCovered}
 Although some of the methods above are different, compared to the \phaseI TDR and \phaseII CDR, there is only one source of backrounds that has not been included:
 the production of high-energy electrons from the capture of neutrons that originate in the production target.
 These neutrons were killed in order to reach a large number of muons and pions in the simulation, although neutrons produced along the muon beam (from the collimators, stopping target, \etc) have been included with the beam background.
@@ -595,6 +688,17 @@ The different target material will change the neutron production cross section, 
 Whilst it is not possible to make a quantitative estimate of the uncertainty at this time, it is clear that for some backgrounds the uncertainty is large.
 
 \begin{description}
+\item[Statistical Uncertainty and Use of Extrapolation]
+In many instances the generated sample sizes for these background predictions were too small to directly evaluate the background rate.
+In these cases it was necessary to extrapolate from parameters and regions with higher statistical power, such as lower energy parts of a spectrum, earlier in time, or use a more upstream part of the experiment.
+In addition, it was often necessary to resample particles produced from an earlier stage of the simulation, such as for the muon and pion stopping distributions, or the beam fluxes leaving the production target region.
+This introduces a different kind of error, which is very difficult to quantify, namely that there will now be some correlation between events seem downstream.
+
+In the future, generating larger Monte Carlo samples using the continually increasing computing power available to the COMET experiment will be important in reducing this uncertainty.
+In addition, cross checks using various different techniques to increase the statistical power of a limited set of simulated data will should also be explored.
+The resampling and extrapolation used here is one approach, but methods such as particle weighting and biasing should also be explored.
+In addition, separate studies could study the transmission of each section of the beamline separately, building a set of multi-dimensional (time, momentum, position, etc) transfer matrices.
+
 \item[StrECAL Reconstruction and Resolution]
 In the case of \ac{DIO} and \ac{RMC}, the two intrinsic sources of background, the main source of uncertainty is in the resolution function.
 The exact the distribution for the residuals after reconstruction is not well known, especially for \phaseII.
