@@ -179,7 +179,7 @@ However, such a factorisation misses out various correlations, such as where in 
 \subsection{Photons from Radiative Pion Capture (\acs{RPC})}
 %In much the same way as \ac{RMC}, when a pion is captured in a nucleus there is a chance that it will produce a prompt, hard photon.
 There is a range of experimental and theoretical data on \ac{RPC}. 
-\Fig{bg:rpc:spectra} shows what is perhaps the most useful data currently available: the observed spectrum of photons coming from RPC for magnesium and calcium.
+\Fig{bg:rpc:spectrum} shows what is perhaps the most useful data currently available: the observed spectrum of photons coming from RPC for magnesium and calcium.
 Magnesium being adjacent to aluminium on the periodic table, this spectrum is a reasonable proxy for the spectrum of \ac{RPC} on aluminium.
 The relative rate for \ac{RPC} compared to ordinary pion capture is discussed in Amaro \etal~\cite{Amaro:1997ed}.
 For experimental and theoretical studies of the three isotopes summarised in that paper --- carbon, oxygen, and calcium --- the measured and predicted branching ratios are all within 1.19\% and 2.27\%.
@@ -191,7 +191,7 @@ To be conservative, we take here the branching ratio for RPC on aluminium to be 
 To simulate the pion stopping rate, the pions from the main production simulation were resample multiple times to build up a large number of pion stops.
 \Fig{bg:piStop:dist} shows the distribution of pions stopping in the target, in one-dimensional projections to the ICEDUST global coordinate system.
 In that coordinate system, pions arrive from large values of Z at the target, so the pion beam in \fig{bg:piStop:dist:z} is going from right to left.
-By comparison with the plots in \fig{sense:stops2D}, pions tend to stop further downstream in the target.
+By comparison with the plots in \fig{sense:stops}, pions tend to stop further downstream in the target.
 This is readily understood by the fact that pions reaching the stopping target tend to have much higher momentum than muons reaching the target, as shown in \fig{bg:piVsMu:momenta}.
 
 In total, the number of pions stopping in the target per \ac{POT} is $R_{\pi/p}=$\VarPiStopsPerPOT.
@@ -282,7 +282,7 @@ To convert the differential invariant cross sections given in the literature (eq
 \end{align}
 where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_N$ the atomic mass, 183.86~g/mol for tungsten, $l$ the length of the target, and $N_A$ is Avodadro's number.
 \Fig{bg:antiprotons:data} shows the data from these papers, after scaling the cross sections for each material to the number of nucleons in tungsten.
-The data has also been converted to a differential rate of production, given the \phaseII production target dimensions, using equation~\eq{bg:antiproton:rate}.
+The data has also been converted to a differential rate of production, given the \phaseII production target dimensions, using equation~\eq{bg:antiprotons:rate}.
 From this data, it is clear that as you move to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
 
 \subsection{Modelling Antiproton Production}
@@ -609,7 +609,7 @@ Principally, the stopping target in \phaseI is surrounded by the \ac{CDC}, such 
 In \phaseII, the stopping target is located well away from the detector, which means cosmic muons must only penetrate the \ac{CRV}.
 Furthermore, the \ac{CRV} geometry in \phaseII should cover at least the target and intermediate beamline in addition to the detector solenoid itself.
 
-\phaseII is expected to run about \VarRunTime~s as suggested in section~\sect{sensitivity}.
+\phaseII is expected to run about \VarRunTime~s as suggested in section~\sect{sense}.
 During COMET operation, a single accelerator cycle is expected to last 2.48~s, with about 0.7~s for extraction, giving a duty factor of 0.28.
 In addition, with a time-gated window lasting 600~ns and bunches separated by 1.170~$\mu$s, the overall duty factor drops to about 0.14.
 As such, during \phaseII running there are really only about \num{2.9e6}~s when a cosmic muon can produce backgrounds.
@@ -620,7 +620,7 @@ If we assume the miss-rate for the \phaseII will be no worse than for \phaseI, \
 \FigBgCosmicMomenta
 To simulate the cosmic ray background, input muon events were provided by the ND280 experiment~\cite{George:2010aca}.
 These contained positive and negative muons that had been produced in an air shower simulation using the CORSIKA simulation package~\cite{Corsika}, for the atmosphere above J-PARC.
-\Fig{bg:cosmic:primary} shows the distributions of momentum and directions that these files contained.
+\Fig{bg:cosmics:primary} shows the distributions of momentum and directions that these files contained.
 
 Muons were generated in a horizontal plane directly above the experiment hall (and centred on the origin of the ICEDUST coordinate system, the production target).
 A 50$\times$50~m${}^2$ square within in this plane was used to generate the events.
@@ -633,7 +633,7 @@ The concrete and iron shielding for the entire experimental hall is implemented,
 However, at this stage the geometry in the simulation only has the CRV design intended for \phaseI around the detector solenoid (in its \phaseII position).
 Since the CRV will need to be extended to include all the way up to the stoping target in \phaseII, there will likely be more shielding material inserted above the beamline.
 
-\Fig{bg:cosmic:momenta} shows the momentum distribution of observed electrons.  
+\Fig{bg:cosmics:momenta} shows the momentum distribution of observed electrons.  
 There are large fluctuations across the momentum distribution, but this is most likely due to statistical fluctuations rather than truely physical.
 From 80 to 120 MeV/c, 140 electrons hit at least one layer in the straw tracker, although only 19 of these hit a second plane.
 The number of background events due to cosmic rays can therefore be estimated as:

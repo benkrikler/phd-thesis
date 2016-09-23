@@ -67,7 +67,7 @@ The goal of this chapter therefore is not only to optimise the experiment but al
 
 This challenge is further complicated because it is not just the signal sensitivity that must be maximised, but the background rate that must be kept low.
 When this work began, no start-to-finish simulation existed to estimate the signal and background rates.
-As such, this study will progress by focussing on optimising the signal acceptance in the first instance, and then move to background estimation described in chapter~\sect{bagrounds}.
+As such, this study will progress by focussing on optimising the signal acceptance in the first instance, and then move to background estimation described in chapter~\sect{backgrounds}.
 
 %Ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
 The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can iterate and improve.
@@ -191,55 +191,37 @@ However if \phaseII should require a greater dipole field strength for this regi
 that might be trickier since it could require additional windings to be inserted -- this would not be impossible but might costly.
 
 \subsection{Large-sample Production Target Simulation}
+\sectlabel{largeSampleProdTgt}
 Before the muon beam section could be optimised, a large set of \ac{POT} events were produced transporting all particles up to the entrance of the muon beam section.
-In total, $2.3\times10^{8}$~POT were simulated through this stage, equivalent to about 1.5 bunches at \phaseII.
+In total, \num{2.3e8}~POT were simulated through this stage, equivalent to about 1.5 bunches at \phaseII.
 The production target used the optimised geometry from the previous section.
 All particles that hit the surface of the Torus1 container volume were read out for later re-use in a way that ensured double-counting of particles could not occur.
 In addition, particles entering the proton beam dump were also saved if later simulations wished to study their impacts.
 
-%\CHECK{plot that shows the momentum distributions of particles in this input}
-\begin{table}[t]
-\CHECK{Fill this table in properly}
-	\CHECK{Better yet make this and \tab{optimisation:ProdTgtSec:} into an appendix / list of simulations and configurations}
-\centering
-\begin{tabular}{lp{0.7\textwidth}}
-	\hline
-	\multicolumn{2}{l}{\bf Pions and muons from Prod.\ Tgt.\ simulation}\\
-	%Energy spread, $\sigma_E$ & 0.135 MeV \\
-	\hline
-	\multicolumn{2}{l}{\bf Software configuration}\\
-	Packages & \ttfamily{---}  \\
-	Externals & \ttfamily{---}  \\
-	Fieldmap & 160104 \CHECK{} with additional scale factors applied to Torus dipole field\\
-	\hline
-	\multicolumn{2}{l}{\bf Sample Sizes}\\
-	Final scan &   \\
-\hline
-\end{tabular}
-\caption{Key parameters in the configuration of the muon beamline dipole field optimisation.}
-\tablabel{optimisation:ProdTgtSec:configuration}
-\end{table}
-
 \subsection{The Optimised Dipole Field Strengths}
-The figure-of-merit for this optimisation is the muon stopping rate, which will be maximised at the optimal field configuration.
+The figure-of-merit for this optimisation is the muon stopping rate, which will be greatest for the optimal field configuration.
 %Toshiba have previously performed a realistic field calculation using OPERA for a single coil whose on-axis field has a mean of about 0.055~T.
-To identify such a configuration, a 2D-grid scan was done where the Torus1 and Torus2 dipole fields were simultaneously varied.
-Varying the field strength was done by applying a scale factor to the fieldmaps for each 90\degree section described in \sect{sw:fieldmap}.
-These scale factors were varied in steps of 0.125 (equivalent to 6.875~mT) and for each point muons and pions from $8\times10^6$~POT were transported to the stopping target.
-The stopping rate for each combination of scale factors was then assessed.
+To identify such a configuration, a two-dimensional scan over the Torus1 and Torus2 dipole field strengths was performed.
+To vary the field strength a scale factor was applied, for each of the 90\degree section, to the realistic dipole field description that was provided by Toshiba and described in \sect{sw:fieldmap}.
+These scale factors were varied in steps of 0.125 (equivalent to 6.875~mT) and for each combination muons and pions from $8\times10^6$~POT were transported to the stopping target.
+%The stopping rate for each combination of scale factors was then assessed.
 
 \FigOptimMuBeamDipoleMuStops
 \FigOptimMuBeamDipolePiStops
 
-The muon stopping rate as a function of the two dipole field strengths are shon in \fig{optim:muBeamDipole:stoppedMu}.
-A scale factor of 1 on the x-axis means no change to the current \phaseI design and since there is little improvement by moving to larger values for Torus1 the optimal scale factors are chosen to be 1 and 0.5 for the Torus1 and TTorus2 respectively.  
+The muon stopping rate as a function of the two dipole field strengths is shown in \fig{optim:muBeamDipole:stoppedMu}.
+The horizontal axis in that figure shows the scale factor applied to the Torus1, the 90\degree bent solenoid already built for \phaseI, whilst the vertical axis shows the scale factor for the Torus2.
+A scale factor of 1.0 means the scale factor will be same as the current \phaseI design.
+Since there is little improvement by moving to larger values for Torus1 the optimal scale factors are chosen to be 1 and 0.5 for the Torus1 and TTorus2 respectively.  
 This translates to dipole field strengths of 0.055 and 0.0275~T respectively.
 %\CHECK{Are these the final selected dipole field strengths?}
 
 Also striking from \fig{optim:muBeamDipole:stoppedMu} is the anti-correlation between the two dipole field strengths.  
 Roughly speaking the sum of the optimal dipole field values is constant, \ie $B_1^\text{optimal} + B_2^\text{optimal} = \text{const}$.
-Although this was not previously foreseen, such a correlation can be understood accordingly.
-The stopping target geometry and position is held fixed in this parameter scan, which essentially fixes the upper momentum of muons that can stop in the target.
+This correlation had not been seen before, perhaps due to the lack of computing power necessary to scan such a large phase space.
+Such a correlation can be understood in the following way:
+the geometry of the stopping target geometry (and its position) is kept fixed during the dipole scan.
+This essentially fixes the upper momentum of muons that can stop in the target.
 %The initial momentum distribution grows roughly linearly with momentum for the momenta of muons that will stop in the target (see the later sections for more on this), which would suggest tuning to the higher momentum would increase the number of muons reaching the target.
 %That effect however is greatly reduced by the fact that the initial muon beam has a very large transverse position profile
 The drift of a particle due to the dipole field is proportional only to the distance travelled in that dipole field and the dipole field strength, and does not depend on the particle's momentum.
@@ -248,10 +230,10 @@ Since each section is the same length, the time for a particle to pass through T
 This leads to the total drift being proportional to the sum of the two dipole fields.
 Since the production target (as the source of muons) and stopping target (as the muons' destination) are at a fixed height with respect to one another the optimal vertical drift is also fixed so that the sum of the dipole field strengths should also be roughly fixed.
 
-With that said, the Torus1 section has a higher pion flux which causes some assymetry between the two sections.
+With that said, the Torus1 section has a higher pion flux which causes some asymmetry between the two sections.
 Keeping more pions on-axis in the Torus1 section means that more muons will enter the Torus2 section from those pions that have decayed.
 But since the pion momentum distribution is slightly higher than the muon distribution keeping pions on axis requires a larger dipole field strength.
-This could explain the slight assymetry where the muon stopping rate appears slightly larger if Torus1's field is larger than that of Torus2.
+This could explain the slight asymmetry where the muon stopping rate appears slightly larger if Torus1's field is larger than that of Torus2.
 
 It is also interesting to consider the pion stopping rate as a function of the dipole field strengths.
 However, as can been from \fig{optim:muBeamDipole:stoppedPi} the stopping rate is close to the level of POT events used in the simulation so that the plot is dominated by statistical fluctuations.
@@ -316,6 +298,7 @@ A change of about 10\% in the dipole field strength only reduces the signal acce
 
 
 \section{Stopping Target Position}
+\sectlabel{optim:stopTgtPos}
 %\begin{easylist}
 %# Method
 %	## Shift target position up or downstream by 50 cm 
@@ -400,7 +383,7 @@ However the improvement to the sensitivity would have been small: shifting the t
 %	## Height vs momentum before and after 180 degrees
 %	## Beamline projection for stopped and high-P muons
 %	## Subtraction of the good and bad muons to suggest the region of interest for collimators
-%	## Why the assymetry upstream?
+%	## Why the asymmetry upstream?
 %# Collimator optimisation
 %	## Analytic collimator study to reduce simulation time
 %	### Cannot study secondary particles

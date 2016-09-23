@@ -29,8 +29,8 @@ Based on a simulation of some 1.1 billion \ac{POT} the muon stopping rate of the
 This amounts to some 43\% of the muons that reach the target itself, a fraction that is driven mostly by the muon momentum distribution and the total amount of target material, as demonstrated by \fig{sense:muMomenta}
 showing the momentum of muons at different points in the beam.
 
-\Fig{sense:stops2D} shows where muons stop in the target based on this simulation from which it is clear that several asymmetries and correlations exist.
-Firstly the correlation between Z and Y shown in \fig{sense:stops2D:ZY} arises due to the disperse muon beam arriving at the target. 
+\Fig{sense:stops} shows where muons stop in the target based on this simulation from which it is clear that several asymmetries and correlations exist.
+Firstly the correlation between Z and Y shown in \fig{sense:stops:ZY} arises due to the disperse muon beam arriving at the target. 
 Since high momentum muons are vertically lower (towards negative Y) in the beam and since these muons have a larger stopping distance, muons lower down in Y tend to travel further through the target (towards lower values of Z).
 It is interesting however that when the integration is taken over all target disks the distribution in Y demonstrates little asymmetry. 
 This is most likely due to the fact that the Y-position is controlled by the Torus1 and Torus2 dipole fields which were optimised to maximise the stopping rate, which one might expect to be achieved when the stopping distribution is symmetric.
@@ -40,8 +40,8 @@ Given this correlation, there might be a gain in signal sensitivity if there wer
 Since this material is less important for stopping the low energy muons removing the extra material might have little impact on the stopping efficiency.
 On the other hand it will likely increase signal acceptance since signal electrons will pass through less material.
 
-Whilst the vertical stopping distribution is largely symmetric (in the integral),
-a striking asymmetry exists in the horizontal stopping distribution
+Whilst the vertical stopping distribution is largely symmetric (\fig{sense:stops:Y}),
+a striking asymmetry exists in the horizontal stopping distribution (\fig{sense:stops:X}).
 The cause of this asymmetry is at this stage unclear.
 It could arise from the fact that the production target itself is asymmetric in the horizontal transverse direction, such that more muons and pions are produced to one side of the beam axis.
 On the other hand, it could also arise from the transportation dynamics of the bent solenoid, dipole field and collimator design. 
@@ -82,9 +82,9 @@ A time gated detector window is used as a way to reduce the background rate.
 Whether this is implemented in the trigger, offline in the analysis, or at different levels in both of these is yet to be determined, be the impact on signal efficiency will likely be the same.
 \FigSensTiming
 
-\Fig{sense:time:signal} shows the arrival time of signal electrons \CHECK{Add the muon stopping time, and beam flash timing to this plot?}.
+\Fig{sense:timing:signal} shows the arrival time of signal electrons \CHECK{Add the muon stopping time, and beam flash timing to this plot?}.
 A subtlety of the gated time window is that since the signal lifetime is large compared to the pulse separation of 1.17~$\mu$s, a signal electron has a reasonable chance of arriving in detector windows later than the first one.
-\Fig{sense:time:efficiency} shows the signal acceptance as a function of the start time of the detector window for three different stop times.
+\Fig{sense:timing:efficiency} shows the signal acceptance as a function of the start time of the detector window for three different stop times.
 Time in that plot is with respect to the proton pulse's arrival; since it takes about 100~ns before any beam flash hits the detector, it is reasonable that the gated-time detector window be open at the very moment when the proton pulse arrives.
 This would be the case at the very end of the window that ends at 1200~ns given that pulses are separated by about 1170~ns.
 
@@ -181,7 +181,7 @@ By expanding $N_\mu$ in that equation as product of the number of protons per se
 Thus, if the run time were fixed to the value of the CDR, \VarCDRRunTime[2], an \ac{ses} of \VarPredictedSESCDRRunTime would be achievable.
 Alternatively, the CDR sensitivity, \VarPredictedSES, would be achievable in \VarRunTime[2]s.  
 In that time, COMET \phaseII would impinge \VarTotalPOT protons on the production target, resulting in \VarTotalMuStops negative muon stops in the stopping target.
-On a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}, and about 92 times better than COMET \phaseI.
+As can be seen by \tab{sense:comparisons}, on a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}, and about 92 times better than COMET \phaseI.
 
 \subsection{Fraction of Conversion Events That Excite the Nucleus}
 In the COMET \phaseI TDR, an additional factor, $f_\textrm{gnd}$, is included in the denominator of \eq{sense:runtime}.
