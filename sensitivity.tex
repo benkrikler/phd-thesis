@@ -28,14 +28,12 @@ The 2009 \ac{CDR} additionally included cuts on the reconstruction~\cite{CDRphas
 Based on a simulation of some 1.1 billion \ac{POT} the muon stopping rate of the optimised design was found to be \sci{1.61}{-3}~per \ac{POT}.
 This amounts to some 43\% of the muons that reach the target itself, a fraction that is driven mostly by the muon momentum distribution and the total amount of target material, as demonstrated by \fig{sense:muMomenta}
 showing the momentum of muons at different points in the beam.
-\CHECK{Add the muon momentum plot}
 
 \Fig{sense:stops2D} shows where muons stop in the target based on this simulation from which it is clear that several asymmetries and correlations exist.
 Firstly the correlation between Z and Y shown in \fig{sense:stops2D:ZY} arises due to the disperse muon beam arriving at the target. 
 Since high momentum muons are vertically lower (towards negative Y) in the beam and since these muons have a larger stopping distance, muons lower down in Y tend to travel further through the target (towards lower values of Z).
 It is interesting however that when the integration is taken over all target disks the distribution in Y demonstrates little asymmetry. 
 This is most likely due to the fact that the Y-position is controlled by the Torus1 and Torus2 dipole fields which were optimised to maximise the stopping rate, which one might expect to be achieved when the stopping distribution is symmetric.
-\CHECK{Is it worth adding the 1D projections of the stopping distribution?}
 
 \FigSensMuStopsTwoD
 Given this correlation, there might be a gain in signal sensitivity if there were less material at the top of the target.
@@ -163,6 +161,8 @@ Finally, although the CDR include a number of additional analysis cuts which red
 In this study such cuts are not applied, and so the efficiency of these values is not included in the final acceptance calculation.
 
 \section{Single Signal Event Sensitivity (\acs{ses}) and Run Time}
+\TabSensParams
+\TabSensEstimates
 %\begin{easylist}
 %# Equation
 %# Value of all parameters included in a table
@@ -172,52 +172,29 @@ In this study such cuts are not applied, and so the efficiency of these values i
 %# Plot of sensitivity vs. time ?
 %\end{easylist}
 Finally, it remains to pull all these numbers together into equation \eq{det:ses}.
-Since our target \ac{ses} is fixed we instead tune the amount of running time needed to stop enough muons to achieve this goal, hence the by inversion of \eq{det:ses} we get the necessary run time as:
+Since our target \ac{ses} is fixed we instead tune the amount of running time needed to stop sufficient muons to achieve this goal. Hence by the inversion of \eq{det:ses}, the necessary run time is fixed to:
 \begin{equation}
 %\mathrm{S.E.S}(\muec)=\frac{1}{N_\mu \mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}
-	t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}f_\mathrm{1s}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}\mathrm{S.E.S}},
+	t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}\mathrm{S.E.S}},
+	\eqlabel{sense:runtime}
 \end{equation}
 where $N_\mu$ has been expanded to the proton beam current divided by the proton charge, $I_p/e$, times the muon stopping rate per \ac{POT}, $R_{\mu/p}$.
-\Tab{sense:ses} lists the values of these parameters, from which we can see that a single signal event sensitivity of \sensePII can be achieved in around \num{1.57e7} seconds or about 180 days.
-Alternatively, if we ran for some \VarRunTime[0] seconds, an \acf{ses} of \VarPredictedSES would be possible.
+\Tab{sense:ses} lists the values of these parameters, from which we can see that a single signal event sensitivity of \sensePII can be achieved in around \VarPredictedSES seconds or about 180 days.
+Alternatively, if we ran for some \num{2e7} seconds, an \acf{ses} of \VarPredictedSESCDRRunTime would be possible.
 \Tab{sense:comparisons} compares this to the CDR estimate, which expected to achieve a \ac{ses} of \sci{2.6}{-16} in a run time of \sci{2}{7}~s, and \phaseI which is expected to reach its goal of \sensePI in about 140 days of running.
 On a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}. 
 
-\begin{table}[tb]
-\centering
-\begin{tabular}{lll}
-	\hline
-         $I_p$                          & 7~$\mu$A & Proton beam current                            \\ 
-	 ${R}_{\mu\textrm{-stop}}$      & \VarMuStopsPerPOT & Muon stopping rate per POT                     \\ 
-	 $f_\mathrm{1s}$                & 90\%    & Probability of reaching the ground state \\ 
-	 $\mathcal{B}_\mathrm{capture}$ & 61\%    & Branching ratio for muon nuclear capture in Al \\ 
-	 $A_{\mu\rightarrow e}$         & \VarTotalSignalAcceptance   & Total signal acceptance of \phaseII            \\ 
-	\hline
-\end{tabular}
-        \caption{\tablabel{sense:ses}
-        Parameters that determine the run time and single event sensitivity for COMET \phaseII based on this study.
-        }
-\end{table}
-\begin{table}[b]
-\centering
-\begin{tabular}{L{0.25\textwidth}p{0.14\textwidth}p{0.13\textwidth}p{0.12\textwidth}p{0.23\textwidth}}
-	\hline
-                                                        & Single event sensitivity & Total \ac{POT} ($\times10^{19}$) &Beam time $t_\textrm{run}$ (s) & Sensitivity per year of continuous beam \\ 
-  \hline
-  COMET \phaseII\hspace{1ex}(this study)                & \VarPredictedSES         & 87 & \VarRunTime[2]                  & \VarPredictedSESPerYear                         \\ 
-  COMET \phaseII\hspace{1ex}(CDR 2009~\cite{CDRphase2}) & \sci{2.60}{-17}           & 85 & \sci{2.00}{7}                  & \sci{1.65}{-17}                         \\ 
-  Mu2e~\cite{Mu2e2014}                                  & \sci{2.40}{-17}           & 36 & \sci{6.00}{7}                  & \sci{4.57}{-17}                         \\ 
-  COMET \phaseI~\cite{TDR2016}                          & \sci{3.00}{-15}           & 3.2 & \sci{1.26}{7}                  & \sci{1.19}{-15}                         \\ 
-	\hline
-\end{tabular}
-        \caption{\tablabel{sense:comparisons}
-        Comparison between the run time and single-event sensitivity from this study and from the 2009 CDR, the \phaseI TDR, and  the Mu2e experiment's TDR.
-        The sensitivity per year of continuous beam is the single-event-sensitivity that can be achieved in \sci{3.15}{7}~seconds of running, assuming no beam shutdown periods.
-        }
-\end{table}
-%\newcommand\VarTotRunTime{2e7}
-%\newcommand\VarTotPOT{8.8388e20}
-%\newcommand\VarMuStopsPerPOT{1.61e-3}
-%\newcommand\VarTotMuStops{\VarMuStopsPerPOT*\VarTotPOT}
-%Total Muon stops=\sigfigs{\VarTotMuStops}
-\CHECK{All of this needs updating with the probability of an atomically captured muon reaching the ground state.  Yoshi Kuno said it was about 90\%, but need to check}
+\subsection{Fraction of Conversion Events That Excite the Nucleus}
+In the COMET \phaseI TDR, an additional factor, $f_\textrm{gnd}$, is included in the denominator of \eq{sense:runtime}.
+This factor, whose value is given as 0.9, covers the fraction of conversion events that do not excite the nucleus in some way, which will be roughly the same as the fraction of events that can be called `coherent'.
+Whatever the outcome of COMET, whether a signal is observed or not, adapting the final measurement to theoretical predictions will have to include this factor.
+
+However, this factor is not constant and depends on the exact model producing the conversion.  
+It is typically larger than 90\%, but can be as low as 57\% in the case of SUSY Z-penguin models~\cite{Siiskonen:1999pj}.
+Given this model dependence, it has been decided not to include this factor in the above estimate, however it must be emphasized then that the sensitivity expressed here is the single-event sensitivity for \emph{conversion that leaves the nucleus unexcited}.
+Theorists and model builders need to ensure they consider the probability of coherent conversion (and the incoherent probability, if it leaves the nucleus unchanged) that a given New Physics model predicts.
+
+It is interesting to note that models with larger coherent branching ratios favour long-range forces and, therefore, massless propagators.
+If the process does excite the nucleus, the energy of the electron will be lower than for coherent \mueconv.
+If there are nuclear resonances being excited one might see a spike or kink in the electron spectrum at lower energies.
+To be able understand such features (either observed or constrained), as well as excellent experimental momentum resolution, the theoretical certainty on the \ac{DIO} spectrum is, again, especially important.
