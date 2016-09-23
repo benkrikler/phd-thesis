@@ -62,7 +62,7 @@ Although initially the intention was also to switch the build system from CMT to
 
 In the 3 years since the initial work forking ND280 to produce ICEDUST in summer 2013 some 3,200 commits have edited about two million lines of code in the official version of the framework.
 This has been the work of some 25 collaborators whilst about 15 other users have GitLab accounts and use the software.
-ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events -- equivalent to 18,000 \phaseI bunches -- in some 100~TB of simulated data.
+ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events---equivalent to 18,000 \phaseI bunches---in some 100~TB of simulated data.
 
 \section{Overview of ICEDUST}
 ICEDUST Can Efficiently Do Useful Software Things and stands for the Integrated COMET Experiment Data User Software Toolkit.
@@ -94,7 +94,7 @@ Around all of this there are several utility packages such as the event display,
 \section{The COMET Simulation}
 \sectlabel{COMETSim}
 The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
-For COMET's target single-event sensitivity -- which is only a measure of the signal efficiency -- to translate to a comparable confidence limit if no signal is observed, less than one background events should be expected during the entire run.
+For COMET's target single-event sensitivity---which is only a measure of the signal efficiency---to translate to a comparable confidence limit if no signal is observed, less than one background events should be expected during the entire run.
 By comparison, some $10^{19}$ and $10^{21}$~protons will impinge the production target in \phaseI and \phaseII respectively, so it is clear that the ability to suppress backgrounds must be demonstrably high.
 
 Simulation plays a crucial role in making such a demonstration. 
@@ -126,7 +126,7 @@ Since the proton events are uncorrelated, by picking different proton events and
 An additional form of resampling can also be used during the Geant4 simulation, by dividing up the experiment into different stages and restarting the simulation multiple times at a later stage, reusing the output from the earlier section.
 For example, a simulation of the production target region is used to track particles up to the boundary of the muon beam line.
 The muon beam simulation is then repeated multiple times using the particles that left the production target section as an input and changing the initial random seed for each restart.
-This technique was used in the most recent large scale mass production twice -- once at the production target section and again at the entrance to the detector solenoid region -- restarting the simulation five times for each section, so that for each initial proton on target, 25 times this number of events were tracked through the detector solenoid.
+This technique was used in the most recent large scale mass production twice---once at the production target section and again at the entrance to the detector solenoid region---restarting the simulation five times for each section, so that for each initial proton on target, 25 times this number of events were tracked through the detector solenoid.
 
 Both of these resampling techniques must be handled with care since this can produce correlations between the events produced from resampled inputs.
 Reconstruction methods often employ machine learning techniques which are particularly sensitive to correlations within a dataset.
