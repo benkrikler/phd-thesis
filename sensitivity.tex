@@ -74,13 +74,13 @@ To study signal acceptance then, a realistic muon stopping distribution was firs
 From this one can see how the initially isotropically directed electrons are mirrored back to head downstream towards the detector.
 \Fig{sense:accept:flux} is then a projection of the above plot normalised to the number of primary signal electrons, and as such gives the survival probability for electrons as a function of beamline distance.
 
-Based on this and a second analysis that uses the hits in the Straw Tracker directly, the geometric acceptance of the beamline and Straw Tracker is found to be 22.3\%.
+Based on this and a second analysis that uses the hits in the Straw Tracker directly, the geometric acceptance of the beamline and Straw Tracker is found to be \VarAcceptanceGeom.
 This should be compared to the value expected with the analytic collimator approach from \sect{optim:BeamAndDIOBlocker} suggesting that such an approach is adequate for this sort of study.
 
 \subsection{Timing Window Efficiency}
-\FigSensTiming
 A time gated detector window is used as a way to reduce the background rate. 
 Whether this is implemented in the trigger, offline in the analysis, or at different levels in both of these is yet to be determined, be the impact on signal efficiency will likely be the same.
+\FigSensTiming
 
 \Fig{sense:time:signal} shows the arrival time of signal electrons \CHECK{Add the muon stopping time, and beam flash timing to this plot?}.
 A subtlety of the gated time window is that since the signal lifetime is large compared to the pulse separation of 1.17~$\mu$s, a signal electron has a reasonable chance of arriving in detector windows later than the first one.
@@ -90,15 +90,15 @@ This would be the case at the very end of the window that ends at 1200~ns given 
 
 One must also consider the timing of background processes to pick a valid time window.
 Motivated primarily by the pion radiative capture background (which will be discussed in completion in section \sect{bg:rpc}, the time window of 600 to 1200~ns is selected.
-The signal efficiency of this timing window is 0.53\%.
+The signal efficiency of this timing window is \VarAcceptanceTime.
 
 \FigSensMomTransfer
 \subsection{Momentum Cut Efficiency}
 \sectlabel{sense:momentum}
-\FigSensMomSpectra
 Between production in the stopping target and detection at the StrECAL, electrons lose energy by scattering, brehmstrahlung and ionisation of material in the electron's path, including the stopping target itself and the detector.
 \Fig{sense:momTransfer} shows the momentum transfer function for electrons coming from the target and reaching the detector.
 Each bin represents the probability that an electron is observed at a particular momentum given an initial momentum.
+\FigSensMomSpectra
 
 Crucial for signal sensitivity is how this energy loss effects signal electrons compared to \ac{DIO} electrons.
 \Fig{sense:spectra:ELoss} shows the impact this energy loss has close to the signal energy, where it is clear that a low-energy tail appears to what is intrinsically a monoenergetic signal.
@@ -114,8 +114,8 @@ Elaborate analysis techniques might then count the number of signal events by fi
 For the purpose of developing a baseline sensitivity estimate however, we envisage instead a simple analysis procedure which puts a single cut on observed electron energy.
 In that procedure one would tune the cut to maximise the signal to background separation, as demonstrated by \fig{sense:integral} where the cut value is increased and the number of electrons passing above that cut are integrated.
 Also shown is the function of signal divided by the square root of signal plus background, an indicator of the relative signal to background fluctuations one can expect and a function which peaks at around 103.68~MeV/c.
-Since this value is only optimal for the demonstration signal conversion of $R=\sci{3}{-16}$ and to bring the \ac{DIO} rate down further (see \sect{bg:dio}), a cut of 103.9~MeV/c is selected.
-At this value the signal efficiency of the cut is 77.9\%.
+Since this value is only optimal for the demonstration signal conversion of $R=\sci{3}{-16}$ and to bring the \ac{DIO} rate down further (see \sect{bg:dio}), a cut of \VarMomThreshold is selected.
+At this value the signal efficiency of the momentum cut is \VarAcceptanceMom.
 It should be noted though that whilst changing the cut value leaves the signal efficiency relatively unchanged, the DIO rate varies dramatically: a shift of the threshold up or down by 0.1~MeV/c changes the signal acceptance by about 1.5 percentage points, but changes the DIO rate by a factor of 2.
 
 \subsection{Total Signal Acceptance}
