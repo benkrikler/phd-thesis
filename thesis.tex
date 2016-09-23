@@ -1,5 +1,6 @@
 %\includeonly{appendix-stopTgtImprovements}
 %\includeonly{summary}
+%\includeonly{optimisation,simulationConfigurations}
 %\includeonly{sensitivity,backgrounds}
 %\includeonly{software}
 %\includeonly{theory,mueconv,detector}
@@ -120,16 +121,24 @@ pdfauthor = {\textcopyright\ Ben Krikler},
   %% Actually, more semantic chapter filenames are better, like "chap-bgtheory.tex"
 
 \include{theory}
+\acresetall
 \include{mueconv}
+\acresetall
 \include{detector}
+\acresetall
 \include{software}
+\acresetall
 %\include{muon-beam}
 %\include{pile-up}
 %\include{alcap}
 \include{optimisation}
+\acresetall
 \include{sensitivity}
+\acresetall
 \include{backgrounds}
+\acresetall
 \include{summary}
+\acresetall
 
   %% To ignore a specific chapter while working on another,
   %% making the build faster, comment it out like this:
@@ -148,7 +157,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 %% bibliography, tables of figures etc., index...)
 \begin{backmatter}
   %\input{backmatter}
-\chapter{List of Simulation Configurations}
+\include{simulationConfigurations}
 \chapter{List of Acronyms}
 \input{library/acronyms.tex}
 \end{backmatter}
