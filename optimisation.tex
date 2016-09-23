@@ -17,11 +17,11 @@
 %## DIO blockers on spectrometer
 %\end{easylist}
 The last study into the sensitivity of \COMET \phaseII was performed in 2009~\cite{CDRphase2}, before the staged approach and \phaseI design had even been considered.
-That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running with a total expected background count rate of fewer than 0.34 events over the entire run period.
+That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running, with a total expected background count rate of fewer than 0.34 events over the entire run period.
 Since then, the collaboration's focus has shifted to design and R\&D for \phaseI and no further studies have been made of the \phaseII design.
 
 The purpose of this chapter is to make use of the updates in the fieldmap calculation, the geometry handling, and physics modelling to revisit the design of \phaseII and demonstrate that it can do at least as well as the previous 2009 design.
-In addition to updates in the simulation some aspects of the actual design have been refined and fixed alongside \phaseI preparation such as the experiment hall and the coils and cold-mass of the first stages of the muon beamline.
+In addition to updates in the simulation, some aspects of the actual design have been refined and fixed alongside \phaseI preparation, such as the experiment hall and the coils and cold-mass of the first stages of the muon beamline.
 The aspects of the experiment that remain open for optimisation are shown in \tab{optimisation:possible-parameters}.
 
 As an initial configuration, much of the design from the 2009 study will be used, with updates included for the areas of the experiment that have since been refined by the \phaseI design.
@@ -52,20 +52,25 @@ As an initial configuration, much of the design from the 2009 study will be used
 %### Maximise reflection of signal electrons from upstream by tuning target position
 %## Detector optimisation
 %\end{easylist}
-
-Some 32 parameters are listed in \tab{optimisation:possible-parameters} and yet this number alone does not describe the full challenge of optimising the \phaseII design since many of these parameters will be correlated.
-For example, it would seem natural for correlations to exist between the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
+To perform a comprehensive optimisation of \phaseII, there are many parameters to be changed, corresponding to the shapes, positions, field strengths and so on of the different regions along the beamline.
+\Tab{optimisation:possible-parameters} lists some 32 parameters, each one of which could be studied.
+And yet, this number alone does not describe the full challenge of optimising the \phaseII design, since many of these parameters will correlate to one another.
+For example, a correlation likely exists between the position and shapes of the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
 Other less intuitive correlations might also exist and a complete optimisation should be able to include the impact of these as well.
 
-A complete optimisation study then can be considered a scan through a parameter space with at least 32 dimensions.
+A full optimisation study then would involve a scan through a parameter space with at least 32 dimensions.
 A brute force search of such a space would be nightmarishly slow and require an enormous amount of computing power.
 Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
-In the meantime however I am forced to use the technique of 'physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
+In the meantime, however, we make use of the technique known as `physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
 %This should be sufficient to establish a reasoned baseline geometry, whilst allowing for future work to refine the design further.
-
 The goal of this chapter therefore is not only to optimise the experiment but also to evaluate the correlations.
-Ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
-The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can improve.
+
+This challenge is further complicated because it is not just the signal sensitivity that must be maximised, but the background rate that must be kept low.
+When this work began, no start-to-finish simulation existed to estimate the signal and background rates.
+As such, this study will progress by focussing on optimising the signal acceptance in the first instance, and then move to background estimation described in chapter~\sect{bagrounds}.
+
+%Ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
+The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can iterate and improve.
 
 %\section{Optimisation Goals}
 %\begin{easylist}
@@ -77,104 +82,50 @@ The outputs of this optimisation should not be considered as final but should in
 \section{Production Target Optimisation}
 In the \phaseII \ac{CDR}, the production target is given as being 16~cm in
 length and 4~mm in radius~\cite{CDRphase2}.  Since then, there have been changes to
-the magnetic field in this region, as well as the lengths and locations of
+the magnetic field in this region as well as the lengths and locations of
 solenoids, shielding and beam-pipe, and the proton beam.  Previous studies have
 looked at comparing the tungsten target proposed for \phaseII to other
 materials~\cite{AEdmondsThesis}, and also drawn a comparison between
 MARS~\cite{MARS1995}, Geant4~\cite{Geant42003} and the limited data available.
 
-The goal in this study is to optimise the production target with the
-up-to-date configurations.  This study aims to maximise the total muon and pion
+\subsection{Production Target Simulations} 
+The goal of this study is to maximise the total muon and pion
 yield below 80~MeV at the entrance to the Torus1 bent solenoid, by varying the
 radius and length of the production target.
+Whilst it is really the rate that negative muons stop in the Stopping Target that must be optimised, 
+since it is known that muons above about 40 to 50~MeV/c will not stop, and since the bent transport solenoids themselves need optimising
+we assume here that by maximising the number of muons and pions below 80~MeV/c will also maximise the stopping rate.
+In addition this had the advantage of increasing the speed of the simulation.
+The production target is one of the more computationally intensive aspects
+of the experiment, given the relatively high energy protons and hadronic nature of their interactions with the target, which together result in a large number of secondaries.
 
-%\begin{easylist}
-%# Some studies in the past (Andy's thesis) have compared Tungsten with Graphite and optimised Phase-I target
-%# Geometry in CDR was 16~cm length and 4~mm radius
-%# Proton beam, capture solenoids and radiation shielding has changed since then, so re-optimisation of the production target was needed
-%\end{easylist}
-
-\subsection{Configuration} 
-%\icedustDescription{one}{tow}
-%begin{easylist}
-% Configuration
-%## Only using Geant4 in ICEDUST
-%# ICEDUST description: 
-%## \icedustDescription{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}
-%# Production target:
-%## Material: Tungsten
-%## Back of target fixed 8~cm behind nominal centre (intersection of Proton beam axis and muon beam-line axis)
-% Proton beam configuration
-%## Uncertainty over beam profile makes this exercise difficult
-%# Treat incoming beam as a pencil beam which is not realistic, but reasonable for this study \CHECK{Is it? Need to quantify this}
-%# Use proton beam parameters from TDR2014:
-%## Double Gaussian with horizontal spread of 5.8 mm and vertical spread of 2.9 mm.
-%## Energy distribution also Gaussian with mean kinetic energy 8.01 GeV and 0.135~MeV spread in sigma.
-%## The beam was fed in 1~cm upstream of target front face, which is the largest cause for errors in this optimisation study.
-%end{easylist}
-
-\Tab{optimisation:ProdTgtSec:configuration} gives the key parameters for the
-beam input and other aspects of this simulation.  The location and orientation
-of the target were held fixed, since the axis of the proton beamline is fixed to intercept the muon beam axis
+The production target is formed from a solid cylinder of tungsten.
+To find the optimal target geometry the radius and lengths were both varied individually, and then a combined scan performed where the length was held at the observed optimum. 
+The location and orientation of the target were held fixed, since the axis of the proton beamline is fixed to intercept the muon beam axis
 at a given point.  Once a more realistic proton beam becomes available, the location and direction of the production target
-would also benefit from optimisation however.  During the scan over
+would also benefit from optimisation, however.  During the scan over
 length, the back face of the target was kept 8~cm away from the muon beam since
-the radiation shielding has previously been optimised, and since beyond this
-the magnetic field will no longer be able to capture the pions and muons
-produced.
+the radiation shielding has previously been optimised.
+%, and beyond this
+%point the magnetic field will no longer be able to capture the pions and muons
+%produced.
 
-It must be noted that at this point in time there is an appreciable
-uncertainty in the proton beam profile and position.  In particular, whilst the
-upstream proton beamline has been delivered, the effect of the magnetic
-field and necessary dipole and quadrupole magnets is still being studied by
-the proton beamline group.  The beam profile is given in the \phaseI \ac{TDR}
-as having a Gaussian position profile and energy distribution~\cite{TDR2016}, although no divergence or
-location is specified.  The effect of the proton beam distribution on the overall
-sensitivity shall therefore have to be considered in future studies.
+Primary protons were generated according to the description in the 2014 \phaseI TDR~\cite{TDR2014}.
+This provides a double Gaussian position profile as well as the spread in momenta.
+It does not discuss any dispersion or divergence in the beam, however.
+The proton beam is currently under study, which is why the description at this stage is fairly simplistic.
+The impact of a more realistic proton beam description will need to be studied in future work.
 
-Protons in the simulation originated from a plane (distributed as a two dimensional Gaussian
-across this surface) but since there is some scope to tune the proton
+Protons in the simulation originated from a plane but, since there is some scope to tune the proton
 beam's position, the input particle plane was moved to remain 1~cm away from
 the front surface of the target.  Since the aim is to maximise the muon and
 pion yield by varying only the length and radius, shifting the proton beam
 input plane in this way removes any variation of target acceptance due to
 divergences of the proton beam in the field before the target.
 
-\begin{table}[t]
-\centering
-\begin{tabular}{lp{0.7\textwidth}}
-	\hline
-	\multicolumn{2}{l}{\bf Proton Beam}\\
-	Horizontal spread, $\sigma_x$ & 5.8 mm \\
-	Vertical spread, $\sigma_y$ & 2.9 mm \\
-	Mean energy, $\mu_E$ & 8.01 GeV \\
-	Energy spread, $\sigma_E$ & 0.135 MeV \\
-	\hline
-	\multicolumn{2}{l}{\bf Target}\\
-	Material & Tungsten  \\
-	Orientation & 10\degree between target's principal axis and the muon beam axis.    \\
-	Location & Back face fixed 8~cm away from muon beam axis.  \\
-	Length & 16~cm in CDR. Varied in steps of 4~cm from 4 to 32~cm.\\
-	Radius & 4~mm in CDR. Varied from 2 to 10~cm in steps of 2~cm and from 10 to 30~cm in steps of 4~cm.  \\
-	\hline
-	\multicolumn{2}{l}{\bf Software configuration}\\
-	Packages & \ttfamily{heads/1512w51_develop(3a0ee59)__3_UNCOMMITTED__}  \\
-	Externals & \ttfamily{heads/Patch_Geant4-G4MultiLevelLocator(11fc8f0)}  \\
-	Fieldmap & 160104 \CHECK{} \\
-	\hline
-	\multicolumn{2}{l}{\bf Sample Sizes}\\
-	Length scan &  \sci{3}{5} \ac{POT} (30 runs of \sci{1}{4}) \\
-	Radius scan & \sci{4.9}{5} \ac{POT} (49 runs of \sci{1}{4})  \\
-	Final scan &   \\
-\hline
-\end{tabular}
-	\caption{\CHECK{Move this table into an appendix listing the simulation configurations for every section described here.}Key parameters in the configuration of the Production Target optimisation.}
-\tablabel{optimisation:ProdTgtSec:configuration}
-\end{table}
-
 \FigOptimProdTgtLength
 \subsection{Length Scan}
-Different length targets were simulated with \sci{3}{5}~POT per length.
+Different length targets were simulated with \num{3e5}~\ac{POT} per length.
 The target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
 
 \Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths, which are 
@@ -581,7 +532,7 @@ The complete set of optimised parameters is shown in \tab{optim:AllParameters}.
 \begin{table}[btp]
 	\centering
 	%\begin{tabular}{r|lp{6cm}}
-	\begin{tabular}{llm{4cm}}
+		\begin{tabular}{lL{0.2\textwidth}L{0.35\textwidth}}
 		Parameter & Value & Comments \\
 		\hline
 		\hline
@@ -594,7 +545,7 @@ The complete set of optimised parameters is shown in \tab{optim:AllParameters}.
 		Torus1 Entrance Collimator Height& 14~cm above beam axis & From top of beam pipe downwards  \\
 		Torus2 Exit Collimator Height& 12~cm below beam axis & From bottom of beam pipe upwards\\
 		\hline
-		Stopping Target Location& 0~cm& Unchanged from CDR value \\
+		Stopping Target Shift& 0~cm& Unchanged from CDR value (2.8~m from centre of final coil in Torus2 to front of target )  \\
 		\hline
 		Electron Spectrometer Dipole & -0.18~T& Negative compared to Torus1 and Torus2 dipole fields \\
 		\hline
