@@ -1,50 +1,111 @@
 \chapter{Summary}
-\begin{easylist}
-# Chapter 1
-## The muon has played a historic role in developing the Standard Model of particle physics
-## Outstanding questions around the Standard Model, both experimental and theoretical, motivate searches for Charged Lepton Flavour
-## CLFV is a very sensitive probe for New Physics that can solve these issues
-# Chapter 2
-## Searches for CLFV using intense muon beams are particularly sensitive due to the high intensity beams available nowadays 
-## There is a strong complementarity and interplay between the various searches from both theoretical and experimental perspectives
-## Mu-e conversion is sensitive to all models, but particularly to those that require massive exchange particles, or direct involvement of quarks or gluons
-## The Coherent nature of current \mueconv searches makes it very experimentally attractive since the signal requires only a single monoenergetic electron 
-# Chapter 3
-## The current limit on \mueconv was set in 2006 by \sindrumII to be \senseSindrum
-## The COMET experiment is designed to produce around four orders of magnitude improvement on this limit, at \sensePII
-## It will reach this with a staged approach, achieving two orders of magnitude better during \phaseI, at \sensePI
-## The principal means by which COMET makes these improvements are the use of:
-### a high power 8~GeV primary proton beam to maximise the pion yield and suppress antiproton production;
-### a 5~T superconducting solenoidal field designed to maximise the capture of backwards produced pion from the production target;
-### a long solenoidal muon beam transport section that is bent and has a dipole field and collimators included, which produce a high purity muon beam;
-### a pulsed muon beam with a medium-Z target material, giving a longer muon lifetime than previous experiments, allowing for timing information to suppress most beam-related backgrounds
-### a large geometric acceptance detector, improved by magnetic mirroring at the stopping target in \phaseII, which has a low material budget and high granularity to ensure better than 200~keV/c resolution
-## Performing \phaseI first allows these element to be tested with lower intensity beams and before committing to the full \phaseII design
-# Chapter 4
-## If any observation is to be confirmed as signal, or to achieve the most stringent limits in the event of a null-observation, the background rate must be kept as low as possible.
-## Being able to predict and evaluate this requires a very accurate, very efficient simulation.
-## In addition, the reconstruction software must be able to achieve the necessary resolution and keep the high-energy tails to an absolute minimum.
-## The integration of all the offline software, including simulation, reconstruction, calibration and analysis, is well underway.
-## The ICEDUST framework is the COMET experiment's offline toolset, which was based on the software of the near-detector for the T2K experiment, ND280.
-## Three major Monte-Carlo productions have been run using this software, which itself is now used collaboration-wide for various studies.
-## All studies presented in this thesis were performed using ICEDUST, including the optimisation studies for \phaseII.
-# Chapter 5
-## Given the effort and focus on \phaseI,  \phaseII has received less attention, with the last update on performance given in the 2009 CDR.
-## Using the now mature ICEDUST software, revisiting the \phaseII design was prudent in order to validate and improve the past estimates and help inform decisions for \phaseI.
-## A comprehensive set of optimisations was performed, covering the production target, muon beam transport, stopping target region, and electron spectrometer and detector.
-## These optimisations were all summarised in \tab{optim:AllParameters}.
-# Chapter 6
-## Based on these optimisations, the predicted single signal-event sensitivity per \num{2e7} seconds of beam time is estimated to be \VarPredictedSES.
-## This is a factor XXX improvement over the CDR prediction as summarised in \tab{sense:comparisons}.
-# Chapter 7
-## It is important also as well to understand the backgrounds that would occur with the updated design and improved simulation.
-## Although at this stage many of these results are statistically limited and
-    thus the errors should be taken as large~\CHECK{Can I be more quantitative?
-    Assume error of 100\% or more?}, the total background rate is predicted to be XXX.
-## This includes intrinsic backgrounds from DIO, and RMC, prompt and delayed beam related processes like high-energy particles in the beam, RPC and antiproton production, and cosmic events
-## Not included is the rate of background events caused by neutrons produced at the production target, and issues related to pile-up and particle miss-identification.
-# Future work 
-## This thesis, therefore, presents a baseline design and a set of Sensitivity and Background Estimates for \phaseII of the COMET Experiment.
-## There are many aspects that could be studied further, or improvements that could be made to the work presented in this thesis, which have been listed at the end of the relevant chapters.
-## Work to revisit the stopping target region, for example, has already shown that the sensitivity could be further improved by a factor of about 2.5 and is summarised in appendix~\sect{appendix:stopTgtImprove}.
-\end{easylist}
+\chapterquote{Phew}{The author and his readers, upon reaching this point in the thesis}
+%\chapterquote{That's all folks!}{Bugs Bunny and Colleagues}
+
+Ever since its discovery, the muon has been instrumental in the development of particle physics' Standard Model.
+By studying the muon's decay, the concept of Lepton Flavour and its conservation were introduced into this theory.
+And yet many outstanding questions---both theoretical and experimental---suggest that \ac{CLFV} should occur.
+
+Searches for \ac{CLFV} are a particularly sensitive probe to physics Beyond-the-Standard Model.
+Of these, it is the channels involving muons that can achieve the greatest precision, and an active field of low-energy, high-intensity neutrinoless-muon decay searches is being developed around the world.
+The decays of \muegamma, \muThreeE, and \muec all have dedicated searches being prepared in Switzerland, the USA, and Japan.
+Taken together, they offer a highly complimentary set of measurements, able to constrain a large variety of models, and with strong discovery potential.
+
+The COMET experiment will search for the last of these three processes.
+COherent Muon to Electron Transitions are the neutrinoless decay of a muon in the presence of the Coulomb potential of a nucleus, which is left unchanged by the reaction.
+The coherent nature of the process increases the sensitivity of the experiment to models compared to the other possible decay modes.
+In addition, the signal is well separated from most background sources: a single monoenergetic electron of 104.97~MeV/c and with a well defined lifetime.
+The current limit on \mueconv was set in 2006 by the \sindrumII experiment with a 90\% C.L.\ of  \senseSindrum.
+
+COMET will improve on this in a staged, first running in \ac{JFY} 2018 and achieving an \ac{ses} of \sensePI---two orders of magnitude better than the current limit.
+\phaseII will then run at the start of the next decade and push the sensitivity a further two orders of magnitude to \sensePII.
+Such improvements are possible thanks to various novel techniques including the use of: 
+ a high power 8~GeV primary proton beam to maximise the pion yield and suppress antiproton production;
+ a 5~T superconducting solenoidal field designed to maximise the capture of backwards produced pion from the production target;
+ a long solenoidal muon beam transport section that is bent and has a dipole field and collimators included, which produce a high purity muon beam;
+ a pulsed muon beam with a medium-Z target material, giving a longer muon lifetime than previous experiments, allowing for timing information to suppress most beam-related backgrounds;
+ a large geometric acceptance detector, improved by magnetic mirroring at the stopping target in \phaseII, which has a low material budget and high granularity to ensure better than 200~keV/c resolution.
+The novelty of these techniques is the main motivation for the staged approach, since it allows the COMET collaboration to refine its understanding of the experiment before fixing the \phaseII design.
+
+If any observation is to be confirmed as signal, or to achieve the most stringent limits in the event of a null-observation, the background rate must be kept as low as possible.
+Given that around $10^{21}$ protons will be used in \phaseII, predicting that such a background rate is achievable requires very efficient and very accurate simulations be available.
+In addition, the reconstruction software must be able to achieve the necessary resolution and keep the high-energy tails to an absolute minimum.
+Integrating both of these into a common software framework is well underway and includes calibration and analysis tools.
+The ICEDUST framework is the COMET experiment's offline toolset, which was based on the software of the near-detector for the T2K experiment, ND280.
+Three major Monte-Carlo productions have been run using this software, which itself is now used collaboration-wide for various studies.
+All studies presented in this thesis were performed using the ICEDUST framework.
+
+Given the effort and focus on \phaseI,  \phaseII has received less attention, with the last update on performance given in the 2009 CDR.
+Using the now mature ICEDUST software, revisiting the \phaseII design has been necessary to validate and improve the past estimates and help inform decisions for \phaseI.
+
+To establish a new baseline for the COMET expriment's \phaseII, a comprehensive set of optimisations were performed.
+These covered the production target, muon beam transport, stopping target region, and electron spectrometer and detector.
+These optimisations were all described in chapter~\sect{phaseII-optimisation}, and summarised in \tab{optim:AllParameters}.
+
+Based on these optimisations, the signal acceptance due to the experiment's geometry, energy loss and momentum resolution, and the signal timing were evaluated.
+From these acceptances, it was shown that \VarPredictedSES would be achievable in \VarRunTime seconds of beam.
+This is 1.3 times better than the \phaseII CDR suggested, as summarised in \tab{sense:comparisons}.
+
+Since it is equally important to understand the backgrounds that would occur with the updated design and improved simulation, 
+the key set of backgrounds were studied and evaluated.
+The total number of predicted background events is \VarTotalBgPhasII, and dominated by cosmic ray events and antiproton production.
+Many of the estimates have significant uncertainties, although the quantification of this uncertainty is left for a future study.
+The uncertainties are partially due to statistical limitations, but also due to uncertainties in the various spectra and rates for secondary particle production.
+This includes the spectra of photons from \acl{RMC} and \acl{RPC}, and the distribution of antiprotons produced by protons at the production target.
+In addition, some uncertainties are due to these aspects of \phaseII not yet being well defined, such as the \ac{CRV} miss-rate, and the StrECAL resolution function.
+
+This thesis, therefore, presents a baseline design and set of sensitivity and background estimates for \phaseII of the COMET Experiment.
+It is written with the expectation that future iterations on the design and predicted rates will reduce both the background rates and their uncertainties, whilst improving the signal efficiency.
+There are many aspects that could be studied further, or improvements that could be made to the work presented in this thesis, which have been listed at the end of the relevant chapters.
+Work to revisit the stopping target region, for example, has already shown that the sensitivity could be further improved by a factor of about 2.5.
+This work is summarised in appendix~\sect{appendix:stopTgtImprove}.
+
+%\begin{easylist}
+%# Chapter 1
+%## The muon has played a historic role in developing the Standard Model of particle physics
+%## Outstanding questions around the Standard Model, both experimental and theoretical, motivate searches for Charged Lepton Flavour
+%## CLFV is a very sensitive probe for New Physics that can solve these issues
+%# Chapter 2
+%## Searches for CLFV using intense muon beams are particularly sensitive due to the high intensity beams available nowadays 
+%## There is a strong complementarity and interplay between the various searches from both theoretical and experimental perspectives
+%## Mu-e conversion is sensitive to all models, but particularly to those that require massive exchange particles, or direct involvement of quarks or gluons
+%## The Coherent nature of current \mueconv searches makes it very experimentally attractive since the signal requires only a single monoenergetic electron 
+%# Chapter 3
+%## The current limit on \mueconv was set in 2006 by \sindrumII to be \senseSindrum
+%## The COMET experiment is designed to produce around four orders of magnitude improvement on this limit, at \sensePII
+%## It will reach this with a staged approach, achieving two orders of magnitude better during \phaseI, at \sensePI
+%## The principal means by which COMET makes these improvements are the use of:
+%### a high power 8~GeV primary proton beam to maximise the pion yield and suppress antiproton production;
+%### a 5~T superconducting solenoidal field designed to maximise the capture of backwards produced pion from the production target;
+%### a long solenoidal muon beam transport section that is bent and has a dipole field and collimators included, which produce a high purity muon beam;
+%### a pulsed muon beam with a medium-Z target material, giving a longer muon lifetime than previous experiments, allowing for timing information to suppress most beam-related backgrounds
+%### a large geometric acceptance detector, improved by magnetic mirroring at the stopping target in \phaseII, which has a low material budget and high granularity to ensure better than 200~keV/c resolution
+%## Performing \phaseI first allows these element to be tested with lower intensity beams and before committing to the full \phaseII design
+%# Chapter 4
+%## If any observation is to be confirmed as signal, or to achieve the most stringent limits in the event of a null-observation, the background rate must be kept as low as possible.
+%## Being able to predict and evaluate this requires a very accurate, very efficient simulation.
+%## In addition, the reconstruction software must be able to achieve the necessary resolution and keep the high-energy tails to an absolute minimum.
+%## The integration of all the offline software, including simulation, reconstruction, calibration and analysis, is well underway.
+%## The ICEDUST framework is the COMET experiment's offline toolset, which was based on the software of the near-detector for the T2K experiment, ND280.
+%## Three major Monte-Carlo productions have been run using this software, which itself is now used collaboration-wide for various studies.
+%## All studies presented in this thesis were performed using ICEDUST, including the optimisation studies for \phaseII.
+%# Chapter 5
+%## Given the effort and focus on \phaseI,  \phaseII has received less attention, with the last update on performance given in the 2009 CDR.
+%## Using the now mature ICEDUST software, revisiting the \phaseII design was prudent in order to validate and improve the past estimates and help inform decisions for \phaseI.
+%## A comprehensive set of optimisations was performed, covering the production target, muon beam transport, stopping target region, and electron spectrometer and detector.
+%## These optimisations were all summarised in \tab{optim:AllParameters}.
+%# Chapter 6
+%## Based on these optimisations, the predicted single signal-event sensitivity per \num{2e7} seconds of beam time is estimated to be \VarPredictedSES.
+%## This is a factor XXX improvement over the CDR prediction as summarised in \tab{sense:comparisons}.
+%# Chapter 7
+%## It is important also as well to understand the backgrounds that would occur with the updated design and improved simulation.
+%## Although at this stage many of these results are statistically limited and
+%    thus the errors should be taken as large~\CHECK{Can I be more quantitative?
+%    Assume error of 100\% or more?}, the total background rate is predicted to be XXX.
+%## This includes intrinsic backgrounds from DIO, and RMC, prompt and delayed beam related processes like high-energy particles in the beam, RPC and antiproton production, and cosmic events
+%## Not included is the rate of background events caused by neutrons produced at the production target, and issues related to pile-up and particle miss-identification.
+%# Future work 
+%## This thesis, therefore, presents a baseline design and a set of Sensitivity and Background Estimates for \phaseII of the COMET Experiment.
+%## There are many aspects that could be studied further, or improvements that could be made to the work presented in this thesis, which have been listed at the end of the relevant chapters.
+%## Work to revisit the stopping target region, for example, has already shown that the sensitivity could be further improved by a factor of about 2.5 and is summarised in appendix~\sect{appendix:stopTgtImprove}.
+%\end{easylist}
