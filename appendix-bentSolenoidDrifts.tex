@@ -1,28 +1,45 @@
 \chapter{Drifts in a Bent Solenoid}
 \label{sec:appendix:bent-solenoid}
-The Lorentz force:
-\begin{equation}
-\frac{d\vec{p}}{dt}=\frac{q}{m}\vec{p}\times\vec{B}
-\end{equation}
+Solenoidal fields are a simple and reliable way to produce uniform and rectilinear magnetic fields.
+The dynamics of a charged particle's motion through a straight solenoid are, therefore, straightforward to understand.
+
+In a bent solenoid, however, motion of charged particles is considerably more complicated.
+Given the use and importance of bent solenoids for the COMET experiment, this appendix derives the equations of motion for charged particles in a bent solenoid.
 
 \section{Uniform Solenoidal Field}
-B field is uniform and parallel to axis of solenoid.
-Define the Larmor frequency, $\omega$, and radius, $a$, as:
+In a standard solenoid the magnetic field is uniform and parallel to axis of solenoid.
+The Lorentz force for charged particle motion:
+\begin{equation}
+\frac{d\vec{p}}{dt}=q\vec{v}\times\vec{B},
+\end{equation}
+where $\vec{p}$ and $\vec{B}$ are the momentum and magnetic field vectors, and $q$ and $m$ are the electric charge and mass of the particle.
+Since it is the cross product between the momentum and magnetic field which determines the magnitude and direction of the resulting force, in a uniform magnetic field only the momentum transverse to the magnetic field is affected.
+Momentum parallel to the field lines is unchanged and, since in the transverse plane one observes circular motion, the net result is a trajectory that spirals around the field line.
+The pitch angle of this helix, $\theta$, is determined by the ratio between the longitudinal and transverse momenta: $\tan(\theta)=P_\textrm{T}/P_\textrm_{L}$, where the `L' and `T' subscripts indicate longitudinal and transverse components of the momentum, respectively.
+
+The frequency, $\omega$, and radius, $a$, with which the particle rotates about the field lines are defined by:
 \begin{align}
-a=&\frac{\gamma m \vec{v}\times\vec{B}}{qB^2} = \frac{p_\mathrm{T}}{qB} \\
-\omega=&\frac{qB}{m}
+a=&\frac{\vec{p}\times\vec{B}}{qB^2} = \frac{p_\mathrm{T}}{qB} \\
+\vec{\omega}=&\frac{q\vec{B}}{\gamma{}m}
 \end{align}
+where $\gamma$ is the Lorentz boost factor.
 
 \section{Field in a Bent Solenoid}
-Producing a cylindrical solenoid  channel can be imagined as directly bending that of a normal uniform and linear one.
+\begin{figure}[t]
+\includegraphics[width=0.8\textwidth]{figs/appendix/BentSolenoid_GradBField2.pdf}
+\caption{\figlabel{app:bentSol:sketch}
+The magnetic field in the bent solenoid has a gradient parallel to the large radius of the torus ($r$).
+The field reduces inversely proportionally to the transverse distance from the centre of the torus.
+These properties can be deduced by Ampere's law, using a circuit as illustrated by the red line.
+}
+\end{figure}
+
+Producing a cylindrical solenoid  channel can be imagined as directly bending that of a straight solenoid.
 By symmetry it can be seen that any gradient introduced to the magnetic field can only be radially, in the plane of the bending.
-Further, by considering Ampere's law with a current loop in the plane of bending formed by two radial straight lines (with length $|r-R|<L$, where $R$ and $L$ are the bending and aperture radii of the solenoid channel) and an arc,
-it can be seen that the variation in the field is given by:
+Further, by considering Ampere's law with a current loop as illustrated by \fig{app:bentSol:sketch}, it can be seen that the variation in the field is given by:
 \begin{equation}
 \frac{\vec{\nabla B}}{B}=\frac{1}{r}\hat{r}
 \end{equation}
-%\CHECK{is this accurate?}
-\CHECK{Sketch or figure?}
 
 \section{Drift Calculation}
 There are two sources of drift in a bent solenoid: the gradient in the field, and the centrifugal force arising from the circular coordinate system needed to describe the field lines.
@@ -31,7 +48,12 @@ Similarly, a system with a uniform field but field lines that follow circular pa
 
 \subsection{Gradient Drift}
 ``Grad-B'' drift is well described in text books, but in the interest of completeness a short derivation shall be given here.
-The drift arising due to the gradient in the field can be treated as a perturbation of the motion of the particle in a uniform solenoidal field.
+If one projects the motion of the particle to the transverse plane---considering therefore only the transverse momentum---one can achieve an intuitive understanding of this drift.
+On one side of this projection the field strength will be larger, and thus the gyroradius will be smaller.
+On the other side, where the field is weaker, the gyroradius will be larger so that with every full turn the particle moves upwards, perpendicularly to the gradient of the field.
+
+To put this more quantitatively, we treat
+the drift arising due to the gradient in the field as a perturbation of the motion of the particle in a uniform solenoidal field, on the basis that the radius of gyration is small compared to the variation in the field.
 The total velocity $\vec{V}$, is given by:
 \begin{equation}
 \vec{V}=\vec{v}+\vec{v_g},
@@ -39,12 +61,13 @@ The total velocity $\vec{V}$, is given by:
 \end{equation}
 where $\vec{v}$ is the unperturbed velocity of the particle in the transverse plane, and $\vec{v_g}$ is the velocity arising due to the gradient in the field.
 
-Treating the field as a Taylor expansion:
+Treating the field as a Taylor expansion about the centre-line of the unperturbed helical trajectory:
 \begin{equation}
 \vec{B}(\vec{r})=\vec{B_0}+\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}+\ldots
 \eqlabel{B-field-taylor}
 \end{equation}
-and substituting equations \eq{velocity-grad} and \eq{B-field-taylor} into the Lorentz force, gives:
+where $\vec{r}$ is the displacement from the centre of the unperturbed helix.
+Substituting equations \eq{velocity-grad} and \eq{B-field-taylor} into the Lorentz force, gives:
 \begin{align}
 m\frac{d(\vec{v}+\vec{v_g})}{dt}=&q(\vec{v}+\vec{v_g})\times\left(\vec{B_0}+\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right) \\
 %=&q\vec{v}\times\vec{B_0} \\
@@ -54,11 +77,26 @@ so that to first order, the perturbing velocity is given by:
 \begin{equation}
 \frac{d\vec{v_g}}{dt}=\frac{q}{m}\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}+\vec{v_g}\times\vec{B_0}\right)
 \end{equation}
-Since we are only interested in steady-state solutions where $dot{v_{g}}$ is close to zero, the above equation gives:
+Since we are only interested in steady-state solutions where $\dot{v_{g}}$ is close to zero, the above equation gives:
 \begin{equation}
-\vec{v_g}=\frac{q}{m}\frac{\vec{B_0}\times\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right)}{B^2_0}
+\vec{v_g}=\frac{\vec{B_0}\times\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right)}{B^2_0}
+\eqlabel{app:bentSol:gradB:fullVector}
 \end{equation}
-which by considering the form 	after time averaging becomes:
+
+For simplicity, we let the gradient in the field be parallel to $x$, and set the magnetic field parallel to $z$, remembering that for grad-B drift we only need to work in the transverse plane.
+Thus we rewrite 
+$\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}$ as $x(\partial B/\partial x) \vec{\hat{z}}$.
+Since $\vec{v}$ is the unperturbed velocity, we can write it as:
 \begin{equation}
-\langle\vec{v_g}\rangle_t=\frac{\vec{B_0}\times\left(\vec{v}\times\left.(\vec{r}\cdot\nabla)\right|_{\vec{r}=0}\vec{B}\right)}{B^2_0}
+\vec{v}=a\left(-\sin(\omega t)\vec{\hat{x}}+\cos(\omega t)\vec{\hat{y}}\right).
 \end{equation}
+Similarly, since the horizontal projection of the particle's path will be identical to the unperturbed path, we can set $x=\cos(\omega t)$.
+By inserting all of these into equation~\eq{app:bentSol:gradB:fullVector} we obtain:
+\begin{align}
+\vec{v_g}=&v_\textrm{T}
+\begin{pmatrix} -\sin(\omega t)\\ \cos(\omega t)\\ 0 \end{pmatrix}
+\times a
+\begin{pmatrix}0\\0\\\cos(\omega t)\end{pmatrix}\frac{\partial B}{\partial x}\\
+=&V_\textrm{T}\begin{pmatrix}0\\0\\\cos(\omega t)\end{pmatrix}\frac{\partial B}{\partial x}\\
+\end{align}
+
