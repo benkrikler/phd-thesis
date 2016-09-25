@@ -47,7 +47,7 @@ Finally, these bunch events are processed through the detector response simulati
 %}
 \caption{
 How parameters are shared amongst different components.
-The Controller of component 1.a in red has access to the parameters managed by Controllers of components contained in the larger violet region.
+Parameters of component 1.a (in red) can access the value of parameters owned by components contained in the larger violet region.
 }
 \figlabel{software:componentHeirarchy}
 \end{figure}
@@ -152,7 +152,7 @@ Note that the G4Beamline calculation does not include the detector solenoid.
 }
 
 \newcommand{\FigSoftwareFieldMapComparison}{
-\begin{figure}[b]
+\begin{figure}[t]
 \centering
 %\fbox{
 \includegraphics[width=0.9\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_ratio_opera-G4Beamline.png}

@@ -8,7 +8,8 @@ Developing this framework has been a large part of my work over the last four ye
 Work to produce a common, standardised software framework for COMET began when funding was awarded for \phaseI.
 With some four years to go before the switch on, it was clear that the support structure to handle and analyse the data needed to be in place soon.
 Given the scale of the project and the available resources, the decision was taken to base the COMET offline framework on an existing one, which would reduce the amount of work needed and improve the reliability of the software since it would have been tested elsewhere.
-A requirements document~\cite{ID:requirements} was drawn up with a list of items that the software should meet and a survey of existing experiments undertaken to build a list of candidate frameworks.
+A requirements document was drawn up~\cite{ID:requirements} with a list of functionality that the software should provide.
+A survey of existing experiments was then undertaken to build a list of candidate frameworks.
 The list contained:
 \begin{description}
 \item [art] A framework being developed primarily at Fermilab~\cite{art:2011} which is also being used by Mu2e amongst other experiments.
@@ -23,7 +24,7 @@ houses both the ND280 and INGRID detectors, or the software used to analyse and
 simulate the T2K near-detectors.  For the purposes of this chapter, unless
 specified explicitly, the term `ND280' should be taken as referring to the
 software.} 
-since GAUDI and MARLIN would have required to much effort to adapt to the COMET
+since GAUDI and MARLIN would have required too much effort to adapt to the COMET
 requirements; since art is used by Mu2e and keeping the software distinct is
 important for the two experiments to co-exist as cross-checks; and because the
 ND280 software was already known to a large part of the COMET collaboration and
@@ -33,7 +34,7 @@ had been tested on real data at J-PARC.
 \Fig{software:ND280} shows an overview of the ND280 framework, including its package structure and the various interactions between packages.
 
 With the decision to base the COMET experiment on the ND280 framework---and with the selection of the new name: `ICEDUST'---the process of forking the software was begun.
-Since the ND280 framework had evolved somewhat organically a review of the conventions and code names was performed.
+As the ND280 framework had evolved somewhat organically, a review of the coding conventions was performed.
 For example, whilst the ND280 software prefixes all classes with a capital `T', the ICEDUST conventions~\cite{ID:conventions} agreed to swap this to a capital `I' to reduce clashes with ROOT which also uses `T'.
 The package renaming scheme~\cite{ID:ForkingDocs} was developed so that the purpose of a package and its role with the other packages could be more clearly identified.
 
@@ -41,28 +42,28 @@ Whilst fundamental, low-level packages have been left relatively unchanged, high
 Additionally, some aspects of COMET needed considerably more support than had been present in the ND280 software.
 Some of the key changes that have been introduced between ICEDUST and ND280 are:
 \begin{description}
-	\item [Simulation] Although the fundamental data types have not been changed, the simulation has been nearly completely rewritten.
+	\item [Simulation] Although the fundamental data types have not been changed, the simulation has been almost completely rewritten.
 		In particular, support for hadron production codes have been added to model the production target;
 		both the Geant4-based package (renamed to SimG4) and the detector response simulation (renamed as SimDetectorResponse) were given near-total makeovers;
 		a new package (SimHitMerger) for resampling the G4Hits (simulated charge or energy deposits) was added.
 		Custom physics models have been added to SimG4 to improve the modelling of the COMET-specific physics processes.
-	\item [Magnetic Field handling]  whilst the ND280 detector has a fairly straight-forward magnetic field, the COMET experiment has anything but this.  
+	\item [Magnetic Field handling]  Whilst the ND280 detector has a fairly straight-forward magnetic field, the COMET experiment has anything but this.  
 		Accordingly, significant work has been made to replace the way
 		the magnetic field was handled, from essentially a few constants
 		to the ability to use complete fieldmap descriptions made with
 		external field calculation software.
 	\item [Geometry handling] The unusual shape of the COMET experiment, the level of detail needed for background estimations in a high-precision experiment, and the changing nature of a staged experiment meant a more elaborate scheme for handling the geometry was necessary than had existed in ND280.
-	\item [Reconstruction and Calibration packages] As simply renaming of the packages, the interdependence of the calibration and reconstruction packages has been improved.
+	\item [Reconstruction and Calibration packages] The interdependence of the calibration and reconstruction packages has been refined, with the data flow and user interface being better defined and standardised.
 		Additionally, support for track fitting using Genfit2~\cite{genfit-Hoppner:2009af} has been added as well as new track finding algorithms developed.
 \end{description}
 
 In addition to the above changes to the way the software runs, the distribution of the software has changed from using CMT~\cite{cmt} with CVS version control to being based on git with a GitLab~\cite{GitLab} web-based user interface for the official repository.
-The switch to GitLab also brought a `merge-request', which has allowed development of ICEDUST to progress rapidly with only a small number of developers.
+The switch to GitLab also brought a new `merge request' workflow, which has allowed development of ICEDUST to progress rapidly with only a small number of developers.
 Although initially the intention was also to switch the build system from CMT to CMake~\cite{cmake}, this decision has since been reversed due to improvements in CMT.
 
-In the 3 years since the initial work forking ND280 to produce ICEDUST in summer 2013 some 3,200 commits have edited about two million lines of code in the official version of the framework.
+In the 3 years since the summer of 2013 when the initial work to fork ND280 to ICEDUST, some 3,200 commits have edited about two million lines of code in the official version of the framework.
 This has been the work of some 25 collaborators whilst about 15 other users have GitLab accounts and use the software.
-ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events---equivalent to 18,000 \phaseI bunches---in some 100~TB of simulated data.
+ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events---equivalent to 18,000 \phaseI bunches---and producing some 100~TB of simulated data.
 
 \section{Overview of ICEDUST}
 ICEDUST Can Efficiently Do Useful Software Things and stands for the Integrated COMET Experiment Data User Software Toolkit.
@@ -73,7 +74,7 @@ ICEDUST Can Efficiently Do Useful Software Things and stands for the Integrated 
 Inside the framework, nearly all processing is done using a ROOT file-based format known as oaEvent.  
 Files of this type contain header information providing run identification numbers as well as a description of the geometry and magnetic field.  
 The data payload contained in oaEvent files is stored in a ROOT TTree with a single branch containing a single COMET event per entry.
-Each COMET event has a dynamic structure and can have any object which derives from the IDatum base class added to its list of data on an event-by-event basis.
+Each COMET event has a dynamic structure and can contain any number of objects that derive from the IDatum base class.
 
 Data from the detector systems is recorded in MIDAS~\cite{MIDAS} format, which also contains data from the slow control monitors such as temperature sensors and high-voltage power supplies.
 The task of converting the MIDAS files into the oaEvent format is handled by the package oaUnpack, which writes out new, converted files, and oaRawEvent, which can convert the MIDAS files to oaEvent format on the fly.
@@ -81,9 +82,10 @@ The task of converting the MIDAS files into the oaEvent format is handled by the
 Simulated data is also produced in the oaEvent format and involves some 4 to 6 packages being called, described in more depth in section~\sect{COMETSim}.
 
 Once either simulated data has been produced or real data has been converted, calibration routines can then be applied.
-Each sub-detector is capable of pulling constants that were previously generated from a MySQL database and applying these to the detected (or simulated) energy deposits.
+Each sub-detector's routine is capable of pulling previously-generated constants from a MySQL database and applying these to the detected (or simulated) energy deposits.
+
 These calibrated hits are then passed into the reconstruction stage.  
-Here again each sub-detector system is first allowed to handle the data until a full reconstructed event is produced.
+Here each sub-detector system is first allowed to handle the data, which is then passed to a global reconstruction routine until a fully reconstructed event is produced.
 For the tracking detectors this stage typically involves an initial track finding stage, where noise hits are removed and track candidates consisting of a list of hits are collected and, secondly, a track fitting stage where the actual path of the underlying particle is reconstructed and key values like momentum and helical pitch-angle deduced.
 
 Nearly all of the processing of data up to this stage has used the oaEvent format.
@@ -93,9 +95,12 @@ Around all of this there are several utility packages such as the event display,
 
 \section{The COMET Simulation}
 \sectlabel{COMETSim}
-The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
-For COMET's target single-event sensitivity---which is only a measure of the signal efficiency---to translate to a comparable confidence limit if no signal is observed, less than one background events should be expected during the entire run.
-By comparison, some $10^{19}$ and $10^{21}$~protons will impinge the production target in \phaseI and \phaseII respectively, so it is clear that the ability to suppress backgrounds must be demonstrably high.
+During \phaseI and \phaseI some $10^{19}$ and $10^{21}$ protons will strike the production target.
+Of these, fewer than 1 background events should be observed, whilst the signal efficiency should be demonstrably as high as possible.
+%
+%The ability for an experiment to set stringent confidence limits in the event of a null-observation is determined both by the expected signal acceptance (which should be high) and the predicted number of background events (which should be low).
+%For COMET's target single-event sensitivity---which is only a measure of the signal efficiency---to translate to a comparable confidence limit if no signal is observed, less than one background events should be expected during the entire run.
+%By comparison, some $10^{19}$ and $10^{21}$~protons will impinge the production target in \phaseI and \phaseII respectively, so it is clear that the ability to suppress backgrounds must be demonstrably high.
 
 Simulation plays a crucial role in making such a demonstration. 
 Before the experiment is built and operated it allows one to optimise crucial aspects of the geometry and parameters, such as the magnetic field strengths or timing cuts.
@@ -110,17 +115,17 @@ The steps needed to build up the COMET simulation are shown in \fig{software:Sim
 To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005} and Geant4~\cite{Geant42003}.
 The SimG4 package, which is based on Geant4, then takes over the muon beam simulation and tracking of particles to the detectors.
 These energy deposits, referred to as G4Hits, can then be converted to realistic electronic detector-readouts by the SimDetectorResponse package.
-On most occasions, though, the G4Hits are first reshuffled with G4Hits from other Proton-on-target events so that a realistic bunch structure is built up and processed, since it is this structure that the true detector will see.
+On most occasions, though, the G4Hits are first reshuffled with G4Hits from other \acf{POT} events so that a realistic bunch structure is built up and processed, since it is this structure that the true detector will see.
 SimG4 produces one output event for every primary vertex introduced\footnote{This typically means one output event per proton-on-target, but in principle could be something else, such as one output event per signal electron in a dedicated trigger simulation}, %
 whereas SimDetectorResponse needs to produce the same sort of data structure as will be seen in the real experiment, which is one event per proton bunch.
 
 This requires some intermediate step, known as the SimHitMerger, to shuffle the events from SimG4 together and build up realistic bunch events.
-At this point, a degree of resampling is also introduced, since there are virtually no correlations between proton events.
+This is one point where a degree of resampling is introduced, since there are virtually no correlations between proton events.
 Within a SimG4 output event all timing is given with respect to the original primary vertex.  
 Since protons on target are introduced at $t=0$, all G4Hits have their timing given with respect to the proton arriving at the production target.
 In the process of building bunch events, a realistic timing structure for the proton beam is introduced by shifting the time of all hits for a given proton event by a fixed amount, as if the proton had arrived slightly earlier or later.
 
-A bunch event in \phaseI will consist of about 8$\times10^{6}$~\ac{POT} so, without resampling, a simulation of 8$\times10^{8}$~\ac{POT} events could only produce 100 bunches.
+A bunch event in \phaseI will consist of about \num{8e6}~\ac{POT} so, without resampling, a simulation of 8$\times10^{8}$~\ac{POT} events, for example, could only produce 100 bunches.
 Since the proton events are uncorrelated, by picking different proton events and applying different time shifts to each one it is possible, in principle, to build a much larger number of bunch events.
 
 An additional form of resampling can also be used during the Geant4 simulation, by dividing up the experiment into different stages and restarting the simulation multiple times at a later stage, reusing the output from the earlier section.
@@ -137,7 +142,7 @@ During the change from ND280 to ICEDUST, a new geometry handling scheme was intr
 This change was motivated by: 
     the fact that COMET has a large number of components with a large variety of complexities, shapes, and sizes;
     the COMET geometry will change dramatically throughout the lifetime of the experiment;
-    all pieces of material close to the beam could potentially contribute to background rates if, for example, they scatter high energy particles into a high-acceptance region in the phase space.
+    all pieces of material close to the beam could potentially contribute to background rates if, for example, they scatter high energy particles into a high-acceptance region of phase space.
 
 The aim of the new geometry handling scheme tries to address these issues.
 The goals in developing the new approach were to:
@@ -157,15 +162,15 @@ The run-time parameters are `owned' by the component they are attributed to and 
 Access to the values of other parameters is possible if and only if they are owned by an accessible component.
 Whether or not another component is accessible depends on its relative position in the component hierarchy: the target component must either be an ancestor, immediate child, or share the same parent component, as demonstrated in \fig{software:componentHeirarchy}.
 
-To provide the value of a parameter standard, human-readable, infix notation allows integers, doubles, three-vectors and rotation matrices to be combined and manipulated.
+To provide the value of a parameter, standard, human-readable, infix notation allows arithmetic between integers, floating point numbers, three-vectors, and rotation matrices.
 In addition, parameters can be easily repeated or indexed, such as for the positions of crystals in the ECAL or straws in a straw tracker plane, where the $i$\textsuperscript{th} position depends on the value of $i$.
-A small demonstration of some valid parameter assignments is shown in \fig{software:geom:paramAssignments}.
+A demonstration of valid parameter assignments is shown in \fig{software:geom:paramAssignments}.
 
 \FigGeometryParameters
 \FigGeometryScreenshots
 
 Using this scheme, multiple `worlds' have been developed corresponding to different stages and run-configurations of COMET, between which a user can easily change.
-Each world is able to re-use much of the code for another such as the experiment hall building, which appears in every geometry.
+Each world is able to re-use much of the code for another, such as the experiment hall building, which appears in every world.
 In addition, it has been straight forward to build up significant complexity in key areas such as the production target.
 \Fig{software:geom:screenshots} shows two of the available worlds that have been created using this scheme.
 
@@ -185,12 +190,10 @@ The event display also uses this to show the various hits and tracks overlaid on
 %# Handling of fieldmap information in ICEDUST
 %# Although pure magnetic fields are currently used, electric fields can in principle be added in exactly the same way.
 %\end{easylist}
-\FigSoftwareFieldMap
-\FigSoftwareFieldMapComparison
 
-An essential aspect of the \COMET experiment is the static magnetic field that is used along the beam line to capture, focus and disperse charged particles.
+An essential aspect of the \COMET experiment is the static magnetic field that is used along the beam line to capture, focus, or disperse charged particles.
 Modelling this field accurately is important to ensure any outcomes of the simulation are reliable.
-In particular, dips in the field have a risk of mirroring particles backwards or even trapping particles for extended periods.
+In particular, local reductions in the field strength risk mirroring particles backwards or even trapping particles for extended periods.
 This could be especially dangerous for \COMET since, in the process, the timing information of the particle is lost, reducing the effectiveness of the timing cut to suppress backgrounds.
 
 Magnetic field calculations can become quite computationally expensive.  
@@ -209,6 +212,8 @@ G4Beamline~\cite{G4Beamline} is a simulation toolkit that makes numerous extensi
 Whilst it cannot model material effects, its speed and simplicity allows quick and simple studies. 
 The methods for solenoid calculations of this open-source project have been incorporated into SimG4, so that the package can directly produce the field for solenoid coils contained in its geometry.
 The resultant fieldmap is shown in \fig{software:field:G4Beamline}.
+\FigSoftwareFieldMap
+\FigSoftwareFieldMapComparison
 
 For more elaborate calculations, Opera 3D finite-element-analysis software was used with the TOSCA submodule~\cite{Opera} for static electromagnetic fields.
 This calculation includes non-linear material effects in the yoke and shielding so that the final fieldmap should be much more accurate.
@@ -272,23 +277,23 @@ Fluka also lacks a primitive Torus volume implementation, so that other studies 
 
 \subsubsection{Geant4 physics modelling}
 Aside from the production target region, most of the tracking of particles and creation of secondaries takes place in the SimG4 package, which is built against the Geant4 library.
-The trajectory of a particle is built up in steps, each of which terminates either by a physics process (which might change the particle's direction or energy and produce a secondary track) or by the boundary of a volume in the simulated geometry.
-To decide what actually limits the step taken by a given particle (for example a positron), Geant4 calls the list of possible processes this particle can undergo (for example Brehmstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
-In the case of a geometry limit, the step length is the distance until the boundary of the geometry, including bending in the trajectory due to any electromagnetic field.
+In Geant4, the trajectory of a particle is built up in steps, each of which terminates either by a physics process (which might change the particle's direction or energy, or produce secondary tracks) or by the boundary of a volume in the simulated geometry.
+To decide what actually limits the step taken by a given particle (a positron, for example ), Geant4 calls the list of possible processes this particle can undergo (for example Brehmstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
+In the case of a geometry limit, the step length is the distance until the boundary of the geometry, including deflections to the trajectory due to any electromagnetic field.
 On the other hand, for a physics process the proposed step length is typically selected randomly using a relevant probability distribution for this process.
 Often this involves a characteristic length or time of the process, for example the half-life of a particle that will decay.
-Out of all possible step limits the process proposing the shortest limit (or if the particle is at rest, the soonest limit) is chosen.
+Out of all possible step limits, the process proposing the shortest limit (or, if the particle is at rest, the soonest limit) is chosen.
 The current position and momentum of the particle is updated accordingly and any secondary particles produced are prepared for tracking.
 
 \FigSoftwarePhysicsSpectra
 Determining which processes are applied to which particles and how each process is modelled is an important part of building a Geant4 simulation; the library provides a list of standard physics lists to help the process.
 Choosing the right physics list depends on the goal of the simulation, for example which particles are involved; what energy ranges are interesting; and which background effects must be included.
-To simulate \COMET the QGSP\_BERT\_HP physics list~\cite{Geant4:physicsLists} was chosen as a starting point.
+To simulate \COMET the QGSP\_BERT\_HP physics list~\cite{Geant4:QGSP-BERT} was chosen as a starting point.
 This model is expected to perform well for low energy dosimetry, shielding, and neutron calculations~\cite{Geant4:PhysicsListsRecommends}.
 
 On top of this physics list, custom changes have been made to the way negative muons are treated once stopped in material.
-COMET is unusual in the field of modern particle physics for dealing with muons at very low energy, unlike at the \ac{CERN} experiments for example, where they are normally treated as minimally-ionising particles (MIPs).
-As a result,  low-energy negative muons are somewhat crudely modelled by the default physics processes of Geant4.
+COMET is somewhat unusual in the field of modern particle physics for dealing with muons at very low energy, unlike at the \ac{CERN} experiments, for example, where they are normally treated as minimally-ionising particles (MIPs).
+As a result,  the modelling of low-energy negative muons is relatively simplistic in the default physics processes of Geant4.
 In addition to this, for the COMET experiment it is important to add the process of coherent \mueconv, which, as a currently unobserved process, is not included in Geant4.
 
 In the \ac{SM}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
@@ -297,10 +302,10 @@ Vanilla Geant4, however, is unable to produce this tail, and on aluminium is onl
 This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction, with the boost factor set by the muon binding energy.
 A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:customPhysic:DIO}, where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
 
-Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available but limited data and the default Geant4 model.
+Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available (but limited) data and the default Geant4 model.
 For example, the AlCap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
 This showed that proton emission occurs for around 3~\% of all nuclear captured muons; Geant4 produces around around 7 to 8 times more than this.
-The overal shape of the proton spectrum looks wrong as well.  
+The overall shapes of the proton spectra also disagree.
 Although the AlCap result is still only preliminary, the spectrum that has been observed is much softer than that produced by standard Geant4, as shown in \fig{software:customPhysic:ProtMuCap}.
 
 Standard Geant4 models nuclear capture of negative muons using a Bertini cascade which was developed using incident hadrons~\cite{Geant4:Bertini}.
@@ -311,16 +316,16 @@ A point within the nucleus is chosen homogeneously and then the muon interacted 
 It is not clear, at this stage, what causes the discrepancy between this model and the experimentally observed result for proton emissions.
 
 \subsubsection{Extending the physics processes}
-To resolve the issues mentioned, custom physics classes have been added to the \COMET simulation.
+To resolve these issues, custom physics classes have been added to the \COMET simulation.
 The key design goal of these classes was to allow future improvements in the experimental and theoretical inputs to be added, yet decouple the implementation from the normal Geant4 implementation so that future updates to Geant4 could easily be absorbed.
 
 \Fig{software:ExtendedMuonClasses} shows the class interaction diagram for the extended physics modelling for stopped negative muons.
 The standard Geant4 model sets up these processes using the `G4MuonMinusCapture' class, which passes concrete implementations for decay and nuclear capture into its base-class `G4HadronStoppingProcess'.
-This base-class contains three instances of a `G4HadronicInteraction': one to perform the electromagnetic cascade between the atomic orbitals; another to perform bound decay; and a third to perform the nuclear capture.
+This base-class contains three instances of a `G4HadronicInteraction': one to perform the electromagnetic cascade between the atomic orbitals; another to perform \ac{DIO}; and a third to perform the nuclear capture.
 The `G4HadronStoppingProcess' class is also used to simulate stopped negative pions, kaons, and so on, and bound decay is only considered if a valid instance of such a process has been provided.
-When a stopped particle is processed through this class, the electromagnetic cascade is always run first producing X-rays and Auger electrons.
+When a stopped particle is processed through this class, the electromagnetic cascade is always run first, producing X-rays and Auger electrons.
 Then one of either bound decay or nuclear capture is chosen by asking the bound decay process whether or not it will kill the particle; if so, bound decay is considered to have taken place and the nuclear capture is not run. 
-Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}  which fill in experimental blanks with a semi-empirical models, and decay rates based on a largely theoretical 1977 model by Mukhopady~\cite{Mukhopady:1976hu}.
+Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}  which fill in experimental blanks with a semi-empirical models, and decay rates based on a largely theoretical 1977 model by Mukhopady~\cite{Mukhopadhyay:1976hu}.
 \Fig{detector:mu-nucl-params} was produced by extracting these parameters.
 
 \FigSimulationPhysicsClasses
@@ -329,17 +334,17 @@ These new classes are shown in \fig{software:ExtendedMuonClasses} in red.
 Currently they only play a role if the muon stops in aluminium otherwise they invoke directly the default Geant4 model.
 `COMETMuonMinusBoundDecayOrConversion' takes over the task of bound decay by first deciding whether to capture, decay, or convert based on rates which can be adjusted at run-time by Geant4 commands.
 The default rates are the normal Geant4 rates of capture and decay and a conversion rate of $10^{-15}$ (which is multiplied by the capture rate to get the total conversion branching ratio).
-If the conversion process is chosen an electron with total energy of 104.97~MeV is produced in a random direction.  
-If decay is chosen a \ac{DIO} spectrum is used to randomly generate an energy, which at the time of writing defaults to the 2011 Czarnecki spectrum~\cite{Czarnecki2011}, although other spectra can be specified at run-time.
-If neither of these processes are selected then the `COMETMuonMinusBoundDecayOrConversion' class returns, leaving the muon status as alive such that the capture process takes place.
+If the conversion process is chosen, an electron with total energy of 104.97~MeV is produced in a random direction.  
+If decay is chosen, a \ac{DIO} spectrum is used to randomly generate an energy, which at the time of writing defaults to the 2011 Czarnecki spectrum~\cite{Czarnecki2011}, although other spectra can be specified at run-time.
+If neither of these processes are selected, then the `COMETMuonMinusBoundDecayOrConversion' class returns, leaving the muon status as alive such that the capture process takes place.
 At this point, control would pass to the `COMETMuonMinusCapture' class, which contains an instance of the default Geant4 Bertini Cascade model to use for materials other than aluminium.
 Run-time controls allow the default model to be re-enabled for aluminium.
 
 The `COMETMuonMinusCapture' class contains a list of types of secondary particle which it is able to produce.  
 For each possible secondary, both a total production rate per capture and spectrum must be supplied.
 When a muon captures in aluminium, firstly the default model is run.
-Then, for each of the secondaries produced by this, if a custom rate and spectrum have been provided for a particle of this type the secondary from the Bertini cascade is removed.
-Then, for each of the particles that do have custom rates and spectra, a particle is produced with the given probability and each of these particles assigned an energy given randomly according to the selected spectrum.
+Then, for each of the secondaries produced by this, if a custom rate and spectrum have been provided for a particle of this type, the secondary from the Bertini cascade is removed.
+Next, for each of the particles that do have custom rates and spectra, a particle is produced with the given probability and each of these particles assigned an energy given randomly according to the selected spectrum.
 By using the default model first, particles for which experimental rates or spectra do not exist can still be produced in the simulation.
 
 There are, however, some downsides to this approach.
