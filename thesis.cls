@@ -42,3 +42,22 @@
   \@oldendtable%
   \ignorespacesafterend%
 }
+%% Makes a thesis title page
+\DeclareRobustCommand{\titlepage}[2][]{%
+  %\@oldtitlepage%
+  \thispagestyle{empty}%
+  \begingroup%
+  \ifx\@sftitles\@empty\else\sf\fi%
+  \begin{center}%
+    \vspace*{\frontmattertitleskip}%
+    \begin{doublespace}%
+      {\Huge\textbf{\thetitle}}\\%
+    \end{doublespace}%
+    \vspace*{1cm}%
+    {\Large{{\theauthor} \\ {#1}}}\\%
+    {#2}%
+  \end{center}%
+  \endgroup%
+  %\@oldendtitlepage%
+  %\cleardoublepage%
+}

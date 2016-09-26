@@ -1,9 +1,11 @@
-%\includeonly{appendix-stopTgtImprovements}
+%\includeonly{}
+%\includeonly{appendix-bentSolenoidDrifts}
 %\includeonly{summary}
 %\includeonly{optimisation,simulationConfigurations}
-%\includeonly{sensitivity,backgrounds}
+%\includeonly{backgrounds}
 %\includeonly{software}
-%\includeonly{theory,mueconv,detector}
+%\includeonly{detector}
+%\includeonly{theory,mueconv}%,detector}
 \documentclass{thesis}
 \usepackage{dcolumn}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
@@ -145,14 +147,6 @@ pdfauthor = {\textcopyright\ Ben Krikler},
   %\input{chap4}
 \end{mainmatter}
 
-% Produce the appendices
-\begin{appendices}
-\include{appendix-bentSolenoidDrifts}
-\include{appendix-antiprotonEndpoint}
-\include{appendix-stopTgtImprovements}
-\include{appendix-alcap}
-\end{appendices}
-
 %% Produce the un-numbered back matter (e.g. colophon,
 %% bibliography, tables of figures etc., index...)
 \begin{backmatter}
@@ -165,5 +159,13 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \bibliographystyle{plain}
 %\bibliographystyle{bensbib}
 \bibliography{library/record}
+
+% Produce the appendices
+\begin{appendices}
+%\include{appendix-bentSolenoidDrifts}
+\include{appendix-antiprotonEndpoint}
+\include{appendix-stopTgtImprovements}
+\include{appendix-alcap}
+\end{appendices}
 
 \end{document}
