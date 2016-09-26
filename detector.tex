@@ -6,10 +6,10 @@
 % - Cite the experimenter's guide by Bob Bernstein
 
 %Introduction:
-The COMET experiment will search for COherent Muon to Electron Transitions with a single-event sensitivity of around \sensePII.
+The COMET experiment will search for COherent Muon to Electron Transitions with a single-event sensitivity of \sensePII or better.
 This amounts to an improvement of four orders of magnitude compared to the current limit by \sindrumII~\cite{sindrum2006}, made possible by significant changes to the way the experiment operates compared to its predecessor.
 
-Reaching such a sensitivity requires that COMET stops many muons in aluminium, whilst maintaining a high-signal acceptance but
+Reaching such a sensitivity requires that COMET stops many muons in the target, whilst maintaining a high-signal acceptance but
 suppressing potential background sources to well below a single event during the lifetime of the experiment.
 %\begin{itemize}
 %\item stop many muons in aluminium,
@@ -31,23 +31,34 @@ The design of COMET realises these goals by employing several novel experimental
 %Firstly however I will discuss some of the key aspects common to both \phaseI and \phaseII.
 %Although \phaseI will run sooner, since it is heavily motivated by \phaseII, I shall describe \phaseII in more depth first and return \phaseI subsequently.
 
-\section{Overview of Signal and Backgrounds}
+\section{The COMET Signal}
 \sectlabel{detector:background}
-The \acf{ses}, defined in the previous chapter, is a statement purely of signal efficiency and does not account for background rates.
-It is clear, however, that for any observation to be confidently labelled as signal or, in the event of a null-observation, in order to set the tightest possible confidence limit, the background rate must be kept comparably low.
+Muon-to-electron conversion, as described in the previous chapter, is the process where a muon, bound to the Coulomb potential of an atomic nucleus, decays to an electron without emitting neutrinos.
+If the nucleus is not excited in the process, coherent transitions dominate, and the electron is produced monoenergetically.
+In addition to the energy, the lifetime of the muon once bound to the nucleus is also characteristic  of the signal process.
+
+Thus the signal for COMET is a single electron, with a well-defined energy and an exponential lifetime matching that of the bound muon.
+In the aluminium target used in COMET, the lifetime of the muon is 864~ns, whilst the energy of the electron will be 104.97~MeV/c.
+
+\section{Overview of Background Processes}
+
+The \acf{ses}, defined in the previous chapter, is a statement of the ability to observe the signal from such a process.
+It does not, however, account for the background rates.
+Clearly, for any observation to be confidently labelled as signal or, in the event of a null-observation, in order to set the tightest possible confidence limit, the background rate must be kept comparably low.
 In order to understand the design of the \COMET experiment, a simple appreciation of the key backgrounds is therefore necessary.
 %To understand the design of both phases of COMET a simple appreciation of the signal and types of backgrounds that must be considered is necessary.
 
 %Given the desired sensitivity of COMET is \sensePI  at \phaseI and \sensePII by \phaseII, background rates must be kept equally rare.
 
-\TabBackgroundSummary%
 \Tab{detector:backgrounds} summarizes the results of previous studies for background rates at \phaseI and \phaseII.
 There are four groups of background source: intrinsic, prompt, delayed, and cosmic.
-
-Intrinsic processes are those that arise from muons stopping in the target and will always be present regardless of the muon beam properties.
+\begin{description}
+\item [Intrinsic processes]
+                    are those that arise from muons stopping in the target and will always be present regardless of the muon beam properties.
 The muon \ac{DIO} which was described in the previous chapter is one such background.
 %One Of these, the dominant background is muon \acf{DIO}, which was described in the previous chapter.
-In addition, radiative nuclear capture of a muon is kinematically capable of producing 101.85~MeV photons, which can produce backgrounds if the photon is converted to a high-energy electron and then mis-reconstructed to have additional energy.
+In addition, radiative nuclear capture of a muon is kinematically capable of producing photons very close to the signal energy.
+If the photon is converted to a high-energy electron this can produce background events if the electron's energy is mis-reconstructed with additional energy.
 
 %Although the decay of a free muon cannot produce electrons with energy greater than half the muon mass, once bound to a nucleus the neutrinos can be configured to carry away almost no kinetic energy, leaving only the nucleus and electron to determine the kinematics of the end-point configuration.
 %From this it can immediately be seen that the maximum energy of the electron produced from muon decay-in-orbit is the same as for \mueconv (up to the neutrino mass), and indeed
@@ -55,8 +66,10 @@ In addition, radiative nuclear capture of a muon is kinematically capable of pro
 %However, clearly such a configuration occupies a tiny part of the phase space as can be seen from \fig{detector:DIOSpectrum} which shows the spectrum of electrons from muon \ac{DIO} in aluminium.
 %It can be seen that whilst the high-energy tail does reach up to about 105~MeV/c, the rate drops away very steeply above the free-muon decay end-point, falling some 18 orders of magnitude from its peak around 50~MeV/c.
 %%Since the nucleus is so massive compared to the electron, it requires very little energy to have it conserve momentum with the outgoing electron.
+\TabBackgroundSummary%
 
-Delayed and prompt processes come from impurities in the muon beam, be they pions, antiprotons, or high-energy muons and electrons.
+\item [Prompt and delayed beam-related backgrounds]
+                             come from impurities in the muon beam, be they pions, antiprotons, or high-energy muons and electrons.
 The key distinction between these two is the timing at which the background is detected with respect to the arrival of the proton beam.
 For example, pions that reach the stopping target region are dangerous since they can produce high-energy gamma rays which can pair produce to create 105~MeV electrons.
 Since pion capture against a nucleus is extremely fast, the timing of pion-induced backgrounds is determined predominantly by the arrival time of pions into the target region.
@@ -71,9 +84,11 @@ Delayed processes are those where the timing of the proton beam cannot be used t
 Possible sources of this delay include the mirroring of particles by the magnetic field, or by some heavy particle from the production target producing pions and high-energy electrons.
 At a given momentum, antiprotons travel considerably more slowly than muons or pions given their considerably larger mass, washing out any timing information from their production.
 
+\item [Cosmic Backgrounds]
 Finally cosmic backgrounds arise from high-energy muons that pass through the building and enter the detector or beamline.  
 Events where a muon decays to an electron which is then detected as 105~MeV are counted as backgrounds.
 In particular, muons that produce high-energy electrons close to the target are dangerous since cuts on the reconstructed direction and position will be less effective.
+\end{description}
 
 All these processes will be discussed and evaluated in more depth in the section on background estimates.
 
