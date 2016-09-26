@@ -6,7 +6,7 @@
 %}
 \caption{\figlabel{bg:dio:rates}
 The DIO background rate as a function of momentum threshold for different total running times.
-Given a fixed the running time, the total number of stopped muons is also fixed, which in turn sets the DIO background rate for a given momentum threshold.
+Given a fixed running time, the total number of stopped muons is also fixed, which in turn sets the signal sensitivity and the DIO background rate.
 All signal acceptance parameters were held fixed, except for the efficiency of the momentum threshold, which when combined with the number of stopped muons determines the \ac{ses}.
 The \ac{ses} is indicated in the number along the lines in units of \num{1e-17}.
 }
@@ -41,9 +41,9 @@ The column lablled `$\alpha$' is the neutron excess for the element, determined 
 \newcommand{\TabRMCEndPoints}{%
 \begin{table}[tb]%
 %\centering
-\begin{tabular}{lSSS}%
+\begin{tabular}{lS[table-format=2.6]SS}%
 \hline
-Reaction & \multicolumn{1}{m{3cm}}{Atomic Mass of Daughter (u)} & \multicolumn{1}{m{2cm}}{$\Delta{}M$ (MeV/c$^{2}$)}&  \multicolumn{1}{m{2cm}}{$\max(E_e^\textrm{RMC})$ (MeV/c$^{2}$)} \\
+Reaction & \multicolumn{1}{C{3cm}}{Atomic Mass of Daughter (u)} & \multicolumn{1}{C{2cm}}{$\Delta{}M$ (MeV/c$^{2}$)}&\multicolumn{1}{C{2cm}}{$\max(E_e^\textrm{RMC})$ (MeV/c$^{2}$)}\\
 \hline
 ${}^{27}$Al$(\mu,\gamma\nu){}^{27}  $Mg     & 26.984341 &  3.12  & 101.85 \\
 ${}^{27}$Al$(\mu,\gamma\nu2n){}^{26}$Mg     & 25.982593 &  9.56  &  95.41 \\
@@ -126,13 +126,13 @@ It is clear how the pion momenta are in general higher, including those that sto
 \newcommand{\FigRPCSimResults}{
 \begin{figure}[btp]
 \centering
-\begin{minipage}[b]{0.5\textwidth}
+\begin{minipage}[b]{0.45\textwidth}
 \subfloat[][\figlabel{bg:rpc:sim:time}Arrival Time]{%
 \includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_time.pdf}}\\
-\subfloat[][\figlabel{bg:rpc:sim:momVtime}Momentum Vs.\ Time]{%
+\subfloat[][\figlabel{bg:rpc:sim:mom}Momentum]{%
 \includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom.pdf}}%
 \end{minipage}\hspace{1ex}
-\subfloat[][\figlabel{bg:rpc:sim:mom}Momentum]{%
+\subfloat[][\figlabel{bg:rpc:sim:momVtime}Momentum Vs.\ Time]{%
 \includegraphics[width=0.45\textwidth,trim=0.2cm 0 0cm 0.7cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom-time.pdf}}
 \caption{\figlabel{bg:rpc:sim}
 Detection of secondaries from RPC photons in the target.
@@ -148,7 +148,7 @@ Although many high-momentum electrons are detected, they are all well before the
 \caption{\figlabel{bg:antiprotons:meco24}
 Variation in the antiproton production rate as a function of incident proton energy, according to Meco note 24~\cite{Meco024} and used in the COMET TDR~\cite{TDR2016}.
 For reference, protons with 8~GeV kinetic energy have 8.89~GeV/c momentum, whilst with 10.14~GeV kinetic energy their momentum is 11.038~GeV/c.
-The vertical coloured lines have been added to indicate these energies, whilst the horizontal bands the predicted cross sections for the models of proton-nucleon and proton-nucleus interaction.
+The vertical coloured lines have been added to indicate these energies, whilst the horizontal bands show the range of predicted cross sections for the models of proton-nucleon and proton-nucleus interaction.
 }
 \end{figure}
 }
@@ -188,7 +188,7 @@ Inlays show a zoom around the experimental data points.
 }
 
 \newcommand{\FigAntiprotonAngularDependence}{
-\begin{figure}[tbp]
+\begin{figure}[b]
 \centering
 \includegraphics[width=0.8\textwidth,trim=0 0 1.4cm 1cm,clip]{figs/backgrounds/AntiprotonAngularDependence.pdf}
 \caption{\figlabel{bg:antiprotons:angular}
@@ -202,17 +202,17 @@ For reweighting events the interpolated (straight solid) lines were used to be c
 }
 
 \newcommand{\TabAntiprotonRegions}{
-\begin{table}[bp]
+\begin{table}[t]
 \centering
 \sisetup{table-number-alignment=right,table-format=1.2e3}%
-\begin{tabular}{rcl|r|SS}
-\multicolumn{3}{c|}{\multirow{2}{*}{Region}} & \multirow{2}{*}{Data Source} & \multicolumn{2}{c}{Total $\bar{p}$ per POT} \\ 
-& &                                          &                              & {Linear Tail}       &  {Exponential Tail} \\ 
+\begin{tabular}{a|r|SS}
+\multicolumn{1}{c|}{\multirow{2}{*}{Region}} & \multirow{2}{*}{Data Source} & \multicolumn{2}{c}{Total $\bar{p}$ per POT in this region} \\ 
+                                             &                              & {Linear Tail}       &  {Exponential Tail} \\ 
 \hline
-                  $0 \le$   & $\theta<$ & $59\degree$  & 10\degree \cite{Kiselev:2012sj}    & 9.13e-05 & 5.26e-05 \\ 
-                  $59 \le$  & $\theta<$ & $97\degree$  & 59\degree \cite{Kiselev:2012sj}    & 2.64e-08 & 4.17e-09 \\ 
-                  $97 \le$  & $\theta<$ & $119\degree$ & 97\degree \cite{Boyarinov:1994tp}  & 3.40e-12 & 1.74e-12 \\ 
-                  $119 \le$ & $\theta<$ & $180\degree$ & 119\degree \cite{Boyarinov:1994tp} & 2.58e-12 & 5.71e-13 \\ 
+                  0-59\degree    & 10\degree \cite{Kiselev:2012sj}    & 9.13e-05 & 5.26e-05 \\ 
+                  59-97\degree   & 59\degree \cite{Kiselev:2012sj}    & 2.64e-08 & 4.17e-09 \\ 
+                  97-119\degree  & 97\degree \cite{Boyarinov:1994tp}  & 3.40e-12 & 1.74e-12 \\ 
+                  119-180\degree & 119\degree \cite{Boyarinov:1994tp} & 2.58e-12 & 5.71e-13 \\ 
 \hline
 \end{tabular}
 \caption{\tablabel{bg:antiprotons:regions}
@@ -279,7 +279,7 @@ From left to right the vertical gray lines indicate the production target, Torus
 }
 
 \newcommand{\FigAntiprotonSimTime}{
-\begin{figure}[t!]
+\begin{figure}[b!]
 \centering 
 \subfloat[][\figlabel{bg:antiprotons:sim:time:antip}Timing of Antiprotons]{
 \includegraphics[width=0.45\textwidth,trim=0.7cm 0.5cm 1.3cm 1.7cm,clip]{figs/backgrounds/Antiproton_timing_antiprotons.pdf}}
@@ -535,7 +535,7 @@ The timing and momentum of electrons detected at the straw tracker and passing a
 	\hline
         Parameter & \multicolumn{1}{l}{Value} & Description \\
 	\hline
-        $A_\textrm{geom}$ & \VarBeamBgGeometric &  Geometric Acceptance to High-momentum Electrons per POT\\ 
+        $A_\textrm{geom}$ & \VarBeamBgGeometric &  Geometric acceptance to high-momentum electrons per \ac{POT}\\ 
         $A_\textrm{mom}$ & \VarBeamBgMomentum &  Fraction of beam electrons within the signal momentum cuts \\ 
         $A_\textrm{time}^\textrm{delayed}$ & \VarBeamBgTiming &  Fraction of beam electrons delayed until the detector window \\ 
 	\hline
@@ -595,7 +595,7 @@ The vertical axis shows the raw number of observed events based on the simulatio
 }\end{figure}\xspace}
 
 \newcommand{\TabBgCosmicParameters}{
-\begin{table}[tb]
+\begin{table}[b]
 \centering
 \begin{tabular}{llm{0.7\textwidth}}
 	\hline
@@ -617,7 +617,7 @@ Parameters and their values for the determination of the cosmic ray background r
 }
 
 \newcommand{\TabBackgroundFinalVals}{
-\begin{table}
+\begin{table}[b]
 \centering
 \sisetup{table-number-alignment=right,table-format=1.2e3}%
 %\begin{adjustwidth}{-0.7cm}{}%
@@ -650,6 +650,7 @@ Final predicted background rates and events.
 The dominant backgrounds are cosmic ray electrons and stopping antiprotons, which are predicted to have produce almost equal rates.
 Assumes an extinction factor of \VarExtinctionFactor, a momentum resolution with $\sigma=200$~keV/c and a probability of \num{1e-4} that events are misreconstructed with at least an additional 2.4~MeV/c. 
 All other parameters are the same as stated in chapter~\sect{sense}.
+For \ac{RMC}, it is assumed that $P(p_\textrm{recon}-p_\textrm{true}>2.4~\textrm{MeV/}c)=$\num{5e-5}.
 }
 \end{table}%
 }
