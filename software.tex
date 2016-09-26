@@ -125,7 +125,7 @@ Within a SimG4 output event all timing is given with respect to the original pri
 Since protons on target are introduced at $t=0$, all G4Hits have their timing given with respect to the proton arriving at the production target.
 In the process of building bunch events, a realistic timing structure for the proton beam is introduced by shifting the time of all hits for a given proton event by a fixed amount, as if the proton had arrived slightly earlier or later.
 
-A bunch event in \phaseI will consist of about \num{8e6}~\ac{POT} so, without resampling, a simulation of 8$\times10^{8}$~\ac{POT} events, for example, could only produce 100 bunches.
+A bunch event in \phaseI will consist of about \num{8e6}~\acp{POT} so, without resampling, a simulation of 8$\times10^{8}$~\ac{POT} events, for example, could only produce 100 bunches.
 Since the proton events are uncorrelated, by picking different proton events and applying different time shifts to each one it is possible, in principle, to build a much larger number of bunch events.
 
 An additional form of resampling can also be used during the Geant4 simulation, by dividing up the experiment into different stages and restarting the simulation multiple times at a later stage, reusing the output from the earlier section.
