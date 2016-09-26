@@ -94,11 +94,16 @@ It is clear that the high-energy component of the spectrum is suppressed as you 
 \newcommand{\FigMuonNuclearParams}{
 \begin{figure}[bp]
 \centering
-\subfloat[][\figlabel{detector:mu-nucl-params:lifetimes}Lifetimes]{\includegraphics[width=0.9\textwidth]{figs/detector/MuNuclearParams_All_lifetimes.pdf}}\\
-\subfloat[][\figlabel{detector:mu-nucl-params:end-point}End-point Shift]{\includegraphics[width=0.49\textwidth]{figs/detector/MuNuclearParams_energies.pdf}}%\hspace{0.5cm}%
-\subfloat[][\figlabel{detector:mu-nucl-params:branching-ratio}Branching Fraction]{\includegraphics[width=0.49\textwidth]{figs/detector/MuNuclearParams_branching_fraction.pdf}}
+\subfloat[][\figlabel{detector:mu-nucl-params:lifetimes}Lifetimes]{
+\includegraphics[width=0.85\textwidth,trim=0 0.3cm 0 0,clip]{figs/detector/MuNuclearParams_All_lifetimes.pdf}}\\
+\subfloat[][\figlabel{detector:mu-nucl-params:end-point}End-point Shift]{
+\includegraphics[width=0.42\textwidth,trim=0.1cm 0.1cm 0.9cm 1.5cm,clip]{figs/detector/MuNuclearParams_energies.pdf}}\hspace{0.02\textwidth}%
+\subfloat[][\figlabel{detector:mu-nucl-params:branching-ratio}Branching Fraction]{
+\includegraphics[width=0.42\textwidth,trim=0.1cm 0.1cm 0.9cm 1.5cm,clip]{figs/detector/MuNuclearParams_branching_fraction.pdf}}
 \caption{\figlabel{detector:mu-nucl-params}
-The effect of changing the atomic number on the branching ratio, lifetime and electron energy spectrum end-point.
+The effect of changing the atomic number on the  lifetime~\protect\subref{fig:detector:mu-nucl-params:lifetimes},
+ conversion energy ( shown as $M_\mu-E_e$)~\protect\subref{fig:detector:mu-nucl-params:end-point},
+ and branching ratio~\protect\subref{fig:detector:mu-nucl-params:branching-ratio}.
 For the branching ratio and lifetime plots, the partial rate for muon nuclear capture and decay-in-orbit are shown separately.
 The capture and decay rates are taken from the Geant4 \cite{Geant42003} parametrisation for stopped negative muons.  
 Only elements for which at least 1 isotope uses a measured value are plotted.
@@ -170,7 +175,7 @@ The CDC being assembled and strung.
        \includegraphics[height=0.19\textheight,trim=0 2cm 0 0,clip]{figs/detector/status_photos/ECAL-testBeam}
 }
 \caption{\figlabel{detector:status:StrECAL}
-Research and development for the \ac{StrECAL} showing both the individual straws or crystal and a prototype set up used at test beams to characterise the sub-detectors.
+Research and development for the \ac{StrECAL} showing both the individual straws or crystal and a prototype set-up used at test beams to characterise the sub-detectors.
 }
 \end{figure}
 }
