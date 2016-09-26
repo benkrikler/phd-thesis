@@ -4,7 +4,7 @@
 %\includeonly{optimisation,simulationConfigurations}
 %\includeonly{backgrounds}
 %\includeonly{software}
-%\includeonly{detector}
+%\includeonly{mueconv}
 %\includeonly{theory,mueconv}%,detector}
 \documentclass{thesis}
 \usepackage{dcolumn}
@@ -149,12 +149,13 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 
 %% Produce the un-numbered back matter (e.g. colophon,
 %% bibliography, tables of figures etc., index...)
-\begin{backmatter}
+%\begin{backmatter}
   %\input{backmatter}
-\include{simulationConfigurations}
-\chapter{List of Acronyms}
+%\include{simulationConfigurations}
+\chapter*{List of Acronyms}
+\addcontentsline{toc}{chapter}{List of Acronyms}  
 \input{library/acronyms.tex}
-\end{backmatter}
+%\end{backmatter}
 
 \bibliographystyle{plain}
 %\bibliographystyle{bensbib}
