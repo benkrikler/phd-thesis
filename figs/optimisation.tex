@@ -106,7 +106,7 @@ The difference arises from the change of target material between the phases.
 \end{figure}
 }
 \newcommand{\FigOptimMuBeamDipoleMuStops}{
-\begin{figure}[b]
+\begin{figure}[bt]
 \centering
 %	\fbox{
 \includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.0cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_muons.pdf}
@@ -225,14 +225,15 @@ The number of particles reaching the end of the Torus2 solenoid per POT for diff
 }
 
 \newcommand{\FigOptimMuBeamCollimTorusTwoContours}{
-\begin{figure}[tb]
+\begin{figure}[bt]
 \centering 
-\includegraphics[width=0.6\textwidth,trim=0.3cm 0.3cm 0.8cm 0.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_StoppedVsHighP-Muons.pdf}
+%\fbox{
+\includegraphics[width=0.5\textwidth,trim=0.1cm 0.3cm 2.8cm 1.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_StoppedVsHighP-Muons.pdf}
+%}
 \caption{\figlabel{optim:MuBeamCollim:Torus2:contours}
-2.5\% contours showing how changing the collimator height affects the stopped and high-momentum muon rates.
-Each contour represents a reduction of 2.5 percentage points to the particle flux, with 100\% acceptance sitting in the bottom right.
-Blue lines represent the flux of stopping muons, whilst red lines represent the flux of high-momentum muons.
-For example, for collimator heights within the first blue contour towards the bottom-right corner, less than 2.5\% of stopped muons are lost.
+Contours showing 2.5 percentage point changes to the stopping (blue) and dangerous (red) muon flux, as a function of the collimator heights.
+100\% acceptance sitting in the bottom right.
+%For example, for collimator heights within the first blue contour towards the bottom-right corner, less than 2.5\% of stopped muons are lost.
 }
 \end{figure}
 }
@@ -302,8 +303,7 @@ The linear behaviour arises from the reduced field strength and fixed target rad
 %}
 \caption{\figlabel{optim:StopTgtPos:AcceptedMomSpect}
 The momentum dependence of the electron acceptance into the detector for different target positions.
-The spectrum for each target position is normalised to the muon stopping rate for that position, such that each 
-The linear behaviour arises from the reduced field strength and fixed target radius such that fewer muons impact the target as it is moved downstream.
+The spectrum for each target position is normalised to the muon stopping rate for that position, such that each curve shows the sensitivity to electrons of that momentum.
 }
 \end{figure}
 }
