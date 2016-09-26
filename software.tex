@@ -25,10 +25,10 @@ simulate the T2K near-detectors.  For the purposes of this chapter, unless
 specified explicitly, the term `ND280' should be taken as referring to the
 software.} 
 since GAUDI and MARLIN would have required too much effort to adapt to the COMET
-requirements; since art is used by Mu2e and keeping the software distinct is
-important for the two experiments to co-exist as cross-checks; and because the
+requirements; since art is a relatively new framework and will be used by Mu2e (keeping the software distinct is
+important for the two experiments to co-exist as cross-checks); and because the
 ND280 software was already known to a large part of the COMET collaboration and
-had been tested on real data at J-PARC.
+had been tested, debugged, and used on real data at J-PARC.
 
 \FigNDTwoEighty
 \Fig{software:ND280} shows an overview of the ND280 framework, including its package structure and the various interactions between packages.
@@ -38,7 +38,7 @@ As the ND280 framework had evolved somewhat organically, a review of the coding 
 For example, whilst the ND280 software prefixes all classes with a capital `T', the ICEDUST conventions~\cite{ID:conventions} agreed to swap this to a capital `I' to reduce clashes with ROOT which also uses `T'.
 The package renaming scheme~\cite{ID:ForkingDocs} was developed so that the purpose of a package and its role with the other packages could be more clearly identified.
 
-Whilst fundamental, low-level packages have been left relatively unchanged, higher-level packages which include more detector specific details had to be developed.
+Whilst fundamental, low-level packages have been left relatively unchanged, higher-level packages which include more detector-specific details had to be developed.
 Additionally, some aspects of COMET needed considerably more support than had been present in the ND280 software.
 Some of the key changes that have been introduced between ICEDUST and ND280 are:
 \begin{description}
@@ -297,7 +297,7 @@ As a result,  the modelling of low-energy negative muons is relatively simplisti
 In addition to this, for the COMET experiment it is important to add the process of coherent \mueconv, which, as a currently unobserved process, is not included in Geant4.
 
 In the \ac{SM}, a stopped negative muon that has been captured to an atomic orbital can either undergo decay or nuclear capture.
-As previously discussed, the end-point for electrons coming muon \ac{DIO} reaches up to the \mueconv limit, or around 105~MeV/c.  
+As previously discussed, the end-point for electrons coming from muon \ac{DIO} reaches up to the \mueconv limit, or around 105~MeV/c.  
 Vanilla Geant4, however, is unable to produce this tail, and on aluminium is only able to produce electrons up to around 60 MeV/c.  
 This is because the bound muon decay model in Geant4 uses the free muon decay spectrum and applies a boost in a random direction, with the boost factor set by the muon binding energy.
 A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:customPhysic:DIO}, where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
