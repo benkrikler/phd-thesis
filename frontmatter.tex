@@ -1,23 +1,23 @@
 %% Title
 %!!UPDATE THIS
-\titlepage[High Energy Physics Group, Imperial College London
+\titlepage[High Energy Physics Group, Department of Physics\\ Imperial College London
 ]%
-{\vspace*{1cm}
+{\vspace*{0.6cm}
 \includegraphics[width=0.9\textwidth]{figs/FrontCover_display.pdf}\\
-\vspace*{1cm}
-A dissertation submitted to Imperial College London\\
-  for the degree of Doctor of Philosophy}
+\vspace*{0.7cm}
+\large{A dissertation submitted to Imperial College London\\
+  for the degree of Doctor of Philosophy}}
 %\includepdf[pages=-]{figs/FrontCover.pdf}
 
 %% Abstract
 \begin{abstract}%[\smaller \thetitle\\ \vspace*{1cm} \smaller {\theauthor}]
   %\thispagestyle{empty}
 Conservation of Lepton Flavour in the Standard Model (SM) requires that neutrino emission accompanies muon decay.
-The COMET experiment is one experiment looking for Charged Lepton Flavour Violation.
-It searches for COherent Muon to Electron Transitions, where a muon converts to a 105~MeV electron in the presence of an atomic nucleus, without neutrino emission.
+COMET is one experiment looking for Charged Lepton Flavour Violation.
+It searches for COherent Muon to Electron Transitions, where a muon converts to a 105~MeV electron in the presence of an atomic nucleus, without emitting neutrinos.
 The current limit on this process is \senseSindrum at 90\% C.L., which COMET intends to improve by four orders of magnitude.
 
-To realise such an improvement COMET will use several novel techniques to produce a very intense, low-energy muon
+To realise such an improvement, COMET will use several novel techniques to produce a very intense, low-energy muon
 beam, with very high signal acceptance and strong background suppression.
 Given the challenge this presents, COMET will run in a staged approach.
 \phaseI is currently under construction with first data-taking due in JFY 2018, and the goal of measuring \mueconv with a \ac{ses} of \sensePI.
@@ -28,7 +28,7 @@ It sets out the software and simulation that has been developed to help understa
 and then uses this to perform a comprehensive optimisation of the \phaseII set-up, providing a new baseline configuration.
 The expected performance of this baseline is assessed, with studies on the signal sensitivity
  demonstrating that an SES of \VarPredictedSES can be achieved in \VarRunTime~s of beam.
-Background rates are then estimated and, although subject to large uncertainties, predict \VarTotalBgPhasII background events can be expected during \phaseII.
+Background rates are also estimated and, although subject to large uncertainties, predict \VarTotalBgPhasII background events can be expected during \phaseII.
 Suggestions for future performance studies and experiment improvements are also discussed, with a possible improvement in the SES of a factor of 2.5 likely achievable.
 \end{abstract}
 
@@ -56,23 +56,25 @@ must make clear to others the licence terms of this work
 %% Acknowledgements
 \begin{acknowledgements}
 Sir Isaac Newton is supposed to have said, ``If I have seen further than others it is by standing upon the shoulders of giants.''  
-Exactly how tall these giants were and why they do not seem to be around any more are open questions.
-One thing is certain however: if it had not been for friends, family, and colleagues, Sir Isaac would have had a much harder time climbing on to the giants.
+Exactly how tall these giants were, why they do not seem to be around any more, and how they managed to co-exist with humans, are all open questions.
+One thing is certain however: if it had not been for friends, family, and colleagues, Sir Isaac would have had a much harder time getting on to the giants' shoulders.
 
-The same has been true for my PhD.
+The same has been true for my PhD, although only in the figurative sense.
 Getting through the last four years would not have been possible if it were not for the people around me (none of whom are giants, sadly).
 
-Mum and dad, thank you for everything that you have given me. From the food and the chauffering, to the curiosity and confidence to pursue what I love, 
-I can honestly say that without you, I would be less existent.
-Will, Sophie, Chris, and Marie-Claire, you are all much more recent additions to my life, but it is a far better life for it; I love you all.
-To Dan, my older younger brother.
-And to my literally-gigantic extended family deserve a mention; I am very proud to be able to call you that.
-
-To Lorena, my brilliant fianc\'{e}e, thank you for all your support, your caring, and your patience, though I suppose I will need a new excuse beyond `PhD stress'.
+To Lorena, my brilliant fianc\'{e}e, thank you for all your support, your caring, and your patience, though I suppose I now need a new excuse beyond `PhD stress' to get out of the house work.
 English may not be her first language, but that has certainly not stopped her from correcting mine.
 %	has certainly not stopped her correcting my english.
 %I might have spent more time in Uberlandia, Berlin, and Amsterdam, working remotely because of her, but then I did get to spend more time in Uberlandia, Berlin, and Amsterdam, working remotely.
 %Thank you for all your patience, your help, your caring; I suppose I will have to find another excuse beyond thesis stress now!
+
+Mum and dad, thank you for everything that you have given me. From the food and the chauffering, to the curiosity and confidence to pursue what I love, 
+I can honestly say that without you, I would be less existent.
+Will, Sophie, Chris, and Marie-Claire, you are all much more recent additions to my life, but it is a far better life for it; I love you all.
+To my brother Dan who, ever since he was born, has been my brother.
+And to my grand-parents, my aunts, my uncles, and my cousins, and my cousins, and my cousins:  I hope I can make you all as proud of me, as I am of you.
+%And then to Dan, my older younger brother.
+%:And to my literally-gigantic extended family deserve a mention; I am very proud to be able to call you that.
 
 %This PhD has been one of opportunities and variety which might not have been so, had it been focussed on any experiment but COMET.
 I owe a deep gratitude to my collaborators on the COMET and AlCap experiments, who have not only endured my pedantry in code reviews, questions at collaboration meetings, and mistakes at beam tests, but they have always made me feel very welcome whilst doing it. 
@@ -81,21 +83,21 @@ I owe a deep gratitude to my collaborators on the COMET and AlCap experiments, w
 Specifically to Yoshi Kuno and Satoshi Mihara, thank you both for supporting me during my times in Japan:
 I imagine few students can claim to have been personally driven to the airport by the spokesperson of their experiment!
 
-To my COMET colleagues at Imperial thank you too for putting up with my daft ideas and silly questions during our meetings; I am sure one day I will find a use for a reverse Monte Carlo, and I promise that you will be the first to hear!
-To my supervisor, Yoshi, not only have you pushed me to improve as a physicist, but you have also taught me the difference between an en--dash and an em---dash, and helped me to master the dark art of the compound-adjective!
-	Phill, Ewen, Per, Ajit, Peter, Jordan, Paul (and Andy E.\ who we shall make an honororary member for this)---thank you all for all the feedback and support you have given me, and thank you for the weekly meetings.
-They might have been long, but they taught me an awful lot.
+To my COMET colleagues at Imperial, thank you too.
+To my supervisor, Yoshi Uchida, not only have you pushed me to improve as a physicist, but you have also taught me the difference between an en--dash and an em---dash, and helped me to master the dark-art of that highly--complicated grammatical---construct that is the compound-adjective (I think)!
+Phill, Ewen, Per, Ajit, Peter, Jordan, Paul, Andy E.\ (previously at UCL, now at USA)---thank you all for the feedback and support you have given me over the last few years, and thank you 
+	for putting up with my daft ideas and naive questions during our meetings; I am sure one day I will find a use for a reverse Monte Carlo, and I promise that you will be the first to hear!
 To the rest of the Imperial HEP group, thank you too for creating such a fertile environment for a young physicist to work and grow.
 Perhaps it is time to clean some of those coffee cups out now, though.
 
-And finally to the rest of my friends from home, from my undergraduate studies, from my Erasmus year, from wherever you are, thank you all for the laughs and distractions.
+Finally, to all my friends: from home, from my undergraduate studies, from my Erasmus year, from these post-graduate studies, from Uberlandia and my trips to other places, and to all the other friends that cannot be put in a group (though I suppose that sort of defines a group):
+	thank you for all the laughter, the stories, and the distractions.
 It would take up too much space to write you all out in full, so I shall just put your initials here:
-A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z
+A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z;
 my apologies if I have missed anyone out!
 
-Oh, and there is one more thank you to make: 
-Thank you to the muon, for without you this PhD would absolutely not have been possible, or at least would have been a lot smaller:
-``The COMET experiment is searching for muon-to-electron conversion. Since there is no such thing as a muon, however, the predicted sensitivity and background rates, respectively, zero and zero.  The end. PhD please.''
+Oh, and there is one more thank-you to make: thank you to the muon, for without you this PhD would absolutely not have been possible or else would certainly have been a lot smaller:
+``The COMET experiment is searching for muon-to-electron conversion. Since there is no such thing as a muon, however, the predicted sensitivity and background rates are, respectively, zero and zero.  The end.''
 
 %To my colleagues at Imperial, in particular, 
 %To Yoshi Uchida, my supervisor, thank you for drilling home the benefits of correct latex
