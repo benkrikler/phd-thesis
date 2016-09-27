@@ -4,10 +4,11 @@
 %\includeonly{optimisation,simulationConfigurations}
 %\includeonly{backgrounds}
 %\includeonly{software}
-%\includeonly{mueconv}
+%\includeonly{appendix-alcap}
 %\includeonly{theory,mueconv}%,detector}
 \documentclass{thesis}
 \usepackage{dcolumn}
+\usepackage{import}
 %\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
 \usepackage{feynmp}
 \usepackage{afterpage}
@@ -34,18 +35,20 @@
 \usepackage[sharp]{easylist}
 \usepackage{multirow}
 \usepackage{listings}
-\usepackage{hyperref}
+%\usepackage[colorlinks=false]{hyperref}
+\usepackage[bookmarks=true,plainpages=false]{hyperref}%
 %\usepackage[caption=false]{subfig}
-%\hypersetup{pdfborder={0 0 0}, urlcolor=blue}
+%\hypersetup{, urlcolor=blue}
 
-\hypersetup{%
-  colorlinks=true,% hyperlinks will be coloured
-  linkcolor=blue,% hyperlink text will be green
-  urlcolor=blue,% hyperlink text will be green
-  linkbordercolor=red% hyperlink border will be red
-}
+%\hypersetup{%
+%  colorlinks=false,% hyperlinks will be coloured
+%  linkcolor=blue,% hyperlink text will be green
+%  urlcolor=blue,% hyperlink text will be green
+%  linkbordercolor=red% hyperlink border will be red
+%pdfborder={0 0 1}
+%}
 
-\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
+\newcolumntype{d}[1]{D{.}{.}{#1} }
 \newcolumntype{a}{D{-}{\le\theta<}{4} }
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
@@ -78,13 +81,13 @@
 
 \lstset{escapechar=@,style=customc}
 
-\makeatletter
-\Hy@AtBeginDocument{%
-  \def\@pdfborder{0 0 1}% Overrides border definition set with colorlinks=true
-  \def\@pdfborderstyle{/S/U/W 0}% Overrides border style set with colorlinks=true
-                                % Hyperlink border style will be underline of width 1pt
-}
-\makeatother
+%\makeatletter
+%\Hy@AtBeginDocument{%
+%  \def\@pdfborder{0 0 1}% Overrides border definition set with colorlinks=true
+%  \def\@pdfborderstyle{/S/U/W 0}% Overrides border style set with colorlinks=true
+%                                % Hyperlink border style will be underline of width 1pt
+%}
+%\makeatother
 
 \makeatletter
 \@ifpackageloaded{hyperref}{%
@@ -159,6 +162,7 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 
 \bibliographystyle{plain}
 %\bibliographystyle{bensbib}
+\bibliographystyle{yoshi}
 \bibliography{library/record}
 
 % Produce the appendices

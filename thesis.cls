@@ -1,6 +1,6 @@
 \ProvidesClass{thesis}
 %% For normal draft builds
-\LoadClass[hyperpdf,nobind,draft,rmtitles,oneside]{hepthesis}
+\LoadClass[nobind,draft,rmtitles,oneside]{hepthesis}
 %\LoadClass[hyperpdf,nobind,draft,twoside]{hepthesis}
 %% For short draft builds (breaks citations by necessity)
 %\LoadClass[hyperpdf,nobind,draft,hidefrontback]{hepthesis}
@@ -16,6 +16,7 @@
 %\RequirePackage{morefloats}
 \RequirePackage{mathrsfs} % script font
 \RequirePackage{afterpage}
+\RequirePackage{gillius}
 
 %% Using Babel allows other languages to be used and mixed-in easily
 \RequirePackage[english]{babel}
@@ -31,6 +32,7 @@
 
 %% TikZ is a marvellous drawing package
 \RequirePackage{tikz}
+
 
 %% BEK: Remove extra vspace inserted when a table float is created
 %% Table environment
@@ -61,3 +63,36 @@
   %\@oldendtitlepage%
   %\cleardoublepage%
 }
+
+%% An environment for the rubbish at the front of a typical thesis
+\specialcomment{frontmatter}{%
+  \setcounter{tocdepth}{2}% show down to subsections in contents
+  \setcounter{secnumdepth}{2}% number down to subsections
+  \newcounter{iterlist}%
+  \@oldfrontmatter%
+  \pagenumbering{arabic}%
+  \adjustwidth{\@frontmatterextramargin}{\@frontmatterextramargin}%
+  \begin{\@frontmatterspacing}%
+}{%
+  \end{\@frontmatterspacing}%
+  \endadjustwidth%
+  \ignorespacesafterend%
+  %\newcounter{grabPageNumber}%
+  %%\setcounter{\value{page}}%
+}
+
+\specialcomment{mainmatter}{%
+  %\@oldmainmatter%
+  \@mainmattertrue%
+  %\pagenumbering{arabic}%
+  %\setcounter{page}{\value{grabPageNumber}}%
+  %\pagenumbering{arabic}%
+  \adjustwidth{\@mainmatterextramargin}{\@mainmatterextramargin}%
+  \begin{\@mainmatterspacing}%
+}{%
+  \end{\@mainmatterspacing}%
+  \endadjustwidth%
+  \ignorespacesafterend%
+}
+
+
