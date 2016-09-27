@@ -215,7 +215,7 @@ The resultant fieldmap is shown in \fig{software:field:G4Beamline}.
 \FigSoftwareFieldMap
 \FigSoftwareFieldMapComparison
 
-For more elaborate calculations, Opera 3D finite-element-analysis software was used with the TOSCA submodule~\cite{Opera} for static electromagnetic fields.
+For more elaborate calculations, Opera 3D finite-element-analysis software was used with the TOSCA sub-module~\cite{Opera} for static electromagnetic fields.
 This calculation includes non-linear material effects in the yoke and shielding so that the final fieldmap should be much more accurate.
 \Fig{software:field:Opera} shows the fieldmap calculated by Opera in the plane of the beam line axis.
 The ratio between the G4Beamline and Opera calculations is given in \fig{software:field:comparison}, where it can be seen how the two models disagree most at the exit of the solenoids.
@@ -278,7 +278,7 @@ Fluka also lacks a primitive Torus volume implementation, so that other studies 
 \subsubsection{Geant4 physics modelling}
 Aside from the production target region, most of the tracking of particles and creation of secondaries takes place in the SimG4 package, which is built against the Geant4 library.
 In Geant4, the trajectory of a particle is built up in steps, each of which terminates either by a physics process (which might change the particle's direction or energy, or produce secondary tracks) or by the boundary of a volume in the simulated geometry.
-To decide what actually limits the step taken by a given particle (a positron, for example ), Geant4 calls the list of possible processes this particle can undergo (for example Brehmstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
+To decide what actually limits the step taken by a given particle (a positron, for example ), Geant4 calls the list of possible processes this particle can undergo (for example Bremsstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
 In the case of a geometry limit, the step length is the distance until the boundary of the geometry, including deflections to the trajectory due to any electromagnetic field.
 On the other hand, for a physics process the proposed step length is typically selected randomly using a relevant probability distribution for this process.
 Often this involves a characteristic length or time of the process, for example the half-life of a particle that will decay.
@@ -325,7 +325,7 @@ This base-class contains three instances of a `G4HadronicInteraction': one to pe
 The `G4HadronStoppingProcess' class is also used to simulate stopped negative pions, kaons, and so on, and bound decay is only considered if a valid instance of such a process has been provided.
 When a stopped particle is processed through this class, the electromagnetic cascade is always run first, producing X-rays and Auger electrons.
 Then one of either bound decay or nuclear capture is chosen by asking the bound decay process whether or not it will kill the particle; if so, bound decay is considered to have taken place and the nuclear capture is not run. 
-Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}  which fill in experimental blanks with a semi-empirical models, and decay rates based on a largely theoretical 1977 model by Mukhopady~\cite{Mukhopadhyay:1976hu}.
+Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}  which fill in experimental blanks with a semi-empirical models, and decay rates based on a largely theoretical 1977 model by Mukhopadhyay~\cite{Mukhopadhyay:1976hu}.
 \Fig{detector:mu-nucl-params} was produced by extracting these parameters.
 
 \FigSimulationPhysicsClasses
