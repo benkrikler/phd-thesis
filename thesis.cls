@@ -16,7 +16,7 @@
 %\RequirePackage{morefloats}
 \RequirePackage{mathrsfs} % script font
 \RequirePackage{afterpage}
-\RequirePackage{gillius}
+%\RequirePackage{gillius}
 
 %% Using Babel allows other languages to be used and mixed-in easily
 \RequirePackage[english]{babel}
