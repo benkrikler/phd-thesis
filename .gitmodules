@@ -4,3 +4,6 @@
 [submodule "figs/feynman"]
 	path = figs/feynman
 	url = git@github.com:benkrikler/MuEConvFeynamDiagrams.git
+[submodule "nufact15-alcap-proceedings"]
+	path = nufact15-alcap-proceedings
+	url = https://github.com/benkrikler/nufact15-alcap-proceedings.git
