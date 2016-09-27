@@ -19,7 +19,7 @@ suppressing potential background sources to well below a single event during the
 This tension between simultaneously high-signal sensitivity and background suppression can be translated into the more specific requirements of:
 \begin{itemize}
 \setlength{\itemsep}{-1ex}
-\item a very high-intensity, low-energy, and high-purit muon beam,
+\item a very high-intensity, low-energy, and high-purity muon beam,
 %\item a low-energy muon beam,
 \item a thin stopping target and low-material budget detector,
 \item the use of timing information of signal process with respect to backgrounds.
@@ -32,17 +32,16 @@ The design of COMET realises these goals by employing several novel experimental
 %Although \phaseI will run sooner, since it is heavily motivated by \phaseII, I shall describe \phaseII in more depth first and return \phaseI subsequently.
 
 \section{The COMET Signal}
-\sectlabel{detector:background}
-Muon-to-electron conversion, as described in the previous chapter, is the process where a muon, bound to the Coulomb potential of an atomic nucleus, decays to an electron without emitting neutrinos.
+Muon-to-electron conversion, as described in the previous chapter, is the process where a muon, bound within the Coulomb potential of an atomic nucleus, decays to an electron without emitting neutrinos.
 If the nucleus is not excited in the process, coherent transitions dominate, and the electron is produced monoenergetically.
 In addition to the energy, the lifetime of the muon once bound to the nucleus is also characteristic  of the signal process.
 
 Thus the signal for COMET is a single electron, with a well-defined energy and an exponential lifetime matching that of the bound muon.
-In the aluminium target used in COMET, the lifetime of the muon is 864~ns, whilst the energy of the electron will be 104.97~MeV/c.
+In the aluminium target used in COMET, the lifetime of the muon is 864~ns, whilst the energy of the electron will be 104.97~MeV.
 
 \section{Overview of Background Processes}
-
-The \acf{ses}, defined in the previous chapter, is a statement of the ability to observe the signal from such a process.
+\sectlabel{detector:background}
+The \acf{ses}, defined in the previous chapter, is a statement of the experiment's ability to observe the \mueconv signal.
 It does not, however, account for the background rates.
 Clearly, for any observation to be confidently labelled as signal or, in the event of a null-observation, in order to set the tightest possible confidence limit, the background rate must be kept comparably low.
 In order to understand the design of the \COMET experiment, a simple appreciation of the key backgrounds is therefore necessary.
@@ -55,7 +54,7 @@ There are four groups of background source: intrinsic, prompt, delayed, and cosm
 \begin{description}
 \item [Intrinsic processes]
                     are those that arise from muons stopping in the target and will always be present regardless of the muon beam properties.
-The muon \ac{DIO} which was described in the previous chapter is one such background.
+Muon \ac{DIO}, which was described in the previous chapter, is one such background.
 %One Of these, the dominant background is muon \acf{DIO}, which was described in the previous chapter.
 In addition, radiative nuclear capture of a muon is kinematically capable of producing photons very close to the signal energy.
 If the photon is converted to a high-energy electron this can produce background events if the electron's energy is mis-reconstructed with additional energy.
@@ -66,7 +65,6 @@ If the photon is converted to a high-energy electron this can produce background
 %However, clearly such a configuration occupies a tiny part of the phase space as can be seen from \fig{detector:DIOSpectrum} which shows the spectrum of electrons from muon \ac{DIO} in aluminium.
 %It can be seen that whilst the high-energy tail does reach up to about 105~MeV/c, the rate drops away very steeply above the free-muon decay end-point, falling some 18 orders of magnitude from its peak around 50~MeV/c.
 %%Since the nucleus is so massive compared to the electron, it requires very little energy to have it conserve momentum with the outgoing electron.
-\TabBackgroundSummary%
 
 \item [Prompt and delayed beam-related backgrounds]
                              come from impurities in the muon beam, be they pions, antiprotons, or high-energy muons and electrons.
@@ -80,17 +78,18 @@ Prompt processes such as this are suppressed by using a pulsed proton beam (disc
 Other beam related issues include the decay of muons and pions to electrons.
 An electron of 100~MeV/c can be produced by muons or pions with momentum greater than 70 or 50~MeV/c respectively, and so the flux of higher energy particles in the beam must also be reduced.
 
-Delayed processes are those where the timing of the proton beam cannot be used to improve suppression since the characteristic time between the primary proton striking the target and the detection of the background for these processes is large compared to the time between beam pulses
+Delayed processes are those where the timing of the proton beam cannot be used to improve suppression since the characteristic time between the primary proton striking the target and the detection of the background for these processes is large compared to the time between beam pulses.
 Possible sources of this delay include the mirroring of particles by the magnetic field, or by some heavy particle from the production target producing pions and high-energy electrons.
 At a given momentum, antiprotons travel considerably more slowly than muons or pions given their considerably larger mass, washing out any timing information from their production.
 
 \item [Cosmic Backgrounds]
 Finally cosmic backgrounds arise from high-energy muons that pass through the building and enter the detector or beamline.  
-Events where a muon decays to an electron which is then detected as 105~MeV are counted as backgrounds.
+Events where a muon decays to an electron, which is then detected as 105~MeV, are counted as backgrounds.
 In particular, muons that produce high-energy electrons close to the target are dangerous since cuts on the reconstructed direction and position will be less effective.
 \end{description}
 
-All these processes will be discussed and evaluated in more depth in the section on background estimates.
+All these processes will be discussed and evaluated in more depth in chapter~\sect{backgrounds}
+\TabBackgroundSummary%
 
 \section{General Experimental Techniques}
 Suppressing background rates while maintaining a high-signal efficiency leads to several novel techniques being used in the COMET experimental set-up.
@@ -102,7 +101,7 @@ If maximising the muon intensity were the only concern, then both the proton bea
 grows with these two parameters.
 However, the need to suppress background rates and maintain the mechanical and operational stability of the target constrains both of these parameters.
 
-In particular, protons striking an individual, stationary (and, in theory, unbound) nucleon with more than about 6~GeV have sufficient energy to produce antiprotons which travel relatively slowly (see \ref{sec:stop-tgt}) and can produce backgrounds.
+In particular, protons striking an individual, stationary (and, in theory, unbound) nucleon with more than about 5.6~GeV have sufficient energy to produce antiprotons, which travel relatively slowly and can produce backgrounds.
 Since the antiproton yield grows very quickly above this threshold, it has been chosen to use protons with 8~GeV kinetic energy.
 
 As well as the beam energy, the intensity is ideally maximised to increase the number of protons on target per second.
@@ -128,8 +127,8 @@ When transported through a bent solenoid, charged particles are dispersed propor
 This creates a separation between the high and low-momentum components of the beam, such that collimators can selectively remove the high-momentum particles.
 
 Charged particles moving through a straight solenoid follow a helical
-trajectory, orbiting a point that moves parallel to the solenoidal axis with constant velocity fixed by the longitudinal momentum of the particle.
-The frequency that the particle rotates about this point (the cyclotron frequency or frequency of gyration) is determined by the transverse momentum.
+trajectory, orbiting a point that moves parallel to the solenoidal axis with a constant velocity fixed by the longitudinal momentum of the particle.
+The frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration) is determined by the transverse momentum.
 \FigBentSolenoidRelativeDrift
 
 By comparison, if a charged particle moves through a solenoid channel that has been bent, the particle can still be considered to orbit a point, only now 
@@ -168,8 +167,8 @@ The same result is true in a bent solenoid and since the drift this introduces i
 Two techniques have been considered to introduce this vertical component: tilting the solenoid coils themselves, or adding additional dipole coils around the solenoids.
 \COMET has chosen to pursue the latter, using a special, proprietary winding technique developed by Toshiba to introduce a vertical component by placing additional conductor around the solenoid coils.
 Since the current through these dipole coils can be altered separately to the solenoid coils, this approach has the advantage that the two components can be tuned against each other.
-This allows for the optimal dipole field to be found during operation running, and for the on-axis momentum and charge shifted to study backgrounds or other physics searches.
-Additional collimator material can also be introduced to remove particles with undesirable momentum.
+This allows for the optimal dipole field to be found during operation running, or for the on-axis momentum and charge to be shifted for background and acceptance studies or searches for other physical observables.
+Collimating material is introduced to remove particles with undesirable momentum.
 
 %The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
 %\begin{equation}
@@ -244,7 +243,6 @@ The kicker is then activated again immediately after the first filled bunch has 
 Thus only every second bucket in the \ac{MR} is filled and all other buckets are kept empty.
 
 \section{\COMET \phaseI}
-\FigPhaseI
 % - Measurement goals
 % - StrECAL detector
 % - CyDet detector
@@ -262,7 +260,7 @@ However, due to the high-radiation environment around the production target, the
 all sitting in the beam.  
 
 However, since the StrECAL detector will be hit by the full force of the muon beam, it would not be feasible to conduct a \mueconv search using this detector.
-As such, for \phaseI a second detector, known as the \ac{CyDet} will be used for this purpose.
+As such, for \phaseI, a second detector called the \ac{CyDet} will be used for this purpose.
 The \ac{CyDet} uses a \ac{CDC} to reconstruct the trajectories of charged particles and a pair of Cherenkov and Scintillation counters (one upstream and one down) to trigger the read-out of the system.
 The \ac{CyDet} escapes the issue of the beam flash that the \ac{StrECAL} would face at \phaseI since only the outer region is instrumented.
 Since the detector sits in a 1~T solenoid field (and both the detector and solenoid are co-axial), particles follow helical trajectories with the radius of gyration determined by the transverse momentum of the particle.
@@ -275,6 +273,7 @@ Despite being emitted with kinetic energies of a few tens of MeV, momenta above 
 For similar reasons these particles are typically very heavily ionising so, if left unchecked, could easily dominate the occupancy of the \ac{CDC}.
 The \alcap experiment has shown that for muon capture on Al-27 nuclei, the emission of a proton occurs for about 3\% of every muon capture~\cite{NamThesis}.
 At this level, it is believed that no specific shielding is required beyond the carbon inner wall of the \ac{CDC} needed to contain the gas mixture.
+\FigPhaseI
 
 Four layers of scintillation bars will surround the outside of the detector to provide a veto for cosmic ray events.
 The most dangerous event would be a high-energy muon reaching the target and decaying to a 105~MeV electron which is then detected. 
@@ -282,7 +281,7 @@ Dedicated cosmic runs will be performed prior to operation with a beam in order 
 
 \section{\COMET \phaseII}
 \FigPhaseII
-Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII, I shall only give a brief introductory overview here, most of which is based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
+Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII, we only give a brief introductory overview here, most of which is based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
 
 COMET \phaseII will be the final stage of the experiment.
 It will extend the muon beamline built for \phaseI by an extra 90\degree, and add two extra solenoid sections: one to hold the stopping target, and a second 180\degree bent solenoid with a large aperture of 60~cm radius.
@@ -316,7 +315,7 @@ At the time of writing, with regards to the facility, the building that will hou
 Cooling and power supplies are being installed and the shielding for the concrete hatch area is being produced.
 In the mean time the development of the new beamline to extract protons from the \ac{MR} and deliver them to the COMET area is being installed.
 In particular, the Lambertson magnet which directs the protons towards COMET rather than the existing Hadron Hall has been built.
-For the muon beamline, the \phaseI section of the bent muon transport solenoids has been built and installed and is now under commissioning studies.
+For the muon beamline, the \phaseI section of the bent muon transport solenoids has been fabricated and installed, and is now under commissioning studies.
 Construction of the detector solenoid has also begun with the capture solenoids around the production target soon to begin.
 A selection of photographs that show the construction of the facility and installation of the bent transport solenoid are show in \fig{detector:setup:facility}.
 
@@ -325,7 +324,8 @@ Much of the recent activity for the collaboration has been on the design and con
 Beam tests to understand the performance and resolution of prototype ECAL crystals, straw tubes and the \ac{CDC} have taken place.
 For the \ac{StrECAL}, production of all 2500 \phaseI straws has been completed and procurement of the \ac{LYSO} crystals for the ECAL is under way with some 200 or so crystals already purchased.
 Aging tests of the straw tubes are on-going with straws being held for an extended duration under pressure and tension at KEK.
-Beam-test data is being analysed to understand the position resolution for a given straw and the energy resolution of the ECAL although for the latter better than 5\% resolution for 105~MeV electrons has already been shown.
+Beam-test data is being analysed to understand the position resolution for a given straw and the energy resolution of the ECAL.
+In the case of the ECAL, an energy resolution better than 5\% has already been shown for 105~MeV electrons.
 \Fig{detector:status:StrECAL} shows photographs of the prototypes and beam test set-ups of the Straw Tube Tracker and the ECAL.
 
 \FigStatusCyDet
