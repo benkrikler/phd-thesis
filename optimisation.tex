@@ -63,11 +63,11 @@ A brute force search of such a space would be nightmarishly slow and require an 
 Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
 In the meantime, however, we make use of the technique known as `physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
 %This should be sufficient to establish a reasoned baseline geometry, whilst allowing for future work to refine the design further.
-The goal of this chapter therefore is not only to optimise the experiment but also to evaluate the correlations.
+The goal of this chapter, therefore, is not only to optimise the experiment but also to gain qualitative understanding for the correlations and dependencies between the controlling parameters.
 
-This challenge is further complicated because it is not just the signal sensitivity that must be maximised, but the background rate that must be kept low.
+This task is further complicated because it is not just the signal sensitivity that must be maximised, but the background rate that must be kept low.
 When this work began, no start-to-finish simulation existed to estimate the signal and background rates.
-As such, this study will progress by focussing on optimising the signal acceptance in the first instance, and then move to background estimation described in chapter~\sect{backgrounds}.
+As such, this study will progress by focussing on optimising the signal efficiency in the first instance, and then move to background estimation described in chapter~\sect{backgrounds}.
 
 %Ideally this will also identify which parameters are the most strongly correlated, which would help make future optimisation studies more efficient.
 The outputs of this optimisation should not be considered as final but should instead be treated as a baseline from which more intelligent approaches or physicists can iterate and improve.
@@ -80,7 +80,7 @@ The outputs of this optimisation should not be considered as final but should in
 %\end{easylist}
 
 \section{Production Target Optimisation}
-In the \phaseII \ac{CDR}, the production target is given as being 16~cm in
+In the \phaseII \ac{CDR}, the production target is given as 16~cm in
 length and 4~mm in radius~\cite{CDRphase2}.  Since then, there have been changes to
 the magnetic field in this region as well as the lengths and locations of
 solenoids, shielding and beam-pipe, and the proton beam.  Previous studies have
@@ -93,9 +93,9 @@ The goal of this study is to maximise the total muon and pion
 yield below 80~MeV at the entrance to the Torus1 bent solenoid, by varying the
 radius and length of the production target.
 Whilst it is really the rate at which negative muons stop in the Stopping Target that ought to be optimised, 
-since it is known that muons above about 40 to 50~MeV/c will not stop, and since the bent transport solenoids themselves need optimising
-we assume here that by maximising the number of muons and pions below 80~MeV/c will also maximise the stopping rate.
-In addition this had the advantage of increasing the speed of the simulation.
+since it is known that muons above about 40 to 50~MeV/c will not stop, and since the bent transport solenoids themselves need optimising,
+we assume here that maximising the number of muons and pions below 80~MeV/c will also maximise the stopping rate.
+In addition this has the advantage of increasing the speed of the simulation.
 The production target is one of the more computationally intensive aspects
 of the experiment, given the relatively high-energy protons and hadronic nature of their interactions with the target, which together result in a large number of secondaries.
 
@@ -126,11 +126,10 @@ divergences of the proton beam in the field before the target.
 This too will need to be revisited once the proton beam distribution is better understood.
 
 \subsection{Length Scan}
-Different length targets were simulated with \num{3e5}~\acp{POT} per length.
+Different length targets were simulated with \num{3e5}~\acp{POT} for each length.
 The target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
 
-\Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths, which are 
-%given as half-lengths following the Geant4 convention.  
+\Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths (presented as half-lengths following the Geant4 convention).
 \Fig{optimisation:ProdTgtSec:Length:Integral} then shows these distributions integrated up to different momenta.
 From these plots it can be seen that for both muons and pions, the optimum target length occurs around a total length of 32~cm.
 
@@ -139,10 +138,10 @@ Additionally it can be seen from
 momentum distributions changes only weakly as a function of the target length.
 These plots were produced by normalising the integrated momentum contours of
 \fig{optimisation:ProdTgtSec:Length:Integral} to the total integral below
-400~MeV.  As a result, it is possible that the actual shape variation is even
+400~MeV/c.  As a result, it is possible that the actual variation of the shape is even
 weaker than apparent here, since in the present sample size, the high-momentum
-tail is not well sampled at small target lengths, such that a skew in the
-normalisation might occur.
+tail is not well sampled for small target lengths, such that a skew in the
+normalisation might occur as events appear above 400~MeV/c.
 
 \FigOptimProdTgtLength
 \FigOptimProdTgtRad
@@ -153,15 +152,18 @@ The target length was held at the \ac{CDR} value of 16~cm in total.
 
 The results of these scans are shown in \fig{optimisation:ProdTgtSec:Radius:Momentum} and \fig{optimisation:ProdTgtSec:Radius:Integral},
 where it can be seen that a maximum in both the muon and pion yields at the entrance to the Torus1 section is achieved at a radius of about 10~mm.
-As in the length scan, the variation in the shape of the momentum distributions is rather weak as a function of target radius.
+As in the length scan, the variation in the shape of the momentum distributions is rather weak as a function of target radius, as shown by 
+\fig{optimisation:ProdTgtSec:Radius:IntegralRatio}
 
 \subsection{Final Result}
 \FigOptimProdTgtFinal
 \FigOptimProdTgtComparePhases
 Since the length and radius scan were performed in parallel, a final cross check was performed where the optimal radius was confirmed at the optimised target length.
 The integrated spectrum is shown in \fig{optimisation:ProdTgtSec:Final:Integral} where it can be seen that the optimum radius once the target length is increased to 32~cm is still 10~mm.
+The shape of the dependence on the radius is however changed, with a more pronounced drop, then slow tail-off towards larger radii, than for the radius scan with the unoptimised length.
 
 \Fig{optimisation:ProdTgtSec:Phase1vs2} shows the total muon and pion yields at the entrance to the Torus1 for the final optimised \phaseII target and compares this to the optimised \phaseI target design.
+Both sets of distributions were generated with Geant4---it would be informative to study this with other hadron production codes as well.
 The increased yield in the low-momentum range is due to the heavier target nucleus which produces more low-momentum pions in the backwards direction.
 Since only muons below around 50~MeV/c tend to stop in the target, this increase in the low-momentum yield amounts to a factor 2 or so gain in the stopping muon rate per POT.
 
@@ -194,8 +196,8 @@ that might be trickier since it could require additional windings to be inserted
 
 \subsection{Large-sample Production Target Simulation}
 \sectlabel{largeSampleProdTgt}
-Before the muon beam section could be optimised, a large set of \ac{POT} events were produced transporting all particles up to the entrance of the muon beam section.
-In total, \num{2.3e8}~POT were simulated through this stage, equivalent to about 1.5 bunches at \phaseII.
+Before the muon beam section could be optimised, a large set of \ac{POT} events were produced, transporting all secondary particles from the Production Target up to the entrance of the muon beam section.
+In total, \num{2.3e8}~POT were simulated, equivalent to about 1.5 bunches at \phaseII.
 The production target used the optimised geometry from the previous section.
 All particles that hit the surface of the Torus1 container volume were read out for later re-use in a way that ensured double-counting of particles could not occur.
 In addition, particles entering the proton beam dump were also saved if later simulations wished to study their impacts.
@@ -205,8 +207,8 @@ In addition, particles entering the proton beam dump were also saved if later si
 The figure-of-merit for this optimisation is the muon stopping rate, which will be greatest for the optimal field configuration.
 %Toshiba have previously performed a realistic field calculation using OPERA for a single coil whose on-axis field has a mean of about 0.055~T.
 To identify such a configuration, a two-dimensional scan over the Torus1 and Torus2 dipole field strengths was performed.
-To vary the field strength a scale factor was applied, for each of the 90\degree section, to the realistic dipole field description that was provided by Toshiba and described in \sect{sw:fieldmap}.
-These scale factors were varied in steps of 0.125 (equivalent to 6.875~mT) and for each combination muons and pions from $8\times10^6$~POT were transported to the stopping target.
+To vary the field strength, a scale factor was applied for each of the 90\degree section to the realistic dipole field description that was provided by Toshiba and described in \sect{sw:fieldmap}.
+These scale factors were varied in steps of 0.125 (equivalent to about 6.875~mT) and for each combination muons and pions from $8\times10^6$~POT were transported to the stopping target.
 %The stopping rate for each combination of scale factors was then assessed.
 
 \FigOptimMuBeamDipolePiStops
@@ -214,17 +216,19 @@ These scale factors were varied in steps of 0.125 (equivalent to 6.875~mT) and f
 The muon stopping rate as a function of the two dipole field strengths is shown in \fig{optim:muBeamDipole:stoppedMu}.
 The horizontal axis in that figure shows the scale factor applied to the Torus1, the 90\degree bent solenoid already built for \phaseI, whilst the vertical axis shows the scale factor for the Torus2.
 A scale factor of 1.0 means the magnetic field will be same as the current \phaseI design.
-Since there is little improvement by moving to larger values for Torus1 the optimal scale factors are chosen to be 1 and 0.5 for the Torus1 and Torus2 respectively.  
-This translates to dipole field strengths of 0.055 and 0.0275~T respectively.
-%\CHECK{Are these the final selected dipole field strengths?}
+
+The maximum muon stopping rate occurs when the Torus1 scale factor is about 1.125 and Torus2 is scaled by 0.375.
+However, achieving this configuration would require additional coil windings in the Torus1 compared to the \phaseI design, which would incur extra costs and risks.
+With scale factors of 1 and 0.5 for the Torus1 and Torus2 respectively, the difference is about 0.1\%, from the absolute optimum, which is about the statistical error one would expect in the present study.
+As a result, the recommendation is to use dipole field strengths of 0.055 and 0.0275~T, for the Torus1 and Torus2 respectively.
 
 Also striking from \fig{optim:muBeamDipole:stoppedMu} is the anti-correlation between the two dipole field strengths.  
 Roughly speaking the sum of the optimal dipole field values is constant, \ie $B_1^\text{optimal} + B_2^\text{optimal} = \text{const}$.
-This correlation had not been seen before, perhaps due to the lack of computing power necessary to scan such a large phase space.
-Such a correlation can be understood in the following way:
-the geometry of the stopping target (and its position) has been kept fixed during the dipole scan, which
-essentially fixes the upper momentum of muons that can stop in the target.
-Given the momentum distribution peaks beyond this momentum, one tends to optimise for momenta close to the maximum stopping momentum.
+This correlation had not been seen before, perhaps due to the lack of computing power necessary to scan such a large parameter space.
+Such a correlation can be understood in the following way.
+The geometry of the stopping target (and its position) has been kept fixed during the dipole scan, which
+essentially fixes the upper momentum of muons that can stop in the target to about 40~MeV/c.
+Given the momentum distribution peaks beyond this limit (see \fig{optimisation:ProdTgtSec:Phase1vs2}), one tends to optimise for momenta close to the maximum that can stop in the target.
 %The initial momentum distribution grows roughly linearly with momentum for the momenta of muons that will stop in the target (see the later sections for more on this), which would suggest tuning to the higher momentum would increase the number of muons reaching the target.
 %That effect however is greatly reduced by the fact that the initial muon beam has a very large transverse position profile
 The drift of a particle due to the dipole field is proportional only to the distance travelled in that dipole field and the dipole field strength, and does not depend on the particle's momentum.
@@ -239,7 +243,7 @@ Thus we need to compensate for the drift of particles of a fixed momentum, which
 
 With that said, the Torus1 section has a higher pion flux which causes some asymmetry between the two sections.
 Keeping more pions on-axis in the Torus1 section means that more muons will enter the Torus2 section from those pions that have decayed.
-But since the pion momentum distribution is slightly higher than the muon distribution keeping pions on axis requires a larger dipole field strength.
+But since the pion momentum distribution is slightly higher than the muon distribution, keeping pions on axis requires a larger dipole field strength.
 This could explain the slight asymmetry where the muon stopping rate appears slightly larger if Torus1's field is larger than that of Torus2.
 
 It is also interesting to consider the pion stopping rate as a function of the dipole field strengths.
@@ -264,7 +268,7 @@ The next element in the beamline after the muon transport solenoids will be the 
 However, in order to study the impact of changing the stopping target parameters one will need to look at the impact on the signal acceptance into the detector.
 To study that requires the components of the beamline intermediate to the target and the detector be optimised, namely the electron spectrometer.
 The key free parameter in this section is the dipole field strength along the spectrometer.
-The solenoidal field and solenoid aperture could also be optimised in principle, but this is considered beyond the scope of this study at this point and so the CDR values of these are assumed.
+The solenoidal field and solenoid aperture could also be optimised in principle, but this is considered beyond the scope of the present study, and so we use here the same values for the aperture and solenoidal field strength as for the CDR.
 The point of this section is to establish the optimal dipole field strength given fixed target parameters.
 The target parameters will then be studied separately, whilst the stability of this dipole field tune is checked.
 
@@ -288,7 +292,7 @@ The potency of this approach is clear from these plots; the tunable dipole field
 \Fig{optim:ESTDipole:MeanHeight} then collects these plots with other dipole field strengths, plotting the mean height for all simulated electrons against the distance along the beam axis.
 From this plot it can be seen how a dipole field of about 0.18~T appears optimal to keep the signal electrons on axis.
 
-The probability for electrons to reach a given point in the beamline is shown in \fig{optim:ESTDipole:MeanFlux}, and indeed from this it can be seen that to maximize the probability of an electron reaching the detector
+The probability for electrons to reach a given point in the beamline is shown in \fig{optim:ESTDipole:MeanFlux}, and indeed from this it can be seen that to maximize the probability of an electron reaching the detector,
 a dipole of around 0.18~T is desirable.
 The behaviour of the low dipole field values (0 to 0.08~T) in this plot was not expected, but it is believed this is an artefact of the way this plot is made, coupled with a degree of mirroring at the entrance to the spectrometer which is enhanced as the dipole field strength increases.
 If correct, a realistic dipole field calculation would be important to quantify and confirm this behaviour.
@@ -298,7 +302,7 @@ If correct, a realistic dipole field calculation would be important to quantify 
 Finally, to confirm the optimal dipole field strength the true geometric acceptance of the detector system is checked as a function of the dipole field strength, which is shown in \fig{optim:ESTDipole:acceptance}.
 An electron is considered to have been geometrically accepted by the detector in this simulation if it produces at least one hit in the detector system.
 In principle this could be in any straw plane, but in practice this is almost always in the first layer of straws.
-Since this is a different way to analyse the acceptance compared to the survival probability it would not suffer to the artefact seen for low dipole field values in \fig{optim:ESTDipole:MeanFlux}.
+Since this is a different way to analyse the acceptance compared to the survival probability, it would not suffer from the artefact seen for low dipole field values in \fig{optim:ESTDipole:MeanFlux}.
 Nonetheless, \fig{optim:ESTDipole:acceptance} confirms that the optimal dipole field strength is very close to 0.18~T.
 
 A second important conclusion can be drawn from the fact that the dependence on the dipole field strength is relatively weak around the optimal value of 0.18~T.
@@ -323,7 +327,7 @@ A change of about 10\% in the dipole field strength only reduces the signal acce
 %\end{easylist}
 The final aspect to be studied with regards to maximizing the signal sensitivity is the stopping target.
 In principle there are many parameters related to the stopping target such as the location, disk shape (profile and thickness), and disk spacing.
-In addition the beam blocker should be considered in parallel with the stopping target since it sits so close to the target itself and can be expected to have a big impact on the signal acceptance.
+The beam blocker ought to be considered in parallel to this, since it sits so close to the target and can be expected to have a big impact on the signal acceptance.
 However, this leaves far too many parameters to be considered all at once.
 
 Since the field around the target tapers sharply, various competing factors must be considered.
@@ -331,10 +335,10 @@ For example, prior to the stopping target region the muon beam is transported th
 The magnetic field in the target region, however, reduces to about 1~T, which would cause the envelope of the muon beam to grow.
 Moving the stopping target downstream would mean that the muon beam arrives with a larger aperture, and would therefore prefer a larger stopping target or else fewer muons will actually hit the target.
 On the other hand, from the perspective of signal acceptance, the tapered field can be used to mirror signal electrons that are initially produced heading upstream, thereby increasing the signal acceptance.
-Moving the target further upstream then will reduce this effect as the difference between the magnetic field strengths at the exit of the bent muon transport solenoid and at the stopping target is reduced.
+Moving the target further upstream will reduce this effect as the difference between the magnetic field strengths at the exit of the bent muon transport solenoid and at the stopping target is reduced.
 
 Given this and the need to reduce the number of parameters inspected, the target and beam blocker design was held fixed in this study and only the position was changed by moving the target upstream and downstream by $\pm50$~cm with respect to the nominal target location as given in the CDR~\cite{CDRphase2}.
-Given that the target disks will occupy in total about 1~m, a shift of 50~cm corresponds to half the target length.
+Given that the target disks will in total occupy about 1~m, a shift of 50~cm corresponds to half the target length.
 In each different position of the stopping target, as for the spectrometer dipole optimisation, a realistic stopping distribution was produced by running muons from the large-scale production target simulation through to the target.
 This stopping distribution was then re-used to introduce signal electrons accordingly.
 Additionally, low-momentum electrons were also studied in order to check the impact of target position on the height of both signal and low-energy electrons as they pass through the spectrometer.
@@ -343,7 +347,7 @@ This is important both to check the correlation of the dipole field tune with th
 
 \Fig{optim:StopTgtPos:MuStops} shows how the rate of muon stops per \ac{POT} is affected by changing the position of the stopping target.
 The relationship is roughly linear, dropping from around \num{2.2e-3} muon stops per POT when the target is shifted upstream by 50~cm to about \num{1.3e-3}~muon stops per POT if the target is shifted 50~cm in the other direction.
-This relationship is as expected given the fixed radius of the target and the growth of the muon beam aperture arising from the reduction in the field strength.
+This relationship is to be expected given the fixed radius of the target and the growth of the muon beam aperture that occurs as the field strength is reduced.
 
 \FigOptimStopTgtPosSensitivitySpect
 In \fig{optim:StopTgtPos:AcceptedMomSpect} one can see the way the electron acceptance changes for different target positions.
@@ -367,7 +371,7 @@ From this the trend is much cleaner, electrons below 70~MeV/c are suppressed as 
 Finally the relationship between the stopping target position and the mean height of electrons through the spectrometer is demonstrated in \fig{optim:StopTgtPos:Height}.
 Each plot shows the mean heights for electrons with a given momentum for different stopping target positions and it is clear that there is some correlation between the mean height and the position of the stopping target.
 For this reason, a more complete optimisation should consider optimising the target position, electron spectrometer dipole, and DIO blocker height simultaneously.
-Nonetheless the change is not particularly large, only about a few centimetres difference by the end of the spectrometer for signal electrons.
+Nonetheless the change is not particularly large: about a few centimetres of difference at the end of the spectrometer for signal electrons.
 This correlation is also likely related to the way the acceptance changes for different target positions when the beam blocker is removed.
 
 The second striking feature from the plots in \fig{optim:StopTgtPos:Height} is the way the mean height acquires a strong sinusoidal component for large target shifts upstream.
@@ -377,10 +381,12 @@ Firstly the acceptance around the target itself could acquire a stronger prefere
 Secondly, since the stopping target disks will see more of the muon beam upstream, the muon stopping distribution could become less homogeneous.
 Whilst electrons are produced isotropically, paths with less target material along them will accept outgoing electrons more readily such that if more muons stop at one side of the target than the other, a dependence on pitch and phase could manifest in the electron acceptance.
 
-Clearly then the stopping target region is a very complicated area; even though this study has focussed on a single parameter---the position of the target itself---it is clear that this correlates to many other variables.
-This is a region in the experiment most ripe for further optimisation then, and indeed appendix~\ref{sec:appendix:stopTgtImprove} shows some of the first steps that have been made in this direction following the optimisation described here had been completed.
+Clearly then the stopping target region is a very complicated area; even though this study has focussed on a single parameter---the position of the target itself---many correlations have been observed.
+This region in the experiment is particularly ripe for further optimisation.
+Appendix~\ref{sec:appendix:stopTgtImprove} shows some of the first steps that have been made in this direction after the studies described here had been completed.
+
 Unfortunately, at the time this work was carried out an error in the normalisation of these plots lead to the conclusion that the optimal shift was between 0 and 10~cm upstream.
-Given the complexity of the optimisation in this region, it was therefore decided to keep the stopping target at the nominal location for the subsequent steps.
+Given the complexity of the optimisation in this region, it was decided to keep the stopping target at the nominal location for the subsequent steps.
 Having corrected the normalisation of the plots, the conclusion now is that the optimal location is between 10 and 20~cm upstream, so perhaps the target should have been shifted back.
 However the improvement to the sensitivity would have been small: shifting the target back about 20~cm improves the sensitivity by around 2\% compared to the signal acceptance at nominal position.
 %Given this small improvement and the complexity of this region it was decided that the stopping target was kept to the nominal position.
@@ -413,7 +419,7 @@ In \fig{optim:MuBeamCollim:Beamline:All} the paths of all muons along the beamli
 \fig{optim:MuBeamCollim:Beamline:HighP} showing the paths of muons that reach the stopping target region with momentum greater than 70~MeV/c (the threshold for a muon to decay to an electron with $p>100$~MeV/c).
 
 It is interesting to note the apparent asymmetry in the high-momentum muons at the entrance to the Torus1 that can be seen in \fig{optim:MuBeamCollim:Beamline:HighP}.  
-This is not because of some momentum-dependence in the acceptance of the preceding beamline, but due to the fact that muons in that plot are only included if they are `dangerous' in the region around the stopping target.
+However, this is not due to some momentum-dependence in the production target region's acceptance, but due to the fact that muons in that plot are only included if they are `dangerous' in the region around the stopping target.
 Even without additional collimators, the beam pipe itself removes high-momentum muons that enter in the lower half of the beamline.
 The validity of only tagging high-momentum muons around the stopping target region comes from the assumption that the products of high-momentum muons that decay before this region can be reliably removed.
 It is important then that this assumption be checked, but for this work this is left as a task for the future.
@@ -426,7 +432,7 @@ This would make the weighting for the high-momentum muons be a function of the b
 However for the purposes of obtaining a qualitative sense of where to collimate, the unweighted difference should be sufficient.
 
 Two regions of interest appear: in the upper half of the entrance to Torus1 and the lower half of the exit of Torus2.  
-Collimating at the Torus1 entrance is justified on the basis that high-momentum muons will tend to have larger gyroradii compared to the muons that stop, and that at this point the beam is largely on-axis and has not yet been dispersed.
+Collimating at the Torus1 entrance is justified on the basis that high-momentum muons will tend to have larger gyroradii compared to the muons that stop, and that at this point the beam is largely on-axis, having not yet been dispersed.
 Collimating at the exit of Torus2 is readily understood on the grounds that the high-momentum muons will have all drifted downwards by this point, compared to the low-momentum stopping muons which are kept on-axis by the dipole fields.
 
 \FigOptimMuBeamCollimTransverseSep
@@ -438,8 +444,8 @@ From these plots one can also see how in the middle of the bent solenoids (at 90
 \subsection{Collimator Height Optimisation}
 \FigOptimMuBeamCollimTorusTwoContours
 To identify the optimum height for the collimators in a computationally efficient way, events were generated without any collimators included.
-The full three dimensional trajectory of all particles, as well as the decay tree, were persisted.
-This allows for a `virtual' collimator to be used, where particles that enter a defined region and their secondaries are removed from the downstream plots.
+The full three-dimensional trajectories of all particles, as well as the decay tree, were persisted.
+This allows for a `virtual' collimator to be used, where particles that enter a defined region and their secondaries are excluded from the downstream plots.
 Whilst this method allows for many collimator shapes and heights to be tested quickly, it does have limitations.
 Firstly, the accuracy depends on the trajectory sampling density, which should be made as fine as possible, at the expense of larger data sizes.
 Secondly, realistic material effects of the collimator cannot be captured, such as the probability a particle is simply scattered rather than stopping completely, or the result of secondary particles produced in the collimator itself.
@@ -482,15 +488,15 @@ It is clear how greatly reduced the number of muons passing the stopping target 
 \FigOptimDIOBeamBlockGeometry
 \FigOptimDIOBeamBlockESTDispersion
 For every muonic atom formed in the stopping target, some 39\% will undergo \acf{DIO}.
-With about $1.4\times10^{8}$~\acp{POT} per bunch and a muon stopping efficiency of around $1.7\times10^{-3}$ stops per \ac{POT}, one can expect about $9\times10^{4}$ DIO events per bunch.
+With about $1.4\times10^{8}$~\acp{POT} per bunch and a muon stopping efficiency of around \VarMuStopsPerPOT stops per \ac{POT}, one can expect about $9\times10^{4}$ DIO events per bunch.
 If the detector system were exposed to this number of tracks it would be impossible to resolve any signal electrons.
-However, above the end-point energy for electrons coming from free muon decay, the DIO spectrum falls extremely quickly, with around 99\% of DIO electrons being produced with less than 59~MeV/c.
+However, above the end-point energy for electrons coming from free muon decay, the DIO spectrum falls extremely quickly, with only around 1\% of DIO electrons being produced with more than 59~MeV/c.
 To this end the electron spectrometer's primary purpose is to disperse away the electrons below 60~MeV/c whilst keep signal electrons on-axis, such that material in the beamline can be tuned to remove the low-energy DIO electrons.
 The beam and DIO blockers are highlighted in green in \fig{optim:DIOBeamBlock:Geometry}.
 
 \Fig{optim:DIOBeamBlock:ESTDispersion} demonstrates the dispersion that appears at the end of the spectrometer with the nominal beam blocker design and no DIO blockers in place.
 The DIO blockers will be inserted along the bottom of the spectrometer and tuned to scrape away a sufficient number of DIO electrons, which will tend to travel towards the bottom of the beam pipe.
-However whilst the centre of gyration drifts with a well-behaved proportionality in a bent solenoid, the actual separation between signal and \ac{DIO} electrons is in reality less clear as can be seen by the lower plot in \fig{optim:DIOBeamBlock:ESTDispersion}.
+However, whilst the centre of gyration drifts with a well-behaved proportionality in a bent solenoid, the actual separation between signal and \ac{DIO} electrons is in reality less clear as can be seen by the lower plot in \fig{optim:DIOBeamBlock:ESTDispersion}.
 
 In addition to the DIO blockers along the spectrometer, the material of the beam blocker immediately after the stopping target also plays a role in suppressing the \ac{DIO} rate since low-energy electrons remain closer to the beam axis, as can be seen in the lower plot of \fig{optim:DIOBeamBlock:ESTDispersion} around the stopping target.
 
@@ -531,8 +537,8 @@ The complete set of optimised parameters is shown in \tab{optim:AllParameters}.
 		Production Target Length & 32~cm & \multirow{2}{4cm}{Placed asymmetrically about muon beamline axis} \\
 		Production Target Radius & 1~cm & \\[1ex]
 		\hline
-		Torus1 (TS2) Dipole Strength & 0.055~T & same as \phaseI \\
-		Torus2 (TS4) Dipole Strength & 0.0275~T & same as \phaseI \\
+		Torus1 (TS2) Dipole Strength & 0.055~T & same as for \phaseI \\
+		Torus2 (TS4) Dipole Strength & 0.0275~T &                 \\
 		\hline
 		Torus1 Entrance Collimator Height& 14~cm above beam axis & From top of beam pipe downwards  \\
 		Torus2 Exit Collimator Height& 12~cm below beam axis & From bottom of beam pipe upwards\\
