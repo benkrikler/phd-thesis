@@ -1,10 +1,11 @@
 %\includeonly{}
 %\includeonly{appendix-bentSolenoidDrifts}
-%\includeonly{summary}
-%\includeonly{optimisation,simulationConfigurations}
-%\includeonly{backgrounds}
-%\includeonly{software}
-%\includeonly{appendix-alcap}
+%\includeonly{summary,sensitivity}
+%%\includeonly{optimisation,simulationConfigurations}
+%%\includeonly{backgrounds}
+%%\includeonly{software}
+%%\includeonly{appendix-alcap}
+%\includeonly{theory}
 %\includeonly{theory,mueconv}%,detector}
 \documentclass{thesis}
 \usepackage{dcolumn}
@@ -26,6 +27,7 @@
 \usepackage[printonlyused]{acronym}
 \usepackage[strings]{underscore}
 \usepackage{babel}
+\usepackage[backend=bibtex,sorting=none]{biblatex}
 \usepackage{pbox}
 %\usepackage{pythontex}
 %%\usepackage{amsmath}
@@ -113,6 +115,8 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \title{Sensitivity and Background Estimates for \phaseII of the \COMET Experiment}
 \author{Benjamin Edward Krikler}
 
+\addbibresource{library/record.bib}
+
 \begin{document}
 \input{key_numbers}
 
@@ -160,10 +164,12 @@ pdfauthor = {\textcopyright\ Ben Krikler},
 \input{library/acronyms.tex}
 %\end{backmatter}
 
-\bibliographystyle{plain}
-%\bibliographystyle{bensbib}
-\bibliographystyle{yoshi}
-\bibliography{library/record}
+%\bibliographystyle{nature}
+%%\bibliographystyle{plain}
+%%\bibliographystyle{bensbib}
+%%\bibliographystyle{yoshi}
+%\bibliography{library/record}
+\printbibliography[heading=bibintoc]
 
 % Produce the appendices
 \begin{appendices}
