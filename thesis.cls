@@ -17,7 +17,6 @@
 \RequirePackage{mathrsfs} % script font
 \RequirePackage{afterpage}
 %\RequirePackage{gillius}
-
 %% Using Babel allows other languages to be used and mixed-in easily
 \RequirePackage[english]{babel}
 \selectlanguage{english}
@@ -33,6 +32,9 @@
 %% TikZ is a marvellous drawing package
 \RequirePackage{tikz}
 
+%% BEK: Switch off problematic full-stops after sections, figure, and table 
+%% numbers when using an appendix
+\KOMAoptions{numbers=noenddot}
 
 %% BEK: Remove extra vspace inserted when a table float is created
 %% Table environment
