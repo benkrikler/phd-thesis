@@ -12,7 +12,7 @@
 %% -------------------------------------
 %% Standard packages
 %% -------------------------------------
-\RequirePackage{cite}
+%\RequirePackage{cite}
 %\RequirePackage{morefloats}
 \RequirePackage{mathrsfs} % script font
 \RequirePackage{afterpage}
@@ -24,7 +24,7 @@
 %% Quotes in different languages are different.
 %% Using \enquote{bla} automatically uses the correct quotes
 %% according to the Babel language that is set
-\RequirePackage[babel]{csquotes}
+\RequirePackage[autostyle,babel]{csquotes}
 
 %% Subfigures - note subfig is incompatible with ccaption
 \RequirePackage{subfig}
