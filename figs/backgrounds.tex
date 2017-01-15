@@ -126,17 +126,24 @@ It is clear how the pion momenta are in general higher, including those that sto
 \newcommand{\FigRPCSimResults}{
 \begin{figure}[btp]
 \centering
-\begin{minipage}[b]{0.45\textwidth}
-\subfloat[][\figlabel{bg:rpc:sim:time}Arrival Time]{%
-\includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_time.pdf}}\\
-\subfloat[][\figlabel{bg:rpc:sim:mom}Momentum]{%
-\includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom.pdf}}%
-\end{minipage}\hspace{1ex}
+%\fbox{
 \subfloat[][\figlabel{bg:rpc:sim:momVtime}Momentum Vs.\ Time]{%
-\includegraphics[width=0.45\textwidth,trim=0.2cm 0 0cm 0.7cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom-time.pdf}}
+\includegraphics[width=0.45\textwidth,trim=0.2cm 0 0cm 1.9cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom-time.pdf}}
+%}
+%\begin{minipage}[b]{0.45\textwidth}
+%\subfloat[][\figlabel{bg:rpc:sim:time}Arrival Time]{%
+%\includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_time.pdf}}\\
+%\subfloat[][\figlabel{bg:rpc:sim:mom}Momentum]{%
+%\includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom.pdf}}%
+%\end{minipage}\hspace{1ex}
+\hspace{1em}%
+\subfloat[][\figlabel{bg:rpc:sim:time}Arrival Time of High-$p$ Electrons]{%
+\includegraphics[width=0.49\textwidth,trim=0 0 0 2.8cm,clip]{figs/backgrounds/RPC_lifetime.png}}%
+%\fbox{
+%}
 \caption{\figlabel{bg:rpc:sim}
 Detection of secondaries from RPC photons in the target.
-Although many high-momentum electrons are detected, they are all well before the time-gated detected window.
+Although many high-momentum electrons are detected \protect\subref{fig:bg:rpc:sim:momVtime}, they are all well before the time-gated detected window \protect\subref{fig:bg:rpc:sim:time}.
 }
 \end{figure}
 }
@@ -179,7 +186,9 @@ The absolute end-point is only achieved when the nucleus and outgoing protons re
 \newcommand{\FigAntiprotonFits}{
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=1.0\textwidth,trim=0 0 0.45cm 0,clip]{figs/backgrounds/AntiprotonFits.pdf}
+%	\fbox{
+\includegraphics[width=1.0\textwidth]{figs/backgrounds/AntiprotonFits.png}
+%}
 \caption{\figlabel{bg:antiprotons:fits}
 Piecewise fitting to experimental data and kinematic end-points.
 Inlays show a zoom around the experimental data points.
@@ -227,7 +236,7 @@ for the COMET proton beam the antiproton yield is expected to be a factor 0.12 t
 }
 
 \newcommand{\FigAntiprotonSimHeightsTwoDPbar}{%
-\begin{figure}[pH]%
+\begin{figure}[ph]%
 \centering %
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:10}Production between 0 and 59\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_10.png}}\\%
@@ -246,7 +255,7 @@ The colour scale on all these plots is the same.%
 \xspace}
 
 \newcommand{\FigAntiprotonSimHeightsTwoDPiMin}{%
-\begin{figure}[pH]%
+\begin{figure}[ph]%
 \centering %
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:10}Production between 0 and 59\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_10.png}}\\%
@@ -295,7 +304,7 @@ Whilst the timing of antiprotons themselves is very delayed, the timing of pions
 }
 
 %\newcommand{\FigAntiprotonSimFluxes}{
-%\begin{figure}[pH]
+%\begin{figure}[ph]
 %\centering 
 %\subfloat[][\figlabel{bg:antiprotons:sim:fluxes:10}Production between 0 and 59\degree]{
 %\includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_flux_10.pdf}}\\
@@ -655,3 +664,11 @@ For \ac{RMC}, it is assumed that $P(p_\textrm{recon}-p_\textrm{true}>2.4~\textrm
 \end{table}%
 }
 
+\newcommand{\FigBgVsResolution}{
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.9\textwidth,clip=true,trim=0 0 0 1cm]{figs/backgrounds/BG_vs_resolution.pdf}
+\caption{\figlabel{bg:resolution}
+Dependence of the intrinsic background rates on $\sigma_2$, the width of the high/low momentum tail in the reconstruction distribution.
+From this it can be seen that the background rates from DIO will always dominate, compared to RMC.
+}\end{figure}\xspace}

@@ -139,25 +139,25 @@ void tidy_plots_antiprotons(const TString ext="png"){
 
   // Heights
   config.reset();
-      config.force_draw_option="colz";
+      //config.force_draw_option="colz";
       config.y_axis_label="Height Above Beam Axis (mm)   ";
-      config.y_axis_range_low=-800; config.y_axis_range_high=800;
+      config.y_axis_range_low=-300; config.y_axis_range_high=300;
       config.z_axis_range_low=1e-24; config.z_axis_range_high=1e-6;
       config.log_y=false;
       config.log_z=false;
 
   config.stats_force_off=true;
-  config.canvas_ratio=2;
+  //config.canvas_ratio=2;
   config.x_axis_title_size=config.y_axis_title_size=0.07;
   config.x_axis_label_size=config.y_axis_label_size=0.06;
   config.x_axis_label="Distance Along Beam Axis (mm)";
-  config.shift_plot_y=-0.04;
-  config.shift_palette_y=0.08;
-  config.canvas_grow=2;
+  //config.shift_plot_y=-0.04;
+  //config.shift_palette_y=0.08;
+  //config.canvas_grow=2;
   config.y_axis_label_offset=0.4;
   config.x_axis_label_offset=0.9;
   config.title=" ";
-  config.pad_margin_left=0.1;
+  //config.pad_margin_left=0.1;
   //config.pad_margin_right=0.09;
   config.line_width=2;
   config.grid_y=config.grid_x=true;
@@ -165,11 +165,13 @@ void tidy_plots_antiprotons(const TString ext="png"){
   config.x_axis_range_low=0; config.x_axis_range_high=20500;
 
   geomHist->SetMarkerColor(kGray+3);
+  TCanvas* c1=new TCanvas("c1","c1",1600,1025);
+  c1->Divide(1,4,0.0,0.00);
   for(int i=0;i<4;++i){
 
+      c1->cd(i+1);
       DrawFixPlot(top_dir+"160916_extracted_and_summedPlots.root",Form("Angle_%d-height_-2212",angles[i]),"TH1", config,"colz",false);
       if(geomHist) Overlay(geomHist,"same", config);
-      SavePlot(ext,NULL,Form("Antiproton_height2D_antiproton_%d",angles[i]));
 
         config.legend_y1=config.legend_y1+config.shift_plot_y; 
         config.legend_y2=config.legend_y2+config.shift_plot_y; 
@@ -177,6 +179,27 @@ void tidy_plots_antiprotons(const TString ext="png"){
         config.shift_plot_y=0;
         config.shift_palette_y=0;
         config.pad_margin_left=0;
+	}
+
+	c1->cd(0);
+	TPad* pad=new TPad("palette","palette",0.9,0.1,1,0.9);
+	c1->cd(1);
+	gPad->GetListOfPrimitives()->ls();
+	hist=(TH1*) gPad->GetListOfPrimitives()->FindObject(Form("Angle_%d-height_-2212",10));
+	//palette=(TPaletteAxis*) hist->GetListOfFunctions()->FindObject("palette");
+	//cout<<palette<<endl;
+	c1->cd(0);
+	pad->Draw();
+	pad->cd();
+	if(palette) {
+		//palette=(TPaletteAxis*)palette->Clone();
+		palette=new TPaletteAxis(0,1,0,1,hist);
+		palette->Draw();
+	}
+  c1->cd(0);
+   SavePlot(ext,NULL,"Antiproton_height2D_antiproton");
+return;
+  for(int i=0;i<4;++i){
 
       DrawFixPlot(top_dir+"160916_extracted_and_summedPlots.root",Form("Angle_%d-height_-211",angles[i]),"TH1", config,"colz",false);
       if(geomHist) Overlay(geomHist,"same", config);
@@ -188,7 +211,8 @@ void tidy_plots_antiprotons(const TString ext="png"){
   }
 
 return;
-
+}
+/*
   //====================================================
   config.reset();
   //config.z_axis_range_high=1;
@@ -249,3 +273,4 @@ return;
     SavePlot(ext,NULL,Form("Antiproton_simMomentum_StopTgtSec_%d",angles[i]));
   }
 }
+*/
