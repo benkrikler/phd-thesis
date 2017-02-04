@@ -649,6 +649,27 @@ In addition, although the beam power and production target material in \phaseII 
 
 %Other sources of background might exist---putting a limit on all processes that produce fewer than a single electron from $10^{21}$~POT is no easy feat---and it 
 
+\subsection{Impact of Momentum Resolution}
+\FigBgVsResolution
+The momentum resolution is the key factor in determining the background rates for the intrinsic backgrounds (\acf{RMC} and \acf{DIO}).
+However, since the distribution of residuals (the resolution function) is not well known for \phaseII, there is a degree of uncertainty over the size of these backgrounds.
+
+To understand how robust these estimates are to changes to the resolution function, a simple parametrisation for the resolution function was used.
+In this simplified scheme, the probability density for mis-reconstructing an electron's momentum by a certain amount, is given by the function:
+\begin{equation}
+	P(p_\textrm{reco}-p_\textrm{true}) = P(\Delta{}p) \propto e^{(\Delta{}p/\sigma_1)^2}+\kappa e^{(\Delta{}p/\sigma_2)^2}
+\end{equation}
+where $\kappa$ is dimensionless and used to set the relative weight of the second Gaussian, and $\sigma_1$ and $\sigma_2$ define the widths of the respective Gaussian.
+
+\Fig{bg:resolution} shows the background rates due to \ac{DIO} and \ac{RMC} as a function of $\sigma_2$ for different values of $\sigma_1$ and $\kappa$.
+The current \phaseI results suggest $\kappa$ to be about 0.08, and $\sigma_1$ to be less than 200~keV/c, and so these values are used as baseline estimates.
+To produce the plot in \fig{bg:resolution}, we fix the momentum thresholds to be \VarMomThreshold and \VarMomThresholdHigh, as found from the sensitivity estimates.
+Over the range of $sigma_2$ values shown in \fig{bg:resolution}, the signal acceptance, given these momentum thresholds, is reduced by less than 4.2\%.
+
+From this it is clear that provided the value of $sigma_2$ is kept below 1~MeV/c, fewer than 0.01 background events would be expected from \ac{RMC}, whilst the background rate from RMC grows exponentially above this point.
+However, it is also clear that the rate from DIO electrons will dominate regardless of the resolution.
+This should not be surprising given that the \ac{DIO} spectrum reaches up to the \mueconv end-point whilst the RMC end-point is separated by some 2.4~MeV/c.
+
 \subsection{Principal Uncertainties}
 Whilst it is not possible to make a quantitative estimate of the uncertainty at this time, it is clear that for some backgrounds the uncertainty is large.
 
