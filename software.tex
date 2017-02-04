@@ -220,9 +220,11 @@ This calculation includes non-linear material effects in the yoke and shielding 
 \Fig{software:field:Opera} shows the fieldmap calculated by Opera in the plane of the beam line axis.
 The ratio between the G4Beamline and Opera calculations is given in \fig{software:field:comparison}, where it can be seen how the two models disagree most at the exit of the solenoids.
 
+\FigSoftwareDipoleField
 Whilst the above two methods have been used for the solenoid fields, calculating the dipole field structure is a different story, given that the winding is proprietary information belonging to Toshiba.
 For the dipoles in the muon beamline Toshiba have provided a calculation for one octant of one winding, which is then mirrored and placed multiple times along the beamline.
 For the dipoles along the electron spectrometer of \phaseII there is no accurate calculation at this time.
+The dipole field is shown in \fig{software:field:dipole}.
 
 Whilst only magnetic fields have been used in the simulation up to now, ICEDUST is able to handle electric fields in exactly the same way.
 For instance future work might see the electric fields for the straw tracker and CDC included to account for the impact that these fields might have on particle scattering in the detector.
