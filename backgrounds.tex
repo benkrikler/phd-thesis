@@ -82,9 +82,11 @@ In the limit where the photon is reflected directly back on itself, the resultan
 As such it is Compton scattering which is more of a concern for COMET.
 
 Finally, given the maximum photon energy is below the momentum threshold of \VarMomThreshold, the electron's energy needs to be mis-reconstructed by around 2.4~MeV.
-If the final resolution function were Gaussian with a 200~keV/c width (at signal energies), then mis-reconstruction by such an amount would be an 11~$\sigma$ event, \ie $P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\num{1.9e-28}$.
+If the final resolution function were a pure Gaussian with a 200~keV/c width (at signal energies), then mis-reconstruction by such an amount would be an 11~$\sigma$ event, \ie $P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\num{1.9e-28}$.
 However, the resolution function is not likely to be a pure Gaussian.
-On-going studies for reconstruction with the  \phaseI StrECAL currently suggest that $P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\num{7.5e-3}$~\cite{YFujiiStrECALRecon}.
+On-going studies for reconstruction with the  \phaseI StrECAL currently suggest that the tails of the resolution function are much larger than for a pure Gaussian.
+Although the \phaseI Straw Tracker reconstruction is still being finalised, early studies suggest 
+$P(p_\textrm{recon}-p_\textrm{true}>\SI{2.4}{MeV/c})=\VarResolutionProbFromRMCToSignal$~\cite{YFujiiStrECALRecon}.
 Although this is considerably larger than the pure Gaussian, this is based on the most preliminary results of reconstruction algorithms.
 If need be, cuts on fit quality can be improved over the current \phaseI values; the sensitivity estimate presented here should be robust against this since it includes the CDR estimate for the signal efficiency of such a cut.
 
@@ -104,20 +106,25 @@ The largest observed branching ratio for \ac{RMC} compared to ordinary muon capt
 The relative rate of \ac{RMC} resulting in photons with energies above 90~MeV is, based on the spectrum in equation~\eq{bg:rmc:spect}, \num{7.7e-3} of the experimentally observed rate.
 \FigRMCSimResults
 
-Given the total number of muon stops during \phaseII, the probability of ordinary muon capture, and the relative rates for \ac{RMC}, one expects some \num{1.2e11} photons to be produced in the target with energies above 95~MeV.
+Given the total number of muon stops during \phaseII, the probability of ordinary muon capture, and the relative rates for \ac{RMC}, one expects some \VarRMCTotalPhotonPhaseII  photons to be produced in the target with energies above 90~MeV.
 Since this is an intrinsic background, the lifetime of this process will be the same as for signal events. 
-Assuming, therefore, the same timing window acceptance, and applying the same reconstruction and TDAQ efficiencies as for signal, this number is reduced to \num{3.3e10}.
-If the resolution function were truly a 200~keV/c Gaussian, then this would be no issue, regardless of the geometric acceptance or probability of Compton scattering.
-If, however, the current \phaseI high-energy reconstruction tail were present, we would expect some \num{2.4e8} events to be considered dangerous if they were all accepted.
+Assuming, therefore, the same timing window acceptance, and applying the same reconstruction and TDAQ efficiencies as for signal, this number is reduced to \VarRMCTotalPhotonPhaseIIAccepted.
 
-To check the geometric acceptance of the beamline, about \num{6e7} RMC events were generated in the stopping target, with initial photon energies greater than 90~MeV and distributed according to the spectrum in equation~\eq{bg:rmc:spect}.
+To check the probability that these photons produce a high-momentum electron in the detector, 
+some \num{6e7} RMC events were generated in the stopping target, with initial photon energies greater than 90~MeV and distributed according to the spectrum in equation~\eq{bg:rmc:spect}.
 \Fig{bg:rmc:simulation} shows the momentum and rate at which these were detected.
 Based on this, the fraction of events reaching the detector with momentum larger than 98~MeV/c was \num{6.2e-7}, whilst above 100~MeV/c only \num{3.3e-8} electrons per \ac{RMC}$|_{p>90}$ event were detected.
 
-As a result, if the current \phaseI resolution were applied, we would expect around 8~background events during the entire run.
-However, since the resolution function at this stage is so poorly known, it seems too premature to define a value.
-Instead, the predicted RMC rate provides a constraint on the high-energy tail of the resolution function: to do better than 0.1 background events during \phaseII from RMC, fewer than 1 in \num{2e4} high-energy electrons can be reconstructed with a momentum more than 2.4~MeV/c larger than the true value.
-On the assumption that such a resolution is achievable, we predict here that the number of backgrounds events due to RMC is less than \VarRMCPerMuStop per muon stop, or \VarRMCTotal during the entire \phaseII run.
+The total number of electrons arriving with momentum larger than 98~MeV/c, therefore, is \VarRMCTotalElectronPhaseIIAccepted.
+Since the resolution function is somewhat uncertain, this number can be interpreted as setting the limit for the high-momentum mis-reconstruction tail.
+To have fewer than 0.01 background events produced by \ac{RMC}, the tails of the resolution distribution should contain less than $0.01/\VarRMCTotalElectronPhaseIIAccepted = \scinot{0.01/\NumRMCTotalElectronPhaseIIAccepted}$ events.
+
+Using the estimate of the resolution function's tail from \phaseI, mentioned above, we predict therefore that \phaseII will produce \VarRMCPerMuStop per muon stop or \VarRMCTotal during the entire \phaseII run.
+
+%As a result, if the current \phaseI resolution were applied, we would expect around 8~background events during the entire run.
+%However, since the resolution function at this stage is so poorly known, it seems too premature to define a value.
+%Instead, the predicted RMC rate provides a constraint on the high-energy tail of the resolution function: to do better than 0.1 background events during \phaseII from RMC, fewer than 1 in \num{2e4} high-energy electrons can be reconstructed with a momentum more than 2.4~MeV/c larger than the true value.
+%On the assumption that such a resolution is achievable, we predict here that the number of backgrounds events due to RMC is less than \VarRMCPerMuStop per muon stop, or \VarRMCTotal during the entire \phaseII run.
 
 \subsection{Aluminium-26 and \acs{RMC}}
 Based on the above energy calculation, the end-point for \ac{RMC} against ${}^{26}$Al (to ${}^{26}$Mg and with no other particles emitted) would be 108.5~MeV.
@@ -443,8 +450,10 @@ On the other hand, the fact that it is scattering from forward produced antiprot
 %# Thicker absorber at the muon beamline entrance
 %# Need to check the muon beam intensity
 %\end{easylist}
-Given that the antiproton with the current beamline design appears larger than desirable, it will be necessary to take steps to reduce it.
+If the background rate due to antiprotons presented here proves correct, then changes to the current beamline design should be implemented to reduce it.
+%Given that the antiproton with the current beamline design appears larger than desirable, it would be necessary to take steps to reduce it.
 There are several options that can be pursued, but each must be checked for its impact on the muon beam intensity.
+
 Firstly, one can simply increase the thickness of the foil at the entrance to the Torus1.
 In a similar way, one can introduce additional foils along the beamline, such as at the TS3 solenoid in between the Torus1 and Torus2.
 The downside of both of these methods is that they will be in the path of the muon beam, and since the $dE/dx$ curve for negative muons below 100~MeV has a negative slope, this material will likely increase the mean muon momentum (but of course decrease the overall intensity).
@@ -453,9 +462,12 @@ If material is added, then it would be beneficial if this material were low-Z.  
 In fact, a bug in the geometry during initial simulations of antiprotons left air at the exit to the production section.  
 The impact on the muon and pion momentum and acceptance was found to be negligible, but the antiproton acceptance into the Torus1 was zero at the limit of the sample size of the simulations.
 
-Finally, if a volume in the beamline close to the production target were identified where a separation between antiprotons and muons that stop exists, then this could also be exploited.
-However, in the studies performed here, such a region does not seem apparent.
-Additionally, material close to the production target would need to be considered from an activation and safety perspective, in addition to the impact on the muon and pion beam.
+It may be possible to identify a region in the beamline close to the production target where a separation between antiprotons and muons that stop occurs.
+This would be highly favourable as it would reduce the impact on signal sensitivity, although in the studies performed here such a region has not been apparent.
+Additionally, material close to the production target would need to be considered from an activation and safety perspective.
+
+Finally, as well as adding material along the beamline, one could consider a slight reduction in the proton beam energy.
+Even a reduction by 200 MeV would reduce the total antiproton production cross-section by betwee 15 and 50\% based on the methods described above to determine the $\Xi$ weighting factor.
 
 \section{Direct Beam-Related Backgrounds}
 \sectlabel{bg:beam}
@@ -617,6 +629,7 @@ This is dominated by the cosmic ray background and events from antiprotons that 
 It is clear, though, that further work must be undertaken on these predictions in the future.
 In light of the various uncertainties, discussed in more depth below, we have tried to be as conservative as reasonably possible in this estimate; improving the uncertainties would hopefully reduce the estimated number of events.
 
+\clearpage
 \subsection{Backgrounds Not Considered}
 \sectlabel{bg:notCovered}
 \subsubsection*{Neutrons from the Production Target}
@@ -664,9 +677,9 @@ where $\kappa$ is dimensionless and used to set the relative weight of the secon
 \Fig{bg:resolution} shows the background rates due to \ac{DIO} and \ac{RMC} as a function of $\sigma_2$ for different values of $\sigma_1$ and $\kappa$.
 The current \phaseI results suggest $\kappa$ to be about 0.08, and $\sigma_1$ to be less than 200~keV/c, and so these values are used as baseline estimates.
 To produce the plot in \fig{bg:resolution}, we fix the momentum thresholds to be \VarMomThreshold and \VarMomThresholdHigh, as found from the sensitivity estimates.
-Over the range of $sigma_2$ values shown in \fig{bg:resolution}, the signal acceptance, given these momentum thresholds, is reduced by less than 4.2\%.
-
-From this it is clear that provided the value of $sigma_2$ is kept below 1~MeV/c, fewer than 0.01 background events would be expected from \ac{RMC}, whilst the background rate from RMC grows exponentially above this point.
+Over the range of $\sigma_2$ values shown in \fig{bg:resolution}, the signal acceptance, given these momentum thresholds, changes by less than 4.2\%.
+  
+From this it is clear that provided the value of $\sigma_2$ is kept below 1~MeV/c, fewer than 0.01 background events would be expected from \ac{RMC}, whilst the background rate from RMC grows exponentially above this point.
 However, it is also clear that the rate from DIO electrons will dominate regardless of the resolution.
 This should not be surprising given that the \ac{DIO} spectrum reaches up to the \mueconv end-point whilst the RMC end-point is separated by some 2.4~MeV/c.
 
@@ -683,7 +696,7 @@ In the future, generating larger Monte Carlo samples using the continually incre
 
 \item[StrECAL Reconstruction and Resolution]
 In the case of \ac{DIO} and \ac{RMC}, the two intrinsic sources of background, the main source of uncertainty is in the resolution function.
-The exact the distribution for the residuals after reconstruction is not well known, especially for \phaseII.
+The exact distribution for the residuals after reconstruction is not well known, especially for \phaseII.
 In particular, for \ac{RMC}, the high-energy tail needs to be studied better. 
 It has been assumed that fewer than 1 in \num{1e4} events will be reconstructed with momentum larger by 2.4~MeV/c or more than the true value.
 This assumption must be confirmed, and if possible improved.
@@ -695,9 +708,9 @@ The study here and in the \phaseI TDR depend entirely on a single set of experim
 This will be difficult to improve further without additional observations, and it would be useful to study this at \phaseI if possible, perhaps by changing the Torus1's dipole field to improve pion acceptance.
 
 \item[Antiproton Production]
-Given the lack of experimental evidence for antiproton production in the `sub-threshold' regime and in the backwards direction, there is large uncertainty over the expected rate.
+Given the lack of experimental evidence for antiproton production in the `sub-threshold' energy regime of the backwards direction, there is large uncertainty over the expected rate.
 Whilst the model developed here was kept conservative, as one of the dominant backgrounds it is important to study this further.
-A dedicated study comparing multiple different hadron production codes to all the possible experimental datasets (including forward and backward produced antiprotons from the different targets with different proton momentum) could reduce our uncertainty if now new experimental data is forthcoming.
+A dedicated study comparing multiple different hadron production codes to all the possible experimental datasets (including forward and backward produced antiprotons from the different targets with different proton momentum) could reduce our uncertainty if no new experimental data is forthcoming.
 Such a study would then be able to extrapolate better for the target material, proton energy and production direction used in COMET.
 
 In addition to the production rates, there is reasonable uncertainty on the mechanisms by which antiprotons can produce background electrons.
@@ -705,9 +718,19 @@ Here it has been assumed that the primary mechanism is via pion production, but 
 Such an assumption must also be confirmed.
 %Direct emission of high-energy electrons is supposed to be relatively small~\cite{}, but it has not been rig
 
+\phaseI will be able to play a sizeable role in reducing this uncertainty as one of the first experiments to look at antiproton production under the \COMET conditions.
+The fact that the production target will likely be made from graphite in \phaseI as opposed to the tungsten of \phaseII reduces the direct usefulness of such measurements however.
+On the other hand, given that there is more (although still rather limited) data for graphite will allow \phaseI measurements to better understand the transportation of antiprotons along the COMET beamline.
+Furthermore, in addition to antiproton measurements during the main \phaseI runs, additional runs are under consideration to specifically study the antiproton background.
+These could involve changing the production target material is to something other than graphite or changing the beam energy and studying the change in antiproton yields.
+
 \item[Cosmic Ray Veto Geometry and Shielding]
 Without a complete \ac{CRV} design, it is tough to be confident that the energy loss of cosmic muons is well captured in the \phaseII simulation.
 In addition, the miss-rate of \num{1e-4} should be experimentally confirmed and ideally improved.
+
+Again, after \phaseI the uncertainty on this background should be significantly reduced.
+The muon flux in the experiment hall, at the beamline position will have been measured to a high precision in all directions.
+Furthermore, since the CRV design will be largely unchanged the miss-rate will be well understood.
 \end{description}
 
 \section{Further Studies and Improvements}
@@ -731,6 +754,10 @@ the following list gives a summary of possible methods that could be pursued to 
 		With this information, simulations for the cosmic ray backgrounds, photon conversion after RPC and RMC, and beam simulations would only need to know the probability of creating a high-momentum electron at a given location to deduce the resulting background rate.
 		This would also benefit the optimisation studies, as mentioned in chapter~\sect{phaseII-optimisation}.
 \end{description}
+
+The timescale for these studies is fairly varied: whilst \phaseII is several years away still, in some cases the true deadline will be \phaseI, which is now little more than a year away.
+Decisions for the design of \phaseI will impact, in some cases, the design of \phaseII, whilst the run plan for \phaseI will include dedicated studies aimed at reducing key uncertainties of \phaseII.
+For both of these reasons it is important that there is a continuous effort to maintain and refine the understanding of COMET \phaseII.
 %\begin{easylist}
 %# Neutron background with different hadron codes and \alcap neutron spectrum from mu capture
 %# Improved cosmic ray veto geometry

@@ -4,6 +4,7 @@
 %%%%%%% SIGNAL
 \VarUnits{MomThreshold}{104.2}{MeV/c}
 \VarUnits{MomThresholdHigh}{105.5}{MeV/c}
+\VarNum{ResolutionProbFromRMCToSignal}{4.4e-15}
 
 % Signal acceptance
 \VarNum{AcceptanceGeom}{0.22}
@@ -42,11 +43,21 @@
 %\VarNum{RMCPerPOT}{1.70E-22}
 %\VarNum{RMCPerSecond}{7.37E-09}
 %\VarNum{RMCTotal}{0.12}
-\VarNum{RMCPerMuStop}{5.26E-20}
-\VarNum{RMCPerPOT}{8.48E-23}
-\VarNum{RMCPerSecond}{3.69E-09}
-\VarNum{RMCTotal}{0.058}
-			
+   
+%\VarNum{RMCPerMuStop}{5.26E-20}
+%\VarNum{RMCPerPOT}{8.48E-23}
+%\VarNum{RMCPerSecond}{3.69E-09}
+%\VarNum{RMCTotal}{0.058}
+   
+\VarNum{RMCPerMuStop}{3.73E-31} 
+\VarNum{RMCPerPOT}   {6.01E-34} 
+\VarNum{RMCPerSecond}{2.61E-20} 
+\VarNum{RMCTotal}   {4.10E-13} 
+
+\VarNum{RMCTotalPhotonPhaseII}{9.4e10} 
+\VarNum{RMCTotalPhotonPhaseIIAccepted}{3.5e10} 
+\VarNum{RMCTotalElectronPhaseIIAccepted}{2.2e4} 
+
 % RPC
 \VarNum{PiStopsPerPOT}{4.33e-7}
 \VarNum{DetectedEsPerRPC}{1.05e-5}
@@ -82,9 +93,6 @@
 \VarNum{BgAntiprotonsPiPromptTotal} {2.43E-08}
 
 
-
-
-
 % Beam backgrounds
 \VarNum{BeamBgGeometric}{8.93e-09}
 \VarNum{BeamBgMomentum}{3.13e-05}
@@ -101,5 +109,10 @@
 \VarNum{CosmicRateTotal}{0.294}
 
 %% Total rates
-\VarNum{TotalBgPerSecond}{4.59E-08}
-\VarNum{TotalBgPhasII}{0.720}
+\VarNum{TotalBgPerSecond}{4.22E-08}
+\VarNum{TotalBgPhasII}   {0.662}
+
+%\VarNum{TotalBgPerSecond}{4.59E-08}
+%\VarNum{TotalBgPhasII}{0.720}
+       
+

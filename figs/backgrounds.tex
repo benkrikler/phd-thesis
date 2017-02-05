@@ -605,7 +605,7 @@ The vertical axis shows the raw number of observed events based on the simulatio
 }\end{figure}\xspace}
 
 \newcommand{\TabBgCosmicParameters}{
-\begin{table}[b]
+\begin{table}[t]
 \centering
 \begin{tabular}{llm{0.7\textwidth}}
 	\hline
@@ -627,42 +627,41 @@ Parameters and their values for the determination of the cosmic ray background r
 }
 
 \newcommand{\TabBackgroundFinalVals}{
-\begin{table}[b]
+\begin{sidewaystable}[b]
 \centering
 \sisetup{table-number-alignment=right,table-format=1.2e3}%
+\renewcommand{\arraystretch}{1.5} % Default value: 1
 %\begin{adjustwidth}{-0.7cm}{}%
-%	\renewcommand{\arraystretch}{1} % Default value: 1
-\begin{tabular}{ll|SSS|S}
+\begin{tabular}{ll|SSS|S|L{7cm}}
 \toprule
-Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                                       & \multicolumn{1}{c}{Total Events} \\ 
+Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                                       & \multicolumn{1}{c|}{Total Events} & Comment \\ 
                              &                          & {per $\mu^-$ stop} & {per POT}              & {per second}            &            \\ 
 \toprule
-\multirow{2}{*}{Intrinsic}   & DIO                      & \NumDIOPerMuStop & \NumDIOPerPOT                    & \NumDIOPerSecond                 & \NumDIOTotal                      \\ 
-                             & RMC                      & \NumRMCPerMuStop & \NumRMCPerPOT                    & \NumRMCPerSecond                 & \NumRMCTotal                      \\ 
-\cmidrule{2-6}
-\multirow{4}{*}{Delayed}     & RPC                      & {--}             & \NumRPCDelayedPerPOT             & \NumRPCDelayedPerSec             & \NumRPCDelayedTotal               \\ 
-                             & Beam                     & {--}             & \NumBeamBgDelayedPerPOT          & \NumBeamBgDelayedPerSec          & \NumBeamBgDelayedTotal          \\ 
-                             & Stopped $\bar{p}$        & {--}             & \NumBgAntiprotonsPerPOT          & \NumBgAntiprotonsPerSec          & \NumBgAntiprotonsTotal            \\ 
-                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiDelayedPerPOT & \NumBgAntiprotonsPiDelayedPerSec & \NumBgAntiprotonsPiDelayedTotal   \\ 
-\cmidrule{2-6}
-\multirow{3}{*}{Prompt}      & RPC                      & {--}             & \NumRPCPromptPerPOT              & \NumRPCPromptPerSec              & \NumRPCPromptTotal                \\ 
-                             & Beam                     & {--}             & \NumBeamBgPromptPerPOT           & \NumBeamBgPromptPerSec           & \NumBeamBgPromptTotal             \\ 
-                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiPromptPerPOT  & \NumBgAntiprotonsPiPromptPerSec  & \NumBgAntiprotonsPiPromptTotal    \\ 
-\cmidrule{2-6}
-\multicolumn{2}{c|}{Cosmics}                            & {--}             & {--}                             & \NumCosmicRatePerSecond          & \NumCosmicRateTotal               \\ 
+\multirow{2}{*}{Intrinsic}   & DIO                      & \NumDIOPerMuStop & \NumDIOPerPOT                    & \NumDIOPerSecond                 & \NumDIOTotal                     & \\ 
+			     & RMC                      & \NumRMCPerMuStop & \NumRMCPerPOT                    & \NumRMCPerSecond                 & \NumRMCTotal                     & \\ 
+\cmidrule{2-7}
+\multirow{4}{*}{Delayed}     & RPC                      & {--}             & \NumRPCDelayedPerPOT             & \NumRPCDelayedPerSec             & \NumRPCDelayedTotal              &  \\ 
+			     & Beam                     & {--}             & \NumBeamBgDelayedPerPOT          & \NumBeamBgDelayedPerSec          & \NumBeamBgDelayedTotal           & \multirow{1}{7cm}{\footnotesize Beam includes high-energy electrons from $\pi$, $\mu$, and $n$ capture.} \\ 
+			     & Stopped $\bar{p}$        & {--}             & \NumBgAntiprotonsPerPOT          & \NumBgAntiprotonsPerSec          & \NumBgAntiprotonsTotal           & \multirow{2}{7cm}{\footnotesize Based on conservative interpolation and extrapolation of limited experimental $\bar{p}$ data.}\\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiDelayedPerPOT & \NumBgAntiprotonsPiDelayedPerSec & \NumBgAntiprotonsPiDelayedTotal  & \\ 
+\cmidrule{2-7}
+\multirow{3}{*}{Prompt}      & RPC                      & {--}             & \NumRPCPromptPerPOT              & \NumRPCPromptPerSec              & \NumRPCPromptTotal               &  \\ 
+                             & Beam                     & {--}             & \NumBeamBgPromptPerPOT           & \NumBeamBgPromptPerSec           & \NumBeamBgPromptTotal            &  \\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiPromptPerPOT  & \NumBgAntiprotonsPiPromptPerSec  & \NumBgAntiprotonsPiPromptTotal   & \\ 
+\cmidrule{2-7}
+\multicolumn{2}{c|}{Cosmics}                            & {--}             & {--}                             & \NumCosmicRatePerSecond          & \NumCosmicRateTotal              & \footnotesize Dominated by conservative miss-rate. \\ 
 \bottomrule                                                                                                   
-\multicolumn{2}{c|}{Total}                              & {--}             & {--}                             & \NumTotalBgPerSecond             & \NumTotalBgPhasII                 \\ 
+\multicolumn{2}{c|}{Total}                              & {--}             & {--}                             & \NumTotalBgPerSecond             & \NumTotalBgPhasII                &  \\ 
 \bottomrule
 \end{tabular}
 %\end{adjustwidth}
 \caption{ \tablabel{bg:summary}%
 Final predicted background rates and events.
 The dominant backgrounds are cosmic ray electrons and stopping antiprotons, which are predicted to have produce almost equal rates.
-Assumes an extinction factor of \VarExtinctionFactor, a momentum resolution with $\sigma=200$~keV/c and a probability of \num{1e-4} that events are misreconstructed with at least an additional 2.4~MeV/c. 
+Assumes an extinction factor of \VarExtinctionFactor, a double-Gaussian momentum resolution with a core resolution of $\sigma=200$~keV/c and a tail probability of \VarResolutionProbFromRMCToSignal that events are misreconstructed with at least an additional 2.4~MeV/c. 
 All other parameters are the same as stated in chapter~\sect{sense}.
-For \ac{RMC}, it is assumed that $P(p_\textrm{recon}-p_\textrm{true}>2.4~\textrm{MeV/}c)=$\num{5e-5}.
 }
-\end{table}%
+\end{sidewaystable}%
 }
 
 \newcommand{\FigBgVsResolution}{
