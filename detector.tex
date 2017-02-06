@@ -305,6 +305,43 @@ In \phaseII, however, this will not be the case since the target and detector ar
 % - Stopping target
 % - Detector system
 
+\newcommand{\Component}[6]{
+\def\tempshort{#2}
+\ifx\tempshort\empty\def\printshort{}\else\def\printshort{(#2)}\fi
+\def\tempmag{#3}
+\def\tempconstr{#4}
+\def\printmag{Magnet names: \emph{#3}}
+\def\printconstr{Constructed: \emph{#4}}
+\def\printpars{{\small #6}}
+\ifx\tempmag\empty%
+	\ifx\tempconstr\empty%
+		\def\lineone{\printpars}%
+		\def\linetwo{}
+		\def\linethree{}
+	\else%
+		\def\lineone{\printconstr}%
+		\def\linetwo{\printpars}
+		\def\linethree{}
+	\fi%
+\else%
+	\def\lineone{\printmag}%
+	\ifx\tempconstr\empty%
+		\def\linetwo{\printconstr}
+		\def\linethree{}
+	\else%
+		\def\linetwo{\printconstr}%
+		\def\linethree{\printpars}
+	\fi%
+\fi%
+\begin{tabular}{L{0.35\textwidth}|L{0.6\textwidth}}
+\multicolumn{2}{L{\textwidth}}{{\bf#1 \printshort}}\\
+\lineone& \multirow{3}{0.6\textwidth}{#5}  \\
+\linetwo& \\
+\linethree& \\ 
+\end{tabular}
+}
+\input{detector_description.tex}
+
 \section{Schedule and Status}
 \FigSchedule
 The overall schedule for the COMET experiment is shown in \fig{detector:schedule}.
