@@ -281,22 +281,28 @@ Dedicated cosmic runs will be performed prior to operation with a beam in order 
 
 \section{\COMET \phaseII}
 \FigPhaseII
-Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII, we only give a brief introductory overview here, most of which is based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
 
-COMET \phaseII will be the final stage of the experiment.
+COMET \phaseII will be the final stage of the experiment and should achieve the overall goal of measuring \mueconv with an \ac{ses} of \sensePII.
 It will extend the muon beamline built for \phaseI by an extra 90\degree, and add two extra solenoid sections: one to hold the stopping target, and a second 180\degree bent solenoid with a large aperture of 60~cm radius.
 This layout is shown in \fig{detector:PhaseII:setup}.
 The bent solenoid after the stopping target is primarily there to remove the low-energy \ac{DIO} electrons which otherwise could significantly increase the hit rate in the detector.
 The final detector system for \phaseII will use the \ac{StrECAL} from \phaseI but probably with thinner diameter straw tubes, thinner straw material, and more tracking stations in order to improve the energy resolution.
 
-The stopping target itself has typically been designed as thin disks of aluminium, followed by a beam blocker.  
-Even including the growth of the beam envelope as it passes from the 3~T field in the bent muon transport solenoids to the 1~T field of the bent electron spectrometer solenoid, the beam blocker removes all line-of-sight between the entrance of the electron spectrometer and the muon transport solenoids so that most of the beam flash is prevented from reaching the detector.
-The tapering of the field occurs almost completely across the target itself with the intention that signal electrons heading initially upstream will be magnetically mirrored back towards the detector.
+%The stopping target itself has typically been designed as thin disks of aluminium, followed by a beam blocker.  
+%Even including the growth of the beam envelope as it passes from the 3~T field in the bent muon transport solenoids to the 1~T field of the bent electron spectrometer solenoid, the beam blocker removes all line-of-sight between the entrance of the electron spectrometer and the muon transport solenoids so that most of the beam flash is prevented from reaching the detector.
+%The tapering of the field occurs almost completely across the target itself with the intention that signal electrons heading initially upstream will be magnetically mirrored back towards the detector.
 
 As for \phaseI, an active cosmic ray veto will prevent triggering on events caused by cosmic muons.
 At least the detector solenoid will be covered, but it is likely that both the spectrometer and the stopping target area are also contained in the veto.
 In \phaseI, with the target surrounded by the detector, there is a degree of self-shielding against cosmic events. 
 In \phaseII, however, this will not be the case since the target and detector are widely separated.
+
+\section{Key Sub-component Descriptions}
+Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII,
+we only give a brief introductory 
+The following sections describe the sub-components and beamline sections for both \phaseI and \phaseII.
+For \phaseI details come from the latest geometry which is close to that of the TDR~\cite{TDR2016} but with some improvements.
+For \phaseII the description is largely based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
 
 % - Proton beam energy
 % - Proton beam timing
@@ -311,7 +317,7 @@ In \phaseII, however, this will not be the case since the target and detector ar
 \def\tempmag{#3}
 \def\tempconstr{#4}
 \def\printmag{Magnet names: \emph{#3}}
-\def\printconstr{Constructed: \emph{#4}}
+\def\printconstr{Constructed by: \emph{#4}}
 \def\printpars{{\small #6}}
 \ifx\tempmag\empty%
 	\def\lineone{\printconstr. }%
