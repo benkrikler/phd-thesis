@@ -314,32 +314,65 @@ In \phaseII, however, this will not be the case since the target and detector ar
 \def\printconstr{Constructed: \emph{#4}}
 \def\printpars{{\small #6}}
 \ifx\tempmag\empty%
-	\ifx\tempconstr\empty%
-		\def\lineone{\printpars}%
-		\def\linetwo{}
-		\def\linethree{}
-	\else%
-		\def\lineone{\printconstr}%
-		\def\linetwo{\printpars}
-		\def\linethree{}
-	\fi%
+	\def\lineone{\printconstr. }%
+	\def\linetwo{}%
 \else%
 	\def\lineone{\printmag}%
-	\ifx\tempconstr\empty%
-		\def\linetwo{\printconstr}
-		\def\linethree{}
-	\else%
-		\def\linetwo{\printconstr}%
-		\def\linethree{\printpars}
-	\fi%
+	\def\linetwo{. \printconstr}%
 \fi%
-\begin{tabular}{L{0.35\textwidth}|L{0.6\textwidth}}
-\multicolumn{2}{L{\textwidth}}{{\bf#1 \printshort}}\\
-\lineone& \multirow{3}{0.6\textwidth}{#5}  \\
-\linetwo& \\
-\linethree& \\ 
-\end{tabular}
+\subsubsection*{#1 \printshort}\vspace{-3ex}%
+%\begin{tabular}{L{0.2\textwidth}L{0.7\textwidth}}
+%\lineone&\multirow{2}{0.8\textwidth}{#6}  \\
+%\linetwo& \\
+%\end{tabular}
+\lineone \linetwo\\
+#5
+\def\tempparams{#2}
+\ifx\tempparams\empty\else
+\begin{multicols}{2}
+\begin{itemize}
+	\setlength\itemsep{-1em}
+#6
+\end{itemize}
+\end{multicols}
+\vspace{-5ex}
+\fi
 }
+%\newcommand{\Component}[6]{
+%\def\tempshort{#2}
+%\ifx\tempshort\empty\def\printshort{}\else\def\printshort{(#2)}\fi
+%\def\tempmag{#3}
+%\def\tempconstr{#4}
+%\def\printmag{Magnet names: \emph{#3}}
+%\def\printconstr{Constructed: \emph{#4}}
+%\def\printpars{{\small #6}}
+%\ifx\tempmag\empty%
+%	\ifx\tempconstr\empty%
+%		\def\lineone{\printpars}%
+%		\def\linetwo{}
+%		\def\linethree{}
+%	\else%
+%		\def\lineone{\printconstr}%
+%		\def\linetwo{\printpars}
+%		\def\linethree{}
+%	\fi%
+%\else%
+%	\def\lineone{\printmag}%
+%	\ifx\tempconstr\empty%
+%		\def\linetwo{\printconstr}
+%		\def\linethree{}
+%	\else%
+%		\def\linetwo{\printconstr}%
+%		\def\linethree{\printpars}
+%	\fi%
+%\fi%
+%\begin{tabular}{L{0.35\textwidth}|L{0.6\textwidth}}
+%\multicolumn{2}{L{\textwidth}}{{\bf#1 \printshort}}\\
+%\lineone& \multirow{3}{0.6\textwidth}{#5}  \\
+%\linetwo& \\
+%\linethree& \\ 
+%\end{tabular}
+%}
 \input{detector_description.tex}
 
 \section{Schedule and Status}

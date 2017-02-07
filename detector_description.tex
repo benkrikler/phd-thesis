@@ -3,90 +3,96 @@
 {CS, MS, TS1}
 {\phaseI, but target changed for \phaseII}
 {Super-conducting solenoid containing the pion production target.  The proton beam strikes the production target, which produces a range of particles, principally pions.  The solenoidal fields captures the backwards-going pions and delivers them into the transport solenoids.  This contains a significant amount of shielding to protect the magnet coils from overheating in the high-radiation environment.  The target itself consists of a single, solid, cylindrical rod.  In \phaseI the target will be made of graphite, whilst in \phaseII it will be tungsten. Since graphite has a larger interaction length, the target in \phaseI will likely be longer than in \phaseII.}
-{Min. shielding radius = 12~cm\newline%
- Target solenoid aperture = 44~cm\newline%
- Matching sole.\ aperture = 18~cm\newline%
- Target length (\phaseI) = 60~cm\newline%
- Target length (\phaseII) = \quad \newline\hfill16~cm (2009 optimisation)\newline%
- Field strengths = 5~T at the target, 3~T along matching solenoids\newline
-\vspace{1cm}{}}
+{\item Min. shielding radius = 12~cm%
+ \item Target solenoid aperture = 44~cm%
+ \item Matching sole.\ aperture = 18~cm%
+ \item Target length (\phaseI) = 60~cm%
+ \item Target length (\phaseII) = 16~cm (2009 optimisation)%
+ \item Field strengths = 5~T at the target, 3~T along matching solenoids}
 
 \Component{Torus1}
 {Tor1}
 {TS2}
 {\phaseI }
 {Bent solenoid section containing antiproton absorber foils and muon beam collimators.  Special dipole coils are placed around the normal solenoid coils to add a tuneable vertical component to the field.  During \phaseI, the detector solenoid will sit immediately after the Torus1, although with a small additional matching coil.  In \phaseII this will be replaced with the small TS3 coil to connect it to Torus2.}
-{Apperture size = 18.5~cm\newline%
- Bending radius = 3~m \newline%
-Field strengths = 3 T\vspace{1.5cm}}
+{\item Apperture size = 18.5~cm
+ \item Bending radius = 3~m 
+\item Field strengths = 3 T}
 
 \Component{Torus2}
 {Tor2}
 {TS4}
 {\phaseII}
 {Very similar in design to Torus1, although possibly with different collimator placement and designs. The dipole field along this half of the bent muon transport solenoids might well be different to the dipole along the first half (Torus1).}
-{Apperture size = 18.5~cm\newline%
- Bending radius = 3~m\newline%
- Field strengths = 3 T}
+{\item Apperture size = 18.5~cm
+ \item Bending radius = 3~m
+ \item Field strengths = 3 T}
 
 \Component{Stopping Target Section}
 {StopTgtSec}
 {TS5, ST}
 {\phaseII}
 {The straight section of solenoid housing the muon stopping target.  The electromagnetic field reduces dramatically around the mid-point of the StopTgtSec to improve signal acceptance.  The stopping target itself will consist of several 200~um disks made of pure aluminium and then followed by a tungsten or aluminium beam blocker.  There should be no line of site between the exit of the Torus2 and the entrance to the downstream solenoid, the Electron Spectrometer.  This removes high-energy particles in the muon beam.}
-{Apperture size = 18.5~cm at the entrance, stepped up to  61~cm by the exit\newline%
- Field strengths = 3 T at the entrance, tapering to about 1~T at the exit\vspace{1.5cm}}
+{\item Apperture size = 18.5~cm at the entrance, stepped up to  61~cm by the exit
+ \item Field strengths = 3 T at the entrance, tapering to about 1~T at the exit}
 
 \Component{Electron Spectrometer}
 {ElSpec}
 {ES}
 {\phaseII}
 {The 180\degree bent solenoid used to prevent the very low energy particles reaching the detector.  Also useful for removing backgrounds due to gammas and neutrons coming from the stopping target.  The magnetic field in the Electron Spectrometer is much weaker at close to 1~T.}
-{Apperture size = 60~cm\newline%
- Field strengths = 1 T along centreline axis\newline%
- Bending radius = 2~m}
+{\item Apperture size = 60~cm
+ \item Field strengths = 1 T along beam-axis
+ \item Bending radius = 2~m}
 
 \Component{Detector Solenoid}
 {DetSol}
 {DS}
 {\phaseI, but possibly extended for \phaseII}
 {The final straight solenoid section that houses the actual detector.  This will be re-used in \phaseII after \phaseI finishes, although additional coils may be added to extend the solenoid to house additional straw tracker stations.  }
-{Apperture size = 96~cm\newline%
- Field strength = 1 T}
+{\item Apperture size = 96~cm
+ \item Field strength = 1 T}
 
 \Component{StrawTracker + ECAL Detector}
 {StrECAL}
 {}
 {\phaseI, upgraded for \phaseII}
 {Detector system used in \phaseII to measure conversion electrons.   In \phaseI will be used to measure beam properties.  Consists of 5 Straw Tracker stations (in \phaseI, with possibly more in \phaseII), each transverse to the beam.  Each station consists of 4 perpendicular layers of straw tubes.  The LYSO-based ECAL will measure particle energies with 5\% resolution and serve primarily for a trigger and to support PID.}
-{Straws per layer =120\newline%
- layers per station  = 4 (2 X, 2 Y)\newline%
- Number of stations = 5\newline%
- Straw length = 69.2 to 130~cm\newline%
- Wire radius = 10~micron\newline%
- Straw radius = 4.9~mm containing 20~micron\newline%
- Straw material = Aluminised mylar\newline%
- No. of ECAL crystals = 1920 Crystal\newline%
- dimensions = 2x2x12~cm\newline%
- Crystal material = LYSO \vspace{-1cm}}
+{\item Straws per layer =120
+ \item layers per station  = 4 (2 X, 2 Y)
+ \item Number of stations = 5
+ \item Straw length = 69.2 to 130~cm
+ \item Wire radius = 10~micron
+ \item Straw outer radius = 4.9~mm 
+ \item Straw material = Aluminised mylar
+ \item No. of ECAL crystals = 1920 Crystal
+ \item Crystal dimensions = $2\times2\times12$~cm
+ \item Crystal material = LYSO }
 
 \Component{Cylindrical Detector}
 {CyDet}
 {}
 {Only used in \phaseI}
 {The primary detector for \phaseI to measure conversion electrons at 200 keV resolution.  Consists of a cylindrical drift chamber arranged coaxially with the beam and stopping target.  Wires in the drift chamber are twisted in opposite directions on alternating layers to allow for stereoscopic reconstruction of the longitudinal component of a particle's trajectory.  In addition to the drift chamber, triggering hodoscopes and scintillation bars at the upstream and downstream ends of the detector provide a timestamp and trigger decision, although this will likely be supplemented by a track trigger using Drift Chamber information.}
-{No. of Layers = 20 (including 2 guard layers) No. of Field wires = 14562 No. of Sense wires = 4986 Field wire = 126~micron Al Sense wire = 25~micron Au plated W \vspace{2cm}}
+{\item No. of Layers = 20 (including 2 guard layers)
+ \item No. of Field wires = 14562
+ \item No. of Sense wires = 4986
+ \item Field wire = 126~micron Al
+ \item Sense wire = 25~micron Au plated W }
 
 \Component{Cosmic Ray Veto}
 {CRV}
 {}
 {\phaseI and upgraded and extended for \phaseII }
 {An active veto against cosmic muons that enter the detector.  Formed from four layers of scintillating strips, read-out via wavelength shifting fibres.  The CRV surrounds the detector solenoid on all sides and above.  Layers of concrete and iron are contained between the detector solenoid and the CRV in order to protect the CRV from the high neutron fluxes from the beam and stopping target. }
-{Number of layers = 4 per side Total number of strips = 3816  Strip material = Polystyrene scintillator Shielding between detector = layers of concrete, iron, polyethylene, and lead \vspace{-1cm}}
+{\item Number of layers = 4 per side
+ \item Total number of strips = 3816  
+ \item Strip material = Polystyrene scintillator 
+ \item Shielding between detector = layers of concrete, iron, polyethylene, and lead }
 
 \Component{Concrete and Iron shielding  }
 {}
 {}
 {\phaseI}
-{Capture and constrain the neutron and gamma radiation from the beam, principally around the production target section and proton beam dump.  Air-tight interlocking concerete and iron blocks will surround the production target region and experiment hall.  The detectors themselves will be isolated from the production target by concrete and iron blocks, with the only connection being the hole through which the muon transport solenoids pass. }
-{\vspace{3cm}}
+{Experiment hall shielding to capture and constrain the neutron and gamma radiation from the beam, principally around the production target section and proton beam dump.  Air-tight interlocking concerete and iron blocks will surround the production target region and experiment hall.  The detectors themselves will be isolated from the production target by concrete and iron blocks, with the only connection being the hole through which the muon transport solenoids pass. }
+{}
