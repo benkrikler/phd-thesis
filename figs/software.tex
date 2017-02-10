@@ -181,3 +181,22 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 }
 \end{figure}
 }
+
+\newcommand{\FigSoftwareBeamline}{
+\begin{figure}[t]
+\centering
+\subfloat[][\figlabel{software:beamline:dist}Beamline Distance]{
+%\fbox{
+\includegraphics[width=0.45\textwidth,trim=1cm 4cm 0.0cm 4.5cm,clip=true]{figs/software/BeamlineCoords_longitudinal.png}
+}
+\subfloat[][\figlabel{software:beamline:horiz}Horizontal Beamline Component]{
+\includegraphics[width=0.45\textwidth,trim=1cm 4cm 0.0cm 4.5cm,clip=true]{figs/software/BeamlineCoords_horizontal.png}
+}
+%}
+\caption{
+\figlabel{software:beamline}
+	The longitudinal \protect\subref{fig:software:beamline:dist} and horizontal \protect\subref{fig:software:beamline:horiz} components of the beamline coordinate system for different points in the global X-Z plane.
+	Although this image shows the \phaseI geometry, the implementation in ICEDUST will semi-automatically adjust to whatever geometry was used.
+}
+\end{figure}
+}

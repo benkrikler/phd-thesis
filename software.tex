@@ -362,4 +362,56 @@ Custom physics processes can use these spectra as they like, and since the `COME
 In addition, a new primary particle generator has been added which allows the momentum or energy of a particle to be set according to a named spectrum, which will be identical to the spectrum used in the tracking process.
 This makes it easy  to run specific acceptance studies and also reduces the effort needed to add a new physics model since one spectrum can be written and immediately used by both the primary event generators and the tracking physics.
 
+\section{Analysis Using the Beamline Coordinate System}
+The geometry of the COMET beamline makes a single natural coordinate system non-trivial to define.
+The global coordinate system in ICEDUST defines the origin as the pion production target and sets the +Z direction pointing in the direction of the pion and muon transport solenoids at this point.
+The positive Y direction points vertically upwards, such that the positive X coordinate points from the production target towards the \phaseII detector solenoid (and is therefore parallel to the beamline at the 90\degree point, at the end of the Torus1, where the Detector solenoid will sit in \phaseI). 
+
+The fact that the beamline bends and even doubles back on itself in \phaseII, makes simple projections to a plane in the global cartesian coordinate system difficult to interpret.
+For this reason, the concept of a 'beamline' coordinate system has been implemented into ICEDUST to facilitate a allow for more intuitive data visualisation and to ease some common transformations.
+
+\FigSoftwareBeamline 
+A point in the beamline coordinate system is defined by a distance along the beamline axis and a vertical and horizontal translation in the plane perpendicular to the beamline axis.
+The mapping of a point, $\vec{r}$, in cartesian coordinates to a point in beamline coordinates is performed by locating the point, $\vec{b}$, on the beamline axis closest to $\vec{r}$.
+The beamline distance is then the distance travelled along the beamline to reach $\vec{b}$, whilst the transverse plane coordinates are defined by the vertical and horizontal components of $\vec{b}-\vec{r}$.
+\Fig{software:beamline} shows the beamline and horizontal coordinate for points in the X-Z plane changes for the \phaseI geometry.
+shows
+
+In order to perform this transformation, one needs to know the shape of the beamline axis itself.
+Since within ICEDUST this geometry is persisted alongside the data, the beamline shape can be inferred directly from the geometry, using a set of semi-automatic queries to the geometry.
+This means that the beamline coordinate system should work for both \phaseI and \phaseII geometries or if a component in the beamline is extended.
+
+\subsection{Distributions as a Function of Distance Along the Beamline}
+By defining such a beamline coordinate system, studying the evolution of various parameters as a function of the distance along the beamline becomes much easier.
+Extensive use is made of this technique later on in this thesis, when studying the optimisation of \phaseII and its sensitivity and background rates.
+
+\Fig{software:beamline:analysis} shows two example plots that make use of projections to the beamline coordinate system.
+In \fig{software:beamline:analysis:height}, the density of simulated trajectories is shown as a heatmap and as a function of both distance along and the height relative to the beamline is shown.
+Overlaid on this plot is a slice through the geometry to help interpret where in the experiment each effect occurs.
+Each trajectory in the simulation is really represented by a series of points along the particle's path.
+To be able to make such a plot, therefore, one has to force Geant4 to produce a higher-than-normal density of step points along each trajectory.
+However, when a particle crosses a boundary in the geometry of the simulation a step point is forced to be created, creating a spike in the density of points at a single surface in the plot, that does not correspond to a true physical increase in the number of particles passing through per unit area.
+By taking the profile of this distribution, the mean height of particles at each point along the beamline can be found, which is particularly useful information when studying the bent solenoid dynamics.
+
+\Fig{software:beamline:analysis:flux} shows a one-dimensional flux plot, \ie the number of particles passing a given point along the beamline.
+Conceptually this is similar to the above two dimensional plot, however, because of the issue of step points being added when a particle crosses a boundary, the direct projection of the two-dimensional version becomes much harder to read, due to the large spikes  produce at these surfaces.  
+Instead, to produce the one-dimensional flux plot, the location of the start and end point of the trajectory is found in the coordinate system and every bin in between these values filled.
+This works well for trajectories that move at constant longitudinal velocity along the beamline, but introduces an issue when trajectories slow down (which should increase the density of step points) and especially if the particle is mirrored, in which case points will only appear on the same side of the start point as the finish point, and no bins will be filled in the region where the mirroring occurred.
+
+%\begin{easylist}
+%	# Beamline coordinate
+%	## The global COMET coordinate system
+%	## The bent form of COMET, and the fact that key components are orientated differently to one another means a beamline coordinate system is useful
+%	### Defined as the distance along the projection to the beamline axis
+%	## Implemented into ICEDUST using a single class to facilitate transformations between COMET global and beamline coordinates, as well as perform operations such as obtaining the direction vector for the beamline at a given point
+%	## The function to go from beamline to global and vice versa extract the important geometric parameters from the geometry files so that if the geometry changes the beamline coordinate system will still function
+%	## Allows for many novel approaches to analysis, especially for truth level data, in ways not previously possible
+%	# Flux plots and projected plots
+%	## Heat map showing density of trajectories projected onto the Y-beamline axis surface
+%	## However, in the simulation a trajectory is persisted as a series of step points. The space between step points can be limited, but additional points from geometric boundaries force steps to be placed, an creating an artificially high density of points along a single surface.  This creates artefacts in the plot which would be very difficult to remove.  They don't impact the intepretation too much, but do complicate things
+%	## A flux plot is a form of 1-dimensional projection, showing the number (or fraction) of particles that pass a given point along the beamline. 
+%	## Due to the above effect however, simply histrogramming the number of step points at each beamline distance would have very large spikes.
+%	## Instead, the start and end point of each trajectory is identified on the beamline axis, and then every bin in between these points filled with the same weight.
+%	## This works well for trajectories that move at constant longitudinal velocity along the beamline, but introduces an issue when trajectories slow down (which should increase the density of step points) and especially if the particle is mirrored, in which case points will only appear on the same side of the start point as the finish point, and no bins will be filled in the region where the mirroring occurred.
+%\end{easylist}
 %\subsection{Resampling With the Hit Merger}
