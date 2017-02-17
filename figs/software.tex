@@ -200,3 +200,19 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 }
 \end{figure}
 }
+
+\newcommand{\FigSoftwareBeamlineAnalysis}{%
+\begin{figure}[bt]
+\centering 
+\subfloat[\figlabel{software:beamline:analysis:height}Two-dimensional flux]{
+	\includegraphics[width=0.8\textwidth,trim=8.3cm 1.5cm 13.2cm 2.2cm,clip]{figs/sensitivity/Tidied_SignalHeight2DVsBeamline.png}}\\
+\subfloat[\figlabel{software:beamline:analysis:flux}One-dimensional flux]{
+        \includegraphics[width=0.8\textwidth,trim=1.0cm 0.2cm 1.7cm 0.4cm,clip]{figs/sensitivity/Tidied_SignalSurivivalVsBeamline.pdf}}
+\caption{\figlabel{software:beamline:analysis}
+Different flux plots that make use of the beamline coordinate system.
+\protect\subref{fig:sense:accept:height} Projection of trajectories onto the vertical-beamline axis plane.  Setting a limit to the maximum step size forces Geant4 to create steps with more regular interval.
+Each step is then projected to the vertical-beamline surface, such that the density of points represents the flux of particles.
+\protect\subref{fig:sense:accept:flux} A one dimensional flux plot, where every bin between the beginning and end of a particle's track is filled.
+}
+\end{figure}\xspace}
+
