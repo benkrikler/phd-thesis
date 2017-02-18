@@ -17,7 +17,7 @@
 %## DIO blockers on spectrometer
 %\end{easylist}
 The last study into the sensitivity of \COMET \phaseII was performed in 2009~\cite{CDRphase2}, before the staged approach and \phaseI design had been considered.
-That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running, with a total expected background count rate of fewer than 0.34 events over the entire run period.
+That study found that a \ac{ses} of $2.6\times10^{-17}$ could be achieved in $2\times10^{7}$ seconds of running, with a total expected background count of fewer than 0.34 events over the entire run period.
 Since then, the collaboration's focus has shifted to research and development for \phaseI and no further studies have been made of the \phaseII design.
 
 The purpose of this chapter is to make use of the updates in the fieldmap calculation, the geometry handling, and physics modelling to revisit the design of \phaseII.
@@ -55,13 +55,13 @@ As an initial configuration, much of the design from the 2009 study will be used
 To perform a comprehensive optimisation of \phaseII, there are many parameters to be changed, corresponding to the shapes, positions, field strengths, and so on, of the different regions along the beamline.
 \Tab{optimisation:possible-parameters} lists some 32 parameters, each one of which could be studied.
 And yet, this number alone does not describe the full challenge of optimising the \phaseII design, since many of these parameters will correlate to one another.
-For example, a correlation likely exists between the position and shapes of the muon beam collimator(s), the stopping target and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
+For example, a correlation likely exists between the position and shapes of the muon beam collimator(s), the stopping target, and the beam blocker, since all involve removing or stopping muons and other particles in the beam.
 Other less intuitive correlations might also exist and a complete optimisation should be able to include the impact of these as well.
 
 A full optimisation study then would involve a scan through a parameter space with at least 32 dimensions.
 A brute force search of such a space would be nightmarishly slow and require an enormous amount of computing power.
 Machine learning algorithms or intelligent scanning techniques might be able to tackle such a problem, and perhaps in the future these methods will be used.
-In the meantime, however, we make use of the technique known as `physicists intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
+In the meantime, however, we make use of the technique known as `physicist's intuition' to approach the problem, whereby some parameters are assumed uncorrelated whilst others are disregarded on the expectation that their impact be small.
 %This should be sufficient to establish a reasoned baseline geometry, whilst allowing for future work to refine the design further.
 The goal of this chapter, therefore, is not only to optimise the experiment but also to gain qualitative understanding for the correlations and dependencies between the controlling parameters.
 
@@ -112,7 +112,7 @@ Thus only the front face of the target was moved, in order to change the length 
 %produced.
 
 Primary protons were generated according to the description in the 2014 \phaseI TDR~\cite{TDR2014}.
-This provides a double Gaussian position profile ($\sigma_x=5.8$~mm, $\sigma_y=2.9$~mm) as well as the spread in energy of the 8~GeV kinetic energy protons ($\sigma_E=0.135$~MeV).
+This provides the position profile as a two-dimensional Gaussian ($\sigma_x=5.8$~mm, $\sigma_y=2.9$~mm) as well as the spread in energy of the 8~GeV kinetic energy protons ($\sigma_E=0.135$~MeV).
 It does not discuss any dispersion or divergence in the beam, however.
 The proton beam is currently under study, which is why the description at this stage is fairly simplistic.
 The impact of a more realistic proton beam description will need to be studied in future work.
@@ -127,7 +127,9 @@ This too will need to be revisited once the proton beam distribution is better u
 
 \subsection{Length Scan}
 Different length targets were simulated with \num{3e5}~\acp{POT} for each length.
-The target length was varied in steps of 4~cm from 4 to 32~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
+The target length was varied in steps of 8~cm from 8 to 64~cm, whilst the target radius was held fixed at the CDR value of 4~mm.
+Following a recommendation from the COMET magnet group, the back face of the target was held in a fixed position relative to the rest of the beamline.
+As a result, the change to the length of the target was produced by moving the front face towards the incoming proton beam, on the basis that the heat-load of the capture solenoid's shielding had been designed with respect to the back face of the target.
 
 \Fig{optimisation:ProdTgtSec:Length:Momentum} shows the momentum distributions of pions and muons for different target lengths (presented as half-lengths following the Geant4 convention).
 \Fig{optimisation:ProdTgtSec:Length:Integral} then shows these distributions integrated up to different momenta.
