@@ -112,7 +112,7 @@ The COMET simulation therefore needs to be both highly accurate and highly effic
 As well as custom physics modelling, and special handling for the magnetic field, several resampling techniques have been introduced to increase the statistical power.
 The steps needed to build up the COMET simulation are shown in \fig{software:SimulationOverview}.
 
-To reduce the uncertainties associated with the production target and the muon and pion yield multiple hadron codes can be used, including PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005} and Geant4~\cite{Geant42003}.
+To reduce the uncertainties associated with the production target and the muon and pion yield, various different hadron-production models can be used, including PHITS~\cite{PHITS2002}, MARS~\cite{MARS1995}, Fluka~\cite{FLUKA2005} and Geant4~\cite{Geant42003}.
 The SimG4 package, which is based on Geant4, then takes over the muon beam simulation and tracking of particles to the detectors.
 These energy deposits, referred to as G4Hits, can then be converted to realistic electronic detector-readouts by the SimDetectorResponse package.
 On most occasions, though, the G4Hits are first reshuffled with G4Hits from other \acf{POT} events so that a realistic bunch structure is built up and processed, since it is this structure that the true detector will see.
