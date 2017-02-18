@@ -305,10 +305,10 @@ This is because the bound muon decay model in Geant4 uses the free muon decay sp
 A comparison of the electron spectrum from this model and that proposed by Czarnecki \etal~\cite{Czarnecki2011} is shown in \fig{software:customPhysic:DIO}, where it can be seen how the high energy tail falls far more rapidly in the Geant4 spectrum.
 
 Similarly, for the nuclear capture of the muon, there are sizeable disagreements between the available (but limited) data and the default Geant4 model.
-For example, the AlCap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
-This showed that proton emission occurs for around 3~\% of all nuclear captured muons; Geant4 produces around around 7 to 8 times more than this.
+For example, the \alcap experiment~\cite{AlcapProposal2012} has improved the knowledge of proton emission following muon nuclear capture in aluminium.
+This showed that proton emission occurs for around 3~\% of all nuclear captured muons; Geant4 produces around 7 to 8 times more than this.
 The overall shapes of the proton spectra also disagree.
-Although the AlCap result is still only preliminary, the spectrum that has been observed is much softer than that produced by standard Geant4, as shown in \fig{software:customPhysic:ProtMuCap}.
+Although the \alcap result is still only preliminary, the spectrum that has been observed is much softer than that produced by standard Geant4, as shown in \fig{software:customPhysic:ProtMuCap}.
 
 Standard Geant4 models nuclear capture of negative muons using a Bertini cascade which was developed using incident hadrons~\cite{Geant4:Bertini}.
 Muon nuclear capture is thought to occur via a combination of direct capture on a proton, producing a neutron, or via an interaction with a set of clustered nucleons.
@@ -357,7 +357,7 @@ Although such details cannot be included in this modelling, the impact to the ou
 
 Finally, to handle the various spectra that might be added to the simulation, a special spectrum and spectrum-factory class design was added.
 The `COMETVSpectrum' base-class was added to represent the abstract idea of a 1-dimensional spectrum.
-Custom spectra, such as the Czarnecki \ac{DIO} spectrum or the AlCap protons from muon capture spectrum, can be included by writing a concrete instance of a spectrum, derived from `COMETVSpectrum'.
+Custom spectra, such as the Czarnecki \ac{DIO} spectrum or the \alcap protons from muon capture spectrum, can be included by writing a concrete instance of a spectrum, derived from `COMETVSpectrum'.
 Custom physics processes can use these spectra as they like, and since the `COMETSpectrumFactory' class is able to produce concrete spectra when given a string with the name of the desired spectrum, the custom physics models can easily have different spectra selected by run-time commands.
 In addition, a new primary particle generator has been added which allows the momentum or energy of a particle to be set according to a named spectrum, which will be identical to the spectrum used in the tracking process.
 This makes it easy  to run specific acceptance studies and also reduces the effort needed to add a new physics model since one spectrum can be written and immediately used by both the primary event generators and the tracking physics.
