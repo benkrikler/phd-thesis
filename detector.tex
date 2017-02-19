@@ -57,7 +57,7 @@ There are four groups of background source: intrinsic, prompt, delayed, and cosm
 Muon \ac{DIO}, which was described in the previous chapter, is one such background.
 %One Of these, the dominant background is muon \acf{DIO}, which was described in the previous chapter.
 In addition, radiative nuclear capture of a muon is kinematically capable of producing photons very close to the signal energy.
-If the photon is converted to a high-energy electron this can produce background events if the electron's energy is mis-reconstructed with additional energy.
+If the photon is converted to a high-energy electron this can produce background events.
 
 %Although the decay of a free muon cannot produce electrons with energy greater than half the muon mass, once bound to a nucleus the neutrinos can be configured to carry away almost no kinetic energy, leaving only the nucleus and electron to determine the kinematics of the end-point configuration.
 %From this it can immediately be seen that the maximum energy of the electron produced from muon decay-in-orbit is the same as for \mueconv (up to the neutrino mass), and indeed
@@ -71,29 +71,29 @@ If the photon is converted to a high-energy electron this can produce background
 The key distinction between these two is the timing at which the background is detected with respect to the arrival of the proton beam.
 For example, pions that reach the stopping target region are dangerous since they can produce high-energy gamma rays which can pair produce to create 105~MeV electrons.
 Since pion capture against a nucleus is extremely fast, the timing of pion-induced backgrounds is determined predominantly by the arrival time of pions into the target region.
-In order to reach this region without decaying, the pions must be relatively high-momentum of about 60~MeV/c or greater.  
+In order to survive from the production target to the target region without decaying the pions must be relatively high-momentum: about 60~MeV/c or greater.  
 
-As a result, backgrounds from pion capture are typically expected close to the arrival of protons at the production target.
+As a result, backgrounds from pion capture are typically expected close to the arrival time of protons at the production target.
 Prompt processes such as this are suppressed by using a pulsed proton beam (discussed in more depth later) and ensuring very few protons in between pulses.
-Other beam related issues include the decay of muons and pions to electrons.
+Other beam related issues include the decay-in-flight of muons and pions to electrons.
 An electron of 100~MeV/c can be produced by muons or pions with momentum greater than 70 or 50~MeV/c respectively, and so the flux of higher energy particles in the beam must also be reduced.
 
 Delayed processes are those where the timing of the proton beam cannot be used to improve suppression since the characteristic time between the primary proton striking the target and the detection of the background for these processes is large compared to the time between beam pulses.
 Possible sources of this delay include the mirroring of particles by the magnetic field, or by some heavy particle from the production target producing pions and high-energy electrons.
-At a given momentum, antiprotons travel considerably more slowly than muons or pions given their considerably larger mass, washing out any timing information from their production.
+At a given momentum, antiprotons travel more slowly than muons or pions given their considerably larger mass, washing out any timing information from their production.
 
 \item [Cosmic Backgrounds]
-Finally cosmic backgrounds arise from high-energy muons that pass through the building and enter the detector or beamline.  
+ arise from high-energy muons that pass through the building and enter the detector or beamline.  
 Events where a muon decays to an electron, which is then detected as 105~MeV, are counted as backgrounds.
 In particular, muons that produce high-energy electrons close to the target are dangerous since cuts on the reconstructed direction and position will be less effective.
 \end{description}
 
-All these processes will be discussed and evaluated in more depth in chapter~\sect{backgrounds}
+All these processes will be discussed and evaluated in more depth in chapter~\sect{backgrounds}.
 \TabBackgroundSummary%
 
 \section{General Experimental Techniques}
 Suppressing background rates while maintaining a high-signal efficiency leads to several novel techniques being used in the COMET experimental set-up.
-These techniques are common to both \phaseI and \phaseII.
+The following techniques are common to both \phaseI and \phaseII.
 
 \subsection{Proton Beam Energy and Production Target}
 The muon beam used in COMET is produced from the decay of a secondary pion beam created by protons striking a target.
@@ -112,13 +112,13 @@ Whilst a heavy metal target is preferable since it increases the number of nucle
 the target must maintain its mechanical strength.
 This requires the selection of a high-melting point material and possibly the use of active cooling.
 To simplify the situation in \phaseI, a graphite target will be used which can be passively cooled by thermal radiation.
-In \phaseII however, tungsten has been selected due to its high-melting point of 3422 C, although water cooling will also likely be employed.
+In \phaseII however, tungsten has been selected due to its high-melting point of 3422 C, although water cooling may be additionally employed.
 
 \FigPionSpectraVsAngle
 
 Finally, only those pions and muons emitted in the backwards direction with respect to the proton beam are captured and transported to the muon beamline.
-This is a strong way to reduce the high-energy components of the muon and pion distributions since the yields for low-momentum pions in the forward and backwards directions are similar, whilst the high-energy tail is greatly suppressed in the backwards direction.
-At this time however, there is a dearth of experimental measurements for pion production in the backwards direction with 8~GeV protons on a graphite or tungsten target.
+This is a strong way to reduce the high-energy components of the muon and pion distributions since the high-energy tail is greatly suppressed in the backwards direction, whilst the yields for low-momentum pions in both directions are similar.
+Presently, however, there is a dearth of experimental measurements for pion production in the backwards direction with 8~GeV protons on a graphite or tungsten target.
 \Fig{detector:piYield} shows a measurement of the cross section for pion production with 10~GeV protons on tantalum (which is adjacent to tungsten on the periodic table).
 
 \subsection{Particle Transport through Bent Solenoids}
@@ -128,14 +128,15 @@ This creates a separation between the high and low-momentum components of the be
 
 Charged particles moving through a straight solenoid follow a helical
 trajectory, orbiting a point that moves parallel to the solenoidal axis with a constant velocity fixed by the longitudinal momentum of the particle.
-The frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration) is determined by the transverse momentum.
+%The frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration) is determined by the transverse momentum.
+The transverse momentum, on the other hand, determines the frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration).
 \FigBentSolenoidRelativeDrift
 
-By comparison, if a charged particle moves through a solenoid channel that has been bent, the particle can still be considered to orbit a point, only now 
+By comparison, if a charged particle moves through a bent solenoid channel, the particle can still be considered to orbit a point, only now 
 the motion of that point can be shown to drift vertically, out of the plane of bending.
 This drift arises partially due to the gradient introduced to the field by bending the solenoid but also from the 
 non-rectilinear coordinate system of the field lines.  
-The total drift, $D$, of a particle with mass and charge $m$ and $q$ respectively  through a solenoid bent with a fixed radius of curvature, $R$, is given by:
+The total drift, $D$, of a particle with mass and charge, $m$ and $q$ respectively,  through a solenoid bent with a fixed radius of curvature, $R$, is given by:
 \begin{align}
 	D=&\frac{1}{qB}\left(\frac{s}{R}\right)\frac{p^2_\mathrm{L}+0.5p^2_\mathrm{T}}{p_\mathrm{L}}\eqlabel{detector:bent-solenoids:longVstrans}\\
 	 =&\frac{1}{qB}\left(\frac{s}{R}\right)\frac{p}{2}\left(\cos\theta + \frac{1}{\cos\theta}\right)\eqlabel{detector:bent-solenoids:pitchAngle}
@@ -150,7 +151,7 @@ The pitch angle, $\theta$, is a property of the helical trajectory taken by the 
 The angular dependence of equation \eq{detector:bent-solenoids:pitchAngle} is shown in
 \fig{detector:bent-solenoids:angularDependence} where it can be seen that for
 angles below 50 degrees the variation in the drift is less than 10\%, such that
-the drift is determined almost completely by the momentum of particles up to
+the drift is determined almost completely by the momentum for particles below
 these angles.
 
 Bent solenoids are used in \COMET for both \phaseI and II to disperse high-energy muons and pions in the muon
@@ -162,13 +163,17 @@ Since the drift is proportional to the momentum of the particle, particles with 
 However, an additional vertical component is introduced to the magnetic field.
 If the solenoid were straight the axis of a particle's helical trajectory would follow the field line. 
 A vertical component would, therefore, cause the trajectories to move upwards with the field line itself, irrespective of the particle's momentum.
-The same result is true in a bent solenoid and since the drift this introduces is not proportional to momentum a vertical component can be used to select the momentum of particles which remain on axis.
+The same result is true in a bent solenoid such that a vertical component can be used to 
+counter the drift from the bent solenoid field for particles of a specific momentum, which will then remains on-axis.
+%select the momentum of particles which remain on axis.
 
 Two techniques have been considered to introduce this vertical component: tilting the solenoid coils themselves, or adding additional dipole coils around the solenoids.
 \COMET has chosen to pursue the latter, using a special, proprietary winding technique developed by Toshiba to introduce a vertical component by placing additional conductor around the solenoid coils.
-Since the current through these dipole coils can be altered separately to the solenoid coils, this approach has the advantage that the two components can be tuned against each other.
+Since the current through these dipole coils can be altered separately to the solenoid coils, this approach has the advantage that the two components can be tuned individually.
 This allows for the optimal dipole field to be found during operation running, or for the on-axis momentum and charge to be shifted for background and acceptance studies or searches for other physical observables.
-Collimating material is introduced to remove particles with undesirable momentum.
+
+Particles that drift by large amounts will come into contact with the beampipe and are thereby removed from the beam.
+Additional collimating material (typically tungsten or copper) can be introduced to more precisely remove particles with undesirable momenta.
 
 %The dynamics of a charged particle in a magnetic field is determined by the Lorentz equation:
 %\begin{equation}
