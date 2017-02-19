@@ -64,13 +64,14 @@ The transfer matrix for electrons originating at the target, including the geome
 \begin{figure}[tb]
 \centering 
 %\fbox{
-\subfloat[\figlabel{sense:spectra:ELoss}Incl.~energy loss]             {\includegraphics[width=0.48\textwidth,trim=0.0cm 0.0cm 1.0cm 1.0cm,clip]{figs/sensitivity/ConversionVsDio_Spectra.pdf}}
-\subfloat[\figlabel{sense:spectra:resolution}Energy loss \& resolution]{\includegraphics[width=0.48\textwidth,trim=0.0cm 0.0cm 1.0cm 1.0cm,clip]{figs/sensitivity/ConversionVsDio_Spectra-wResolution.pdf}}
-\caption{\figlabel{sense:spectra}
+\subfloat[Incl.~energy loss\figlabel{sense:spectra:ELoss}]             {\includegraphics[width=0.48\textwidth,trim=0.0cm 0.0cm 1.0cm 1.0cm,clip]{figs/sensitivity/ConversionVsDio_Spectra.pdf}}
+\subfloat[Energy loss \& resolution\figlabel{sense:spectra:resolution}]{\includegraphics[width=0.48\textwidth,trim=0.0cm 0.0cm 1.0cm 1.0cm,clip]{figs/sensitivity/ConversionVsDio_Spectra-wResolution.pdf}}
+\caption{
 The spectrum of electrons coming from \ac{DIO} and \mueconv assuming a conversion rate of $\mathcal{R}=\sci{3}{-16}$.
+Black dashed lines indicate the total electron distribution that would be seen (the sum of $S$ and $B$) if the signal has the assumed conversion rate of \num{3e-16}, half that rate, and one tenth that rate.
 \protect\subref{fig:sense:spectra:ELoss} Includes energy losses in the target, beamline, and detector;
 \protect\subref{fig:sense:spectra:resolution} also includes resolution effects (for a Gaussian resolution function with a standard deviation of $\sigma=200$~keV/c).
-}
+\figlabel{sense:spectra}}
 \end{figure}\xspace}
 
 \newcommand{\FigSensMomIntegral}{%
