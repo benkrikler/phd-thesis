@@ -241,11 +241,16 @@ Contours showing 2.5 percentage point changes to the stopping (blue) and dangero
 \newcommand{\FigOptimESTDipoleBeamHeightTwoD}{
 \begin{figure}[tp]
 \centering 
-	\subfloat[][\figlabel{optim:ESTDipole:Beam:0.0}No Dipole]  {\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_00}}\\
-\subfloat[][\figlabel{optim:ESTDipole:Beam:0.1}0.1~T Dipole]{\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_10}}\\
-\subfloat[][\figlabel{optim:ESTDipole:Beam:0.2}0.2~T Dipole]{\includegraphics[width=1\textwidth,trim=4cm 0.5cm 9.5cm 0.7cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_20}}\\
+\subfloat[][\figlabel{optim:ESTDipole:Beam:0.0}No Dipole]{
+	\includegraphics[width=1\textwidth,trim=5cm 0.5cm 10.3cm 0.3cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_00}}\\
+\subfloat[][\figlabel{optim:ESTDipole:Beam:0.1}0.1~T Dipole]{
+	\includegraphics[width=1\textwidth,trim=5cm 0.5cm 10.3cm 0.3cm,,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_10}}\\
+\subfloat[][\figlabel{optim:ESTDipole:Beam:0.2}0.2~T Dipole]{
+	\includegraphics[width=1\textwidth,trim=5cm 0.5cm 10.3cm 0.3cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_20}}\\
 \caption{\figlabel{optim:ESTDipole:Beam}
-The heights of signal electrons for different dipole field values.
+The heights of electrons along the electron spectrometer that originate in the target with 105~MeV for different dipole field values.
+With no dipole field, \protect\subref{fig:optim:ESTDipole:Beam:0.0}, very low energy electrons remain on-axis (straight, blue lines) whilst the signal all drifts vertically and is removed by the beampipe.
+At larger dipole fields, such as \protect\subref{fig:optim:ESTDipole:Beam:0.2}, the reverse is true.
 }
 \end{figure}
 }
