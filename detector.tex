@@ -209,14 +209,15 @@ In addition to these however, there is one further method which helps both to re
 the use of a pulsed proton beam with a relatively light stopping target.
 
 Since the signal process is coherent, its cross section grows roughly as the square of the number of nucleons (or protons, depending on the model)%
-\footnote{Although this growth is offset by the normalisation to the capture rate which is typically treated as incoherent so that it grows linearly with the number of nucleons.  The overall conversion rate itself is roughly proportional to the atomic number for lighter elements.}
-until the muon is contained almost completely within the nucleus at which point the rate levels off.
+\footnote{Although this growth is offset by the normalisation to the capture rate which is typically treated as incoherent so that it grows linearly with the number of nucleons.
+The overall conversion rate for lighter elements is roughly proportional to the atomic number.}
+until the muon is contained almost completely within the nucleus, at which point the rate levels off.
 It is therefore desirable to use a high-Z target in order to increase the probability of conversion and indeed \sindrumII used both lead and gold targets, with its most stringent limit set on a gold target~\cite{sindrum2006}.
 
 However, as the nucleus gets larger, the lifetime of the muonic atom falls steeply due to the increase in the nuclear capture rate.
 This is illustrated in \fig{detector:mu-nucl-params} where it can be seen that for elements heavier than iron ($Z>26$) the muon lifetime is less than 200~ns.
 The COMET production target and beamline produces a beam flash that lasts for about 200~ns after the arrival of a proton.
-This means that for targets heavier than iron timing information is not a useful parameter to distinguish particles in the beam from electrons coming from stopped muons.
+This means that, for targets heavier than iron, timing information is not a useful parameter to distinguish particles in the beam from electrons coming from stopped muons.
 
 Whilst these are the two dominant factors in deciding the target material, other factors like the mechanical stability, cost, isotopic purity and the stability of the daughter nuclei following muon capture on the target must also be considered.
 Accordingly, titanium and aluminium are considered the two most viable target materials.  
@@ -225,7 +226,7 @@ Titanium, in which the muon lifetime is about 330~ns, would be considerably hard
 \FigTimingSchematic
 
 The J-PARC accelerator has buckets separated by 550~ns, although separations of multiples of this number can, in principle, be achieved.
-For COMET running the intention is to fill every other bucket so that pulses are separated by 1.17~$\mu$s.
+For COMET running the intention is to fill every second bucket so that pulses are separated by 1.17~$\mu$s.
 \Fig{detector:timing-schema} shows the beam timing schematically.  
 A window from about 700 to 1100~ns after the proton beam arrival is then used to look for signal events, by which time most of the beam flash should have passed whilst signal events remain probable.
 
@@ -238,7 +239,7 @@ The extinction factor is used to quantify the probability of protons arriving ou
 \end{equation}
 Original background predictions were made assuming $R_\mathrm{Extinction}$ was around $10^{-9}$~\cite{CDRphase2} (about 1 out-of-time proton for every 7 \phaseI bunches) although recent measurements have been able to demonstrate extinction at a level of $10^{-12}$~\cite{TDR2016} (about 1 out-of-time proton for every 7100 \phaseI bunches).
 
-The bunch structure is initially defined by the linac at J-PARC which accelerates protons up to 600~MeV.
+The bunch structure is initially defined by the linear accelerator (linac) at J-PARC which accelerates protons up to 600~MeV.
 The \ac{RCS} then takes these protons up to 3~GeV where up to two buckets can be stored, although for COMET only one bunch at a time will be filled.
 The protons are then injected into the \ac{MR} which accelerates them up the final energy of 8~GeV and is capable of storing up to 9 buckets at once.
 Using the linac chopper alone would not be sufficient to produce the desired extinction factor since stray protons tend to drift into the unfilled buckets.
@@ -267,8 +268,8 @@ all sitting in the beam.
 However, since the StrECAL detector will be hit by the full force of the muon beam, it would not be feasible to conduct a \mueconv search using this detector.
 As such, for \phaseI, a second detector called the \ac{CyDet} will be used for this purpose.
 The \ac{CyDet} uses a \ac{CDC} to reconstruct the trajectories of charged particles and a pair of Cherenkov and Scintillation counters (one upstream and one down) to trigger the read-out of the system.
-The \ac{CyDet} escapes the issue of the beam flash that the \ac{StrECAL} would face at \phaseI since only the outer region is instrumented.
-Since the detector sits in a 1~T solenoid field (and both the detector and solenoid are co-axial), particles follow helical trajectories with the radius of gyration determined by the transverse momentum of the particle.
+The \ac{CyDet} escapes the issue of the beam flash that the \ac{StrECAL} would face in \phaseI since only the outer region is instrumented.
+Because the detector sits in a 1~T solenoid field (and both the detector and solenoid are co-axial), particles follow helical trajectories with the radius of gyration determined by the transverse momentum of the particle.
 The beam is introduced in the centre and typically remains in an envelope of 15~cm whilst the stopping target sits in the centre of the detector with a radius of 10~cm.
 As such the detector itself is geometrically blind to charged particles in the beam and electrons coming from muon \ac{DIO} in the target with momentum less than 60~MeV/c which make up the majority of the \ac{DIO} spectrum.
 To reconstruct the longitudinal position of the particle's trajectory an all-stereo configuration is used in the Cylindrical Drift Chamber, where each layer of wires is rotated in the opposite direction to the previous layer by an angle of 4\degree with respect to the solenoid axis.
@@ -389,10 +390,10 @@ For \phaseII the description is largely based on the design as laid out in the 2
 \section{Schedule and Status}
 \FigSchedule
 The overall schedule for the COMET experiment is shown in \fig{detector:schedule}.
-\phaseI is due to start data taking in \ac{JFY} 2018 so that construction and development is well underway.
+\phaseI is due to start data taking in \ac{JFY} 2018 and construction and development is well underway.
 
 \FigStatusFacility
-At the time of writing, with regards to the facility, the building that will house the experiment is now finished, sitting to the side of the existing Hadron Hall at \ac{JPARC}.
+With regards to the facility, the building that will house the experiment is now finished, sitting to the side of the existing Hadron Hall at \ac{JPARC}.
 Cooling and power supplies are being installed and the shielding for the concrete hatch area is being produced.
 In the mean time the development of the new beamline to extract protons from the \ac{MR} and deliver them to the COMET area is being installed.
 In particular, the Lambertson magnet which directs the protons towards COMET rather than the existing Hadron Hall has been built.
@@ -402,7 +403,7 @@ A selection of photographs that show the construction of the facility and instal
 
 \FigStatusStrECAL
 Much of the recent activity for the collaboration has been on the design and construction of the detector systems.
-Beam tests to understand the performance and resolution of prototype ECAL crystals, straw tubes and the \ac{CDC} have taken place.
+Beam tests to understand the performance and resolution of prototype ECAL crystals, straw tubes, and the \ac{CDC} have taken place.
 For the \ac{StrECAL}, production of all 2500 \phaseI straws has been completed and procurement of the \ac{LYSO} crystals for the ECAL is under way with some 200 or so crystals already purchased.
 Ageing tests of the straw tubes are on-going with straws being held for an extended duration under pressure and tension at KEK.
 Beam-test data is being analysed to understand the position resolution for a given straw and the energy resolution of the ECAL.
@@ -414,7 +415,7 @@ In the meantime the full \ac{CDC} has been strung, with some 20,000 wires---abou
 Every wire has had its tension checked using a vibrational resonance method, which showed some 90 wires were outside of design tolerances.  These have since been replaced.
 In June 2016, the inner wall of the CDC was successfully inserted, completing the CDC construction, so that leak tests can begin shortly.  
 \Fig{detector:status:CyDet} shows photographs from the stringing of the \ac{CDC}.
-In parallel, cosmic ray tests have been used to study to the performance of CDC prototypes and analysis of the data is under way to deduce the X-T curve for the CDC cells.
+In parallel, cosmic ray tests have been used to study the performance of CDC prototypes and analysis of the data is under way to deduce the X-T curve for the CDC cells.
 
 In the less-tangible realm that is software and simulation, in April 2015 the offline software reached its first stable release, and has since been used to perform three large-scale Monte Carlo productions of \phaseI.
 %The most recent production saw the simulation of around $10^{10}$~\ac{POT}, equivalent to about 20,000 bunches.  
