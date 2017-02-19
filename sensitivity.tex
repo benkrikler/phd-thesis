@@ -1,14 +1,14 @@
 \input{figs/sensitivity.tex}
 \chapter{COMET \phaseII: Signal Sensitivity}
 \sectlabel{sense}
-As discussed previously, the signal sensitivity of COMET is a measure of both the ability to produce a signal event
-and the ability to detect it.
+As discussed previously, the signal sensitivity of COMET is a measure of the ability both to produce a signal event
+and to detect it.
 The signal efficiency per \ac{POT} is therefore the product of the muon stopping rate, the rate of muon capture from the ground state of a muonic atom (the normalisation in the conversion rate), and the total signal acceptance after all analysis cuts and geometric acceptances are considered.
 %This product is analogous to the cross section times branching ration often used to describe collider efficiencies.
 
 Since signal efficiency describes only the ability to produce and detect signal, this chapter could in principle ignore all possible backgrounds.
-However in order to tune analysis cuts, one must consider at some level the potential background rates, which must be minimised and controlled.
-Furthermore, until the full analysis chain is implemented, we consider only a handful of crude analysis cuts, namely the momentum and timing of electrons.
+However in order to tune analysis cuts, one must consider the potential background rates at some level, which must be minimised and controlled.
+Until the full analysis chain is implemented, we consider only a handful of crude analysis cuts, namely the momentum and timing of electrons.
 The 2009 \ac{CDR} additionally included cuts on the reconstruction~\cite{CDRphase2} such as track fitting quality, and the ratio between transverse and longitudinal momentum of particles (related to the pitch angle).
 
 \FigSensMuMomentum
@@ -32,7 +32,7 @@ showing the momentum of muons at different points in the beam.
 \Fig{sense:stops} shows where muons stop in the target based on this simulation from which it is clear that several asymmetries and correlations exist.
 For example, the correlation between Z and Y shown in \fig{sense:stops:ZY} arises due to the dispersion in the muon beam when it arrives at the target. 
 Since high-momentum muons are vertically lower (towards negative Y) in the beam, and since these muons have a larger stopping distance, muons lower down in Y tend to travel further through the target (towards lower values of Z).
-It is interesting, however, that when the integration is taken over all target disks the distribution in Y demonstrates little asymmetry. 
+It is interesting, however, that when the integration is taken over all target disks the distribution in Y demonstrates little asymmetry (\fig{sense:stops:Y}). 
 This is most likely due to the fact that the Y-position is controlled by the Torus1 and Torus2 dipole fields which were optimised to maximise the stopping rate, which one might expect to be achieved when the stopping distribution is symmetric.
 
 \FigSensMuStopsTwoD
@@ -40,12 +40,14 @@ Given this correlation, there might be a gain in signal sensitivity if there wer
 Since this material is less important for stopping the low-energy muons, removing the extra material might have little impact on the stopping efficiency.
 On the other hand, it will likely increase signal acceptance since signal electrons will pass through less material.
 
-Whilst the vertical stopping distribution is largely symmetric (\fig{sense:stops:Y}),
+Whilst the vertical stopping distribution is largely symmetric,
 a striking asymmetry exists in the horizontal stopping distribution (\fig{sense:stops:X}).
 The cause of this asymmetry is unclear at this stage.
 It could arise from the fact that the production target itself is asymmetric in the horizontal transverse direction, such that more muons and pions are produced to one side of the beam axis.
 On the other hand, it could also arise from the transportation dynamics of the bent solenoid, dipole field and collimator design. 
-Since this asymmetry could suggest low-energy muons are missing the target on one side, studying the cause of this asymmetry is important as removing it could be another source of sensitivity increase.
+Since this asymmetry could suggest low-energy muons are missing the target on one side, studying the cause of this asymmetry 
+is an important avenue to pursue for further gains in \ac{SES}.
+%is important as removing it could be another source of sensitivity increase.
 %Both of these possibilities should be studied further in the future as a potential method for increasing the muon stopping rate.
 
 %Further increases in the stopping rate might be achieved by adding additional 
@@ -80,7 +82,7 @@ This is almost exactly the value predicted by the collimator analysis-based appr
 
 \subsection{Timing Window Efficiency}
 A time-gated detector window is used to further reduce the background rate. 
-Whether this is implemented in the trigger, in the offline analysis, or at different levels in each one of these, is yet to be determined, but the impact on signal efficiency will likely be the same.
+Whether this is implemented in the trigger, in the offline analysis, or at different levels in each one of these is yet to be determined but the impact on signal efficiency will likely be the same.
 \FigSensTiming
 
 \Fig{sense:timing:signal} shows the arrival time of signal electrons.
@@ -91,7 +93,7 @@ Time in that plot is with respect to the proton pulse's arrival; since it takes 
 This would be the case at the very end of the window that ends at 1200~ns, given that pulses are separated by about 1170~ns.
 
 One must also consider the timing of background processes to pick a valid time window.
-Motivated primarily by the pion radiative capture background (which will be discussed in completion in section \sect{bg:rpc}, the time window of 600 to 1200~ns is selected.
+Motivated primarily by the pion radiative capture background (which will be discussed in completion in section \sect{bg:rpc}), a time window of 600 to 1200~ns is selected.
 The signal efficiency of this timing window is \VarAcceptanceTime.
 
 \FigSensMomTransfer
@@ -108,15 +110,15 @@ Crucial for signal sensitivity is how this energy loss affects signal electrons 
 In addition to energy losses in material in the beamline, the resolution of the Straw Tracker and the reconstruction algorithm must be considered.
 No reconstruction algorithm can ever reproduce the true momentum of a particle with perfect accuracy.
 A design requirement of the StrECAL has been that it achieves 200~keV/c resolution for 105~MeV/c electrons and indeed work on \phaseI has demonstrated performance better than this.
-Since, at this time, work on the \phaseII reconstruction has not yet begun and even the \phaseI StrECAL reconstruction requires further development, we approximate the residual function---the difference between reconstructed and true momentum---by a single Gaussian with a standard deviation of 200~keV/c.
+Since, at this time, work on the \phaseII reconstruction has not yet begun and even the \phaseI StrECAL reconstruction requires further development, we approximate the residual function---probability distribution of the difference between reconstructed and true momentum---by a single Gaussian with a standard deviation of 200~keV/c.
 The impact that such a residual function would have on the observed \ac{DIO} and \mueconv spectra is shown in \fig{sense:spectra:resolution}.
 
 \FigSensMomIntegral
 Elaborate analysis techniques might then estimate the number of signal events by simultaneously fitting the above signal and background functions to the measured total spectrum.
 For the purpose of developing a baseline sensitivity estimate however, we envisage instead a simple analysis procedure which counts the number of events within a momentum window.
-In that procedure, one would tune the cut to maximise the signal to background separation, as demonstrated by \fig{sense:integral} where the number of events accepted are shown as a function of the low-momentum cut value.
+In that procedure, one would tune the threshold to maximise the signal to background separation, as demonstrated by \fig{sense:integral} where the number of events accepted are shown as a function of the low-momentum cut value.
 Also shown is the function of signal divided by the square root of signal plus background, an indicator of the relative signal to background fluctuations one can expect.
-Although this function peaks at around 103.68~MeV/c, since this value is only optimal for the demonstration signal conversion of $R=\sci{3}{-16}$ and to bring the \ac{DIO} rate down further (see \sect{bg:dio}), a cut of \VarMomThreshold is selected.
+Although this function peaks at around 103.68~MeV/c, since this value is only optimal for the demonstration signal conversion of $R=\sci{3}{-16}$ and to bring the \ac{DIO} rate down further (see section~\sect{bg:dio}), a low-momentum cut of \VarMomThreshold is selected.
 At this value the signal efficiency of the momentum cut is \VarAcceptanceMom.
 It should be noted, though, that whilst changing the cut value leaves the signal efficiency relatively unchanged, the DIO rate varies dramatically: a shift of the threshold up or down by 0.1~MeV/c changes the signal acceptance by about 1.5 percentage points, but changes the DIO rate by a factor of 2.
 
@@ -144,14 +146,14 @@ Additional analysis cuts                               & 0.81                   
 \hline
 \hline
 Total acceptance at `truth level'                      & 0.056                     & 0.091      \\ 
-Total (with CDR recon. and TDAQ efficiencies)          & 0.039                     & \VarTotalSignalAcceptanceDec      \\ 
+Total (with CDR recon.\ and TDAQ efficiencies)          & 0.039                     & \VarTotalSignalAcceptanceDec      \\ 
 \hline                                                                                                       
 \end{tabular}
-\caption{\tablabel{sense:acceptance}
+\caption{
 Numbers that go into estimating the total signal acceptance from this study compared to the previous evaluation in the 2009 CDR.
 Since this study has not estimated reconstruction issues, we include the previous values in the final estimate on the expectation 
 that with the improvements in reconstruction techniques and with the benefit of \phaseI final reconstruction efficiency will be improved compared to the 2009 CDR values.
-        }
+\tablabel{sense:acceptance}}
 \end{table}
 \Tab{sense:acceptance} gives a summary of the signal acceptance parameters as estimated here and, for comparison, the values from the previous study for the CDR~\cite{CDRphase2}.
 For the CDR the geometric acceptance had to be factorised into each section of the beamline to reduce the processing power required.  
@@ -180,7 +182,7 @@ By expanding $N_\mu$ in that equation as the product of the number of protons pe
 	\mathrm{S.E.S}\cdot{}t_\textrm{run}=\frac{1}{(I_p/e){R}_{\mu/p}\mathcal{B}_\mathrm{capture} A_{\mu\rightarrow e}}=\VarPredictedSESPerSecond,
 \end{align}
 where the values for each of these parameters is given in \tab{sense:ses}.  
-Accordingly, if the run time were fixed to the value of the CDR, \VarCDRRunTime[2], an \ac{ses} of \VarPredictedSESCDRRunTime would be achievable.
+Accordingly, if the run time were fixed to the value of the CDR, \VarCDRRunTime[2]~s, an \ac{ses} of \VarPredictedSESCDRRunTime would be achievable.
 Alternatively, the CDR sensitivity, \VarPredictedSES, would be achievable in \VarRunTime[2]s.  
 In that time, COMET \phaseII would impinge \VarTotalPOT protons on the production target, resulting in \VarTotalMuStops negative muon stops in the stopping target.
 As can be seen by \tab{sense:comparisons}, on a year-by-year basis the predicted \phaseII sensitivity is about 3.5 times better than the Mu2e experiment's expectation~\cite{Mu2e2014}, and about 92 times better than COMET \phaseI.

@@ -55,9 +55,9 @@ From these, it is clear how the acceptance is diminished by the DIO blocker in t
 %\fbox{
 \includegraphics[width=0.5\textwidth,trim=0.0cm 0.0cm 0.0cm 1.6cm,clip]{figs/sensitivity/MomentumTransfer.pdf}
 %}
-\caption{\figlabel{sense:momTransfer}
+\caption{
 The transfer matrix for electrons originating at the target, including the geometric acceptance and energy loss.
-}
+\figlabel{sense:momTransfer}}
 \end{figure}\xspace}
 
 \newcommand{\FigSensMomSpectra}{%
@@ -80,10 +80,10 @@ Black dashed lines indicate the total electron distribution that would be seen (
 %\fbox{
 \includegraphics[width=0.99\textwidth,trim=0.5cm 0.0cm 0.5cm 0.3cm,clip]{figs/sensitivity/ConversionVsDio_Integrated.pdf}
 %}
-\caption{\figlabel{sense:integral}
-Relative signal versus \ac{DIO} background as a function of the low-momentum cut value assuming a conversion rate of $\mathcal{R}=\sci{3}{-16}$.
+\caption{
+Relative signal versus \ac{DIO} background as a function of the low-momentum cut value assuming a conversion rate of $\mathcal{R}=\sci{3}{-16}$ and with a fixed upper threshold of \VarMomThresholdHigh.
 The magenta line is the signal over square root of signal plus background for this conversion rate shown as an indicator of the optimum cut value.
-}
+\figlabel{sense:integral}}
 \end{figure}\xspace}
 
 \newcommand{\FigSensTiming}{%
@@ -92,11 +92,11 @@ The magenta line is the signal over square root of signal plus background for th
 %\fbox{
 \subfloat[\figlabel{sense:timing:signal}Signal Arrival Time]      {\includegraphics[width=0.9\textwidth,trim=0.9cm 0.1cm 1.5cm 0.20cm,clip]{figs/sensitivity/160823_MuonLifetime.pdf}}\\
 \subfloat[\figlabel{sense:timing:efficiency}Timing Cut Efficiency]{\includegraphics[width=0.9\textwidth,trim=0.9cm 0.1cm 1.5cm 0.4cm,clip]{figs/sensitivity/160823_TimingCutEfficiency.pdf}}
-\caption{\figlabel{sense:timing}
+\caption{
 Timing of signal electrons.
 \protect\subref{fig:sense:timing:signal} The arrival time of signal electrons at the detector, including the effect of the proton pulse width, particle transportation, and the muon lifetime.
 \protect\subref{fig:sense:timing:efficiency} the efficiency of the timing window as a function of the switch-on time.  Assumes a pulse separation of 1.17~$\mu$s.
-}
+\figlabel{sense:timing}}
 \end{figure}\xspace}
 
 \newcommand{\TabSensParams}{%
@@ -111,9 +111,9 @@ Timing of signal electrons.
 	 $A_{\mu\rightarrow e}$         & \VarTotalSignalAcceptance   & Total signal acceptance of \phaseII            \\ 
 	\hline
 \end{tabular}
-        \caption{\tablabel{sense:ses}
+        \caption{
         Parameters that determine the run time and single event sensitivity for COMET \phaseII based on this study.
-        }
+        \tablabel{sense:ses}}
 \end{table}\xspace}
 
 \newcommand{\TabSensEstimates}{%
@@ -129,8 +129,8 @@ Timing of signal electrons.
   COMET \phaseI~\cite{TDR2016}                          & \sci{3.0}{-15}           & 3.2 & \sci{1.26}{7}                  & \sci{1.19}{-15}                         \\ 
 	\hline
 \end{tabular}
-        \caption{\tablabel{sense:comparisons}
+        \caption{
         Comparison between the run time and single-event sensitivity from this study and from the 2009 CDR, the \phaseI TDR, and  the Mu2e experiment's TDR.
 	The \ac{ses} in one year of continuous beam is the single-event-sensitivity that can be achieved in \num{3.15e7}~seconds of running, assuming no beam shutdown periods.
-        }
+        \tablabel{sense:comparisons}}
 \end{table}\xspace}
