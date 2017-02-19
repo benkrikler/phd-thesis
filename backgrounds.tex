@@ -187,11 +187,11 @@ However, such a factorisation misses out various correlations, such as where in 
 \subsection{Photons from Radiative Pion Capture (\acs{RPC})}
 %In much the same way as \ac{RPC}, when a pion is captured in a nucleus there is a chance that it will produce a prompt, hard photon.
 There is a range of experimental and theoretical data on \ac{RPC}. 
-\Fig{bg:rpc:spectrum} shows what is perhaps the most useful data currently available: the observed spectrum of photons coming from RPC for magnesium and calcium.
+\Fig{bg:rpc:data} shows what is perhaps the most useful data currently available: the observed spectrum of photons coming from RPC for magnesium and calcium.
 Magnesium being adjacent to aluminium on the periodic table, this spectrum is a reasonable proxy for the spectrum of \ac{RPC} on aluminium.
 The relative rate for \ac{RPC} compared to ordinary pion capture is discussed in Amaro \etal~\cite{Amaro:1997ed}.
 For experimental and theoretical studies of the three isotopes summarised in that paper---carbon, oxygen, and calcium---the measured and predicted branching ratios are all within 1.19\% and 2.27\%.
-To be conservative, we take here the branching ratio for RPC on aluminium to be the largest of these as 2.27\%.
+To be conservative, we take here the branching ratio for RPC on aluminium to be the largest of these at 2.27\%.
 
 \subsection{Pion Stopping Rate}
 \FigPionStopDist
@@ -270,7 +270,8 @@ The QGSP_BERT_HP model used as the basis for SimG4 is, in fact, completely unabl
 
 \FigAntiprotonMeco
 In the COMET TDR~\cite{TDR2016}, the yield of antiprotons per \ac{POT} is given as \num{4e-5}, based on the findings of a literature review and simulations undertaken for the MECO experiment~\cite{Meco024}.
-The dependence of the antiproton production cross section on incident proton momentum based on that study is shown in \fig{bg:antiprotons:meco24}.
+\Fig{bg:antiprotons:meco24} shows the production cross section for antiprotons as a function of incident proton momentum, based on that study.
+%The dependence of the antiproton production cross section on incident proton momentum based on that study is shown in \fig{bg:antiprotons:meco24}.
 
 Simulations of antiprotons for \phaseI have used this information and shown that absorber foils would be needed along the beamline.  
 Since the \phaseII geometry in ICEDUST re-uses most of the implementation for the Production Target Capture and Torus1 sections, the upstream absorbers are also contained in the geometry used to study antiprotons here,
@@ -644,7 +645,9 @@ With a different experiment layout, production target material, and higher proto
 A na\"{i}ve scaling of this to the \phaseII number of protons on target would suggest that \num{2.7e-8} events can be expected in \phaseII.
 Since the detector sits further away from the production target and since there is additional beamline then it is likely that the neutron rate is lower.
 %The increased proton power would already be included in the naive scaling applied above to first order.
-The different target material will change the neutron production cross section, but since the target is also made longer in \phaseI to maximize the muon stopping rate, the increase in neutron yield due to the different target geometry and material might not be significant.
+The change of target material between \phaseI and \phaseII from low to high-Z material will increase the neutron production rate per unit mass of target.
+However, to compensate for the equivalent reduction in muon yield that this produces, the target in \phaseI will be longer and as such the neutron rate per POT might well be similar.
+%The different target material will change the neutron production cross section, but since the target is also made longer in \phaseI to maximize the muon stopping rate, the increase in neutron yield due to the different target geometry and material might not be significant.
 
 \subsubsection*{Detector Performance}
 It has been implicitly assumed in the preceding work that the StrECAL is able to perfectly distinguish electrons from positrons, muons, and pions.
