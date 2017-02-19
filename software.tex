@@ -1,6 +1,6 @@
 \input{figs/software.tex}
 \chapter{Offline Software and The COMET Simulation}
-In 2013, when I first worked on the COMET experiment, many disparate and stand-alone simulations were being used without a unified approach in the data structures and analysis.
+In 2013, when I first worked on the COMET experiment, many disparate and stand-alone simulations were being used without a common approach in the data structures and analysis.
 Since then, a single unified software framework has been prepared and is now being used throughout the collaboration.
 Developing this framework has been a large part of my work over the last four years, so this chapter presents both a summary of the framework and its development, as well as an explanation of the techniques used.
 
@@ -61,7 +61,7 @@ In addition to the above changes to the way the software runs, the distribution 
 The switch to GitLab also brought a new `merge request' workflow, which has allowed development of ICEDUST to progress rapidly with only a small number of developers.
 Although initially the intention was also to switch the build system from CMT to CMake~\cite{cmake}, this decision has since been reversed due to improvements in CMT.
 
-In the 3 years since the summer of 2013 when the initial work to fork ND280 to ICEDUST, some 3,200 commits have edited about two million lines of code in the official version of the framework.
+In the 3 years since the summer of 2013 and the initial work to fork ND280 to ICEDUST, some 3,200 commits have edited about two million lines of code in the official version of the framework.
 This has been the work of some 25 collaborators whilst about 15 other users have GitLab accounts and use the software.
 ICEDUST has been used to run three large Monte Carlo productions, most recently simulating about $10^{11}$~\ac{POT} events---equivalent to 18,000 \phaseI bunches---and producing some 100~TB of simulated data.
 
@@ -79,10 +79,10 @@ Each COMET event has a dynamic structure and can contain any number of objects t
 Data from the detector systems is recorded in MIDAS~\cite{MIDAS} format, which also contains data from the slow control monitors such as temperature sensors and high-voltage power supplies.
 The task of converting the MIDAS files into the oaEvent format is handled by the package oaUnpack, which writes out new, converted files, and oaRawEvent, which can convert the MIDAS files to oaEvent format on the fly.
 
-Simulated data is also produced in the oaEvent format and involves some 4 to 6 packages being called, described in more depth in section~\sect{COMETSim}.
+Simulated data is also produced in the oaEvent format and involves some 4 to 6 packages being called, described in more depth in the next section.
 
 Once either simulated data has been produced or real data has been converted, calibration routines can then be applied.
-Each sub-detector's routine is capable of pulling previously-generated constants from a MySQL database and applying these to the detected (or simulated) energy deposits.
+Each sub-detector's routine is capable of pulling previously-generated constants from an SQL database and applying these to the detected (or simulated) energy deposits.
 
 These calibrated hits are then passed into the reconstruction stage.  
 Here each sub-detector system is first allowed to handle the data, which is then passed to a global reconstruction routine until a fully reconstructed event is produced.
@@ -280,7 +280,7 @@ Fluka also lacks a primitive Torus volume implementation, so that other studies 
 \subsubsection{Geant4 physics modelling}
 Aside from the production target region, most of the tracking of particles and creation of secondaries takes place in the SimG4 package, which is built against the Geant4 library.
 In Geant4, the trajectory of a particle is built up in steps, each of which terminates either by a physics process (which might change the particle's direction or energy, or produce secondary tracks) or by the boundary of a volume in the simulated geometry.
-To decide what actually limits the step taken by a given particle (a positron, for example ), Geant4 calls the list of possible processes this particle can undergo (for example Bremsstrahlung, annihilation, inverse Compton scattering, etc) and asks each process for a proposed step length. 
+To decide what actually limits the step taken by a given particle (a positron, for example ), Geant4 calls the list of possible processes this particle can undergo (for example Bremsstrahlung, annihilation, inverse Compton scattering, \etc) and asks each process for a proposed step length. 
 In the case of a geometry limit, the step length is the distance until the boundary of the geometry, including deflections to the trajectory due to any electromagnetic field.
 On the other hand, for a physics process the proposed step length is typically selected randomly using a relevant probability distribution for this process.
 Often this involves a characteristic length or time of the process, for example the half-life of a particle that will decay.
@@ -327,11 +327,11 @@ This base-class contains three instances of a `G4HadronicInteraction': one to pe
 The `G4HadronStoppingProcess' class is also used to simulate stopped negative pions, kaons, and so on, and bound decay is only considered if a valid instance of such a process has been provided.
 When a stopped particle is processed through this class, the electromagnetic cascade is always run first, producing X-rays and Auger electrons.
 Then one of either bound decay or nuclear capture is chosen by asking the bound decay process whether or not it will kill the particle; if so, bound decay is considered to have taken place and the nuclear capture is not run. 
-Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}  which fill in experimental blanks with a semi-empirical models, and decay rates based on a largely theoretical 1977 model by Mukhopadhyay~\cite{Mukhopadhyay:1976hu}.
+Default Geant4 uses nuclear capture rates based on a 1987 paper by Suzuki \etal~\cite{Suzuki1987}, filling in experimental blanks with a semi-empirical model, and decay rates based on a largely theoretical 1977 model by Mukhopadhyay~\cite{Mukhopadhyay:1976hu}.
 \Fig{detector:mu-nucl-params} was produced by extracting these parameters.
 
 \FigSimulationPhysicsClasses
-To extend the default Geant4 modelling and improve the accuracy with the improved theoretical understanding of the \ac{DIO} process and measurements of muon nuclear capture, three new classes have been written which mirror the way the default Geant4 model is implemented but add more detail.
+To extend the default Geant4 modelling and include the improved theoretical understanding of the \ac{DIO} process and measurements of muon nuclear capture, three new classes have been written which mirror the way the default Geant4 model is implemented but add more detail.
 These new classes are shown in \fig{software:ExtendedMuonClasses} in red.  
 Currently they only play a role if the muon stops in aluminium otherwise they invoke directly the default Geant4 model.
 `COMETMuonMinusBoundDecayOrConversion' takes over the task of bound decay by first deciding whether to capture, decay, or convert based on rates which can be adjusted at run-time by Geant4 commands.
@@ -343,7 +343,7 @@ At this point, control would pass to the `COMETMuonMinusCapture' class, which co
 Run-time controls allow the default model to be re-enabled for aluminium.
 
 The `COMETMuonMinusCapture' class contains a list of types of secondary particle which it is able to produce.  
-For each possible secondary, both a total production rate per capture and spectrum must be supplied.
+For each possible secondary, both a spectrum and the total production probability per capture must be supplied.
 When a muon captures in aluminium, firstly the default model is run.
 Then, for each of the secondaries produced by this, if a custom rate and spectrum have been provided for a particle of this type, the secondary from the Bertini cascade is removed.
 Next, for each of the particles that do have custom rates and spectra, a particle is produced with the given probability and each of these particles assigned an energy given randomly according to the selected spectrum.
@@ -367,7 +367,7 @@ The geometry of the COMET beamline makes a single natural coordinate system non-
 The global coordinate system in ICEDUST defines the origin as the pion production target and sets the +Z direction pointing in the direction of the pion and muon transport solenoids at this point.
 The positive Y direction points vertically upwards, such that the positive X coordinate points from the production target towards the \phaseII detector solenoid (and is therefore parallel to the beamline at the 90\degree point, at the end of the Torus1, where the Detector solenoid will sit in \phaseI). 
 
-The fact that the beamline bends and even doubles back on itself in \phaseII, makes simple projections to a plane in the global cartesian coordinate system difficult to interpret.
+The fact that the beamline bends and even doubles back on itself in \phaseII, makes simple projections to a plane in the global Cartesian coordinate system difficult to interpret.
 For this reason, the concept of a 'beamline' coordinate system has been implemented into ICEDUST to facilitate a allow for more intuitive data visualisation and to ease some common transformations.
 
 \FigSoftwareBeamline 
@@ -375,7 +375,6 @@ A point in the beamline coordinate system is defined by a distance along the bea
 The mapping of a point, $\vec{r}$, in cartesian coordinates to a point in beamline coordinates is performed by locating the point, $\vec{b}$, on the beamline axis closest to $\vec{r}$.
 The beamline distance is then the distance travelled along the beamline to reach $\vec{b}$, whilst the transverse plane coordinates are defined by the vertical and horizontal components of $\vec{b}-\vec{r}$.
 \Fig{software:beamline} shows the beamline and horizontal coordinate for points in the X-Z plane changes for the \phaseI geometry.
-shows
 
 In order to perform this transformation, one needs to know the shape of the beamline axis itself.
 Since within ICEDUST this geometry is persisted alongside the data, the beamline shape can be inferred directly from the geometry, using a set of semi-automatic queries to the geometry.
@@ -388,7 +387,7 @@ Extensive use is made of this technique later on in this thesis, when studying t
 \FigSoftwareBeamlineAnalysis
 
 \Fig{software:beamline:analysis} shows two example plots that make use of projections to the beamline coordinate system.
-In \fig{software:beamline:analysis:height}, the density of simulated trajectories is shown as a heatmap and as a function of both distance along and the height relative to the beamline is shown.
+In \fig{software:beamline:analysis:height}, the density of simulated trajectories is shown as a heat-map and as a function of both distance along and the height relative to the beamline is shown.
 Overlaid on this plot is a slice through the geometry to help interpret where in the experiment each effect occurs.
 Each trajectory in the simulation is really represented by a series of points along the particle's path.
 To be able to make such a plot, therefore, one has to force Geant4 to produce a higher-than-normal density of step points along each trajectory.
