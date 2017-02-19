@@ -1,14 +1,16 @@
+#include "/home/ben/thesis/figs/tidy_plot_tools.C"
+
 void tidy_plots(const char* ext="png"){
 
-  gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
+  //gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
   // gStyle->SetStripDecimals(false);
   gStyle->SetPalette(55);
   gStyle->SetNumberContours(255);
  // gStyle->SetPaintTextFormat("0.3e");
 //  gStyle->SetPadRightMargin(0.5);
 //  gStyle->SetTextColor(kWhite);
-
-  TString top_dir="~/comet/1602w06_EST_Dipole/";
+  TString top_dir;
+  top_dir="~/comet/1602w06_EST_Dipole/";
   PlotConfig config;
 
   AnnotatedLine       Tor1_start ( "" , 16700-4.7e3*2-800 , plot::kMin , 16700-4.7e3*2-800 , plot::kMax ); Tor1_start.SetLineAppearance       ( kGray+2 , 1 , 4 ); 
@@ -34,14 +36,15 @@ void tidy_plots(const char* ext="png"){
 
 //  TGaxis::SetMaxDigits();
   config.reset();
-  config.y_axis_label_offset = 0.4;
-  config.x_axis_label_offset = 0.8;
-  config.y_axis_label_size = 0.07;
+  config.z_axis_label_offset = 0.00001;
+  config.y_axis_title_offset = 0.4;
+  config.x_axis_title_offset = 0.8;
+  config.y_axis_label_size = 0.068;
   config.x_axis_label_size = 0.07;
   config.y_axis_title_size = 0.065;
   config.x_axis_title_size = 0.07;
   config.x_axis_label    = "Distance Along Beamline (mm)";
-  //config.y_axis_label    = "#  Height Above Beamline Axis (mm)";
+  config.y_axis_label    = "Height Above Beamline Axis (mm)";
   config.title = " ";
   //config.z_axis_label_centred= true;
   config.y_axis_range_high = 800;
@@ -50,8 +53,8 @@ void tidy_plots(const char* ext="png"){
   config.x_axis_range_high  = 33000;
   config.z_axis_range_high  = 0.05;
   config.z_axis_range_low  = 1e-6;
-  config.shift_plot_y  = -0.05;
-  //config.shift_palette  = -0.04;
+  config.shift_plot_y  = -0.03;
+  config.shift_palette_y  = 0.1;
   //config.canvas_ratio=0.8;
   //config.pad_margin_right= 0.14;
   //config.pad_margin_left= 0.10;
@@ -70,11 +73,12 @@ void tidy_plots(const char* ext="png"){
 //  config.AddLine(EST_start);
 //  config.AddLine(DetSol_start);
 
-  TString top_dir="~/comet/1602w06_EST_Dipole/";
+  top_dir="~/comet/1602w06_EST_Dipole/";
 
   config.normalise=300000.;
   for(int i=0; i <3; ++i){
-          file=FixPlot(top_dir+Form("signal_height-dipole_0.%d0.root",i),"TH1", config);
+	  TString filename=Form("signal_height-dipole_0.%d0.root",i);
+          auto file=FixPlot(top_dir+filename,"TH1", config);
           if(geomHist_noColl) Overlay(geomHist_noColl,"same",config);
           SavePlot(ext,NULL,Form("Tidied_signal_height-dipole_%d0",i));
   }
@@ -178,7 +182,7 @@ void tidy_plots(const char* ext="png"){
   config.line_width=3;
   config.grid_x=true; config.grid_y=true;
 
-  file=FixPlot(top_dir+"noShift_plots/noShift-Acceptance_adjacent.root","TMultiGraph", config);
+  auto file=FixPlot(top_dir+"noShift_plots/noShift-Acceptance_adjacent.root","TMultiGraph", config);
   SavePlot(ext);
 
   file=FixPlot(top_dir+"noShift_plots/noShift-Acceptance-withFitt.root","TMultiGraph", config);
