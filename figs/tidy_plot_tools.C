@@ -267,7 +267,7 @@ struct AnnotatedLine{
   {
     line=new TLine(x1,y1,x2,y2);
     text=new TLatex(0,0,label);
-    text->SetTextSize(0.8*gStyle->GetLabelSize());
+    text->SetTextSize(0.9*gStyle->GetLabelSize());
     text->SetTextFont(gStyle->GetLabelFont());
   }
   void SetTextAlignHor(HorizontalTextAlign_t align, double displace=0){
@@ -354,13 +354,18 @@ struct PlotConfig{
    TString y_axis_label;
    TString z_axis_label;
 
+   double x_axis_title_offset;
+   double y_axis_title_offset;
+   double z_axis_title_offset;
+   double x_axis_title_size;
+   double y_axis_title_size;
+   double z_axis_title_size;
+   double x_axis_label_size;
+   double y_axis_label_size;
+   double z_axis_label_size;
    double x_axis_label_offset;
    double y_axis_label_offset;
    double z_axis_label_offset;
-   double x_axis_title_size;
-   double y_axis_title_size;
-   double x_axis_label_size;
-   double y_axis_label_size;
 
    int x_axis_decimal;
    int y_axis_decimal;
@@ -432,13 +437,18 @@ struct PlotConfig{
 
    PlotConfig(){reset();}
    void reset(){
+     x_axis_title_offset=0;
+     y_axis_title_offset=0;
+     z_axis_title_offset=0;
+     x_axis_title_size=0;
+     y_axis_title_size=0;
+     z_axis_title_size=0;
      x_axis_label_offset=0;
      y_axis_label_offset=0;
      z_axis_label_offset=0;
-     x_axis_title_size=0;
-     y_axis_title_size=0;
      x_axis_label_size=0;
      y_axis_label_size=0;
+     z_axis_label_size=0;
      x_axis_range_high=x_axis_range_low=0;
      y_axis_range_high=y_axis_range_low=0;
      z_axis_range_high=z_axis_range_low=0;
@@ -676,13 +686,20 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
     if(hist->InheritsFrom("TH1")){
 	_palette=(TPaletteAxis*)((TH1*)hist)->GetListOfFunctions()->FindObject("palette");
     }
-    if(_palette && shift_palette_x!=0){
-       _palette->SetX1NDC(_palette->GetX1NDC()+shift_palette_x);
-       _palette->SetX2NDC(_palette->GetX2NDC()+shift_palette_x);
-    }
-    if(_palette && shift_palette_y!=0){
-       _palette->SetY1NDC(_palette->GetY1NDC()+shift_palette_y);
-       _palette->SetY2NDC(_palette->GetY2NDC()+shift_palette_y);
+    if(_palette){
+	    if(shift_palette_x!=0){
+	       _palette->SetX1NDC(_palette->GetX1NDC()+shift_palette_x);
+	       _palette->SetX2NDC(_palette->GetX2NDC()+shift_palette_x);
+	    }
+	    if(shift_palette_y!=0){
+	       _palette->SetY1NDC(_palette->GetY1NDC()+shift_palette_y);
+	       _palette->SetY2NDC(_palette->GetY2NDC()+shift_palette_y);
+	    }
+	    if(z_axis_label_size!=0) {
+		    cout<<"Setting z_axis_label_size to: "<<z_axis_label_size<<endl;
+		    _palette->SetLabelSize(z_axis_label_size);
+	    }
+	    if(z_axis_title_size!=0)  _palette->SetTitleSize(z_axis_title_size);
     }
   }
 
@@ -714,9 +731,12 @@ void PlotConfig::ApplyFixes( TH1* axes, TLegend* legend,TNamed* hist){
       axes->SetMinimum(z_axis_range_low);
       axes->SetMaximum(z_axis_range_high);
     }
-    if(x_axis_label_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_label_offset);
-    if(y_axis_label_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_label_offset);
-    if(z_axis_label_offset!=0)   axes->GetZaxis()->SetTitleOffset(z_axis_label_offset);
+    if(x_axis_title_offset!=0)   axes->GetXaxis()->SetTitleOffset(x_axis_title_offset);
+    if(y_axis_title_offset!=0)   axes->GetYaxis()->SetTitleOffset(y_axis_title_offset);
+    if(z_axis_title_offset!=0)   axes->GetZaxis()->SetTitleOffset(z_axis_title_offset);
+    if(x_axis_label_offset!=0)   axes->GetXaxis()->SetLabelOffset(x_axis_label_offset);
+    if(y_axis_label_offset!=0)   axes->GetYaxis()->SetLabelOffset(y_axis_label_offset);
+    if(z_axis_label_offset!=0)   axes->GetZaxis()->SetLabelOffset(z_axis_label_offset);
     if(x_axis_label_size!=0)   axes->GetXaxis()->SetLabelSize(x_axis_label_size);
     if(y_axis_label_size!=0)   axes->GetYaxis()->SetLabelSize(y_axis_label_size);
     if(x_axis_title_size!=0)   axes->GetXaxis()->SetTitleSize(x_axis_title_size);
@@ -864,6 +884,8 @@ TFile* FixPlot(TString filename,
     PlotConfig& config,
     const TString canvas_name=""){
   // Get the file
+  //if(gDirectory) gDirectory->Close();
+  cout<<"Filename: "<<filename<<endl;
   TFile* file=TFile::Open(filename.Data(),"READ");
   if(!file || file->IsZombie()){
     std::cout<<"Error: Cannot find file: '"<<filename<<"'"<<std::endl;
@@ -925,7 +947,7 @@ TFile* DrawFixPlot(TString filename,TString histname,
   gTidyPlotCurrentPlotName.Remove(0,gTidyPlotCurrentPlotName.Last('/')+1);
   gTidyPlotCurrentPlotName+=histname.ReplaceAll("/","--");
 
-  FixCanvas(gPad->GetCanvas(),plot_type,config);
+  FixCanvas((TCanvas*)gPad,plot_type,config);
   return file;
 }
 
