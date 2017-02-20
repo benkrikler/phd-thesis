@@ -127,7 +127,7 @@ It is clear how the pion momenta are in general higher, including those that sto
 \begin{figure}[btp]
 \centering
 %\fbox{
-\subfloat[][\figlabel{bg:rpc:sim:momVtime}Momentum Vs.\ Time]{%
+\subfloat[][Momentum Vs.\ Time\figlabel{bg:rpc:sim:momVtime}]{%
 \includegraphics[width=0.45\textwidth,trim=0.2cm 0 0cm 1.9cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom-time.pdf}}
 %}
 %\begin{minipage}[b]{0.45\textwidth}
@@ -137,7 +137,7 @@ It is clear how the pion momenta are in general higher, including those that sto
 %\includegraphics[width=\textwidth,trim=0.9cm 0.3cm 1cm 0.5cm,clip]{figs/backgrounds/Tidied_RPC_sim_mom.pdf}}%
 %\end{minipage}\hspace{1ex}
 \hspace{1em}%
-\subfloat[][\figlabel{bg:rpc:sim:time}Arrival Time of High-$p$ Electrons]{%
+\subfloat[][Arrival Time of High-$p$ Electrons\figlabel{bg:rpc:sim:time}]{%
 \includegraphics[width=0.49\textwidth,trim=0 0 0 2.8cm,clip]{figs/backgrounds/RPC_lifetime.png}}%
 %\fbox{
 %}
@@ -166,7 +166,7 @@ The vertical coloured lines have been added to indicate these energies, whilst t
 \includegraphics[width=1.0\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/Antiproton_RatePerPOT_data.pdf}
 \caption{
 Experimental data for antiproton production rates for 10~GeV protons~\cite{Boyarinov:1994tp,Kiselev:2012sj}.
-Each line represents the cross section obtained for the four different target materials covered in those papers, scaled to match the number of nucleons of tungsten and with the additional factors of \eq{bg:antiprotons:rate} included.
+Each line represents the cross section obtained for the four different target materials covered in those papers, scaled to match the number of nucleons of tungsten and with the additional factors of equation~\eq{bg:antiprotons:rate} included.
 \figlabel{bg:antiprotons:data}}
 \end{figure}
 }
@@ -288,7 +288,7 @@ From left to right the vertical gray lines indicate the production target, Torus
 }
 
 \newcommand{\FigAntiprotonSimTime}{
-\begin{figure}[b!]
+\begin{figure}[t]
 \centering 
 \subfloat[][\figlabel{bg:antiprotons:sim:time:antip}Timing of Antiprotons]{
 \includegraphics[width=0.485\textwidth,trim=0.5cm 0.9cm 0.5cm 0.9cm,clip]{figs/backgrounds/Antiproton_timing_antiprotons.pdf}}
@@ -658,8 +658,9 @@ Type                         & Source                   & \multicolumn{3}{c|}{Ba
 %\end{adjustwidth}
 \caption{%
 Final predicted background rates and events.
-The dominant backgrounds are cosmic ray electrons and stopping antiprotons, which are predicted to have produce almost equal rates.
+The dominant backgrounds are cosmic ray electrons and stopping antiprotons, which are predicted to contribute equally to the final background count.
 Assumes an extinction factor of \VarExtinctionFactor, a double-Gaussian momentum resolution with a core resolution of $\sigma=200$~keV/c and a tail probability of \VarResolutionProbFromRMCToSignal that events are misreconstructed with at least an additional 2.4~MeV/c. 
+A momentum window from \VarMomThreshold to \VarMomThresholdHigh is used to define the signal region.
 All other parameters are the same as stated in chapter~\sect{sense}.
  \tablabel{bg:summary}}
 \end{sidewaystable}%

@@ -117,7 +117,7 @@ Based on this, the fraction of events reaching the detector with momentum larger
 
 The total number of electrons arriving with momentum larger than 98~MeV/c, therefore, is \VarRMCTotalElectronPhaseIIAccepted.
 Since the resolution function is somewhat uncertain, this number can be interpreted as setting the limit for the high-momentum mis-reconstruction tail.
-To have fewer than 0.01 background events produced by \ac{RMC}, the tails of the resolution distribution should contain less than $0.01/\VarRMCTotalElectronPhaseIIAccepted = \scinot{0.01/\NumRMCTotalElectronPhaseIIAccepted}$ events.
+To have fewer than 0.01 background events produced by \ac{RMC}, the tails of the resolution distribution should contain fewer than $0.01/\VarRMCTotalElectronPhaseIIAccepted = \scinot{0.01/\NumRMCTotalElectronPhaseIIAccepted}$ events.
 
 Using the estimate of the resolution function's tail from \phaseI, mentioned above, we predict therefore that \phaseII will produce \VarRMCPerMuStop per muon stop or \VarRMCTotal during the entire \phaseII run.
 
@@ -218,7 +218,7 @@ The timing and momenta of such electrons is shown in \fig{bg:rpc:sim}, where it 
 The probability of an \ac{RPC} photon producing an electron that reaches the detector with momentum between \VarMomThreshold and 105~MeV/c is: $f_{e,\textrm{RPC}}=$\VarDetectedEsPerRPC.
 To estimate the rate of delayed \ac{RPC} backgrounds, we also need to know the value of $A_\textrm{time}$.
 As can be seen in \fig{bg:rpc:sim:momVtime}, the timing for electrons originating from RPC photons and detected with momentum greater than 30~MeV/c is independent of the momentum.
-By fitting the tail of this distribution with a single exponential, the lifetime of the high-energy electrons is found to be \VarRPCLifetime, such that with the timing window between 600 and 1200~ns we find the acceptance of the timing window to be: $A_\textrm{time}=\VarRPCTimingEfficiency$.
+By fitting the tail of this distribution with a single exponential, as shown in \fig{bg:rpc:sim:time}, the lifetime of the high-energy electrons is found to be \VarRPCLifetime, such that with the timing window between 600 and 1200~ns we find the acceptance of the timing window to be: $A_\textrm{time}=\VarRPCTimingEfficiency$.
 
 \Tab{bg:rpc:estimates} summarizes these numbers, from which we find that the rate of backgrounds for delayed \ac{RPC} is \VarRPCDelayedPerPOT per POT, whilst prompt RPC occurs at \VarRPCPromptPerPOT per POT.
 \begin{table}[tb]
@@ -269,7 +269,6 @@ The literature on antiproton production with 8~GeV protons on a tungsten target 
 Accordingly most hadron models are particularly under-constrained when it comes to antiproton production.
 The QGSP_BERT_HP model used as the basis for SimG4 is, in fact, completely unable to produce antiprotons.
 
-\FigAntiprotonMeco
 In the COMET TDR~\cite{TDR2016}, the yield of antiprotons per \ac{POT} is given as \num{4e-5}, based on the findings of a literature review and simulations undertaken for the MECO experiment~\cite{Meco024}.
 \Fig{bg:antiprotons:meco24} shows the production cross section for antiprotons as a function of incident proton momentum, based on that study.
 %The dependence of the antiproton production cross section on incident proton momentum based on that study is shown in \fig{bg:antiprotons:meco24}.
@@ -278,6 +277,7 @@ Simulations of antiprotons for \phaseI have used this information and shown that
 Since the \phaseII geometry in ICEDUST re-uses most of the implementation for the Production Target Capture and Torus1 sections, the upstream absorbers are also contained in the geometry used to study antiprotons here,
 although the absorber near 90\degree is not.
 
+\FigAntiprotonMeco
 \FigAntiprotonData
 Whilst tungsten targets have not been studied at the relevant angles and proton energies, a set of papers \cite{Boyarinov:1994tp,Kiselev:2012sj} do exist covering antiproton production up to 2 radians for tantalum (which is adjacent to tungsten on the periodic table), copper, aluminium, and beryllium targets and using protons with 10.14~GeV kinetic energy.
 Between them, these two papers provide the invariant triple-differential cross section as a function of antiproton momentum for production angles of 10, 59, 97 and 119\degree, defined as:
@@ -429,8 +429,8 @@ For antiprotons, the rate of RPC backgrounds per pion stop is also used, however
 %All of these factors are summarised in \tab{bg:antiprotons:factors}.
 For both pions and antiprotons, the efficiency of the TDAQ and reconstruction are also included, with the same values as for signal electrons.
 Based on these factors, the numbers in \tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} can be converted to background estimates, which are shown in \tab{bg:antiprotons:estimates}.
-\TabAntiprotonEstimates
 
+\TabAntiprotonEstimates
 The total predicted antiproton rate per \ac{POT} is therefore \VarBgAntiprotonsPerPOT, which is completely dominated by antiprotons produced in the forward direction but scatter within the production target and are successfully transported to the stopping target.
 This number is considerably larger than would be desirable for the COMET experiment.
 It is important, therefore, to remember that this is an especially conservative estimate:
@@ -475,7 +475,7 @@ This would be highly favourable as it would reduce the impact on signal sensitiv
 Additionally, material close to the production target would need to be considered from an activation and safety perspective.
 
 Finally, as well as adding material along the beamline, one could consider a slight reduction in the proton beam energy.
-Even a reduction by 200 MeV would reduce the total antiproton production cross-section by between 40 and 50\% based on the methods described above to determine the $\Xi$ weighting factor.
+Even a reduction by 200 MeV would reduce the total antiproton production cross-section by between 40 and 50\% based on the methods described above to determine the $\xi$ weighting factor.
 Reducing the beam power further, by around 500 MeV would reduce the cross section by 75 to 90\% of the current estimate, \ie reduce the production rate by about one order of magnitude lower.
 
 \section{Direct Beam-Related Backgrounds}
@@ -555,7 +555,6 @@ In addition these neutrons should be studied carefully using multiple hadron pro
 
 \section{Cosmic Ray Background}
 \sectlabel{bg:cosmics}
-\FigBgCosmicPrimary
 Cosmic rays at sea level consist primarily of positive and negative muons.
 These are produced when high-energy particles originating in the sun or beyond the solar system strike the upper atmosphere and produce a particle shower.
 About one muon per square centimetre per minute is expected at sea level, with the average muon energy around 4~GeV~\cite{PDG2014}.
@@ -581,6 +580,7 @@ As such, during \phaseII running there are really only about \num{2.20e6}~s when
 During this time then, \num{4.8e4} cosmic muons should pass through each horizontal square centimetre of the COMET hall.
 If we assume the miss-rate for the \phaseII will be no worse than for \phaseI, \ie \num{1e-4}, then for each for each square centimetre of the experiment, more than 48 muons should be studied.
 
+\FigBgCosmicPrimary
 \subsection{Simulating Cosmic Muons}
 To simulate the cosmic ray background, input muon events were provided by the ND280 experiment~\cite{George:2010aca}.
 These contained positive and negative muons that had been produced in an air shower simulation using the CORSIKA simulation package~\cite{Corsika}, for the atmosphere above J-PARC.
@@ -610,7 +610,7 @@ The number of background events due to cosmic rays can therefore be estimated as
 \end{align}
 where $R_\mu$ is the rate of cosmic muons expected through the experiment hall per second, $n_e^\textrm{obs}$ is the observed number of events per MeV/c, $N_\textrm{sim}$ is the total number of simulated cosmic ray muons, and $\Delta{}p$ is the width of momentum thresholds, from \VarMomThreshold to 105.5~MeV/c.
 $\epsilon_\textrm{CRV}$ is the \ac{CRV} efficiency, such that $(1-\epsilon_\textrm{CRV})$ is the expected miss-rate. 
-The factors $A_\textrm{duty}$,$A_\textrm{timing}$, and $A_\textrm{TDAQ,Recon}$ represent the accelerator duty factor, fraction of time spent during the time-gated detection window, and the combined TDAQ and reconstruction efficiency, respectively.  
+The factors $A_\textrm{duty}$, $A_\textrm{timing}$, and $A_\textrm{TDAQ,Recon}$ represent the accelerator duty factor, fraction of time spent during the time-gated detection window, and the combined TDAQ and reconstruction efficiency, respectively.  
 The values for each of these parameters are given in \tab{bg:cosmics:params}.
 From this we can estimate that there will be \VarCosmicRatePerSecond backgrounds per second due to cosmic rays.
 \TabBgCosmicParameters
@@ -689,9 +689,9 @@ where $\kappa$ is dimensionless and used to set the relative weight of the secon
 \Fig{bg:resolution} shows the background rates due to \ac{DIO} and \ac{RMC} as a function of $\sigma_2$ for different values of $\sigma_1$ and $\kappa$.
 The current \phaseI results suggest $\kappa$ to be about 0.08, and $\sigma_1$ to be less than 200~keV/c, and so these values are used as baseline estimates.
 To produce the plot in \fig{bg:resolution}, we fix the momentum thresholds to be \VarMomThreshold and \VarMomThresholdHigh, as found from the sensitivity estimates.
-Over the range of $\sigma_2$ values shown in \fig{bg:resolution}, the signal acceptance, given these momentum thresholds, changes by less than 4.2\%.
+Over the range of $\sigma_2$ values shown in \fig{bg:resolution}, the signal acceptance changes by less than 4.2\%, given these momentum thresholds.
   
-From this it is clear that provided the value of $\sigma_2$ is kept below 1~MeV/c, fewer than 0.01 background events would be expected from \ac{RMC}, whilst the background rate from RMC grows exponentially above this point.
+From this it is clear that, provided the value of $\sigma_2$ is kept below 1~MeV/c, fewer than 0.01 background events would be expected from \ac{RMC}, whilst the background rate from RMC grows exponentially above this point.
 However, it is also clear that the rate from DIO electrons will dominate regardless of the resolution.
 This should not be surprising given that the \ac{DIO} spectrum reaches up to the \mueconv end-point whilst the RMC end-point is separated by some 2.4~MeV/c.
 
@@ -712,7 +712,6 @@ The exact distribution for the residuals after reconstruction is not well known 
 In particular, for \ac{RMC}, the high-energy tail needs to be studied better. 
 It has been assumed that fewer than \VarResolutionProbFromRMCToSignal events will be reconstructed with momentum larger by at least 2.4~MeV/c than the true value.
 This assumption must be confirmed, however.
-RMC on Al-26 was also discussed as a potential concern, however Al-26 has a tiny abundance in natural aluminium, whilst the rate of production in the COMET muon beam is difficult to predict.
 
 \item[RPC Spectrum]
 In the case of \acf{RPC}, the dominant uncertainty comes from the spectrum of photons produced during RPC.
@@ -743,6 +742,10 @@ In addition, the miss-rate of \num{1e-4} should be experimentally confirmed and 
 Again, after \phaseI the uncertainty on this background should be significantly reduced.
 The muon flux in the experiment hall, at the beamline position will have been measured to a high precision in all directions.
 Furthermore, since the CRV design will be largely unchanged the miss-rate will be well understood.
+
+\item[RMC on Al-26]
+RMC on Al-26 was also discussed as a potential concern, since RMC on Al-26 can produce signal-energy photons. However Al-26 has a tiny abundance in natural aluminium, and the rate of production in the COMET muon beam is difficult to predict.
+This will be measurable at \phaseI, so that by \phaseII, the uncertainty on this process should be much smaller.
 \end{description}
 
 \section{Further Studies and Improvements}
@@ -767,7 +770,7 @@ the following list gives a summary of possible methods that could be pursued to 
 		This would also benefit the optimisation studies, as mentioned in chapter~\sect{phaseII-optimisation}.
 \end{description}
 
-The timescale for these studies is fairly varied: whilst \phaseII is several years away still, in some cases the true deadline will be \phaseI, which is now little more than a year away.
+The timescale for these studies is fairly varied: whilst \phaseII is several years away still, in some cases the true deadline will be \phaseI.
 Decisions for the design of \phaseI will impact, in some cases, the design of \phaseII, whilst the run plan for \phaseI will include dedicated studies aimed at reducing key uncertainties of \phaseII.
 For both of these reasons it is important that there is a continuous effort to maintain and refine the understanding of COMET \phaseII.
 %\begin{easylist}
