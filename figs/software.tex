@@ -69,12 +69,12 @@ They can also be formed as sets where each element has a different value, such a
 \begin{figure}[tb]
         \subfloat[][\figlabel{software:geom:screenshots:phaseI}\phaseI]  {\includegraphics[height=0.25\textheight]{figs/software/Phase-I-UpdateGeom}}\hspace{2ex}%
         \subfloat[][\figlabel{software:geom:screenshots:phaseII}\phaseII]{\includegraphics[height=0.25\textheight,trim=0 0.3cm 0 2.6cm,clip=true]{figs/software/Phase-II-UpdateGeom.png}}
-\caption{\figlabel{software:geom:screenshots} %
+\caption{ %
 Two of the possible simulation `worlds' that can be selected at run-time:
         \protect\subref{fig:software:geom:screenshots:phaseI} \phaseI with the CyDet detector installed, and
         \protect\subref{fig:software:geom:screenshots:phaseII} \phaseII.  
 	Mutiple \phaseI worlds exist, one for each potential running configuration.
-}
+\figlabel{software:geom:screenshots}}
 \end{figure}
 }
 
@@ -107,10 +107,10 @@ The hadron production code that best reproduces the data depends strongly on the
 }
 %}
 \caption{
-\figlabel{software:customPhysic}
 Comparison of the realistic spectra for \ac{DIO} electrons, \protect\subref{fig:software:customPhysic:DIO} (normalised to agree at 35~MeV), and protons coming from muon nuclear capture, \protect\subref{fig:software:customPhysic:ProtMuCap} (normalised to have the same maximum value), each on a linear scale (left) and a logarithmic scale (right).
 The \ac{DIO} spectrum used in default Geant4 has a sharp cut-off slightly above the free muon decay end-point, to be compared with the long but steeply falling tail of the Czarnecki \etal theoretical calculation~\cite{Czarnecki2011}.
 Comparison of protons coming from muon capture between the preliminary result from \alcap~\cite{MeNufactAlCap2015,AlcapProposal2012} and default Geant4 shows that the true proton spectrum is much softer than the Geant4 model.
+\figlabel{software:customPhysic}
 }
 \end{figure}
 }
@@ -143,10 +143,10 @@ To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' s
 }
 %}
 \caption{
-\figlabel{software:field}
 Fieldmap produced by \protect\subref{fig:software:field:Opera} Opera and \protect\subref{fig:software:field:G4Beamline} G4Beamline.
 Although the fringe field is larger with the G4Beamline calculation, the lack of material effects make this calculation less reliable.
 Note that the G4Beamline calculation does not include the detector solenoid.
+\figlabel{software:field}
 }
 \end{figure}
 }
@@ -158,9 +158,9 @@ Note that the G4Beamline calculation does not include the detector solenoid.
 \includegraphics[width=0.9\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_ratio_opera-G4Beamline.png}
 %}
 \caption{
-\figlabel{software:field:comparison}
 The ratio of the Opera and G4Beamline calculations shown in \fig{software:field}.
 For most of the field within the beamline the calculations agree within 10\%, although around the ends of the solenoids the agreement is poorer.
+\figlabel{software:field:comparison}
 }
 \end{figure}
 }
@@ -172,12 +172,12 @@ For most of the field within the beamline the calculations agree within 10\%, al
 \includegraphics[width=0.9\textwidth,trim=2cm 8cm 0.0cm 6cm,clip=true]{figs/software/DipoleFields.png}
 %}
 \caption{
-\figlabel{software:field:dipole}
 The dipole field calculations used in ICEDUST for \phaseII. 
 Three dipole fields are applied in COMET, one over each of the Torus1, Torus2 and the Electron Spectrometer.
 The dipoles over the bent muon transport beamline point in the opposite direction to that over the electron spectrometer.
 It can also be seen that the calculation for the dipole along the muon transport beamline contains realistic features (fringe fields, non-uniformities, etc)
 whilst the dipole field for the electron spectrometer is artificially uniform.  
+\figlabel{software:field:dipole}
 }
 \end{figure}
 }
@@ -194,9 +194,9 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 }
 %}
 \caption{
-\figlabel{software:beamline}
 	The longitudinal \protect\subref{fig:software:beamline:dist} and horizontal \protect\subref{fig:software:beamline:horiz} components of the beamline coordinate system for different points in the global X-Z plane.
 	Although this image shows the \phaseI geometry, the implementation in ICEDUST will semi-automatically adjust to whatever geometry was used.
+\figlabel{software:beamline}
 }
 \end{figure}
 }
@@ -208,11 +208,11 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 	\includegraphics[width=0.8\textwidth,trim=8.3cm 1.5cm 13.2cm 2.2cm,clip]{figs/sensitivity/Tidied_SignalHeight2DVsBeamline.png}}\\
 \subfloat[\figlabel{software:beamline:analysis:flux}One-dimensional flux]{
         \includegraphics[width=0.8\textwidth,trim=1.0cm 0.2cm 1.7cm 0.4cm,clip]{figs/sensitivity/Tidied_SignalSurivivalVsBeamline.pdf}}
-\caption{\figlabel{software:beamline:analysis}
+\caption{
 Different flux plots that make use of the beamline coordinate system.
 \protect\subref{fig:sense:accept:height} Projection of trajectories onto the vertical-beamline axis plane.  Setting a limit to the maximum step size forces Geant4 to create steps with more regular interval.
 Each step is then projected to the vertical-beamline surface, such that the density of points represents the flux of particles.
 \protect\subref{fig:sense:accept:flux} A one dimensional flux plot, where every bin between the beginning and end of a particle's track is filled.
-}
+\figlabel{software:beamline:analysis}}
 \end{figure}\xspace}
 
