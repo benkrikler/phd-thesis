@@ -51,6 +51,7 @@ In order to understand the design of the \COMET experiment, a simple appreciatio
 
 \Tab{detector:backgrounds} summarizes the results of previous studies for background rates at \phaseI and \phaseII.
 There are four groups of background source: intrinsic, prompt, delayed, and cosmic.
+\TabBackgroundSummary%
 \begin{description}
 \item [Intrinsic processes]
                     are those that arise from muons stopping in the target and will always be present regardless of the muon beam properties.
@@ -89,7 +90,6 @@ In particular, muons that produce high-energy electrons close to the target are 
 \end{description}
 
 All these processes will be discussed and evaluated in more depth in chapter~\sect{backgrounds}.
-\TabBackgroundSummary%
 
 \section{General Experimental Techniques}
 Suppressing background rates while maintaining a high-signal efficiency leads to several novel techniques being used in the COMET experimental set-up.
@@ -130,7 +130,6 @@ Charged particles moving through a straight solenoid follow a helical
 trajectory, orbiting a point that moves parallel to the solenoidal axis with a constant velocity fixed by the longitudinal momentum of the particle.
 %The frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration) is determined by the transverse momentum.
 The transverse momentum, on the other hand, determines the frequency with which the particle rotates about this point (the cyclotron frequency or frequency of gyration).
-\FigBentSolenoidRelativeDrift
 
 By comparison, if a charged particle moves through a bent solenoid channel, the particle can still be considered to orbit a point, only now 
 the motion of that point can be shown to drift vertically, out of the plane of bending.
@@ -153,11 +152,7 @@ The angular dependence of equation \eq{detector:bent-solenoids:pitchAngle} is sh
 angles below 50 degrees the variation in the drift is less than 10\%, such that
 the drift is determined almost completely by the momentum for particles below
 these angles.
-
-Bent solenoids are used in \COMET for both \phaseI and II to disperse high-energy muons and pions in the muon
-beam, and as a spectrometer system for electrons coming
-from the stopping target in \phaseII, which will both be described in more
-detail below.
+\FigBentSolenoidRelativeDrift
 
 Since the drift is proportional to the momentum of the particle, particles with zero momentum would remain on axis, whilst higher momentum particles, including those of interest (105~MeV electrons in the \phaseII electron spectrometer and around 40~MeV/c muons in the muon beam line), drift to the sides.  
 However, an additional vertical component is introduced to the magnetic field.
@@ -200,11 +195,16 @@ Additional collimating material (typically tungsten or copper) can be introduced
 %\begin{equation}
 %\end{equation}
 
+Bent solenoids are used in \COMET for both \phaseI and II to disperse high-energy muons and pions in the muon
+beam, and as a spectrometer system for electrons coming
+from the stopping target in \phaseII, which will both be described in more
+detail below.
+
 \subsection{Stopping Target Material and Beam Pulsing}
 \label{sec:stop-tgt}
 \FigMuonNuclearParams
 
-The combination of using backwards-going pions and the long, bent-solenoid transport channel is already effective at removing potential background issues.
+The combination of using backwards-going pions and the long, bent-solenoid transport channel is already effective at reducing potential background issues.
 In addition to these however, there is one further method which helps both to reduce beam-related backgrounds and improve the detector occupancy and reconstruction requirements:
 the use of a pulsed proton beam with a relatively light stopping target.
 
@@ -304,11 +304,9 @@ In \phaseI, with the target surrounded by the detector, there is a degree of sel
 In \phaseII, however, this will not be the case since the target and detector are widely separated.
 
 \section{Key Sub-component Descriptions}
-Since chapter \sect{phaseII-optimisation} presents an in-depth optimisation of the design of \phaseII,
-we only give a brief introductory 
-The following sections describe the sub-components and beamline sections for both \phaseI and \phaseII.
-For \phaseI details come from the latest geometry which is close to that of the TDR~\cite{TDR2016} but with some improvements.
-For \phaseII the description is largely based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
+The following sections describe the sub-components and beamline sections for both \phaseI and \phaseII in more detail.
+For \phaseI, parameters come from the latest geometry which is close to that of the TDR~\cite{TDR2016} but with some improvements.
+For \phaseII, the description is largely based on the design as laid out in the 2009 CDR~\cite{CDRphase2}.
 
 % - Proton beam energy
 % - Proton beam timing
