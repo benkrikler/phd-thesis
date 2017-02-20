@@ -5,12 +5,12 @@
 {Super-conducting solenoid containing the pion production target.
   The proton beam strikes the production target, which produces a range of particles, principally pions.
   The solenoidal fields captures the backwards-going pions and delivers them into the transport solenoids.
-  This contains a significant amount of shielding to protect the magnet coils from overheating in the high-radiation environment.
   The target itself consists of a single, solid, cylindrical rod.
   In \phaseI the target will be made of graphite, whilst in \phaseII it will be tungsten.
  Since graphite has a larger interaction length, the target in \phaseI will likely be longer than in \phaseII.
-Between the target and the solenoid coils is a large volume of tungsten and copper shielding to protect the coils from radiation damage and overheating.
-In addition, in the forward proton direction sits a large iron beam dump, which will absorb the protons that miss the target and forward-produced pions and other particles.
+%Between the target and the solenoid coils is a large volume of tungsten and copper shielding to protect the coils from radiation damage and overheating.
+  Contains a significant amount of shielding to protect the magnet coils from overheating in the high-radiation environment.
+In the forward proton direction sits a large iron beam dump, which will absorb the protons that miss the target and forward-produced pions and other particles.
 }
 {\item Min. shielding radius = 12~cm%
  \item Target solenoid aperture = 44~cm%
@@ -26,7 +26,7 @@ In addition, in the forward proton direction sits a large iron beam dump, which 
 {Bent solenoid section containing antiproton absorber foils and muon beam collimators.  Special dipole coils are placed around the normal solenoid coils to add a tuneable vertical component to the field.  During \phaseI, the detector solenoid will sit immediately after the Torus1, although with a small additional matching coil.  In \phaseII this will be replaced with the small TS3 coil to connect it to Torus2.}
 {\item Apperture size = 18.5~cm
  \item Bending radius = 3~m 
-\item Field strengths = 3 T}
+\item Solenoid field strength = 3 T}
 
 \Component{Torus2}
 {Tor2}
@@ -35,40 +35,45 @@ In addition, in the forward proton direction sits a large iron beam dump, which 
 {Very similar in design to Torus1, although possibly with different collimator placement and designs. The dipole field along this half of the bent muon transport solenoids might well be different to the dipole along the first half (Torus1).}
 {\item Apperture size = 18.5~cm
  \item Bending radius = 3~m
- \item Field strengths = 3 T}
+\item Solenoid field strength = 3 T}
 
 \Component{Stopping Target Section}
 {StopTgtSec}
 {TS5, ST}
 {\phaseII}
-{The straight section of solenoid housing the muon stopping target.  The
+{The straight section of solenoid housing the muon stopping target for \phaseII.  The
 electromagnetic field reduces dramatically around the mid-point of the
 StopTgtSec to improve signal acceptance.  The stopping target itself will
-consist of 200~um disks made of pure aluminium and then followed by a
+consist of 200~um disks made of pure aluminium, then followed by a
 tungsten or aluminium beam blocker.  There should be no line of site between
 the exit of the Torus2 and the entrance to the downstream solenoid, the
-Electron Spectrometer.  This removes high-energy particles in the muon beam.
+Electron Spectrometer to remove high-energy particles in the muon beam.
 The reduction in the field strength in this region is used to improve the
 signal acceptance by magnetically mirroring back signal electrons that initially head
 upstream from the target.
 }
-{\item Apperture size = 18.5~cm at the entrance, stepped up to  61~cm by the exit
- \item Field strengths = 3 T at the entrance, tapering to about 1~T at the exit}
+{\item Apperture size = 18.5~cm at the entrance, increasing to  61~cm by the exit
+ \item Solenoidal field strength = 3 T at the entrance, tapering to about 1~T at the exit}
 
 \Component{Electron Spectrometer}
 {ElSpec}
 {ES}
 {\phaseII}
-{The 180\degree bent solenoid used to prevent the very low energy particles reaching the detector.  Also useful for removing backgrounds due to gammas and neutrons coming from the stopping target.  The magnetic field in the Electron Spectrometer is much weaker at close to 1~T.}
+{The 180\degree bent solenoid used to prevent very low energy particles reaching the detector.
+  Also useful for removing backgrounds due to gammas and neutrons coming from the stopping target.
+  The magnetic field in the Electron Spectrometer is much weaker than the preceing beamline, at close to 1~T.}
 {\item Apperture size = 60~cm
- \item Field strengths = 1 T along beam-axis
+ \item Solenoidal field strength = 1 T along beam-axis
  \item Bending radius = 2~m}
 
 \Component{Detector Solenoid}
 {DetSol}
 {DS}
 {\phaseI, but possibly extended for \phaseII}
-{The final straight solenoid section that houses the actual detector.  This will be re-used in \phaseII after \phaseI finishes, although additional coils may be added to extend the solenoid to house additional straw tracker stations.  }
+{The final straight solenoid section that houses the actual detector.
+  This will be re-used in \phaseII after \phaseI finishes, although additional coils may be added to extend the solenoid to house additional straw tracker stations.
+The Stopping Target in \phaseI will be located in this solenoid, within the CyDet.
+  }
 {\item Apperture size = 96~cm
  \item Field strength = 1 T}
 
@@ -76,7 +81,11 @@ upstream from the target.
 {StrECAL}
 {}
 {\phaseI, upgraded for \phaseII}
-{Detector system used in \phaseII to measure conversion electrons.   In \phaseI will be used to measure beam properties.  Consists of 5 Straw Tracker stations (in \phaseI, with possibly more in \phaseII), each transverse to the beam.  Each station consists of 4 perpendicular layers of straw tubes.  The LYSO-based ECAL will measure particle energies with 5\% resolution and serve primarily for a trigger and to support PID.}
+{Detector system used in \phaseII to measure conversion electrons.
+  In \phaseI will be used to measure beam properties.
+  Consists of 5 Straw Tracker stations (in \phaseI, with possibly more in \phaseII), each transverse to the beam.
+  Each station consists of 4 perpendicular layers of straw tubes.
+  The LYSO-based ECAL will measure particle energies with 5\% resolution and serve primarily as a trigger and to support PID.}
 {\item Straws per layer =120
  \item layers per station  = 4 (2 X, 2 Y)
  \item Number of stations = 5
@@ -92,7 +101,10 @@ upstream from the target.
 {CyDet}
 {}
 {Only used in \phaseI}
-{The primary detector for \phaseI to measure conversion electrons at 200 keV resolution.  Consists of a cylindrical drift chamber arranged coaxially with the beam and stopping target.  Wires in the drift chamber are twisted in opposite directions on alternating layers to allow for stereoscopic reconstruction of the longitudinal component of a particle's trajectory.  In addition to the drift chamber, triggering hodoscopes and scintillation bars at the upstream and downstream ends of the detector provide a timestamp and trigger decision, although this will likely be supplemented by a track trigger using Drift Chamber information.}
+{The primary detector for \phaseI to measure conversion electrons at 200~keV resolution.
+  Consists of a cylindrical drift chamber arranged coaxially with the beam and stopping target.
+  Wires in the drift chamber are angled in opposite directions on alternating layers to allow for all-stereoscopic reconstruction of the longitudinal component of a particle's trajectory.
+  In addition to the drift chamber, triggering hodoscopes and scintillation bars at the upstream and downstream ends of the detector provide a timestamp and trigger decision, although this will likely be supplemented by a track trigger using Drift Chamber information.}
 {\item No. of Layers = 20 (including 2 guard layers)
  \item No. of Field wires = 14562
  \item No. of Sense wires = 4986
