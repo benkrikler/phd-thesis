@@ -9,7 +9,7 @@ Having optimised and evaluated the signal sensitivity, it is now important to ch
 Interpreting the final result is only possible if the number of background events has been predicted.
 The certainty of any observation or the stringency of a final confidence limit is determined by the relative background rate and signal sensitivity; ideally the background rate should be small, well below a single expected event.
 
-The types of background we must consider for COMET were outlined in \sect{detector:background}, but in this section they are evaluated for the optimised experiment design using the improved simulation.
+The types of background that must be considered for COMET were outlined in \sect{detector:background}, but in this section they will be evaluated for the optimised experiment design using the improved simulation.
 
 \FigDIOBackground
 \section{Muon Decay in Orbit (\acs{DIO})}
@@ -70,7 +70,7 @@ The atomic mass difference between these two nuclei is shown in \tab{bg:rmc:mass
 %\newcolumntype{d}[1]{D{.}{\cdot}{#1} }
 
 \Fig{bg:rmc:experiments} shows the summary table of experimental data on Aluminium, taken from the summary by Gorringe~\cite{RevModPhys.76.31}.
-It is interesting to note that in all experiments to date none of the empirical fits to RMC used have suggested an end-point above 90.1~MeV~\cite{PhysRevC.37.1633,PhysRevC.46.1094,PhysRevC.59.2853}.
+It is interesting to note that in all experiments to date none of the empirical fits to RMC have suggested an end-point above 90.1~MeV~\cite{PhysRevC.37.1633,PhysRevC.46.1094,PhysRevC.59.2853}.
 This is close to the end-point predicted by the various transitions besides ${}^{27}$Al$(\mu,\gamma\nu){}^{27}$Mg.
 The two most recent of these experiments both measure the branching ratio for \ac{RMC} producing photons with $E>57~$MeV to ordinary muon capture to be \sci{1.43}{-5}. 
 
@@ -78,7 +78,7 @@ To produce a background event in the detector, the high-energy photons produced 
 Asymmetric pair production from this photon is one mechanism by which this can occur, although producing the positron at rest is highly suppressed.
 In addition, around 1~MeV is consumed by the mass of the electron-positron pair.
 Compton scattering provides another mechanism by which the high-energy photon can convert to a high-energy electron.
-In the limit where the photon is reflected directly back on itself, the resultant electron has an energy greater than the incoming photon by around $M_e/2$.
+In the limit where the photon is reflected directly back on itself, the resultant electron has momentum greater than the incoming photon by around $M_e/2$.
 As such it is Compton scattering which is more of a concern for COMET.
 
 Finally, given the maximum photon energy is below the momentum threshold of \VarMomThreshold, the electron's energy needs to be mis-reconstructed by around 2.4~MeV.
@@ -93,7 +93,7 @@ If need be, cuts on fit quality can be improved over the current \phaseI values;
 \subsection{Calculation and Simulation of RMC}
 Conversion of the RMC photons can take place in any of the material around the target, such as the beam blocker, solenoids, or cryostat.
 To estimate the acceptance of the electrons produced from this conversion a simulation was performed where RMC photons were input at the stopping target, using the realistic muon stopping distribution obtained previously.
-Geant4 implements the process of photo conversion via both of the afore-mentioned methods.
+Geant4 implements the process of photo-conversion via both of the afore-mentioned methods.
 
 To build a realistic end-point spectrum, the same recipe as used in the \phaseI TDR was applied~\cite{TDR2016}.
 The spectrum shape near the end-point is modelled by the equation~\cite{CHRISTILLIN1980331}:
@@ -143,7 +143,7 @@ With \VarTotalMuStops muon stops during \phaseII, and assuming that the branchin
 concentration of Al-26 in the stopping target must be less than 1\% (by number density) on average during the entire \phaseII run.
 The branching ratio for radiative muon capture is, in reality, likely to be slightly more than in Al-27, based on the fact that the neutron excess of a given isotope ($N=A/2-Z$) seems a better indicator of the branching ratio than atomic number, and that these two numbers appear anti-correlated~\cite{RevModPhys.76.31} ( the greater the neutron excess, the lower the RMC branching ratio).
 
-Clearly though, there is more work to be done on this, including a better understanding of \ac{RMC} events coming from Al-26, and understanding the rate of Al-26 production from muon beams.
+Clearly though, there is more work to be done on this, including a better understanding of \ac{RMC} events coming from Al-26 and of the rate of Al-26 production from muon beams.
 Data from the \alcap experiment might be able to help with this, however, since the production rate could depend a lot on the exact beam conditions, measuring this on site is important.
 This should therefore be one of the measurements prioritised at \phaseI.
 
@@ -158,10 +158,10 @@ When low-energy negative pions are stopped in material they behave similarly to 
 The probability that the pion is then captured by the nucleus rather than decays in orbit is, however, considerably larger than for a muon.
 Furthermore, given the extra 30~MeV/c$^2$ of the pion mass and the lack of an outgoing neutrino, the end-point for \acf{RPC} by the nucleus is well above the \mueconv signal energy.
 As for photons of \ac{RMC}, the \ac{RPC} photons can then be converted via Compton scattering or pair production to signal-like electrons.
-Pion capture could, therefore, be a dangerous source of backgrounds and was one of the dominant sources of background events at \sindrumII, along with cosmic sources.
+Pion capture could, therefore, be a dangerous source of backgrounds and was one of the dominant sources of background events at \sindrumII, along with cosmic sources~\cite{sindrum2006}.
 
 Since the pion interacts via the strong force, negative pions capture almost immediately in the nucleus, on the order of picoseconds~\cite{Engelhardt:1975ct}.
-The timing of backgrounds caused by pion capture are therefore determined predominantly by the time when the pion was produced.
+The timing of backgrounds caused by pion capture are therefore determined predominantly by the time of pion production, and the delay due to transportation of the pion and signal-like electron.
 If a background arises from pion capture and the pion was produced in the main muon pulse, then the pion or resultant background electron must have been significantly delayed.
 Delayed \ac{RPC} backgrounds are therefore suppressed by the time-gated detector window.
 If however a background arises because the pion was produced outside of the main proton pulse, due to late-arriving protons (or from antiprotons, but we will treat these separately below), then this background is considered prompt.
@@ -196,7 +196,7 @@ To be conservative, we take here the branching ratio for RPC on aluminium to be 
 \subsection{Pion Stopping Rate}
 \FigPionStopDist
 \FigPiVsMuMomenta
-To simulate the pion stopping rate, the pions from the main production simulation were resample multiple times to build up a large number of pion stops.
+To simulate the pion stopping rate, the pions from the main production simulation were resampled multiple times to build up a large number of pion stops.
 \Fig{bg:piStop:dist} shows the distribution of pions stopping in the target, in one-dimensional projections to the ICEDUST global coordinate system.
 In that coordinate system, pions arrive from large values of Z at the target, so the pion beam in \fig{bg:piStop:dist:z} is going from right to left.
 By comparison with the plots in \fig{sense:stops}, pions tend to stop further downstream in the target.
@@ -213,7 +213,7 @@ To build the model, the raw spectrum was first digitised and then smoothed, usin
 These steps are shown in \fig{bg:rpc:spectrum}.
 
 Based on a simulation of \num{4e6} RPC photons, the distribution of electrons and positrons reaching the detector was obtained.
-The timing and momentum of such electrons is shown in \fig{bg:rpc:sim}, where it is clear that although many signal-like electrons are detected, they all arrive well before the gated-time threshold of 600~ns.
+The timing and momenta of such electrons is shown in \fig{bg:rpc:sim}, where it is clear that although many signal-like electrons are detected, they all arrive well before the gated-time threshold of 600~ns.
 
 The probability of an \ac{RPC} photon producing an electron that reaches the detector with momentum between \VarMomThreshold and 105~MeV/c is: $f_{e,\textrm{RPC}}=$\VarDetectedEsPerRPC.
 To estimate the rate of delayed \ac{RPC} backgrounds, we also need to know the value of $A_\textrm{time}$.
@@ -259,6 +259,7 @@ Unlike for muons, the antiproton will only rarely reach the atomic ground state,
 Such interactions can take the form of an immediate annihilation or the formation of a composite nucleus where the antiproton becomes bound within the nuclear potential~\cite{Wong:1984fy,Mishustin:2004xa}.
 The binding energy of some of these nuclear levels can reach up to hundreds of MeV, and so in the transition, pions and other hadrons can be readily produced.
 Eventually the antiproton annihilates in the nucleus, producing large multiplicities of pions and other mesons.
+Based on the data in ~\cite{Mishustin:2004xa}, about 1.56 negative pions should be produced for every stopped antiproton.
 
 As such, although antiprotons themselves are not an immediate source of high-energy photons or electrons, they are an additional source of pions, which can produce backgrounds via \acf{RPC}.
 
@@ -290,7 +291,7 @@ To convert the differential invariant cross sections given in the literature (eq
 	\eqlabel{bg:antiprotons:rate}
 	\frac{d^3R(p,\theta,\phi)}{dp^3}&=\frac{F(p,\theta,\phi)}{E}\frac{\rho N_A l}{m_N}
 \end{align}
-where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_N$ the atomic mass, 183.86~g/mol for tungsten, $l$ the length of the target, and $N_A$ is Avodadro's number.
+where $\rho$ is the mass density of the target, 19.25~g/cm$^3$ for Tungsten, $m_N$ the atomic mass, 183.86~g/mol for tungsten, $l$ the length of the target, and $N_A$ is Avogadro's number.
 \Fig{bg:antiprotons:data} shows the data from these papers, after scaling the cross sections for each material to the number of nucleons in tungsten.
 The data has also been converted to a differential rate of production, given the \phaseII production target dimensions, using equation~\eq{bg:antiprotons:rate}.
 From this data, it is clear that as one moves to larger angles, the spectrum becomes considerably softer whilst the overall rate falls quickly, in much the same way as for pion production.
@@ -304,9 +305,15 @@ To account for these dependencies, the cross section was factorised according to
 \eqlabel{bg:antiprotons:factorisation}
 	\frac{d^3R(p,\theta,\phi)}{dp^3}=&\xi{}P(p,\theta_\mathrm{min})\Phi(\theta,\phi),
 \end{align}
-where $\xi$ is a scale factor to correct for the different incoming proton energy, $P(p,\theta_\textrm{min})$ models the momentum distribution at a given angle and is normalised to unity, and $\Phi(\theta,\phi)$ encapsulates the dependence on the antiproton's direction.  Each of these factors are discussed in-depth below.
+where $\xi$ is a scale factor to correct for the different incoming proton energy, $P(p,\theta_\textrm{min})$ models the momentum distribution at a given angle and is normalised to unity (\ie $\int{}P(p,\theta_\textrm{min})dp=1$), and $\Phi(\theta,\phi)$ encapsulates the dependence on the antiproton's direction.  Each of these factors are discussed in-depth below.
 
 \subsubsection*{Dependence on the Incident Proton's Momentum: $\xi$}
+The factor $\xi$ is included in the antiproton production model to account for the difference in proton energy between the available data and the COMET proton beam.
+It is defined as the ratio of the total production cross sections at the different energies:
+\begin{equation}
+\xi=\frac{\sigma_\mathrm{tot}(E_p=8 GeV)}{\sigma_\mathrm{tot}(E_p=10.14 GeV)}
+\end{equation}
+
 The data in the Boyarinov papers was taken using protons with kinetic energies of 10.14~GeV.
 The threshold for antiproton production against a single, free nucleon is 5.6~GeV; the cross-section increases rapidly above this energy, as indicated in \fig{bg:antiprotons:meco24}.
 Because of this, COMET has chosen to use an 8~GeV (kinetic energy) beam, and accordingly it is important to scale the antiproton cross sections from the Boyarinov~\etal papers to account for this.
@@ -334,7 +341,7 @@ On the other hand, to calculate the maximum momentum, the kinematic end-point wa
 The value of the end-point kinetic energy and longitudinal and transverse momenta for both tungsten and carbon are shown in \fig{bg:antiprotons:end-point} using the formulae derived in appendix~\sect{appendix:antiprotonEndpoint}.
 This end-point will be a highly conservative estimate, since in reality not all the nucleus will recoil coherently;  the de Broglie wavelength for a proton with 8~GeV kinetic energy is about 0.15~fm, compared to the 7~fm or so of a tungsten nucleus%
 \footnote{Antiproton production from protons in this energy regime was historically referred to as `sub-threshold production', since it is close to the threshold for single nucleon interactions, around 5.6~GeV.
-The fact antiprotons are observed is therefore proof that it is not a single, stationary nucleon that interacts with the proton and the nuclear environment as a whole must be considered.
+The fact antiprotons are observed below this energy is therefore proof that it is not a single, stationary nucleon that interacts with the proton; the nuclear environment as a whole must be considered.
 Either the nucleons are, themselves, in motion or clusters of bound nucleons are involved.
   The older literature on this topic in fact refers to a parameter called the `cumulative number' which was related to the number of nucleons that would need to be involved to produce secondary hadrons (\eg antiprotons or pions) with such outgoing energies, given the incoming proton energy.  
 These sub-threshold secondary particles were themselves sometimes called cumulative particles.}.
@@ -352,12 +359,12 @@ Since the spectrum becomes softer at larger values of $\theta$, this will tend t
 In the case of angles smaller than 10\degree, given the lack of other data, we fix the  shape of the momentum distribution to be the same as that at 10\degree.
 
 The function $P(p,\theta_\textrm{min})$ is the piecewise function that is fit to the data and kinematic end-points and then normalised so that the integral is one.
-The overall normalisation is instead absorbed into the angular dependence factor.
+The overall normalisation is instead absorbed into the angular dependence factor, $\Phi(\theta,\phi)$.
 
 \subsubsection*{Dependence on the Outgoing Antiproton's Direction: $\Phi(\theta,\phi)$}
 \FigAntiprotonAngularDependence
 The function $\Phi(\theta,\phi)$ accounts for the variation of the cross section as the angle between the incoming proton and outgoing antiproton changes.
-By symmetry, it can be seen that there should be no dependence on $\phi$.
+By symmetry, it can be seen that there should be no dependence on $\phi$ (both the proton beam and target are assumed to be unpolarised).
 
 To estimate the cross section at a given angle, the fitted distributions described in the last section were integrated.
 The results of these integrations is shown in \fig{bg:antiprotons:angular}.
@@ -382,7 +389,7 @@ For the same reason, we use the integrated cross sections obtained for the fits 
 \TabAntiprotonRegions
 \subsection{Simulating Antiproton Backgrounds}
 \FigAntiprotonSimFluxes
-To study backgrounds from antiprotons, four separate simulations were performed, one for each of the angular region described in \tab{bg:antiprotons:regions}, with \num{8e7} antiprotons fed in to each simulation.
+To study backgrounds from antiprotons, four separate simulations were performed, one for each of the angular regions described in \tab{bg:antiprotons:regions}, with \num{8e7} antiprotons fed in to each simulation.
 Within each angular region, antiprotons were generated uniformly across the production target, with momenta distributed according to $P(p,\theta_\textrm{min})$.
 Given how steeply the angular distribution tails off, in order to check the acceptance of antiprotons produced at large angles, events were generated isotropically within the angular region, and then re-weighted during analysis based on $\xi\Phi(\theta,\phi)$, ie. the probability that an antiproton is produced in this direction.
 
@@ -409,7 +416,7 @@ One can see, then, that although the acceptance per antiproton is considerably l
 As such, it is the antiprotons produced in the forwards direction and scattered backwards by the production target that will dominate the antiproton background rate.
 
 \FigAntiprotonSimTime
-\Tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} show the number of antiprotons and pions that enter the Torus1 (`Torus1 Entrance'), reached the final collimator (`Before Torus2 Coll.'), and arrived at the target (`Before Target').
+\Tab{bg:antiprotons:sim:antip} and \tab{bg:antiprotons:sim:pi} show the number of antiprotons and pions that enter the Torus1 (`Torus1'), reached the final collimator (`Torus2'), and arrived at the target (`Target').
 Also shown is the sum over all events with each event weighted by the initial antiproton direction and proton energy scale correction ($\xi\cdot\Phi(\theta,\phi)$), and normalised to the number of antiprotons introduced into the simulation.
 No antiprotons are seen stopping in the target for the angular region from 0 to 59\degree.
 To estimate the stopping rate of antiprotons produced in this direction, 
@@ -457,13 +464,13 @@ There are several options that can be pursued, but each must be checked for its 
 
 Firstly, one can simply increase the thickness of the foil at the entrance to the Torus1.
 In a similar way, one can introduce additional foils along the beamline, such as at the TS3 solenoid in between the Torus1 and Torus2.
-The downside of both of these methods is that they will be in the path of the muon beam, and since the $dE/dx$ curve for negative muons below 100~MeV has a negative slope, this material will likely increase the mean muon momentum (but of course decrease the overall intensity).
+The downside of both of these methods is that they will be in the path of the muon beam, and since the $dE/dx$ curve for negative muons below 100~MeV has a negative gradient, this material will likely increase the mean muon momentum (but, of course, decrease the overall intensity).
 
 If material is added, then it would be beneficial if this material were low-Z.  This would maximize the ratio of the rate of antiproton loss to the muon loss rate.
 In fact, a bug in the geometry during initial simulations of antiprotons left air at the exit to the production section.  
 The impact on the muon and pion momentum and acceptance was found to be negligible, but the antiproton acceptance into the Torus1 was zero at the limit of the sample size of the simulations.
 
-It may be possible to identify a region in the beamline close to the production target where a separation between antiprotons and muons that stop occurs.
+It may be possible to identify a region in the beamline close to the production target where a separation occurs between antiprotons and low-energy muons and pions.
 This would be highly favourable as it would reduce the impact on signal sensitivity, although in the studies performed here such a region has not been apparent.
 Additionally, material close to the production target would need to be considered from an activation and safety perspective.
 
@@ -480,7 +487,7 @@ Reducing the beam power further, by around 500 MeV would reduce the cross sectio
 %	# Survival probability per high-momentum particle before the target to reach the straw tracker
 %\end{easylist}
 Although neither a muon or pion in their rest frame can decay to electrons greater than 55~MeV, if these particles are boosted sufficiently the resulting electron can be produced with signal-like momentum.
-For muons at 78~MeV/c Michel electrons can occur at 105~MeV/c if produced in the direction of the muon's momentum (and neglecting muon polarisation).
+For muons at 78~MeV/c, Michel electrons can occur at 105~MeV/c if produced in the direction of the muon's momentum (and neglecting muon polarisation).
 For pions, the threshold for signal-like electrons to be produced during decay is 58~MeV/c, although the branching fraction for this process is helicity suppressed to around \num{1e-4}.
 
 The bent solenoids and the pulsed beam help to suppress these sorts of backgrounds, whilst the beam blocker, downstream of the target disks, reduces the geometric acceptance.
@@ -490,13 +497,13 @@ The radius of the beam blocker, however, is large enough that even with this gro
 As such, the only way for beam particles to reach the detector are by a hard scatter off the target or beam blocker, or to be produced via decay of another particle close to the target itself.
 
 To check the probability that signal-like electrons are produced in the beam and arrive at the detector in the time window,
-the output of the large production target simulation was resampled five times, so that around \num{1.1e9}~\ac{POT} events were studied, equivalent to about 5~\phaseII bunches.
+the output of the large production target simulation was resampled five times, so that around \num{1.1e9}~\ac{POT} events were studied, equivalent to about 8~\phaseII bunches.
 \Fig{bg:beam:MomVsTime:strawTrk} shows the momentum and timing of electrons at the straw tracker, from which it is clear that no background events were observed within the gated-time detector window.
 One electron is observed at 98~MeV/c, but this occurs around 100~ns after the proton bunch.
 This immediately sets a limit on the background rate---less than 1 in \num{1.4e9} per POT.
 \FigBgBeamMomVsTime
 
-Clearly then, to be able to understand this background better, it is necessary to apply some extrapolation.
+To be able to understand this background better, it is necessary to apply some extrapolation.
 Indeed, it will never be feasible to directly simulate the $10^{21}$ or so POT that would be necessary to deduce the background rate without some extrapolation.
 To make this extrapolation, we look at the same distribution immediately after the beam blocker.  
 At this point there are far more electrons so it is easier to fit and model the distributions.
@@ -508,7 +515,7 @@ R_\mathrm{beam}=&A_\textrm{geom}A_\textrm{mom}A_\textrm{time},\\
 =&\left(\frac{N_\textrm{obs}}{N_\textrm{POT}}\right)\left(\frac{\int\limits_{104.2}^{105.5}f(p)dp}{\int\limits_{p_\textrm{low}}^{105.5}f(p)dp}\right)\left(\frac{\int\limits_{600}^{1200}g(t)dt}{\int\limits_{30}^{1200}g(t)dt}\right),
 \eqlabel{bg:beam:factors}
 \end{align}
-where $A_\textrm{geom}$,$A_\textrm{mom}$, and $A_\textrm{time}$ are geometric acceptance and efficiencies of the momentum and timing thresholds, respectively.
+where $A_\textrm{geom}$, $A_\textrm{mom}$, and $A_\textrm{time}$ are geometric acceptance and efficiencies of the momentum and timing thresholds, respectively.
 $N_\textrm{obs}$ is the number of events actually seen at the straw tracker, whilst $N_\textrm{POT}$ is the number of simulated \acp{POT}.
 In the case of prompt beam electrons, the above equations are the same, except that $A_\textrm{time}$ becomes the extinction factor multiplied by the fraction of time spent in the gated-time detection window.
 \FigBgBeamExtrapolate
@@ -520,9 +527,9 @@ Since the acceptance function is essentially flat at the high-energy limit (see 
 
 Finally, the timing distribution, $g(t)$, is also taken by fitting the observed electron distribution after the beam blocker.
 Here, however, one needs to be careful about extrapolating the distribution from after the beam blocker to the straw tracker.
-The extrapolation can be imagined as two effects: an overall translation of the distribution to later times, and a broadening of the distribution (an increase in the fitted lifetime).
+The extrapolation must account for two effects: an overall translation of the distribution to later times, and a broadening of the distribution (an increase in the fitted lifetime).
 Both effects are determined by the time needed for particles at the beam blocker to propagate through the spectrometer.
-With a radius of 2~m, the typical distance travelled along the beamline will be at least about 6~m, and since the electrons are relativistic and travelling at close to the speed of light, transport through the spectrometer can be expected to add about 20~ns.
+With a radius of 2~m, the typical distance travelled along the Spectrometer will be at least about 6~m, and since the electrons are relativistic and travelling at close to the speed of light, transport through the spectrometer can be expected to add about 20~ns.
 This assumes that the electron's pitch angle is equal to zero so that they follow the beam axis perfectly.
 With a large pitch angle the distance travelled, and therefore transportation time, will be longer, although since larger pitch angles drift more in the bent solenoids, these particles will tend to be removed more effectively.
 The effect of broadening on the distribution arises from lower energy electrons moving more slowly, however for the relativistic signal-energy electrons this effect will be negligible.
@@ -551,10 +558,10 @@ In addition these neutrons should be studied carefully using multiple hadron pro
 \FigBgCosmicPrimary
 Cosmic rays at sea level consist primarily of positive and negative muons.
 These are produced when high-energy particles originating in the sun or beyond the solar system strike the upper atmosphere and produce a particle shower.
-About one muon per square cm per minute is expected at sea level, with the average muon energy around 4~GeV~\cite{PDG2014}.
+About one muon per square centimetre per minute is expected at sea level, with the average muon energy around 4~GeV~\cite{PDG2014}.
 At these energies, not only can such muons readily produce high-momentum electrons, but they are weakly ionising and therefore penetrate material relatively easily.
 
-This makes cosmic muons a potential source of backgrounds, as the high-energy muons can pass through the experiment hall to the beamline whereupon, should they decay, can produce signal-like electrons.
+This makes cosmic muons a potential source of backgrounds, as the high-energy muons can pass through the experiment hall to the beamline whereupon they can produce signal-like electrons.
 In addition, this background would lack any timing structure.
 As a result, a  \ac{CRV} is included in both \phaseI and \phaseII, made with four layers of scintillator bars as the active material.
 When a cosmic ray passes this, events in the detector can either be tagged, or any trigger on this event vetoed and not read out, such that signal-like electrons produced from cosmic rays should not be included in the analysis.
@@ -593,6 +600,7 @@ Since the CRV will need to be extended to include all the way up to the stopping
 \subsection{Results of the Simulated Cosmic Background Rate}
 \FigBgCosmicBeam
 \FigBgCosmicMomenta
+The tracks of high-energy electrons that enter the detector region are shown in \fig{bg:cosmics:beam}.
 \Fig{bg:cosmics:momenta} shows the momentum distribution of observed electrons.  
 There are large fluctuations across the momentum distribution, but this is most likely due to statistical fluctuations rather than truly physical.
 From 80 to 120 MeV/c, 140 electrons hit at least one layer in the straw tracker, although only 19 of these hit a second plane.
@@ -600,7 +608,7 @@ The number of background events due to cosmic rays can therefore be estimated as
 \begin{align}
 	R_\textrm{cosmics}=R_\mu\frac{n_e^\textrm{obs}}{N_\textrm{sim}} \Delta{}p (1-\epsilon_\textrm{CRV}) A_\textrm{duty}A_\textrm{timing}A_\textrm{TDAQ,Recon},
 \end{align}
-where $R_\mu$ is the rate of cosmic muons expected through the experiment hall per second, $n_e^\textrm{obs}$ is the observed number of events per MeV/c, $N_\textrm{sim}$ is the number of simulated cosmic ray muons, and $\Delta{}p$ is the width of momentum thresholds, from \VarMomThreshold to 105.5~MeV/c.
+where $R_\mu$ is the rate of cosmic muons expected through the experiment hall per second, $n_e^\textrm{obs}$ is the observed number of events per MeV/c, $N_\textrm{sim}$ is the total number of simulated cosmic ray muons, and $\Delta{}p$ is the width of momentum thresholds, from \VarMomThreshold to 105.5~MeV/c.
 $\epsilon_\textrm{CRV}$ is the \ac{CRV} efficiency, such that $(1-\epsilon_\textrm{CRV})$ is the expected miss-rate. 
 The factors $A_\textrm{duty}$,$A_\textrm{timing}$, and $A_\textrm{TDAQ,Recon}$ represent the accelerator duty factor, fraction of time spent during the time-gated detection window, and the combined TDAQ and reconstruction efficiency, respectively.  
 The values for each of these parameters are given in \tab{bg:cosmics:params}.
@@ -635,10 +643,10 @@ In light of the various uncertainties, discussed in more depth below, we have tr
 \subsection{Backgrounds Not Considered}
 \sectlabel{bg:notCovered}
 \subsubsection*{Neutrons from the Production Target}
-Although some of the methods above are different, compared to the \phaseI TDR and \phaseII CDR, there is only one source of backgrounds that has not been covered here:
+Although some of the methods above are different, compared to the \phaseI TDR and \phaseII CDR there is only one source of backgrounds that has not been covered here:
 the production of high-energy electrons from the capture of neutrons that originate in the production target.
 These neutrons were killed in order to reach a large number of muons and pions in the simulation, although neutrons produced along the muon beam (from the collimators, stopping target, \etc) have been included with the beam background.
-Whilst there is a large amount of concrete and iron material in between the production target and the detector, the production target is likely a major source of neutrons in the experiment, and this needs to be studied rigorously using multiple hadron production and neutron transport codes.
+Whilst there is a large amount of concrete and iron material in between the production target and the detector, the production target is likely a major source of neutrons in the experiment, and this needs to be studied rigorously using multiple hadron production and neutron transport models.
 
 Such studies have advanced for \phaseI, with the background rate from neutrons estimated to be about \num{3.1e-29}~per \ac{POT}~\cite{TDR2016}.
 With a different experiment layout, production target material, and higher proton beam power, separate studies should be performed  for \phaseII.
@@ -700,22 +708,22 @@ In the future, generating larger Monte Carlo samples using the continually incre
 
 \item[StrECAL Reconstruction and Resolution]
 In the case of \ac{DIO} and \ac{RMC}, the two intrinsic sources of background, the main source of uncertainty is in the resolution function.
-The exact distribution for the residuals after reconstruction is not well known, especially for \phaseII.
+The exact distribution for the residuals after reconstruction is not well known for the \ac{StrECAL}, especially for \phaseII.
 In particular, for \ac{RMC}, the high-energy tail needs to be studied better. 
-It has been assumed that fewer than 1 in \num{1e4} events will be reconstructed with momentum larger by 2.4~MeV/c or more than the true value.
-This assumption must be confirmed, and if possible improved.
+It has been assumed that fewer than \VarResolutionProbFromRMCToSignal events will be reconstructed with momentum larger by at least 2.4~MeV/c than the true value.
+This assumption must be confirmed, however.
 RMC on Al-26 was also discussed as a potential concern, however Al-26 has a tiny abundance in natural aluminium, whilst the rate of production in the COMET muon beam is difficult to predict.
 
 \item[RPC Spectrum]
 In the case of \acf{RPC}, the dominant uncertainty comes from the spectrum of photons produced during RPC.
-The study here and in the \phaseI TDR depend entirely on a single set of experiments, which do not cover RPC from aluminium, only on magnesium and calcium
+The study here and in the \phaseI TDR depend entirely on a single set of experiments, which do not cover RPC from aluminium, only on magnesium and calcium.
 This will be difficult to improve further without additional observations, and it would be useful to study this at \phaseI if possible, perhaps by changing the Torus1's dipole field to improve pion acceptance.
 
 \item[Antiproton Production]
 Given the lack of experimental evidence for antiproton production in the `sub-threshold' energy regime of the backwards direction, there is large uncertainty over the expected rate.
 Whilst the model developed here was kept conservative, as one of the dominant backgrounds it is important to study this further.
 A dedicated study comparing multiple different hadron production codes to all the possible experimental datasets (including forward and backward produced antiprotons from the different targets with different proton momentum) could reduce our uncertainty if no new experimental data is forthcoming.
-Such a study would then be able to extrapolate better for the target material, proton energy and production direction used in COMET.
+Such a study would then be able to extrapolate better for the target material, proton energy, and production direction used in COMET.
 
 In addition to the production rates, there is reasonable uncertainty on the mechanisms by which antiprotons can produce background electrons.
 Here it has been assumed that the primary mechanism is via pion production, but the rates for such production in aluminium is also not well known.

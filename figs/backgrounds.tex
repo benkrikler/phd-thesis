@@ -7,7 +7,7 @@
 \caption{\figlabel{bg:dio:rates}
 The DIO background rate as a function of momentum threshold for different total running times.
 Given a fixed running time, the total number of stopped muons is also fixed, which in turn sets the signal sensitivity and the DIO background rate.
-All signal acceptance parameters were held fixed, except for the efficiency of the momentum threshold, which when combined with the number of stopped muons determines the \ac{ses}.
+All signal acceptance parameters were held fixed, except for the efficiency of the momentum threshold, which, when combined with the number of stopped muons, determines the \ac{ses}.
 The \ac{ses} is indicated in the number along the lines in units of \num{1e-17}.
 }
 \end{figure}
@@ -246,11 +246,11 @@ for the COMET proton beam the antiproton yield is expected to be a factor 0.12 t
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_97.png}}\\%
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:119}Production between 119 and 180\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_119.png}}%
-\caption{\figlabel{bg:antiprotons:sim:2D-antip}%
-The heights of antiprotons passing along the beamline for the four different angular regions of productions.%
-Each antiproton trajectory is weighted by the probability of producing an antiproton at this angle.%
+\caption{
+The heights of antiprotons passing along the beamline for the four different angular regions of productions.
+Each antiproton trajectory is weighted by the probability of producing an antiproton at this angle.
 The colour scale on all these plots is the same.%
-}%
+\figlabel{bg:antiprotons:sim:2D-antip}}%
 \end{figure}%
 \xspace}
 
@@ -265,10 +265,10 @@ The colour scale on all these plots is the same.%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_97.png}}\\%
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:119}Production between 119 and 180\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_119.png}}%
-\caption{\figlabel{bg:antiprotons:sim:2D-pi}%
-The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.%
-Each antiproton trajectory is weighted by the probability of producing the parent antiproton in its initial direction at the target.%
-}%
+\caption{
+The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.
+Each trajectory is weighted by the probability of producing the parent antiproton in its initial direction at the target.
+\figlabel{bg:antiprotons:sim:2D-pi}}%
 \end{figure}%
 \xspace}%
 
@@ -430,12 +430,13 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
-\caption{\tablabel{bg:antiprotons:sim:pi}%
+\caption{
 Secondary pion fluxes from antiprotons observed at key points along the beamline.
 See caption to \tab{bg:antiprotons:sim:antip} for a description of the column and row contents.
 %The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
 %The weighted sum then shows the weighted sum over every particle passing the point, where the weight is determined as described by equation~\eq{bg:antiprotons:factorisation}.
-}\end{table}\xspace}
+\tablabel{bg:antiprotons:sim:pi}}
+\end{table}\xspace}
 
 \newcommand{\TabAntiprotonResultsAntip}{%
 \sisetup{table-number-alignment=right, table-format=2.2e2}%
@@ -459,9 +460,9 @@ See caption to \tab{bg:antiprotons:sim:antip} for a description of the column an
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
-\caption{\tablabel{bg:antiprotons:sim:antip}
+\caption{
 Antiproton stopping rates and fluxes at key points: at the entrance to the bent
-solenoids (Torus1), just before the final beam collimator (Torus2), and at the
+solenoids (Torus1), just before the final beam collimator (Torus2), and in front of the
 stopping target (Target).
 Raw counts are the total number of particles seen in each simulation of 80
 million antiprotons. The weighted mean is the average of all particle
@@ -474,7 +475,7 @@ Since no antiprotons were seen stopping for the angular region from 0 to
 with an asterisk (*)---are obtained by multiplying the antiproton rate
 expected at the Torus2 collimator with the median collimator acceptance from
 the other three angular regions.%
-}
+\tablabel{bg:antiprotons:sim:antip}}
 \end{table}\xspace}
 
 %\newcommand{\TabAntiprotonFactors}{
