@@ -383,16 +383,17 @@ This means that the beamline coordinate system should work for both \phaseI and 
 \subsection{Distributions as a Function of Distance Along the Beamline}
 \sectlabel{software:analysis}
 By defining such a beamline coordinate system, studying the evolution of various parameters as a function of the distance along the beamline becomes much easier.
-Extensive use is made of this technique later on in this thesis, when studying the optimisation of \phaseII and its sensitivity and background rates.
+%Extensive use is made of this technique later on in this thesis, when studying the optimisation of \phaseII and its sensitivity and background rates.
+This technique is used extensively later in this thesis, to help study and optimise \phaseII.
 
 \FigSoftwareBeamlineAnalysis
 
-\Fig{software:beamline:analysis} shows two example plots that make use of projections to the beamline coordinate system.
+\Fig{software:beamline:analysis} shows two projections to the beamline coordinate system of simulated data.
 In \fig{software:beamline:analysis:height}, the density of simulated trajectories is shown as a heat-map and as a function of both distance along and the height relative to the beamline is shown.
 Overlaid on this plot is a slice through the geometry to help interpret where in the experiment each effect occurs.
-Each trajectory in the simulation is really represented by a series of points along the particle's path.
-To be able to make such a plot, therefore, one has to force Geant4 to produce a higher-than-normal density of step points along each trajectory.
-However, when a particle crosses a boundary in the geometry of the simulation a step point is forced to be created, creating a spike in the density of points at a single surface in the plot, that does not correspond to a true physical increase in the number of particles passing through per unit area.
+Each trajectory in the simulation is persisted as a list of points along the particle's path.
+To make such a plot, therefore, one has to force Geant4 to produce a higher-than-normal density of points along each trajectory.
+However, a step point is always inserted when a particle crosses a boundary in the geometry of the simulation, creating a spike in the density of points at a single surface in the plot, which does not correspond to a physical increase in the particle flux.
 By taking the profile of this distribution, the mean height of particles at each point along the beamline can be found, which is particularly useful information when studying the bent solenoid dynamics.
 
 \Fig{software:beamline:analysis:flux} shows a one-dimensional flux plot, \ie the number of particles passing a given point along the beamline.
