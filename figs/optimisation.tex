@@ -16,7 +16,8 @@
 	Approx. total number of parameters& 32 \\
 	\hline
 \end{tabular}%
-	\caption{%
+	\caption
+	[Aspects of the experiment that can be optimised and estimates for the number of parameters that define each aspect.]{
 	Aspects of the experiment that can be optimised and estimates for the number of parameters that define each aspect.
 	In the case of the target, beam blocker, and collimator shapes the number of parameters is only approximate; crudely speaking there is at least a width, length and height but in principle one could have a very irregular shape that cannot be parametrised by only three numbers, for example, shapes that change as a function of distance along the beamline.
 \tablabel{optimisation:possible-parameters}}%
@@ -30,7 +31,8 @@
 \includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_mu-minus_momentum}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Length:Momentum:Pions}Pions]{
 \includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Length_pi-minus_momentum}}
-\caption{
+\caption
+[Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.]{
 Change to momentum distributions at the entrance to the first 90 degrees of the bent muon beam solenoid for different target lengths.
 Target length is given as half-length which is the Geant4 convention.  
 \figlabel{optimisation:ProdTgtSec:Length:Momentum}}
@@ -88,7 +90,8 @@ Change in the momentum distribution of muons and pions at the entrance to the fi
 \centering
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Final:Integral:Muons}Muons]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/OptimalLengthRadius_mu-minus_integral_toZero.pdf}}
 \subfloat[][\figlabel{optimisation:ProdTgtSec:Final:Integral:Pions}Pions]{\includegraphics[width=0.48\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/OptimalLengthRadius_pi-minus_integral_toZero.pdf}}
-\caption{
+\caption
+[Variation in muon and pion yields as a function of target radius when the total target length is set to the optimised value of 32~cm.]{
 Variation in muon and pion yields as a function of target radius when the total target length is set to the optimised value of 32~cm.
 Despite the longer target length the optimal radius is still 1~cm.
 \figlabel{optimisation:ProdTgtSec:Final:Integral}}
@@ -99,7 +102,8 @@ Despite the longer target length the optimal radius is still 1~cm.
 \begin{figure}[pt]
 \centering
 \includegraphics[width=0.9\textwidth,trim=0 0 0 1.5cm,clip]{figs/optimisation/ProdTgtGeom/Plot_compare_phase_1and2.pdf}
-\caption{
+\caption
+[Comparison of the muon and pion yields per POT for \phaseI and \phaseII.]{
 Comparison of the muon and pion yields per POT for \phaseI and \phaseII.
 The difference arises from the change of target material between the phases.
 \figlabel{optimisation:ProdTgtSec:Phase1vs2}}
@@ -111,7 +115,8 @@ The difference arises from the change of target material between the phases.
 %	\fbox{
 \includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.0cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_muons.pdf}
 %}
-\caption{
+\caption
+[Muon stopping rate as a function of the two dipole field strengths.]{
 	Muon stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
 	A clear anti-correlation is visible which is discussed in the text.
 \figlabel{optim:muBeamDipole:stoppedMu}}
@@ -124,7 +129,8 @@ The difference arises from the change of target material between the phases.
 %	\fbox{
 \includegraphics[width=0.85\textwidth,trim=0 0.5cm 0 1.0cm,clip]{figs/optimisation/MuonBeamDipoles/Tidied_stopped_pions.pdf}
 %}
-\caption{
+\caption
+[Pion stopping rate as a function of the two dipole field strengths.]{
 	Pion stopping rate as a function of the two dipole field strengths (given relative to the \phaseI design specification).
 At the level of statistics used to generate each point, no clear trend is obvious.
 Empty squares are those where no pions stopped in the run.
@@ -137,7 +143,8 @@ Empty squares are those where no pions stopped in the run.
 \centering 
 \subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Entry}Torus1 Entry]{\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_entrance.pdf}}
 \subfloat[][\figlabel{optim:MuBeamDipole:MuDispersion:Exit}Torus2 Exit]  {\includegraphics[width=0.45\textwidth,trim=0 0.9cm 0 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Muon_dispersion_at_exit.pdf}}
-\caption{
+\caption
+[Dispersive effect of the 180\degree bent transport solenoid and dipole field on muons.]{
 Dispersive effect of the 180\degree bent transport solenoid and dipole field on muons.
 No collimating material is yet included, so the high-energy muons being removed is due purely to the beam-pipe itself.
 \figlabel{optim:MuBeamDipole:MuDispersion}}
@@ -151,7 +158,8 @@ No collimating material is yet included, so the high-energy muons being removed 
 \subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Stopped}Stopped Muons]          {\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Stopped_muons_wGeom.png}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:Beamline:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_HighP_muons_wGeom.png}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:Beamline:Diff}Stopped $\mu-$High-$p$ $\mu$]{\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_Where_to_collimate_wGeom.png}}
-\caption{
+\caption
+[The heights of muons as they pass along the beamline.]{
 The heights of muons as they pass along the beamline.  
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:Stopped}: The paths of muons that stop in the target.
@@ -169,7 +177,8 @@ The heights of muons as they pass along the beamline.
 \subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:TS1Entry}At 0\degree]  {\includegraphics[height=0.35\textheight,trim=0.0cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_Torus1Tor1FirstPoint}}
 \subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:TS3}At 90\degree] {\includegraphics[height=0.35\textheight,trim=1.7cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_Torus2Monitor_0}}
 \subfloat[][\figlabel{optim:MuBeamCollim:TransverseSep:TS2Exit}At 180\degree]{\includegraphics[height=0.35\textheight,trim=1.7cm 0.8cm 1.3cm 1.9cm,clip]{figs/optimisation/MuonBeamCollimators/MuonTransversePos_StopTgtSecMonitor_0}}
-\caption{
+\caption
+[The separation between muons that stopping and those with high enough momentum to produce background.]{
 The separation between stopping and dangerous muons.
 The separation is largest at the exit (180\degree), reasonable at the entrance (0\degree), and smallest around the mid-point (90\degree).
 \figlabel{optim:MuBeamCollim:TransverseSep}}
@@ -182,7 +191,8 @@ The separation is largest at the exit (180\degree), reasonable at the entrance (
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:All}All Muons]                  {\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_AllMuons_WGeom.png}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:Stopped}Stopped Muons]          {\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_StoppedMuons_WGeom.png}}\\
 \subfloat[][\figlabel{optim:MuBeamCollim:BeamWColl:HighP}Muons with $p>70$ MeV/c around the stopping target]          {\includegraphics[width=1\textwidth,trim=18cm 1.0cm 26cm 1cm,clip]{figs/optimisation/MuonBeamCollimators/Tidied_WColl_HighPMuons_WGeom.png}}\\
-\caption{
+\caption
+[The heights of muons as they pass along the beamline.  ]{
 The heights of muons as they pass along the beamline.  
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:All} The path of all muons.
 	\protect\subref{fig:optim:MuBeamCollim:Beamline:Stopped}: The paths of muons that stop in the target.
@@ -230,7 +240,8 @@ The number of particles reaching the end of the Torus2 solenoid per POT for diff
 %\fbox{
 \includegraphics[width=0.75\textwidth,trim=0.1cm 0.3cm 2.8cm 1.1cm,clip]{figs/optimisation/MuonBeamCollimators/Survived_Coll2_StoppedVsHighP-Muons.pdf}
 %}
-\caption{
+\caption
+[Contours showing 2.5 percentage point changes to the stopping and dangerous muon flux, as a function of the collimator heights.]{
 Contours showing 2.5 percentage point changes to the stopping (blue) and dangerous (red) muon flux, as a function of the collimator heights.
 100\% acceptance is found in the bottom right corner.
 %For example, for collimator heights within the first blue contour towards the bottom-right corner, less than 2.5\% of stopped muons are lost.
@@ -247,7 +258,8 @@ Contours showing 2.5 percentage point changes to the stopping (blue) and dangero
 	\includegraphics[width=1\textwidth,trim=5cm 0.5cm 10.3cm 0.3cm,,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_10}}\\
 \subfloat[][\figlabel{optim:ESTDipole:Beam:0.2}0.2~T Dipole]{
 	\includegraphics[width=1\textwidth,trim=5cm 0.5cm 10.3cm 0.3cm,clip]{figs/optimisation/EST_dipole/Tidied_signal_height-dipole_20}}\\
-\caption{
+\caption
+[The heights of electrons along the electron spectrometer that originate in the target with 105~MeV for different dipole field values.]{
 The heights of electrons along the electron spectrometer that originate in the target with 105~MeV for different dipole field values.
 With no dipole field, \protect\subref{fig:optim:ESTDipole:Beam:0.0}, very low energy electrons remain on-axis (straight, blue lines) whilst the signal all drifts vertically and is removed by the beampipe.
 At larger dipole fields, such as \protect\subref{fig:optim:ESTDipole:Beam:0.2}, the reverse is true.
@@ -293,7 +305,8 @@ Geometric acceptance into the StrECAL detector as a function of the dipole field
 %	\fbox{
 \includegraphics[width=0.7\textwidth,trim=2.0cm 0.05cm 0.9cm 0.3cm,clip]{figs/optimisation/StopTgtPosition/Tidied_MuonStoppingRate.pdf}
 %}
-\caption{
+\caption
+[Muon stopping rate per \ac{POT} for different target positions.]{
 Muon stopping rate per \ac{POT} for different target positions.
 The linear behaviour arises from the reduced field strength and fixed target radius such that fewer muons impact the target as it is moved downstream.
 \figlabel{optim:StopTgtPos:MuStops}}
@@ -306,7 +319,8 @@ The linear behaviour arises from the reduced field strength and fixed target rad
 %	\fbox{
 \includegraphics[width=0.9\textwidth,,trim=1.3cm 0.2cm 0.7cm 0.6cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum.pdf}
 %}
-\caption{
+\caption
+[The momentum dependence of the electron acceptance into the detector for different target positions.]{
 The momentum dependence of the electron acceptance into the detector for different target positions.
 The spectrum for each target position is normalised to the muon stopping rate for that position, such that each curve shows the sensitivity to electrons of that momentum.
 \figlabel{optim:StopTgtPos:AcceptedMomSpect}}
@@ -334,7 +348,8 @@ The momentum dependence of the electron acceptance into the detector for differe
 \subfloat[][\figlabel{optim:StopTgtPos:AcceptIntegral:Ratio}Change in Shape]{%
 \includegraphics[width=0.49\textwidth,trim=0.5cm 0.5cm 0.3cm 1.9cm,clip]{figs/optimisation/StopTgtPosition/Tidied_-AcceptedMomentum-Integrated_ratios.pdf}}
 %}
-\caption{
+\caption
+[Electron acceptance into detector for different stopping target positions and with different momenta.]{
 \protect\subref{fig:optim:StopTgtPos:AcceptIntegral:Adjacent} 
 The variation in sensitivity (acceptance $\times$ stopping rate) to electrons with different momenta as a function of the target position with respect to the nominal location. 
 The darkest red line towards the top of the plot represents the sensitivity to signal, and it is that line that should therefore be maximised.
@@ -357,7 +372,8 @@ The change in the shape of the acceptance vs. momentum spectrum as a function of
 \includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_102-5.pdf}}%
 \\\subfloat[][\figlabel{optim:StopTgtPos:Height:102.5-zoom}Electrons from 100 to 105 MeV/c (Zoomed)]{%
 \includegraphics[width=0.95\textwidth,trim=1.15cm 0.05cm 0.3cm 0.180cm,clip]{figs/optimisation/StopTgtPosition/WithBeamBlocker-Height-VaryShifts-Momentum_102-5-Zoom.pdf}}%
-\caption{
+\caption
+[The effect of stopping target position on the height of electrons with a fixed momentum as they pass through the Electron Spectrometer.]{
 The effect of stopping target position on the height of electrons with a fixed momentum as they pass through the Electron Spectrometer.
 The size of the variation indicates the stability of the dipole tune; the two parameters are clearly correlated.
 Also striking---particularly in \protect\subref{fig:optim:StopTgtPos:Height:102.5-zoom}---is the way the dependence on the helical pitch angles is affected by the stopping target position.
@@ -411,7 +427,8 @@ Location of the beam blocker and one possible geometry for the \ac{DIO} blockers
 \includegraphics[width=0.8\textwidth,trim=0.3cm 0 1.7cm 0.6cm,clip]{figs/optimisation/BeamAndDIOBlocker/HandTidied_ElectronDispersion-EST-envelope.pdf}
 %\includegraphics[width=0.8\textwidth,trim=1.5cm 0 8.5cm 3.0cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_ElectronDispersion-EST-envelope.png}
 %}
-\caption{
+\caption
+[Momentum-dependent dispersion of electrons passing through the spectrometer.]{
 Momentum-dependent dispersion of electrons passing through the spectrometer.
 Top plot: the mean height of different momenta electrons as a function beamline distance, showing how the drift of the centre of gyration is truly proportional to the momentum.
 Bottom plot: single standard deviation bands for electrons at different momentum, which shows how the envelope for different momenta overlap considerably, reducing the effectiveness of any collimators.
@@ -430,7 +447,8 @@ Bottom plot: single standard deviation bands for electrons at different momentum
 \subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:80}80 MeV/c]  {\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_80.pdf}}\hspace{1cm}
 \subfloat[\figlabel{optim:DIOBeamBlock:Acceptance:100}100 MeV/c]{\includegraphics[width=0.35\textwidth,trim=0.0cm 0.3cm 0.5cm 1.5cm,clip]{figs/optimisation/BeamAndDIOBlocker/Tidied_Acceptance2D_100.pdf}}
 %}
-\caption{
+\caption
+[Acceptance into the straw tracker for electrons with different momentum at the stopping target as a function of the beam and DIO blocker dimensions.]{
 Acceptance into the straw tracker for electrons with different momentum at the stopping target as a function of the beam and DIO blocker dimensions.
 Note the logarthmic scale for the colour bar.
 \figlabel{optim:DIOBeamBlock:Acceptance}}
@@ -447,7 +465,8 @@ Note the logarthmic scale for the colour bar.
 %\subfloat[\figlabel{optim:DIOBeamBlock:HitVAccept}Signal Acceptance vs Hit Rate]{\includegraphics[width=0.45\textwidth,trim=0.8cm 0.3cm 2.5cm 1.05cm,clip]{figs/optimisation/BeamAndDIOBlocker/HitRateVsAcceptance2d.pdf}\vspace{1cm}{}}
 %\hspace{0.12\textwidth}
 %}
-\caption{
+\caption
+[The impact of the beam and DIO blockers on the StrECAL hit rate and signal acceptance.]{
 \protect\subref{fig:optim:DIOBeamBlock:HitRate} Number of straw tracker hits per DIO electron.
 \protect\subref{fig:optim:DIOBeamBlock:HitVAccept} Ratio between the high-momentum electron ($p>100$~MeV/c) acceptance to the number of hits per DIO electron.  Colour is on a logarithmic scale.
 \figlabel{optim:DIOBeamBlock:HitRateAcceptance}}

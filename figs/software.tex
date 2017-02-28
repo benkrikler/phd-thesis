@@ -4,7 +4,8 @@
 %\fbox{
 \includegraphics[width=1.00\textwidth,trim=0.85cm 0.5cm 0.5cm 0.5cm,clip=true]{figs/software/ICEDUST_structure}
 %}
-\caption{
+\caption
+[Overview diagram for the ICEDUST framework.]{
 Overview diagram for the ICEDUST framework.
 Data produced from simulation or taken in the real experiment are treated identically through the calibration and onwards up to analysis.
 }
@@ -29,7 +30,8 @@ Overview diagram for the ND280 framework.
 %\fbox{
 \includegraphics[width=1.00\textwidth]{figs/software/Simulation_structure}
 %}
-\caption{
+\caption
+[Diagram showing the stages used to simulate COMET.]{
 Diagram showing the stages used to simulate COMET.
 The timing schematics on the right show how a simulated event is built up, firstly by producing many individual proton interactions with the production target,
 then by transporting the secondary particles to produce energy deposits in the detector, which are then combined with the truth hits from other proton events to produce a realistic bunch structure.
@@ -45,7 +47,8 @@ Finally, these bunch events are processed through the detector response simulati
 %\fbox{
 \includegraphics[width=0.70\textwidth]{figs/software/ComponentHeirarchy}
 %}
-\caption{
+\caption
+[How parameters are shared amongst different components of the geometry within ICEDUST.]{
 How parameters are shared amongst different components.
 Parameters of component 1.a (in red) can access the value of parameters owned by components contained in the larger violet region.
 }
@@ -56,7 +59,8 @@ Parameters of component 1.a (in red) can access the value of parameters owned by
 \newcommand{\FigGeometryParameters}{
 \begin{figure}[t]
 \lstinputlisting[style=customc]{figs/software/demo-parameters.mac}
-\caption{
+\caption
+[An example set of parameter definitions which control the geometry for the Torus2.]{
 An example set of parameter definitions which control the geometry for the Torus2.
 Parameter specifications use natural arithmetic notation and can reference other parameters and use standard units.
 They can also be formed as sets where each element has a different value, such as the \texttt{Coils:Position} parameter.
@@ -69,7 +73,8 @@ They can also be formed as sets where each element has a different value, such a
 \begin{figure}[tb]
         \subfloat[][\figlabel{software:geom:screenshots:phaseI}\phaseI]  {\includegraphics[height=0.25\textheight]{figs/software/Phase-I-UpdateGeom}}\hspace{2ex}%
         \subfloat[][\figlabel{software:geom:screenshots:phaseII}\phaseII]{\includegraphics[height=0.25\textheight,trim=0 0.3cm 0 2.6cm,clip=true]{figs/software/Phase-II-UpdateGeom.png}}
-\caption{ %
+\caption
+[Two of the possible simulation `worlds' that can be selected at run-time]{
 Two of the possible simulation `worlds' that can be selected at run-time:
         \protect\subref{fig:software:geom:screenshots:phaseI} \phaseI with the CyDet detector installed, and
         \protect\subref{fig:software:geom:screenshots:phaseII} \phaseII.  
@@ -84,7 +89,8 @@ Two of the possible simulation `worlds' that can be selected at run-time:
 %\fbox{
 \includegraphics[width=0.95\textwidth,trim=2cm 1cm 0.8cm 0.5cm,clip=true]{figs/software/PionYield_AEdmondsThesis}
 %}
-\caption{
+\caption
+[Comparison of various hadron production codes with experimental data from the HARP experiment, taken from the thesis of A. Edmonds~\cite{AEdmondsThesis}.]{
 Comparison of various hadron production codes with experimental data from the HARP experiment, taken from the thesis of A. Edmonds~\cite{AEdmondsThesis}.
 Points with error bars are the experimental data.  Left: double differential-production cross-section for pion production from 20 to 32\degree with respect to the incoming proton direction; right: from 100 to 112\degree.
 The hadron production code that best reproduces the data depends strongly on the angular region under consideration.
@@ -106,7 +112,8 @@ The hadron production code that best reproduces the data depends strongly on the
 \includegraphics[width=0.45\textwidth,trim=0cm 0cm 1.8cm 1.9cm,clip=true]{figs/software/160822_Geant4VsAlcap-log.pdf}
 }
 %}
-\caption{
+\caption
+[Comparison of the realistic spectra for \ac{DIO} electrons, and protons coming from muon nuclear capture.]{
 Comparison of the realistic spectra for \ac{DIO} electrons, \protect\subref{fig:software:customPhysic:DIO} (normalised to agree at 35~MeV), and protons coming from muon nuclear capture, \protect\subref{fig:software:customPhysic:ProtMuCap} (normalised to have the same maximum value), each on a linear scale (left) and a logarithmic scale (right).
 The \ac{DIO} spectrum used in default Geant4 has a sharp cut-off slightly above the free muon decay end-point, to be compared with the long but steeply falling tail of the Czarnecki \etal theoretical calculation~\cite{Czarnecki2011}.
 Comparison of protons coming from muon capture between the preliminary result from \alcap~\cite{MeNufactAlCap2015,AlcapProposal2012} and default Geant4 shows that the true proton spectrum is much softer than the Geant4 model.
@@ -121,7 +128,8 @@ Comparison of protons coming from muon capture between the preliminary result fr
 %\fbox{
 \includegraphics[width=1.00\textwidth]{figs/software/SimulationMuonPhysicsClasses}
 %}
-\caption{
+\caption
+[The classes involved in simulating the various processes of stopped negative muons.]{
 The various classes involved in simulating the various processes of stopped negative muons.
 %Classes in red have been implemented for COMET and augment the existing Geant4 classes which are shown in blue.
 The standard Geant4 model is activated by registering `G4MuonMinusCapture', which instantiates `G4MuonMinusBoundDecay' and `G4CascadeInterface' to run the \ac{DIO} and nuclear capture respectively.
@@ -142,7 +150,8 @@ To use the custom COMET muon physics, an instance of `COMETStoppedMuonProcess' s
 \includegraphics[width=0.45\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_G4Beamline.png}
 }
 %}
-\caption{
+\caption
+[Fieldmap produced by Opera and G4Beamline.]{
 Fieldmap produced by \protect\subref{fig:software:field:Opera} Opera and \protect\subref{fig:software:field:G4Beamline} G4Beamline.
 Although the fringe field is larger with the G4Beamline calculation, the lack of material effects make this calculation less reliable.
 Note that the G4Beamline calculation does not include the detector solenoid.
@@ -157,7 +166,8 @@ Note that the G4Beamline calculation does not include the detector solenoid.
 %\fbox{
 \includegraphics[width=0.9\textwidth,trim=0cm 0cm 0.0cm 13cm,clip=true]{figs/software/Plot_ratio_opera-G4Beamline.png}
 %}
-\caption{
+\caption
+[The ratio of the Opera and G4Beamline fieldmap calculations shown in \fig{software:field}.]{
 The ratio of the Opera and G4Beamline calculations shown in \fig{software:field}.
 For most of the field within the beamline the calculations agree within 10\%, although around the ends of the solenoids the agreement is poorer.
 \figlabel{software:field:comparison}
@@ -171,7 +181,8 @@ For most of the field within the beamline the calculations agree within 10\%, al
 %\fbox{
 \includegraphics[width=0.9\textwidth,trim=2cm 8cm 0.0cm 6cm,clip=true]{figs/software/DipoleFields.png}
 %}
-\caption{
+\caption
+[The dipole field calculations used in ICEDUST for \phaseII. ]{
 The dipole field calculations used in ICEDUST for \phaseII. 
 Three dipole fields are applied in COMET, one over each of the Torus1, Torus2 and the Electron Spectrometer.
 The dipoles over the bent muon transport beamline point in the opposite direction to that over the electron spectrometer.
@@ -193,7 +204,8 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 \includegraphics[width=0.45\textwidth,trim=1cm 4cm 0.0cm 4.5cm,clip=true]{figs/software/BeamlineCoords_horizontal.png}
 }
 %}
-\caption{
+\caption
+[The longitudinal \protect\subref{fig:software:beamline:dist} and horizontal \protect\subref{fig:software:beamline:horiz} components of the beamline coordinate system for different points in the global X-Z plane.]{
 	The longitudinal \protect\subref{fig:software:beamline:dist} and horizontal \protect\subref{fig:software:beamline:horiz} components of the beamline coordinate system for different points in the global X-Z plane.
 	Although this image shows the \phaseI geometry, the implementation in ICEDUST will semi-automatically adjust to whatever geometry was used.
 \figlabel{software:beamline}
@@ -208,7 +220,8 @@ whilst the dipole field for the electron spectrometer is artificially uniform.
 	\includegraphics[width=0.8\textwidth,trim=8.3cm 1.5cm 13.2cm 2.2cm,clip]{figs/sensitivity/Tidied_SignalHeight2DVsBeamline.png}}\\
 \subfloat[\figlabel{software:beamline:analysis:flux}One-dimensional flux]{
         \includegraphics[width=0.8\textwidth,trim=1.0cm 0.2cm 1.7cm 0.4cm,clip]{figs/sensitivity/Tidied_SignalSurivivalVsBeamline.pdf}}
-\caption{
+\caption
+[Different flux plots that make use of the beamline coordinate system.]{
 Different flux plots that make use of the beamline coordinate system.
 \protect\subref{fig:sense:accept:height} Projection of trajectories onto the vertical-beamline axis plane.  Setting a limit to the maximum step size forces Geant4 to create steps with more regular interval.
 Each step is then projected to the vertical-beamline surface, such that the density of points represents the flux of particles.

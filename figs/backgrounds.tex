@@ -4,7 +4,8 @@
 %\fbox{
 \includegraphics[width=1.0\textwidth,trim=0 0 1cm 0.93cm,clip]{figs/backgrounds/Dio_BackgroundRateVsRuntime.pdf}
 %}
-\caption{
+\caption
+[The DIO background rate as a function of momentum threshold for different total running times.]{
 The DIO background rate as a function of momentum threshold for different total running times.
 Given a fixed running time, the total number of stopped muons is also fixed, which in turn sets the signal sensitivity and the DIO background rate.
 All signal acceptance parameters were held fixed, except for the efficiency of the momentum threshold, which, when combined with the number of stopped muons, determines the \ac{ses}.
@@ -17,7 +18,8 @@ The \ac{ses} is indicated in the number along the lines in units of \num{1e-17}.
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.8\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/CompareDIOEndpoints.pdf}
-\caption{
+\caption
+[Comparison of the various available \ac{DIO} end-point expansions.]{
 Comparison of the various available end-point expansions.
 The red and blue lines show the parametrisations reported in the literature, whilst the black shows the digitisation of the spectrum used in SimG4.
 For this study, the more conservative parametrisation from the 2011 Czarnecki paper~\cite{Czarnecki2011} has been used.
@@ -31,7 +33,8 @@ For this study, the more conservative parametrisation from the 2011 Czarnecki pa
 %\fbox{
 \includegraphics[width=0.5\textwidth]{figs/backgrounds/RMC_Gorringe_ExperimentSummary.pdf}
 %}
-\caption{
+\caption
+[Summary of experimental values of the rate of \ac{RMC} producing photons with energy greater than 57~MeV, $R_\gamma$, and the observed end-point, $k_\textrm{max}$, redacted from~\cite{RevModPhys.76.31}.]{
 Summary of experimental values of the rate of \ac{RMC} producing photons with energy greater than 57~MeV, $R_\gamma$, and the observed end-point, $k_\textrm{max}$, redacted from~\cite{RevModPhys.76.31}.
 The column lablled `$\alpha$' is the neutron excess for the element, determined by: $\alpha=(A-2Z)/Z$.
 \tablabel{bg:rmc:experiments}}
@@ -54,7 +57,8 @@ ${}^{27}$Al$(\mu,\gamma\nu{}d){}^{25}$Na    & 24.989954 & 21.49  &  84.00 \\
 ${}^{27}$Al$(\mu,\gamma\nu\alpha){}^{23}$Na & 22.994467 & 15.49  &  91.01 \\
 \hline
 \end{tabular}
-\caption{%
+\caption
+[The \ac{RMC} end-points for several potential daughter nuclei of nuclear muon capture in \textsuperscript{27}Al]{
 Several potential daughter nuclei of nuclear muon capture in \textsuperscript{27}Al.
 The mass of \textsuperscript{27}Al is 26.98153863~$u$, and one $u$ is taken as 931.494061~MeV/c$^2$~\cite{PDG2014}.
 All masses come from~\cite{AUDI20033}.\tablabel{bg:rmc:massDifferences}}\end{table}%
@@ -66,7 +70,8 @@ All masses come from~\cite{AUDI20033}.\tablabel{bg:rmc:massDifferences}}\end{tab
 %\fbox{
 \includegraphics[width=0.85\textwidth]{figs/backgrounds/RMC_simResults.pdf}
 %}
-\caption{
+\caption
+[Observed background electrons from a simulation of \num{6e7} \ac{RMC} photons.]{
 Observed electrons from a simulation of \num{6e7} \ac{RMC} photons.
 The overlaid spectrum is normalised arbitrarily to fit on the plot.
 \figlabel{bg:rmc:simulation}}
@@ -78,7 +83,8 @@ The overlaid spectrum is normalised arbitrarily to fit on the plot.
 \centering
 \subfloat[][\figlabel{bg:rpc:data:ca}Calcium]  {\includegraphics[width=0.43\textwidth]{figs/backgrounds/RPC-data-calcium.png}}\hspace{0.2cm}%
 \subfloat[][\figlabel{bg:rpc:data:mg}Magnesium]{\includegraphics[width=0.53\textwidth]{figs/backgrounds/RPC-data-magnesium.png}}
-\caption{
+\caption
+[Spectrum of photons coming from \acf{RPC}~\cite{Bistirlich:1972jy}.]{
 Spectrum of photons coming from \acf{RPC}~\cite{Bistirlich:1972jy}.
 The spectrum of manesium, which is adjacent to aluminium on the periodic table, was used as the basis of these studies.
 \figlabel{bg:rpc:data}}
@@ -91,7 +97,8 @@ The spectrum of manesium, which is adjacent to aluminium on the periodic table, 
 %\fbox{%
 \includegraphics[width=0.73\textwidth,trim=1cm 0.5cm 2cm 1cm,clip]{figs/backgrounds/RPC_simulated_spectrum.pdf}%
 %}
-\caption{
+\caption
+[Digitised and smoothed spectrum of \ac{RPC} from magnesium (see \fig{bg:rpc:data:mg}) used as input to the Monte Carlo simulation.]{
 Digitised (red) and smoothed (blue) spectrum of \ac{RPC} from magnesium (see \fig{bg:rpc:data:mg}) used as input to the Monte Carlo simulation.
 \figlabel{bg:rpc:spectrum}}
 \end{figure}
@@ -103,7 +110,8 @@ Digitised (red) and smoothed (blue) spectrum of \ac{RPC} from magnesium (see \fi
 \subfloat[][\figlabel{bg:piStop:dist:x}X-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-X.pdf}}\hspace{0.1cm}%
 \subfloat[][\figlabel{bg:piStop:dist:y}Y-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-Y.pdf}}\hspace{0.1cm}%
 \subfloat[][\figlabel{bg:piStop:dist:z}Z-direction]{\includegraphics[width=0.32\textwidth,trim=0.2cm 0 1cm 0.7cm,clip]{figs/backgrounds/Tidied_StoppedPi-Z.pdf}}
-\caption{
+\caption
+[Stopping distributions of pions in the muon stopping target.]{
 Stopping distributions of pions in the target.
 These distributions have considerably different forms to the muon stopping distributions shown in \fig{sense:stops}, mostly due to the different momenta of muons and pions.
 \figlabel{bg:piStop:dist}}
@@ -116,7 +124,8 @@ These distributions have considerably different forms to the muon stopping distr
 %\fbox{%
 \includegraphics[width=0.9\textwidth,trim=0 0.5cm 1.3cm 0.4cm,clip]{figs/backgrounds/Tidied_MuVsPiMomentum.pdf}%
 %}
-\caption{
+\caption
+[The momentum of muons and pions for those that reach the target area and those that actually stop in the target]{
 The momentum of muons and pions for those that reach the target area and those that actually stop.
 It is clear how the pion momenta are in general higher, including those that stop, although the maximum stopping momentum for pions is similar to that of muons.
 \figlabel{bg:piVsMu:momenta}}
@@ -141,7 +150,8 @@ It is clear how the pion momenta are in general higher, including those that sto
 \includegraphics[width=0.49\textwidth,trim=0 0 0 2.8cm,clip]{figs/backgrounds/RPC_lifetime.png}}%
 %\fbox{
 %}
-\caption{
+\caption
+[Observation of secondary electrons coming from RPC photons in the stopping target.]{
 Detection of secondaries from RPC photons in the target.
 Although many high-momentum electrons are detected \protect\subref{fig:bg:rpc:sim:momVtime}, they are all well before the time-gated detected window \protect\subref{fig:bg:rpc:sim:time}.
 \figlabel{bg:rpc:sim}}
@@ -152,7 +162,8 @@ Although many high-momentum electrons are detected \protect\subref{fig:bg:rpc:si
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=0.6\textwidth]{figs/backgrounds/Antiproton_Meco24_energy.pdf}
-\caption{
+\caption
+[Variation in the antiproton production rate as a function of incident proton energy]{
 Variation in the antiproton production rate as a function of incident proton energy, according to Meco note 24~\cite{Meco024} and used in the COMET TDR~\cite{TDR2016}.
 For reference, protons with 8~GeV kinetic energy have 8.89~GeV/c momentum, whilst with 10.14~GeV kinetic energy their momentum is 11.038~GeV/c.
 The vertical coloured lines have been added to indicate these energies, whilst the horizontal bands show the range of predicted cross sections for the models of proton-nucleon and proton-nucleus interaction.
@@ -164,7 +175,8 @@ The vertical coloured lines have been added to indicate these energies, whilst t
 \begin{figure}[tbp]
 \centering
 \includegraphics[width=1.0\textwidth,trim=0 0 0 0,clip]{figs/backgrounds/Antiproton_RatePerPOT_data.pdf}
-\caption{
+\caption
+[Experimental data for antiproton production rates for 10~GeV protons~\cite{Boyarinov:1994tp,Kiselev:2012sj}.]{
 Experimental data for antiproton production rates for 10~GeV protons~\cite{Boyarinov:1994tp,Kiselev:2012sj}.
 Each line represents the cross section obtained for the four different target materials covered in those papers, scaled to match the number of nucleons of tungsten and with the additional factors of equation~\eq{bg:antiprotons:rate} included.
 \figlabel{bg:antiprotons:data}}
@@ -176,7 +188,8 @@ Each line represents the cross section obtained for the four different target ma
 \centering
 \subfloat[][\figlabel{bg:antiprotons:end-point:tungsten}Tungsten]{\includegraphics[width=0.49\textwidth,clip=true,trim=0 0 1cm 1.7cm]{figs/backgrounds/Antiproton_Tungsten_theta_lab.pdf}}%\hspace{0.5cm}%
 \subfloat[][\figlabel{bg:antiprotons:end-point:carbon}Carbon    ]{\includegraphics[width=0.49\textwidth,clip=true,trim=0 0 1cm 1.7cm]{figs/backgrounds/Antiproton_Carbon_theta_lab}}
-\caption{
+\caption
+[The kinematic end-point for antiproton production as a function of the outgoing antiproton direction with respect to the incoming proton in the frame of the target nucleus (the lab frame).]{
 The kinematic end-point for antiproton production as a function of the outgoing antiproton direction with respect to the incoming proton in the frame of the target nucleus (the lab frame).
 The absolute end-point is only achieved when the nucleus and outgoing protons recoils coherently.
 \figlabel{bg:antiprotons:end-point}}
@@ -189,7 +202,8 @@ The absolute end-point is only achieved when the nucleus and outgoing protons re
 %	\fbox{
 \includegraphics[width=1.0\textwidth]{figs/backgrounds/AntiprotonFits.png}
 %}
-\caption{
+\caption
+[Piecewise fitting to experimental data and kinematic end-points for antiproton production.]{
 Piecewise fitting to experimental data and kinematic end-points.
 Inlays show a zoom around the experimental data points.
 \figlabel{bg:antiprotons:fits}}
@@ -200,7 +214,8 @@ Inlays show a zoom around the experimental data points.
 \begin{figure}[b]
 \centering
 \includegraphics[width=0.8\textwidth,trim=0 0 1.4cm 1cm,clip]{figs/backgrounds/AntiprotonAngularDependence.pdf}
-\caption{
+\caption
+[The angular dependence of the rate of antiproton emission, integrated over all momenta.]{
 The angular dependence of the rate of antiproton emission, integrated over all momenta.
 The different lines represent the different fits to the high momentum part of the spectrum.
 The relationship given in~\cite{Boyarinov:1994tp} would suggest the data here should fit a straight line.
@@ -224,7 +239,8 @@ For reweighting events the interpolated (straight solid) lines were used to be c
                   119-180\degree & 119\degree \cite{Boyarinov:1994tp} & 2.58e-12 & 5.71e-13 \\ 
 \hline
 \end{tabular}
-\caption{
+\caption
+[Angular regions and the source of the data used to build the momentum spectrum for that region of antiproton production phase-space.]{
 Angular regions and the source of the data used to build the momentum spectrum for that region.
 The integrated rate for the two different high-momentum tail descriptions are also given.
 Note that these values do \emph{not} contain the correction for the different incident proton energies;
@@ -246,7 +262,8 @@ for the COMET proton beam the antiproton yield is expected to be a factor 0.12 t
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_97.png}}\\%
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-antip:119}Production between 119 and 180\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_antiproton_119.png}}%
-\caption{
+\caption
+[The heights of antiprotons passing along the beamline for the four different angular regions of productions.]{
 The heights of antiprotons passing along the beamline for the four different angular regions of productions.
 Each antiproton trajectory is weighted by the probability of producing an antiproton at this angle.
 The colour scale on all these plots is the same.%
@@ -265,7 +282,8 @@ The colour scale on all these plots is the same.%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_97.png}}\\%
 \subfloat[][\figlabel{bg:antiprotons:sim:2D-pi:119}Production between 119 and 180\degree]{%
 \includegraphics[width=1\textwidth,trim=3.7cm 0.3cm 1.8cm 0.8cm,clip]{figs/backgrounds/Antiproton_height2D_pi-_119.png}}%
-\caption{
+\caption
+[The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.]{
 The heights of secondary pions passing along the beamline produced from antiprotons in each of the four different angular regions of productions.
 Each trajectory is weighted by the probability of producing the parent antiproton in its initial direction at the target.
 \figlabel{bg:antiprotons:sim:2D-pi}}%
@@ -279,7 +297,8 @@ Each trajectory is weighted by the probability of producing the parent antiproto
 \includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_fluxes.pdf}}\\
 \subfloat[][\figlabel{bg:antiprotons:sim:fluxes:pion}Unweighted Secondary Pion Transport Probability]{
 \includegraphics[width=1\textwidth,trim=0.7cm 0 1.9cm 0.2cm,clip]{figs/backgrounds/Antiproton_fluxes-pions.pdf}}
-\caption{
+\caption
+[The surivival probability of antiprotons and secondaries pions per antiproton produced in the target as a function of distance along the beamline.]{
 The surivival probability of antiprotons and secondaries pions per antiproton produced in the target as a function of distance along the beamline.
 These plots are not weighted by the probability that an antiproton is produced at a particular angle.
 From left to right the vertical gray lines indicate the production target, Torus1 entrance, and the Torus2 exit.
@@ -294,7 +313,8 @@ From left to right the vertical gray lines indicate the production target, Torus
 \includegraphics[width=0.485\textwidth,trim=0.5cm 0.9cm 0.5cm 0.9cm,clip]{figs/backgrounds/Antiproton_timing_antiprotons.pdf}}
 \hspace{1ex}\subfloat[][\figlabel{bg:antiprotons:sim:time:pion}Timing of Secondary Pions]{
 \includegraphics[width=0.485\textwidth,trim=0.5cm 0.9cm 0.5cm 0.9cm,clip]{figs/backgrounds/Antiproton_timing_pions.pdf}}
-\caption{
+\caption
+[The arrival time of antiprotons and secondary pions at various points along the beamline]{
 %\CHECK{Add pion stopping timing to RPC section to be able to compare to it here}
 	The arrival time of antiprotons~\protect\subref{fig:bg:antiprotons:sim:time:antip} and pions~\protect\subref{fig:bg:antiprotons:sim:time:pion}
 	at various points along the beamline and for the different initial antiproton directions.
@@ -430,7 +450,8 @@ Momentum of pions passing the exit of Torus1 (90\degree around the bent muon bea
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
-\caption{
+\caption
+[Secondary pion fluxes from antiprotons observed at key points along the beamline.]{
 Secondary pion fluxes from antiprotons observed at key points along the beamline.
 See caption to \tab{bg:antiprotons:sim:antip} for a description of the column and row contents.
 %The raw counts are the total observed events from the simulation of 80M antiprotons for each of the four angular regions.
@@ -460,7 +481,8 @@ See caption to \tab{bg:antiprotons:sim:antip} for a description of the column an
 \hline
 \end{tabular}%
 %\end{adjustwidth}%
-\caption{
+\caption
+[Antiproton stopping rates and fluxes at key points along the muon beamline]{
 Antiproton stopping rates and fluxes at key points: at the entrance to the bent
 solenoids (Torus1), just before the final beam collimator (Torus2), and in front of the
 stopping target (Target).
@@ -520,11 +542,12 @@ the other three angular regions.%
 \hline
 \end{tabular}
 %\end{adjustwidth}
-\caption{
+\caption
+[Final estimated antiproton-induced background rates.]{
 Final estimated antiproton-induced background rates.
 See text for column definitions.
 \tablabel{bg:antiprotons:estimates}}
-\end{table}\xspace}
+\end{table}}
 
 \newcommand{\FigBgBeamMomVsTime}{
 \begin{figure}[t]
@@ -533,7 +556,8 @@ See text for column definitions.
 \includegraphics[width=0.45\textwidth,trim=0 0 0 1.7cm,clip]{figs/backgrounds/Beam_TimeVsMomentum_StrawTkt.pdf}}
 \subfloat[][\figlabel{bg:beam:MomVsTime:stopTgt}$e^-$ after the Beam Blocker]{
 \includegraphics[width=0.45\textwidth,trim=0 0 0 1.7cm,clip]{figs/backgrounds/Beam_TimeVsMomentum_StopTgt.pdf}}
-\caption{
+\caption
+[The timing and momentum of beam electrons detected at the straw tracker, and passing a plane immediately after the beam blocker.]{
 The timing and momentum of electrons detected at the straw tracker, \protect\subref{fig:bg:beam:MomVsTime:strawTrk}, and passing a plane immediately after the beam blocker, \protect\subref{fig:bg:beam:MomVsTime:stopTgt}.
 \figlabel{bg:beam:MomVsTime}}
 \end{figure}
@@ -564,7 +588,8 @@ Parameters and their values in the determination of the background rate due to h
 \includegraphics[width=0.49\textwidth,trim=0 1.5cm 0 0.7cm,clip]{figs/backgrounds/Beam_Acceptance_momentum.pdf}}
 \subfloat[][\figlabel{bg:beam:acceptance:time}Time of high-$p$ electrons]{
 \includegraphics[width=0.49\textwidth,trim=0 1.5cm 0 0.7cm,clip]{figs/backgrounds/Beam_Acceptance_time.pdf}}
-\caption{
+\caption
+[Projections of the momentum and arrival time of beam electrons after the target and at the detector]{
 Projections of the momentum and arrival time of electrons.
 \protect\subref{fig:bg:beam:acceptance:momentum} shows the momentum for electrons that arrive at any time, 
 whereas \protect\subref{fig:bg:beam:acceptance:time} only shows the arrival time for electrons with momentum above 65~MeV/c.
@@ -591,7 +616,8 @@ Distributions of momenta and the transverse direction for the cosmic muon and an
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.98\textwidth,trim=2.5cm 0 2.3cm 0,clip]{figs/backgrounds/Cosmics_highP_electrons.png}
-\caption{
+\caption
+[Projection onto beamline coordinate system of electrons from cosmic rays with momenta greater than 100~MeV/c, from a simulation of about 170 million cosmic muons.]{
 Projection onto beamline coordinate system of electrons from cosmic rays with momenta greater than 100~MeV/c, from a simulation of about 170 million cosmic muons.
 Three tracks can be seen to enter the electron spectrometer and pass along, although their momenta are all above 105~MeV/c as visible from the upwards drift of the trajectories.
 \figlabel{bg:cosmics:beam}}\end{figure}\xspace}
@@ -600,7 +626,8 @@ Three tracks can be seen to enter the electron spectrometer and pass along, alth
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.9\textwidth,trim=0 0 1.6cm 0,clip]{figs/backgrounds/Cosmics_strawTrackHits.pdf}
-\caption{
+\caption
+[Momentum of electrons that hit one and two layers (planes) of the straw tracker.]{
 Momentum of electrons that hit one and two layers (planes) of the straw tracker.
 The vertical axis shows the raw number of observed events based on the simulation of 170 million cosmic muons described in the text.
 \figlabel{bg:cosmics:momenta}}\end{figure}\xspace}
@@ -670,7 +697,8 @@ All other parameters are the same as stated in chapter~\sect{sense}.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.9\textwidth,clip=true,trim=0 0 0 1cm]{figs/backgrounds/BG_vs_resolution.pdf}
-\caption{
+\caption
+[Dependence of the intrinsic background rates on $\sigma_2$, the width of the high/low momentum tail in the reconstruction distribution.]{
 Dependence of the intrinsic background rates on $\sigma_2$, the width of the high/low momentum tail in the reconstruction distribution.
 From this it can be seen that the background rates from DIO will always dominate, compared to RMC.
 \figlabel{bg:resolution}}\end{figure}\xspace}
