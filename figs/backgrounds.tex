@@ -660,7 +660,7 @@ Parameters and their values for the determination of the cosmic ray background r
 \sisetup{table-number-alignment=right,table-format=1.2e3}%
 \renewcommand{\arraystretch}{1.5} % Default value: 1
 %\begin{adjustwidth}{-0.7cm}{}%
-\begin{tabular}{ll|SSS|S|L{7cm}}
+\begin{tabular}{ll|SSS|S|L{8.4cm}}
 \toprule
 Type                         & Source                   & \multicolumn{3}{c|}{Background Rate}                                       & \multicolumn{1}{c|}{Total Events} & Comment \\ 
                              &                          & {per $\mu^-$ stop} & {per POT}              & {per second}            &            \\ 
@@ -669,15 +669,15 @@ Type                         & Source                   & \multicolumn{3}{c|}{Ba
 			     & RMC                      & \NumRMCPerMuStop & \NumRMCPerPOT                    & \NumRMCPerSecond                 & \NumRMCTotal                     & \\ 
 \cmidrule{2-7}
 \multirow{4}{*}{Delayed}     & RPC                      & {--}             & \NumRPCDelayedPerPOT             & \NumRPCDelayedPerSec             & \NumRPCDelayedTotal              &  \\ 
-			     & Beam                     & {--}             & \NumBeamBgDelayedPerPOT          & \NumBeamBgDelayedPerSec          & \NumBeamBgDelayedTotal           & \multirow{1}{7cm}{\footnotesize Beam includes high-energy electrons from $\pi$, $\mu$, and $n$ capture.} \\ 
-			     & Stopped $\bar{p}$        & {--}             & \NumBgAntiprotonsPerPOT          & \NumBgAntiprotonsPerSec          & \NumBgAntiprotonsTotal           & \multirow{2}{7cm}{\footnotesize Based on conservative interpolation and extrapolation of limited experimental $\bar{p}$ data.}\\ 
+			     & Beam                     & {--}             & \NumBeamBgDelayedPerPOT          & \NumBeamBgDelayedPerSec          & \NumBeamBgDelayedTotal           & \multirow{1}{8.4cm}{\footnotesize Beam includes high-energy electrons from $\pi$, $\mu$, and $n$ capture. See Section~\sect{bg:beam} for discussion.} \\ 
+			     & Stopped $\bar{p}$        & {--}             & \NumBgAntiprotonsPerPOT          & \NumBgAntiprotonsPerSec          & \NumBgAntiprotonsTotal           & \multirow{2}{8.4cm}{\footnotesize Based on conservative interpolation and extrapolation of limited experimental $\bar{p}$ data. See Section~\sect{bg:antiprotons}}\\ 
                              & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiDelayedPerPOT & \NumBgAntiprotonsPiDelayedPerSec & \NumBgAntiprotonsPiDelayedTotal  & \\ 
 \cmidrule{2-7}
 \multirow{3}{*}{Prompt}      & RPC                      & {--}             & \NumRPCPromptPerPOT              & \NumRPCPromptPerSec              & \NumRPCPromptTotal               &  \\ 
-                             & Beam                     & {--}             & \NumBeamBgPromptPerPOT           & \NumBeamBgPromptPerSec           & \NumBeamBgPromptTotal            &  \\ 
-                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiPromptPerPOT  & \NumBgAntiprotonsPiPromptPerSec  & \NumBgAntiprotonsPiPromptTotal   & \\ 
+                             & Beam                     & {--}             & \NumBeamBgPromptPerPOT           & \NumBeamBgPromptPerSec           & \NumBeamBgPromptTotal            & \footnotesize See comment for delayed background.\\ 
+                             & $\pi^{-}$ from $\bar{p}$ & {--}             & \NumBgAntiprotonsPiPromptPerPOT  & \NumBgAntiprotonsPiPromptPerSec  & \NumBgAntiprotonsPiPromptTotal   &\footnotesize See comment for delayed background.\\ 
 \cmidrule{2-7}
-\multicolumn{2}{c|}{Cosmics}                            & {--}             & {--}                             & \NumCosmicRatePerSecond          & \NumCosmicRateTotal              & \footnotesize Dominated by conservative miss-rate. \\ 
+\multicolumn{2}{c|}{Cosmics}                            & {--}             & {--}                             & \NumCosmicRatePerSecond          & \NumCosmicRateTotal              & \footnotesize Dominated by conservative miss-rate. See Section~\sect{bg:cosmics}. \\ 
 \bottomrule                                                                                                   
 \multicolumn{2}{c|}{Total}                              & {--}             & {--}                             & \NumTotalBgPerSecond             & \NumTotalBgPhasII                &  \\ 
 \bottomrule
