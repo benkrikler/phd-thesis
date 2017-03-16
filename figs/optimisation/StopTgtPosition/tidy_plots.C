@@ -1,13 +1,25 @@
+#include "../../tidy_plot_tools.C"
+
 void tidy_plots(const char* ext="png"){
 
-  gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
+  //gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
 
   PlotConfig config;
 
+  gStyle->SetPalette(56);
   TFile* geomFile=TFile::Open("../Geometry-on-axis.root","READ");
-  TH1* geomHist=NULL;
+  TH2* geomHist=NULL;
   if(geomFile){
-	  geomHist=(TH1*)geomFile->Get("hGeometry");
+	  geomHist=(TH2*)geomFile->Get("hGeometry");
+      geomHist->RebinX(4);
+      geomHist->RebinY(4);
+      for(int ix=0;ix<geomHist->GetNbinsX()+1;ix++){
+          for(int iy=0;iy<geomHist->GetNbinsY()+1;iy++){
+              double content=geomHist->GetBinContent(ix,iy);
+              geomHist->SetBinContent(ix,iy,content>10?19:0);
+          }
+      }
+      geomHist->SetFillColor(kBlack);
   }
 
   TGaxis::SetMaxDigits(3);
@@ -65,7 +77,7 @@ void tidy_plots(const char* ext="png"){
 //  SavePlot(ext);
 
   config.rebin_x=2;
-  TString top_dir="~/comet/160213_StopTgtPositionOptimisation/";
+  top_dir="~/comet/160213_StopTgtPositionOptimisation/";
 //  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum.root","THStack", config);
 //  SavePlot(ext);
 
@@ -86,8 +98,8 @@ void tidy_plots(const char* ext="png"){
   config.x_axis_range_high=50;
   config.x_axis_range_low=-50;
   config.y_axis_label_offset = 1.3;
-  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum-Integrated_adjacent.root","TMultiGraph", config);
-  SavePlot(ext);
+//  file=FixPlot(top_dir+"160816_plots/-AcceptedMomentum-Integrated_adjacent.root","TMultiGraph", config);
+//  SavePlot(ext);
 
   config.y_axis_label_offset = 1.2;
   config.y_axis_label    = "Relative Acceptance for Electrons";
@@ -194,7 +206,7 @@ void tidy_plots(const char* ext="png"){
   config.canvas_width=1500;
   config.canvas_height=800;
   config.y_axis_decimal  = true;
-  config.y_axis_label_offset  = 1;
+  //config.y_axis_label_offset  = 1;
   config.legend_columns=2;
   config.legend_header= "Target Position (cm)";
   config.legend_text_size= 0.022;
@@ -218,7 +230,7 @@ void tidy_plots(const char* ext="png"){
   config.x_axis_label="Distance Along Beam Axis (m)";
   config.x_axis_title_size=0.06;
   config.y_axis_title_size=0.06;
-  config.y_axis_label_offset=0.4;
+  config.y_axis_title_offset=0.4;
   config.shift_plot_y=-0.03;
   config.grid_y=config.grid_x=true;
   config.title=" ";
@@ -228,19 +240,19 @@ void tidy_plots(const char* ext="png"){
   config.y_axis_range_high=100;
   config.y_axis_range_low=-800;
   file=FixPlot(top_dir+"160816_plots/-Height-momentum_102.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
+  if(geomHist) Overlay(geomHist,"samecol",config);
   SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_102-5");
 
   file=FixPlot(top_dir+"160816_plots/-Height-momentum_82.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
+  if(geomHist) Overlay(geomHist,"samecol",config);
   SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_82-5");
 
   file=FixPlot(top_dir+"160816_plots/-Height-momentum_62.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
+  if(geomHist) Overlay(geomHist,"samecol",config);
   SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_62-5");
 
   file=FixPlot(top_dir+"160816_plots/-Height-momentum_42.5.root","THStack", config);
-  if(geomHist) Overlay(geomHist,"same",config);
+  if(geomHist) Overlay(geomHist,"samecol",config);
   SavePlot(ext,NULL,"WithBeamBlocker-Height-VaryShifts-Momentum_42-5");
 
   config.y_axis_range_high=150;
