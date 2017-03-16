@@ -71,7 +71,7 @@ void tidy_plots(const char* ext="png"){
 
   ///////////////////////   Dispersion of electrons through EST
   config.reset();
-  config.x_axis_label_offset= 0.9; config.y_axis_label_offset= 0.6;
+  config.x_axis_title_offset= 0.9; config.y_axis_title_offset= 0.6;
   config.x_axis_label_size = 0.04; config.y_axis_label_size = 0.04;
   config.x_axis_title_size = 0.05; config.y_axis_title_size = 0.05;
   config.x_axis_label    = "Distance Along Beamline (mm)";
