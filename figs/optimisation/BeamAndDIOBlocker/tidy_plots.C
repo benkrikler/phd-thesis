@@ -1,15 +1,25 @@
+#include "../../tidy_plot_tools.C"
+
 void tidy_plots(const char* ext="png"){
 //     gStyle->SetPalette(56);
 
-  gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
+  //gROOT->ProcessLine(".L ~/thesis/figs/tidy_plot_tools.C+");
 
   TString top_dir="~/comet/160219_BeamBlocker/plots/";
   PlotConfig config;
 
   TFile* geomFile=TFile::Open("../Geometry-on-axis.root","READ");
-  TH1* geomHist=NULL;
+  TH2* geomHist=NULL;
   if(geomFile){
-	  geomHist=(TH1*)geomFile->Get("hGeometry");
+      geomHist=(TH2*)geomFile->Get("hGeometry");
+      geomHist->RebinX(4);
+      geomHist->RebinY(4);
+      for(int ix=0;ix<geomHist->GetNbinsX()+1;ix++){
+          for(int iy=0;iy<geomHist->GetNbinsY()+1;iy++){
+              double content=geomHist->GetBinContent(ix,iy);
+              geomHist->SetBinContent(ix,iy,content>10?10:0);
+          }
+      }
   }
 
 //  gStyle->SetNumberContours(254);
@@ -30,7 +40,7 @@ void tidy_plots(const char* ext="png"){
   config.y_axis_label_size = config.x_axis_label_size=0.03;
   config.y_axis_title_size = config.x_axis_title_size=0.04;
   config.shift_plot_x  = -0.03;
-  config.shift_palette = -0.05;
+  config.shift_palette_y = -0.05;
   config.canvas_ratio  = 0.80;
   config.canvas_grow  = 2;
   config.canvas_width  = 1500;
@@ -92,9 +102,11 @@ void tidy_plots(const char* ext="png"){
   config.legend_x2=0.79; config.legend_y2=0.77;
   config.legend_columns=7;
   top_dir="~/comet/160213_StopTgtPositionOptimisation/160816_plots/";
-//  file=FixPlot(top_dir+"-Heights-Shift_050.root","THStack", config);
-//  if(geomHist) Overlay(geomHist,"same",config);
-//  SavePlot(ext,NULL,"Tidied_ElectronDispersion-EST");
+  file=FixPlot(top_dir+"-Heights-Shift_050.root","THStack", config);
+  if(geomHist) Overlay(geomHist,"samecol",config);
+  SavePlot(ext,NULL,"Tidied_ElectronDispersion-EST");
+
+  return;
 
   config.fill_transparency=0.3;
   config.legend_x1=0.39; config.legend_y1=0.68;
@@ -206,7 +218,7 @@ void tidy_plots(const char* ext="png"){
   config.z_axis_label_offset=1.3;
   config.z_axis_label_centred=true;
   config.shift_plot_x  = 0.00;
-  config.shift_palette = -0.05;
+  config.shift_palette_y = -0.05;
   config.canvas_ratio  = 1.05;
   //config.canvas_width  = 1000;
   config.canvas_grow  = 2;
